@@ -7,6 +7,7 @@ import LoadMask from 'react-storefront/LoadMask'
 import Head from 'next/head'
 import createLazyProps from 'react-storefront/props/createLazyProps'
 import fetchFromAPI from 'react-storefront/props/fetchFromAPI'
+import HomeProducts from "../components/home/layouts/HomeProducts"
 
 const useStyles = makeStyles(theme => ({
   main: {
@@ -41,6 +42,7 @@ export default function Index(lazyProps) {
           </div>
         )}
       </Container>
+      <HomeProducts/>
     </>
   )
 }

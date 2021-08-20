@@ -22,12 +22,14 @@ const useStyles = makeStyles(theme => ({
 
 function NavBar({ tabs }) {
   const classes = useStyles()
+  // console.log(tabs)
 
   return (
     <Paper square elevation={2}>
       <Container maxWidth="lg" className={classes.container}>
         <NavTabs>
           {tabs &&
+          
             tabs.map(tab => (
               <NavTab key={tab.as} href={tab.href} as={tab.as} label={tab.text} prefetch="visible">
                 {tab.items && (
