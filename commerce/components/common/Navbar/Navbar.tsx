@@ -120,7 +120,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
     { label: '5G Phones', link: '/sales' },
   ])
 
-  const [sliderRef] = useKeenSlider({
+  const [sliderRef] = useKeenSlider<HTMLInputElement>({
     slidesPerView: 10,
     mode: 'free',
     spacing: 1,

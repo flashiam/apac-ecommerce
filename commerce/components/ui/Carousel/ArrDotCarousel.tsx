@@ -21,7 +21,7 @@ const ArrDotCarousel= ({carousels}:Props) => {
     const [pause, setPause] = useState<boolean>(false)
     const timer = useRef<number>(0)
 
-  const [sliderRef, slider] = useKeenSlider({
+  const [sliderRef, slider] = useKeenSlider<HTMLInputElement>({
     initial: 0,
     loop: true,
 
@@ -49,7 +49,7 @@ const ArrDotCarousel= ({carousels}:Props) => {
   return (
     <>
       <div className="navigation-wrapper">
-        <div ref={sliderRef} className="keen-slider">
+        <div ref={sliderRef} className="keen-slider relative">
         {carousels.map((carousel, i) => (
         <div key={i} className="keen-slider__slide offer-slide">
           <Link href={carousel.link}>
@@ -95,7 +95,7 @@ function ArrowLeft(props:ArrowProps) {
   const disabeld = props.disabled ? " arrow--disabled" : ""
   return (
       <svg
-          style={{width:50,height:50,position:"relative",left:2}}
+          style={{width:50,height:50,position:"absolute",left:2}}
       onClick={props.onClick}
       className={"arrow arrow--left" + disabeld}
       xmlns="http://www.w3.org/2000/svg"
@@ -110,7 +110,7 @@ function ArrowRight(props:ArrowProps) {
   const disabeld = props.disabled ? " arrow--disabled" : ""
   return (
     <svg
-    style={{width:50,height:50 }}
+    style={{width:50,height:50,top: '50%', position:"absolute",right:2,transform: 'translateY(-50%)' }}
 
       onClick={props.onClick}
       className={"arrow arrow--right" + disabeld}

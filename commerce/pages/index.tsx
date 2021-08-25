@@ -156,9 +156,9 @@ export default function Home({
               </div>
             ))}
           </div>
-          <button className="text-black font-semibold my-3">
-            SEE OUR BEST DEALS
-          </button>
+          {/* <Link className="text-black font-semibold my-3">
+            SEE OUR BEST DEAL
+          </Link> */}
         </div>
 
         {/* Other Categories */}
@@ -171,11 +171,11 @@ export default function Home({
             </span>
           </span>
 
-          <div className="grid-cols-6 gap-2 hidden md:grid">
+          <div className="md:grid-cols-6 gap-2 hidden md:grid grid-cols-1"> 
             {[1, 2, 3, 4, 5].map((num, i) => (
               <div
                 key={num}
-                className={`${i <= 1 ? 'col-span-3' : 'col-span-2'}`}
+                className={`${i <= 1 ? 'md:col-span-3 col-span-6' : 'md:col-span-2'}`}
               >
                 <AppCard>
                   <div className="w-20 h-30 mx-auto">
@@ -258,7 +258,7 @@ export default function Home({
               </span>
             </span>
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="md:grid grid-cols-2 gap-4">
             {[1, 2, 3, 4].map((num, i) => (
               <div key={i}>
                 <h3 className="font-semibold">
@@ -290,7 +290,7 @@ export default function Home({
               </span>
             </span>
             {/* Grid System */}
-            <div className="grid grid-cols-6 gap-6 my-6">
+            <div className="md:grid sm:grid md:grid-cols-6 gap-6 sm:grid-cols-2 my-6">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(
                 (num, i) => (
                   <div key={i}>
