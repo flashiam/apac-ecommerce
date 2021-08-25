@@ -85,10 +85,10 @@ export default function Home({
     { link: 'covers' },
   ]
   return (
-    <>
+    <div className="container mx-auto px-5">
       <Carousel carousels={carousels} />
       {/* Product showcase */}
-      <div className="bg-gray-200">
+      <div>
         <div className="my-6">
           <h2 className="font-semibold text-black">The heavy weights</h2>
           <p className="text-sm text-black-400">
@@ -125,7 +125,7 @@ export default function Home({
           <h2 className="text-black font-semibold my-3 uppercase">
             Information About back Market
           </h2>
-          <div className="grid p-8 bg-white grid-cols-7 border-2 border-gray-200 rounded-md gap-4">
+          <div className="p-8 bg-white border-2 border-gray-200 rounded-md gap-4">
             <ProductMInfo />
           </div>
           <button className="text-black font-semibold uppercase my-3">
@@ -136,7 +136,7 @@ export default function Home({
         {/* For Mobo */}
 
         {/* Especially for U */}
-        <div className="my-8">
+        <div className="my-8 hidden md:block">
           <h2 className="text-black font-semibold my-3">Especially for you</h2>
           <div className="grid-cols-4 gap-8 md:grid">
             {[1, 2, 3, 4, 5, 6, 7].map((num, i) => (
@@ -379,7 +379,7 @@ export default function Home({
         categories={categories}
         brands={brands}
       /> */}
-    </>
+    </div>
   )
 }
 

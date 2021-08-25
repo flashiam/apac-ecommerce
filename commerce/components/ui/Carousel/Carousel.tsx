@@ -16,8 +16,8 @@ type Props = {
 const Carousel = ({ carousels }: Props) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0)
   const [pause, setPause] = useState<boolean>(false)
-  const timer = useRef<number>(0)
-  const [sliderRef, slider] = useKeenSlider({
+  let timer: any
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     loop: true,
     duration: 1000,
     initial: 0,
@@ -36,14 +36,14 @@ const Carousel = ({ carousels }: Props) => {
   }, [sliderRef])
 
   useEffect(() => {
-    timer.current = setInterval(() => {
+    timer = setInterval(() => {
       if (!pause && slider) {
         slider.next()
       }
     }, 2000)
 
     return () => {
-      clearInterval(timer.current)
+      clearInterval(timer)
     }
   }, [pause, slider])
 
