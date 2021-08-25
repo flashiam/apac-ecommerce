@@ -85,10 +85,10 @@ export default function Home({
     { link: 'covers' },
   ]
   return (
-    <>
+    <div className="container mx-auto px-5">
       <Carousel carousels={carousels} />
       {/* Product showcase */}
-      <div className="bg-gray-200">
+      <div>
         <div className="my-6">
           <h2 className="font-semibold text-black">The heavy weights</h2>
           <p className="text-sm text-black-400">
@@ -97,25 +97,27 @@ export default function Home({
           {/* FOr Desktop */}
           <div className="grid-cols-6 gap-2 hidden md:grid">
             {[1, 2, 3, 4, 5].map((num, i) => (
-              <div
-                key={num}
-                className={`${i <= 1 ? 'col-span-3' : 'col-span-2'}`}
-              >
-                <AppCard>
-                  <div className="h-20 w-20 mx-auto">
-                    <Image src={laptop} />
-                  </div>
-                  <div>
-                    <h3 className="text-black text-sm font-semibold">
-                      MacBook
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Explicabo, vel. Voluptate, quisquam.
-                    </p>
-                  </div>
-                </AppCard>
-              </div>
+              <Link href={`/product/new-short-sleeve-t-shirt`}>
+                <div
+                  key={num}
+                  className={`${i <= 1 ? 'col-span-3' : 'col-span-2'}`}
+                >
+                  <AppCard>
+                    <div className="h-20 w-20 mx-auto">
+                      <Image src={laptop} alt="product" />
+                    </div>
+                    <div>
+                      <h3 className="text-black text-sm font-semibold">
+                        MacBook
+                      </h3>
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Explicabo, vel. Voluptate, quisquam.
+                      </p>
+                    </div>
+                  </AppCard>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -125,7 +127,7 @@ export default function Home({
           <h2 className="text-black font-semibold my-3 uppercase">
             Information About back Market
           </h2>
-          <div className="grid p-8 bg-white grid-cols-7 border-2 border-gray-200 rounded-md gap-4">
+          <div className="p-8 bg-white border-2 border-gray-200 rounded-md gap-4">
             <ProductMInfo />
           </div>
           <button className="text-black font-semibold uppercase my-3">
@@ -136,7 +138,7 @@ export default function Home({
         {/* For Mobo */}
 
         {/* Especially for U */}
-        <div className="my-8">
+        <div className="my-8 hidden md:block">
           <h2 className="text-black font-semibold my-3">Especially for you</h2>
           <div className="grid-cols-4 gap-8 md:grid">
             {[1, 2, 3, 4, 5, 6, 7].map((num, i) => (
@@ -144,7 +146,7 @@ export default function Home({
                 <EspeciallyForU>
                   <h3 className="text-black font-medium">Flash Sale</h3>
                   <div className="w-20 h-40 mx-auto">
-                    <Image src={laptop} />
+                    <Image src={laptop} alt="product" />
                   </div>
                   <div>
                     <h2>Iphone</h2>
@@ -179,7 +181,7 @@ export default function Home({
               >
                 <AppCard>
                   <div className="w-20 h-30 mx-auto">
-                    <Image src={mobile2} />
+                    <Image src={mobile2} alt="product" />
                   </div>
                   <div>
                     <h3 className="text-black text-sm font-semibold">
@@ -201,7 +203,7 @@ export default function Home({
               <div key={num} className="keen-slider__slide slide">
                 <AppCard>
                   <div className="h-20 w-20">
-                    <Image src={laptop} />
+                    <Image src={laptop} alt="product" />
                   </div>
                   <h3 className="text-black text-md">MacBook</h3>
                 </AppCard>
@@ -313,7 +315,7 @@ export default function Home({
         </div>
       </div>
 
-      <Grid variant="filled">
+      {/* <Grid variant="filled">
         {products.slice(0, 3).map((product: any, i: number) => (
           <ProductCard
             key={product.id}
@@ -346,7 +348,7 @@ export default function Home({
           />
         ))}
       </Grid>
-      {/* Extra */}
+
       <Hero
         headline=" Dessert dragée halvah croissant."
         description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
@@ -372,14 +374,14 @@ export default function Home({
         {products.slice(3).map((product: any, i: number) => (
           <ProductCard key={product.id} product={product} variant="simple" />
         ))}
-      </Marquee>
+      </Marquee> */}
 
       {/* <HomeAllProductsGrid
         newestProducts={products}
         categories={categories}
         brands={brands}
       /> */}
-    </>
+    </div>
   )
 }
 

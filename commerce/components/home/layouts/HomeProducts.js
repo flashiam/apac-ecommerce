@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import MediaCarousel from 'react-storefront/carousel/MediaCarousel'
 import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
@@ -20,11 +21,11 @@ const useStyles = makeStyles({
     padding: '0 36px',
     paddingBottom: '50px',
   },
-    margin: {
-        // display:"inline-block",
-        // position: "relative",
-        // right:"0px",
-        float:"right"
+  margin: {
+    // display:"inline-block",
+    // position: "relative",
+    // right:"0px",
+    float: 'right',
   },
   infoProducts: {
     // padding: "0 36px",
@@ -48,15 +49,13 @@ const HomeProducts = () => {
   const classes = useStyles()
   return (
     <Container maxWidth="lg" style={{ backgroundColor: 'grey' }}>
-     
-
-          <Container className={classes.infoProducts}>
-
+      <Container className={classes.infoProducts}>
         <InitialProducts />
         <ProductsInfos />
         <Button className={classes.margin}>Learn More About market</Button>
         <Typography component="h3" align="left" className={classes.titleInfo}>
-          Especially for you <Typography component="span">-You know you want</Typography>
+          Especially for you{' '}
+          <Typography component="span">-You know you want</Typography>
         </Typography>
         <EuProducts />
         <Button className={classes.margin}>see our best deals</Button>
@@ -67,19 +66,19 @@ const HomeProducts = () => {
           </Typography>
         </Typography>
         <OtherCat />
-        <img src="https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?ixid=2yJhcHBfaWQiOjEyMDd9&fm=jpg&q=80" className={classes.imgSource} />
+        <Image
+          src="https://images.unsplash.com/photo-1461988320302-91bde64fc8e4?ixid=2yJhcHBfaWQiOjEyMDd9&fm=jpg&q=80"
+          className={classes.imgSource}
+          alt="product"
+        />
 
         <Typography component="h3" align="left" className={classes.titleInfo}>
-          They love us <Typography component="span">– they really love us!</Typography>
-
+          They love us{' '}
+          <Typography component="span">– they really love us!</Typography>
         </Typography>
-              <SinglePaper />
-              
+        <SinglePaper />
       </Container>
     </Container>
-
-
-      
   )
 }
 

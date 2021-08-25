@@ -1,27 +1,25 @@
-import React, {useEffect,useRef,useState} from "react"
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
+import React, { useEffect, useRef, useState } from 'react'
+import { useKeenSlider } from 'keen-slider/react'
+import 'keen-slider/keen-slider.min.css'
 
-import Link from "next/link"
-import Image from "next/image"
-
-
+import Link from 'next/link'
+import Image from 'next/image'
 
 type Carousel = {
-
-    img: StaticImageData;
-    link:string
+  img: StaticImageData
+  link: string
 }
 
 type Props = {
-    carousels: Carousel[]
-  }
-const ArrDotCarousel= ({carousels}:Props) => {
-    const [currentSlide, setCurrentSlide] = useState<number>(0)
-    const [pause, setPause] = useState<boolean>(false)
-    const timer = useRef<number>(0)
+  carousels: Carousel[]
+}
+const ArrDotCarousel = ({ carousels }: Props) => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0)
+  const [pause, setPause] = useState<boolean>(false)
+  // const timer = useRef<number>(0)
+  let timer: any
 
-  const [sliderRef, slider] = useKeenSlider({
+  const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
     initial: 0,
     loop: true,
 
@@ -35,37 +33,41 @@ const ArrDotCarousel= ({carousels}:Props) => {
   }, [sliderRef])
 
   useEffect(() => {
-    timer.current = setInterval(() => {
+    timer = setInterval(() => {
       if (!pause && slider) {
         slider.next()
       }
     }, 2000)
 
     return () => {
-      clearInterval(timer.current)
+      clearInterval(timer)
     }
-  }, [pause, slider])
+  }, [pause, slider, timer])
 
   return (
     <>
-      <div className="navigation-wrapper">
+      <div className="navigation-wrapper relative">
         <div ref={sliderRef} className="keen-slider">
-        {carousels.map((carousel, i) => (
-        <div key={i} className="keen-slider__slide offer-slide">
-          <Link href={carousel.link}>
-            <Image src={carousel.img} />
-          </Link>
-        </div>
-      ))}
+          {carousels.map((carousel, i) => (
+            <div key={i} className="keen-slider__slide offer-slide">
+              <Link href={carousel.link} passHref={false}>
+                <Image src={carousel.img} alt="product" />
+              </Link>
+            </div>
+          ))}
         </div>
         {slider && (
           <>
             <ArrowLeft
-              onClick={(e: { stopPropagation: () => any }) => e.stopPropagation() || slider.prev()}
+              onClick={(e: { stopPropagation: () => any }) =>
+                e.stopPropagation() || slider.prev()
+              }
               disabled={currentSlide === 0}
             />
             <ArrowRight
-              onClick={(e: { stopPropagation: () => any }) => e.stopPropagation() || slider.next()}
+              onClick={(e: { stopPropagation: () => any }) =>
+                e.stopPropagation() || slider.next()
+              }
               disabled={currentSlide === slider.details().size - 1}
             />
           </>
@@ -80,7 +82,7 @@ const ArrDotCarousel= ({carousels}:Props) => {
                 onClick={() => {
                   slider.moveToSlideRelative(idx)
                 }}
-                className={"dot" + (currentSlide === idx ? " active" : "")}
+                className={'dot' + (currentSlide === idx ? ' active' : '')}
               />
             )
           })}
@@ -91,13 +93,13 @@ const ArrDotCarousel= ({carousels}:Props) => {
 }
 type ArrowProps = any
 
-function ArrowLeft(props:ArrowProps) {
-  const disabeld = props.disabled ? " arrow--disabled" : ""
+function ArrowLeft(props: ArrowProps) {
+  const disabeld = props.disabled ? ' arrow--disabled' : ''
   return (
-      <svg
-          style={{width:50,height:50,position:"relative",left:2}}
+    <svg
+      style={{ width: 50, height: 50, fill: '#ccc' }}
       onClick={props.onClick}
-      className={"arrow arrow--left" + disabeld}
+      className={`arrow arrow--left ${disabeld} absolute left-2 top-1/2 cursor-pointer`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
@@ -106,14 +108,17 @@ function ArrowLeft(props:ArrowProps) {
   )
 }
 
-function ArrowRight(props:ArrowProps) {
-  const disabeld = props.disabled ? " arrow--disabled" : ""
+function ArrowRight(props: ArrowProps) {
+  const disabeld = props.disabled ? ' arrow--disabled' : ''
   return (
     <svg
-    style={{width:50,height:50 }}
-
+      style={{
+        width: 50,
+        height: 50,
+        fill: '#ccc',
+      }}
       onClick={props.onClick}
-      className={"arrow arrow--right" + disabeld}
+      className={`arrow arrow--right ${disabeld} absolute right-2 top-1/2 text-primary cursor-pointer`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
