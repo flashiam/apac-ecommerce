@@ -81,7 +81,7 @@ export default function Home({
     },
   ]
   interface TypeDef {
-    numi:number
+    numi: number
   }
   const pLinks = [
     { link: 'mobile' },
@@ -93,7 +93,7 @@ export default function Home({
     { link: 'covers' },
   ]
   return (
-    <>
+    <div className="container mx-auto px-5">
       <Carousel carousels={carousels} />
       {/* Product showcase */}
       <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
@@ -148,23 +148,22 @@ export default function Home({
           <h2 className="text-black font-semibold my-3 uppercase">
             Information About back Market
           </h2>
-          <div className="grid p-8 bg-white grid-cols-7 border-2 border-gray-200 rounded-md gap-4">
+          <div className="p-8 bg-white border-2 border-gray-200 rounded-md gap-4">
             <ProductMInfo />
           </div>
-        
-          <RdirectionLink linkText="LEARN MORE ABOUT BACK MARKET"/>
 
+          <RdirectionLink linkText="LEARN MORE ABOUT BACK MARKET" />
         </div>
 
         {/* Especially for U */}
-        <div className="my-8">
+        <div className="my-8 hidden md:block">
           <h2 className="text-black font-semibold my-3">Especially for you</h2>
           <div className="md:grid-cols-4 gap-8 grid-cols-2 grid md:grid">
             {[1, 2, 3, 4, 5, 6, 7].map((num, index) => (
               <EspeciallyForU key={index} children={undefined} />
             ))}
           </div>
-          <RdirectionLink linkText="SEE OUR BEST DEALS"/>
+          <RdirectionLink linkText="SEE OUR BEST DEALS" />
         </div>
 
         {/* Other Categories */}
@@ -177,11 +176,13 @@ export default function Home({
             </span>
           </span>
 
-          <div className="md:grid-cols-6 grid grid-cols-6 md:grid gap-2"> 
+          <div className="md:grid-cols-6 grid grid-cols-6 md:grid gap-2">
             {[1, 2, 3, 4, 5].map((num, i) => (
               <div
                 key={num}
-                className={`${i <= 1 ? 'md:col-span-3  col-span-3 ' : 'md:col-span-2 hidden'}`}
+                className={`${
+                  i <= 1 ? 'md:col-span-3  col-span-3 ' : 'md:col-span-2 hidden'
+                }`}
               >
                 <AppCard>
                   <div className="w-20 h-30 mx-auto">
@@ -201,7 +202,6 @@ export default function Home({
             ))}
           </div>
         </div>
-      
 
         {/* They love us they really love us */}
         <div className="my-6">
@@ -214,13 +214,12 @@ export default function Home({
           </span>
 
           <ArrDotCarousel carousels={carousels} />
-          <RdirectionLink linkText="SEE ALL THE BUZZ"/>
-
+          <RdirectionLink linkText="SEE ALL THE BUZZ" />
         </div>
 
         {/* Site templates */}
         <div>
-         <HomeTemplate/>
+          <HomeTemplate />
           {/* Four Questions people always ask */}
           <div>
             <span className="text-black my-6 inline-block font-semibold">
@@ -230,17 +229,12 @@ export default function Home({
               </span>
             </span>
             <div className="md:grid grid-cols-2 gap-4">
-            {[1, 2, 3, 4].map((num, i) => (
-              <QforProducts key={i}/>
-            ))}
+              {[1, 2, 3, 4].map((num, i) => (
+                <QforProducts key={i} />
+              ))}
+            </div>
+            <RdirectionLink linkText="SEE FAQS" />
           </div>
-          <RdirectionLink linkText="SEE FAQS"/>
-            
-          </div>
-       
-
-  
-       
 
           {/* Product info And links */}
           <div className="my-6">
@@ -252,19 +246,17 @@ export default function Home({
               </span>
             </span>
             {/* Discover all of our high-tech devices   – lovingly restored and squeaky cleanask: */}
-           <div className="md:grid sm:grid md:grid-cols-6 gap-6 sm:grid-cols-2 my-6">
+            <div className="md:grid sm:grid md:grid-cols-6 gap-6 sm:grid-cols-2 my-6">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(
                 (num, i) => (
-                  <LinksOfProducts key={i} pl={pLinks}/>
+                  <LinksOfProducts key={i} pl={pLinks} />
                 )
               )}
             </div>
           </div>
         </div>
       </div>
-
-    
-    </>
+    </div>
   )
 }
 
