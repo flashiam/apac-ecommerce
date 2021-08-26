@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FC, useState } from 'react'
 import { useRouter } from 'next/router'
 import s from './I18nWidget.module.css'
@@ -50,7 +51,7 @@ const I18nWidget: FC = () => {
           onClick={() => setDisplay(!display)}
         >
           <button className={s.button} aria-label="Language selector">
-            <img
+            <Image
               width="20"
               height="20"
               className="block mr-2 w-5"

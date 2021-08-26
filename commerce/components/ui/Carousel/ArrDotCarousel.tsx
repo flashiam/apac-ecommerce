@@ -42,7 +42,7 @@ const ArrDotCarousel = ({ carousels }: Props) => {
     return () => {
       clearInterval(timer)
     }
-  }, [pause, slider])
+  }, [pause, slider, timer])
 
   return (
     <>
@@ -50,8 +50,8 @@ const ArrDotCarousel = ({ carousels }: Props) => {
         <div ref={sliderRef} className="keen-slider">
           {carousels.map((carousel, i) => (
             <div key={i} className="keen-slider__slide offer-slide">
-              <Link href={carousel.link}>
-                <Image src={carousel.img} />
+              <Link href={carousel.link} passHref={false}>
+                <Image src={carousel.img} alt="product" />
               </Link>
             </div>
           ))}
