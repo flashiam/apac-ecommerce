@@ -21,6 +21,11 @@ import ProductCarousel from '../components/ui/Carousel/ProductCarousel'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import ProductMInfo from '@components/ui/ProductMarketInfo/ProductMInfo'
 import ArrDotCarousel from '@components/ui/Carousel/ArrDotCarousel'
+import LinksOfProducts from '@components/home/Linksofproducts/LinksOfProducts'
+import HomeTemplate from '@components/home/Templates/HomeTemplate'
+import QforProducts from '@components/home/Qforproducts/QforProducts'
+import RdirectionLink from '@components/links_directions/Rdirection_link/RdirectionLink'
+import { isNullOrUndefined } from 'util'
 
 export async function getStaticProps({
   preview,
@@ -75,6 +80,9 @@ export default function Home({
       link: '/flash_sale',
     },
   ]
+  interface TypeDef {
+    numi:number
+  }
   const pLinks = [
     { link: 'mobile' },
     { link: 'screen saver' },
@@ -88,18 +96,18 @@ export default function Home({
     <>
       <Carousel carousels={carousels} />
       {/* Product showcase */}
-      <div className="bg-gray-200">
+      <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
         <div className="my-6">
           <h2 className="font-semibold text-black">The heavy weights</h2>
           <p className="text-sm text-black-400">
             -Googled more often than Muhammad Ali.
           </p>
           {/* FOr Desktop */}
-          <div className="grid-cols-6 gap-2 hidden md:grid">
+          <div className="md:grid-cols-6 gap-2 md:grid hidden">
             {[1, 2, 3, 4, 5].map((num, i) => (
               <div
                 key={num}
-                className={`${i <= 1 ? 'col-span-3' : 'col-span-2'}`}
+                className={`${i <= 1 ? 'md:col-span-3' : 'md:col-span-2'}`}
               >
                 <AppCard>
                   <div className="h-20 w-20 mx-auto">
@@ -120,6 +128,21 @@ export default function Home({
           </div>
         </div>
 
+        {/* For Mobo */}
+        <div className="block md:hidden">
+          <ProductCarousel>
+            {[1, 2, 3, 4].map((num, i) => (
+              <div key={num} className="keen-slider__slide slide">
+                <AppCard>
+                  <div className="h-20 w-20">
+                    <Image src={laptop} />
+                  </div>
+                  <h3 className="text-black text-md">MacBook</h3>
+                </AppCard>
+              </div>
+            ))}
+          </ProductCarousel>
+        </div>
         {/* Welcome to back MArket  */}
         <div className="my-3">
           <h2 className="text-black font-semibold my-3 uppercase">
@@ -128,41 +151,24 @@ export default function Home({
           <div className="grid p-8 bg-white grid-cols-7 border-2 border-gray-200 rounded-md gap-4">
             <ProductMInfo />
           </div>
-          <button className="text-black font-semibold uppercase my-3">
-            Learn more about backmarket
-          </button>
-        </div>
+        
+          <RdirectionLink linkText="LEARN MORE ABOUT BACK MARKET"/>
 
-        {/* For Mobo */}
+        </div>
 
         {/* Especially for U */}
         <div className="my-8">
           <h2 className="text-black font-semibold my-3">Especially for you</h2>
-          <div className="grid-cols-4 gap-8 md:grid">
-            {[1, 2, 3, 4, 5, 6, 7].map((num, i) => (
-              <div key={i} className={`${i == 4 && 'col-span-2'}`}>
-                <EspeciallyForU>
-                  <h3 className="text-black font-medium">Flash Sale</h3>
-                  <div className="w-20 h-40 mx-auto">
-                    <Image src={laptop} />
-                  </div>
-                  <div>
-                    <h2>Iphone</h2>
-                    <p className="text-gray-400 text-sm">Condition Excellent</p>
-                    <h2 className="text-gray-400">Ends in</h2>
-                    <h3>$339.99</h3>
-                  </div>
-                </EspeciallyForU>
-              </div>
+          <div className="md:grid-cols-4 gap-8 grid-cols-2 grid md:grid">
+            {[1, 2, 3, 4, 5, 6, 7].map((num, index) => (
+              <EspeciallyForU key={index} children={undefined} />
             ))}
           </div>
-          {/* <Link className="text-black font-semibold my-3">
-            SEE OUR BEST DEAL
-          </Link> */}
+          <RdirectionLink linkText="SEE OUR BEST DEALS"/>
         </div>
 
         {/* Other Categories */}
-        <div className="my-8 mb-12">
+        <div className="my-8">
           <span className="text-black font-semibold inline-block my-3">
             Other Categories{' '}
             <span className="text-gray-400 text-sm">
@@ -171,11 +177,11 @@ export default function Home({
             </span>
           </span>
 
-          <div className="md:grid-cols-6 gap-2 hidden md:grid grid-cols-1"> 
+          <div className="md:grid-cols-6 grid grid-cols-6 md:grid gap-2"> 
             {[1, 2, 3, 4, 5].map((num, i) => (
               <div
                 key={num}
-                className={`${i <= 1 ? 'md:col-span-3 col-span-6' : 'md:col-span-2'}`}
+                className={`${i <= 1 ? 'md:col-span-3  col-span-3 ' : 'md:col-span-2 hidden'}`}
               >
                 <AppCard>
                   <div className="w-20 h-30 mx-auto">
@@ -195,20 +201,7 @@ export default function Home({
             ))}
           </div>
         </div>
-        <div className="block md:hidden">
-          <ProductCarousel>
-            {[1, 2, 3, 4].map((num, i) => (
-              <div key={num} className="keen-slider__slide slide">
-                <AppCard>
-                  <div className="h-20 w-20">
-                    <Image src={laptop} />
-                  </div>
-                  <h3 className="text-black text-md">MacBook</h3>
-                </AppCard>
-              </div>
-            ))}
-          </ProductCarousel>
-        </div>
+      
 
         {/* They love us they really love us */}
         <div className="my-6">
@@ -221,35 +214,14 @@ export default function Home({
           </span>
 
           <ArrDotCarousel carousels={carousels} />
+          <RdirectionLink linkText="SEE ALL THE BUZZ"/>
 
-          <div className="flex justify-end">
-            <Link href="!#">
-              <a className="text-black text-lg font-semibold my-3">
-                SEE ALL THE BUZZ
-              </a>
-            </Link>
-          </div>
         </div>
 
         {/* Site templates */}
         <div>
-          <div className="my-6 text-center">
-            <blockquote className="font-serif my-6 text-3xl font-bold">
-              "Forever young, I wanna be forever youuuuuuuuung, etc."
-            </blockquote>
-            <Link href="!#">
-              <a className="underline text-black-700 my-8 inline-block ">
-                Alphaville
-              </a>
-            </Link>
-            <p className="text-gray-700">
-              Back Market is a marketplace that fights against planned
-              obsolescence.
-            </p>
-            <Link href="!#">
-              <a className="underline text-black-700">Learn more</a>
-            </Link>
-          </div>
+         <HomeTemplate/>
+          {/* Four Questions people always ask */}
           <div>
             <span className="text-black my-6 inline-block font-semibold">
               What else? &nbsp;{' '}
@@ -257,29 +229,19 @@ export default function Home({
                 - Four questions people always ask:
               </span>
             </span>
-          </div>
-          <div className="md:grid grid-cols-2 gap-4">
+            <div className="md:grid grid-cols-2 gap-4">
             {[1, 2, 3, 4].map((num, i) => (
-              <div key={i}>
-                <h3 className="font-semibold">
-                  “What's the difference between a used iPhone and a refurbished
-                  iPhone?“
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {' '}
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Asperiores, labore, perferendis dignissimos velit magnam at
-                  repudiandae obcaecati ipsa quo in, autem quaerat deleniti
-                  earum! Ipsum hic distinctio nemo omnis, et commodi molestias
-                  perspiciatis tempore nulla?
-                </p>
-              </div>
+              <QforProducts key={i}/>
             ))}
-
-            <Link href="!#">
-              <a className="text-black text-lg font-semibold my-3">SEE FAQs</a>
-            </Link>
           </div>
+          <RdirectionLink linkText="SEE FAQS"/>
+            
+          </div>
+       
+
+  
+       
+
           {/* Product info And links */}
           <div className="my-6">
             {/* Title */}
@@ -289,23 +251,11 @@ export default function Home({
                 – lovingly restored and squeaky cleanask:
               </span>
             </span>
-            {/* Grid System */}
-            <div className="md:grid sm:grid md:grid-cols-6 gap-6 sm:grid-cols-2 my-6">
+            {/* Discover all of our high-tech devices   – lovingly restored and squeaky cleanask: */}
+           <div className="md:grid sm:grid md:grid-cols-6 gap-6 sm:grid-cols-2 my-6">
               {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(
                 (num, i) => (
-                  <div key={i}>
-                    <Link href="!#">
-                      <a className="font-semibold">Laptops & Computers</a>
-                    </Link>
-                    {pLinks.map((l, i) => (
-                      <h3 key={i}>
-                        {' '}
-                        <Link href="!#">
-                          <a className="text-sm text-gray-500">{l.link}</a>
-                        </Link>
-                      </h3>
-                    ))}
-                  </div>
+                  <LinksOfProducts key={i} pl={pLinks}/>
                 )
               )}
             </div>
@@ -313,72 +263,7 @@ export default function Home({
         </div>
       </div>
 
-      <Grid variant="filled">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
-      <Marquee variant="secondary">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="slim" />
-        ))}
-      </Marquee>
-      <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      />
-      <Grid layout="B" variant="filled">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
-      {/* Extra */}
-      <Hero
-        headline=" Dessert dragée halvah croissant."
-        description="Cupcake ipsum dolor sit amet lemon drops pastry cotton candy. Sweet carrot cake macaroon bonbon croissant fruitcake jujubes macaroon oat cake. Soufflé bonbon caramels jelly beans. Tiramisu sweet roll cheesecake pie carrot cake. "
-      />
-      <Grid variant="filled">
-        {products.slice(0, 3).map((product: any, i: number) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            imgProps={{
-              width: i === 0 ? 1080 : 540,
-              height: i === 0 ? 1080 : 540,
-            }}
-          />
-        ))}
-      </Grid>
-      <Marquee>
-        {products.slice(3).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="slim" />
-        ))}
-      </Marquee>
-      <Marquee>
-        {products.slice(3).map((product: any, i: number) => (
-          <ProductCard key={product.id} product={product} variant="simple" />
-        ))}
-      </Marquee>
-
-      {/* <HomeAllProductsGrid
-        newestProducts={products}
-        categories={categories}
-        brands={brands}
-      /> */}
+    
     </>
   )
 }
