@@ -34,7 +34,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
 
   return (
-    <footer className={`${rootClassName} bg-black py-4`}>
+    <footer className={`${rootClassName} bg-black p-4`}>
           {/* Footer customization */}
       <div className="my-4 text-white">
             <h2>Hello! We're Back Market, the leading marketplace for renewed devices. Our mission? To fight e-waste by giving expertly restored devices a second life.</h2>
