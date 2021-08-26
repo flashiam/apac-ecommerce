@@ -1,0 +1,21 @@
+{
+  "..\\components\\common\\Layout\\Layout.tsx -> @components/auth/ForgotPassword": {
+    "id": 4547,
+    "files": [
+      "static/chunks/547.b0dff06ce1740cc3a8e0.js"
+    ]
+  },
+  "..\\components\\common\\Layout\\Layout.tsx -> @components/auth/SignUpView": {
+    "id": 2255,
+    "files": [
+      "static/chunks/255.d4dbed1fc99240c7656a.js"
+    ]
+  },
+  "..\\components\\common\\Layout\\Layout.tsx -> @components/common/FeatureBar": {
+    "id": 7169,
+    "files": [
+      "static/css/488f1554cb618f1bccd0.css",
+      "static/chunks/169.408562249a8fb83215f6.js"
+    ]
+  }
+}
