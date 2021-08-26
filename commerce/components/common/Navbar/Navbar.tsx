@@ -52,15 +52,7 @@
 
 // export default Navbar
 
-
-
-
-
-
-
-
 // Extra
-
 
 import { FC, useState } from 'react'
 import Link from 'next/link'
@@ -71,8 +63,6 @@ import { Searchbar, UserNav } from '@components/common'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
-
-
 interface Link {
   href: string
   label: string
@@ -80,7 +70,6 @@ interface Link {
 interface NavbarProps {
   links?: Link[]
 }
-
 
 // interface Refery{
 //   refer?:LegacyRef<HTMLDivElement>
@@ -120,7 +109,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
     { label: '5G Phones', link: '/sales' },
   ])
 
-  const [sliderRef] = useKeenSlider<HTMLInputElement>({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slidesPerView: 10,
     mode: 'free',
     spacing: 1,
@@ -177,4 +166,3 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
 }
 
 export default Navbar
-
