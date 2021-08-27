@@ -34,7 +34,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
   const rootClassName = cn(s.root, className)
 
   return (
-    <footer className={`${rootClassName} bg-black p-4`}>
+    <footer className={`${rootClassName} bg-footerbg p-4`}>
           {/* Footer customization */}
       <div className="my-4 text-white">
             <h2>Hello! We're Back Market, the leading marketplace for renewed devices. Our mission? To fight e-waste by giving expertly restored devices a second life.</h2>
@@ -94,7 +94,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
         {/* </div> */}
         {/* <div className="pt-6 pb-10 flex flex-col md:flex-row justify-between items-center space-y-4 text-accent-6 text-sm"> */}
           <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
+            <span className="text-gray-200">&copy; 2020 ACME, Inc. All rights reserved.</span>
           </div>
           {/* <div className="flex items-center text-primary text-sm">
             <span className="text-primary">Created by</span>

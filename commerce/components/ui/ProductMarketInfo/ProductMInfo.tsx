@@ -8,7 +8,7 @@ const ProductMInfo = () => {
               <h1 className="text-black text-4xl text font-bold">Welcome to Back Market,
                   the refurbished (super) market.</h1>
               <Link href="!#"><a className="inline-block mb-5">SEE REVIEWS FROM 41241 CUSTOMERS</a></Link>
-              <button className="text-white rounded-md mx-auto block bg-black px-4 py-2 ">Learn about our quality standards</button>
+              <button className="text-white rounded-md mx-auto block bg-black px-4 mb-4 py-2 ">Learn about our quality standards</button>
       </div>
 
           <div className="md:col-span-4 sm:col-span-7 col-span-7">
