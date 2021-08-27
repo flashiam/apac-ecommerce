@@ -1,18 +1,23 @@
 import React,{ReactNode} from 'react'
 import EspeciallyForU from '@components/ui/ProductCat/Especially/EspeciallyForU'
+import Link from "next/link"
 import Image from 'next/image'
 import laptop from "../../../public/assets/img/laptop1.png"
- interface Props{
-    numi?: number | any;
-  key?: number;
+
+
+
+type Props = {
+  value: number;
+
 }
-const EspecialProducts = (props:Props,{children}:{children:ReactNode}) => {
+
+const EspecialProducts = (props: Props) => {
     return (
-      <div className={`${props.key === 4 && 'md:col-span-2 md:block hidden'}`}>
-        {children}
-        <EspeciallyForU>
+      <Link href="!#">
+     <a  className={`${props.value === 5 ? 'md:col-span-2 col-span-2':"block "}`}>
+        <EspeciallyForU >
           <h3 className="text-black font-medium">Flash Sale</h3>
-          <div className="w-20 h-40 mx-auto">
+          <div className="w-20 h-27 mx-auto">
             <Image src={laptop} />
           </div>
           <div>
@@ -21,8 +26,10 @@ const EspecialProducts = (props:Props,{children}:{children:ReactNode}) => {
             <h2 className="text-gray-400">Ends in</h2>
             <h3>$339.99</h3>
           </div>
+         
         </EspeciallyForU>
-      </div>
+     </a>
+      </Link>
     )
 }
 

@@ -20,6 +20,8 @@ module.exports = {
         '8xl': '1920px',
       },
       colors: {
+        footerbg:"#151515",
+        xxmain:"#F9F9F9",
         primary: 'var(--primary)',
         'primary-2': 'var(--primary-2)',
         secondary: 'var(--secondary)',
