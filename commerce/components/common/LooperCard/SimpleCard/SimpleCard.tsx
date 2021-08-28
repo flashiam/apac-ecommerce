@@ -5,7 +5,7 @@ import SCardDesign from '@components/common/CardDesign/SCardDesign'
 
 const SimpleCard = () => {
     return (
-        <>
+     
             <SCardDesign >
                 <h5 className="text-black font-bold">Flash sale</h5>
                 <div className="w-20 h-40 mx-auto">
@@ -16,7 +16,7 @@ const SimpleCard = () => {
             <h4 className="font-normal text-black">$56.99</h4>
             </SCardDesign>
           
-        </>
+       
     )
 }
 

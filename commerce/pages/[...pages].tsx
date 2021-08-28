@@ -1,3 +1,6 @@
+// [...pages].tsx
+
+
 import type {
   GetStaticPathsContext,
   GetStaticPropsContext,
@@ -11,7 +14,7 @@ import { missingLocaleInPages } from '@lib/usage-warns'
 import type { Page } from '@commerce/types/page'
 import { useRouter } from 'next/router'
 
-export async function getStaticProps({
+ export async function getStaticProps({
   preview,
   params,
   locale,

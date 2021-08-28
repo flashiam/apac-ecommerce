@@ -5,11 +5,12 @@ import ecommerceImg4 from '../public/assets/ecommerce_carousel_4.jpg'
 import commerce from '@lib/api/commerce'
 import Link from 'next/link'
 import { Layout } from '@components/common'
-import EspecialProducts from '@components/home/Especial_products/EspecialProducts'
+import EspecialProducts from '@components/home/Catofproducts/Especial/EspecialProducts'
+import OtherCat from '@components/home/Catofproducts/Other/OtherCat'
 import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
 import Carousel from '../components/ui/Carousel/Carousel'
-import EspeciallyForU from '@components/ui/ProductCat/Especially/EspeciallyForU'
+import EspCardDesign from '@components/ui/Especialcard/EspCardDesign'
 import AppCard from '../components/ui/AppCard/AppCard'
 import Image from 'next/image'
 import laptop from '../public/assets/img/laptop1.png'
@@ -28,6 +29,7 @@ import QforProducts from '@components/home/Qforproducts/QforProducts'
 import RdirectionLink from '@components/links_directions/Rdirection_link/RdirectionLink'
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
 import SCardDesign from '@components/common/CardDesign/SCardDesign'
+import FirstProducts from '@components/home/Catofproducts/First/FirstProducts'
 
 export async function getStaticProps({
   preview,
@@ -99,6 +101,8 @@ export default function Home({
       <Carousel carousels={carousels} />
       {/* Product showcase */}
       <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
+
+          {/* First Products */}
         <div className="my-6">
           <h2 className="font-semibold text-black">The heavy weights</h2>
           <p className="text-sm text-black-400">
@@ -107,25 +111,7 @@ export default function Home({
           {/* FOr Desktop */}
           <div className="md:grid-cols-6 gap-2 md:grid hidden">
             {[1, 2, 3, 4, 5].map((num, i) => (
-              <div
-                key={num}
-                className={`${i <= 1 ? 'md:col-span-3' : 'md:col-span-2'}`}
-              >
-               <SCardDesign>
-               <div className="h-32 w-20 mx-auto">
-                    <Image src={laptop} />
-                  </div>
-                  <div>
-                    <h3 className="text-black text-sm font-semibold">
-                      MacBook
-                    </h3>
-                    <p  className="text-black text-xs" >
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Explicabo, vel. Voluptate, quisquam.
-                    </p>
-                  </div>
-               </SCardDesign>
-              </div>
+              <FirstProducts key={i} numIndex={i}/>
             ))}
           </div>
         </div>
@@ -145,6 +131,7 @@ export default function Home({
             ))}
           </ProductCarousel>
         </div>
+        
         {/* Welcome to back MArket  */}
         <div className="my-3">
           <h2 className="text-black font-semibold my-3 uppercase">
@@ -180,29 +167,12 @@ export default function Home({
 
           <div className="md:grid-cols-6 grid grid-cols-6 md:grid gap-2">
             {[1, 2, 3, 4, 5].map((num, i) => (
-              <div
-                key={num}
-                className={`${
-                  i <= 1 ? 'md:col-span-3  col-span-3 ' : 'md:col-span-2 md:block hidden'
-                }`}>
-                <SCardDesign>
-                <div className="w-20 h-30 mx-auto">
-                    <Image src={mobile2} alt="product" />
-                  </div>
-                  <div>
-                    <h3 className="text-black text-sm font-semibold">
-                      MacBook
-                    </h3>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Explicabo, vel. Voluptate, quisquam.
-                    </p>
-                  </div>
-                </SCardDesign>
-              </div>
+              <OtherCat key={i} numIndex={i}/>
             ))}
           </div>
         </div>
+
+        {/* Product Carousel */}
         <div className="block md:hidden">
           <ProductCarousel>
             {[1, 2, 3, 4].map((num, i) => (
