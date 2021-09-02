@@ -2,6 +2,7 @@ import cn from 'classnames'
 import React, { FC } from 'react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
+import Head from "../Head/Head"
 import { CommerceProvider } from '@framework'
 import { useUI } from '@components/ui/context'
 import type { Page } from '@commerce/types/page'
@@ -103,6 +104,7 @@ const Layout: FC<Props> = ({
 
   return (
     <CommerceProvider locale={locale}>
+   <Head/>
       <div className={cn(s.root)}>
         <Navbar links={navBarlinks} />
         <main className="fit">{children}</main>

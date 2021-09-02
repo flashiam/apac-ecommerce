@@ -11,7 +11,7 @@ const TopLayer = () => {
             <p className="sm:block sm:my-2 md:hidden text-gray-600 font-light text-xs">
           Works with :
         </p>
-            <div className="md:h-20 md:w-20 md:text-white md:bg-green md:rounded-full md:flex md:items-center md:text-2xl md:justify-center hidden">
+            <div className="md:h-20 md:w-20 md:text-white md:bg-green md:rounded-full md:flex md:items-center md:text-2xl md:justify-center sm:hidden hidden">
               -28%
             </div>
           </div>

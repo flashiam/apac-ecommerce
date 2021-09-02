@@ -67,12 +67,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
   })
 
   return (<>
-    {/* <Head link="https://fonts.googleapis.com/icon?family=Material+Icons"/> */}
-    {/* <Head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"></link>
-      </Head> */}
-      <Head />
+
     <NavbarRoot>
 
       <Container>
