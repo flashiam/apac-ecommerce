@@ -56,7 +56,8 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     }
   }, [display])
 
-  return (
+  return (<>
+  
     <ClickOutside active={display} onClick={() => setDisplay(false)}>
       <div>
         <button
@@ -119,6 +120,8 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
         )}
       </div>
     </ClickOutside>
+  </>
+  
   )
 }
 

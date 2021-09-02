@@ -30,6 +30,7 @@ import RdirectionLink from '@components/links_directions/Rdirection_link/Rdirect
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
 import SCardDesign from '@components/common/CardDesign/SCardDesign'
 import FirstProducts from '@components/home/Catofproducts/First/FirstProducts'
+import DropdownMenu from '@components/common/UserNav/DropdownMenu'
 
 export async function getStaticProps({
   preview,
@@ -101,8 +102,7 @@ export default function Home({
       <Carousel carousels={carousels} />
       {/* Product showcase */}
       <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
-
-          {/* First Products */}
+        {/* First Products */}
         <div className="my-6">
           <h2 className="font-semibold text-black">The heavy weights</h2>
           <p className="text-sm text-black-400">
@@ -111,7 +111,7 @@ export default function Home({
           {/* FOr Desktop */}
           <div className="md:grid-cols-6 gap-2 md:grid hidden">
             {[1, 2, 3, 4, 5].map((num, i) => (
-              <FirstProducts key={i} numIndex={i}/>
+              <FirstProducts key={i} numIndex={i} />
             ))}
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function Home({
             ))}
           </ProductCarousel>
         </div>
-        
+
         {/* Welcome to back MArket  */}
         <div className="my-3">
           <h2 className="text-black font-semibold my-3 uppercase">
@@ -167,7 +167,7 @@ export default function Home({
 
           <div className="md:grid-cols-6 grid grid-cols-6 md:grid gap-2">
             {[1, 2, 3, 4, 5].map((num, i) => (
-              <OtherCat key={i} numIndex={i}/>
+              <OtherCat key={i} numIndex={i} />
             ))}
           </div>
         </div>
@@ -239,19 +239,15 @@ export default function Home({
               )}
             </div>
           </div>
-
-
         </div>
 
-              {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
+        {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
         <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((val, i) => (
-          <SimpleCard key={i} />
-        ))}
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((val, i) => (
+            <SimpleCard key={i} />
+          ))}
         </div>
       </div>
-
-
     </div>
   )
 }

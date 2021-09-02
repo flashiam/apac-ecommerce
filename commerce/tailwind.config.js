@@ -16,22 +16,26 @@ module.exports = {
   },
   theme: {
     extend: {
-
+      fontSize: {
+        '2xs': '.688rem',
+        '3xs': '.655rem',
+      },
       backgroundColor: ['checked'],
-      borderColor: ['checked'], 
+      borderColor: ['checked'],
       maxWidth: {
         '8xl': '1920px',
       },
       colors: {
-        cbcolor:"#6B7280",
-        footerbg:"#151515",
-        xxmain:"#F9F9F9",
+        cbcolor: '#6B7280',
+        footerbg: '#151515',
+        xxmain: '#F9F9F9',
         primary: 'var(--primary)',
+        purpleD: '#440244',
         // 'primary-2': 'var(--primary-2)',
         secondary: 'var(--secondary)',
         // 'secondary-2': 'var(--secondary-2)',
-        indigod:'#3A7E17',
-        "indigoc":'#A5B4FC',
+        indigod: '#3A7E17',
+        indigoc: '#A5B4FC',
         hover: 'var(--hover)',
         'hover-1': 'var(--hover-1)',
         'hover-2': 'var(--hover-2)',
@@ -54,7 +58,6 @@ module.exports = {
         blue: 'var(--blue)',
         green: 'var(--green)',
         red: 'var(--red)',
-
       },
       textColor: {
         base: 'var(--text-base)',
@@ -62,7 +65,7 @@ module.exports = {
         secondary: 'var(--text-secondary)',
       },
       boxShadow: {
-        ty:"0px 0px 8px rgba(0, 0, 0,0.6)",
+        ty: '0px 0px 8px rgba(0, 0, 0,0.6)',
         'outline-normal': '0 0 0 2px var(--accent-2)',
         magical:
           'rgba(0, 0, 0, 0.02) 0px 30px 30px, rgba(0, 0, 0, 0.03) 0px 0px 8px, rgba(0, 0, 0, 0.05) 0px 1px 0px',
@@ -73,6 +76,12 @@ module.exports = {
       scale: {
         120: '1.2',
       },
+    },
+  },
+  variants: {
+    extend: {
+      backgroundColor: ['checked'],
+      borderColor: ['checked'],
     },
   },
 }
