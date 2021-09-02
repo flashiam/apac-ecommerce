@@ -1,5 +1,5 @@
-// import Head from "../Head/Head"
-import Head from "next/head"
+import Head from "../Head/Head"
+// import Head from "next/head"
 
 // Extra
 
@@ -12,6 +12,7 @@ import { Searchbar, UserNav } from '@components/common'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import DropdownMenu from "../UserNav/DropdownMenu"
+import { WishlistButton } from '@components/wishlist'
 
 interface Link {
   href: string
@@ -71,6 +72,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"></link>
       </Head> */}
+      <Head />
     <NavbarRoot>
 
       <Container>
@@ -97,7 +99,23 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
               ))}
             </nav>
             
-            <DropdownMenu/>
+            <div className="flex items-center">
+                <WishlistButton
+                  productId="23"
+                  variant={{
+                    id: 1,
+                    options: [
+                      {
+                        id: '21',
+                        displayName: 'Redmi',
+                        values: [{ label: 'xiaomi', hexColors: ['#333'] }],
+                      },
+                    ],
+                  }}
+                />
+                {/* <CartSidebarView /> */}
+                <DropdownMenu />
+              </div>
             
 
           </div>
