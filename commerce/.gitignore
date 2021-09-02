@@ -9,7 +9,7 @@ node_modules
 /coverage
 
 # next.js
-.next/
+.next
 out/
 
 # production
@@ -34,3 +34,5 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+/public/assets
