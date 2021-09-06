@@ -3,23 +3,14 @@ import ecommerceImg2 from '../public/assets/ecommerce_carousel_2.jpg'
 import ecommerceImg3 from '../public/assets/ecommerce_carousel.jpg'
 import ecommerceImg4 from '../public/assets/ecommerce_carousel_4.jpg'
 import commerce from '@lib/api/commerce'
-import { dataOfProducts } from "./data1";
-import Link from 'next/link'
+import { dataOfProducts } from '../data1'
 import { Layout } from '@components/common'
 import EspecialProducts from '@components/home/Catofproducts/Especial/EspecialProducts'
 import OtherCat from '@components/home/Catofproducts/Other/OtherCat'
-import { ProductCard } from '@components/product'
-import { Grid, Marquee, Hero } from '@components/ui'
 import Carousel from '../components/ui/Carousel/Carousel'
-import EspCardDesign from '@components/ui/Especialcard/EspCardDesign'
 import AppCard from '../components/ui/AppCard/AppCard'
 import Image from 'next/image'
 import laptop from '../public/assets/img/laptop1.png'
-import laptop2 from '../public/assets/img/laptop2.png'
-import laptop3 from '../public/assets/img/laptop3.png'
-import mobile1 from '../public/assets/img/mobile1.png'
-import mobile2 from '../public/assets/img/mobile2.png'
-// import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import ProductCarousel from '../components/ui/Carousel/ProductCarousel'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import ProductMInfo from '@components/ui/ProductMarketInfo/ProductMInfo'
@@ -29,9 +20,7 @@ import HomeTemplate from '@components/home/Templates/HomeTemplate'
 import QforProducts from '@components/home/Qforproducts/QforProducts'
 import RdirectionLink from '@components/links_directions/Rdirection_link/RdirectionLink'
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
-import SCardDesign from '@components/common/CardDesign/SCardDesign'
 import FirstProducts from '@components/home/Catofproducts/First/FirstProducts'
-import DropdownMenu from '@components/common/UserNav/DropdownMenu'
 
 export async function getStaticProps({
   preview,
@@ -244,7 +233,7 @@ export default function Home({
 
         {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
         <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
-         {dataOfProducts.relatedProducts.map((product, i) => (
+          {dataOfProducts.relatedProducts.map((product, i) => (
             <SimpleCard key={i} product={product} />
           ))}
         </div>

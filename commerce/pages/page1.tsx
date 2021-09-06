@@ -5,7 +5,7 @@ import laptop1 from '../public/assets/img/laptop1.png'
 import { Layout } from '@components/common'
 
 import Link from 'next/link'
-import { dataOfProducts } from './data1'
+import { dataOfProducts } from '../data1'
 import Head from 'next/head'
 
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
@@ -56,7 +56,7 @@ const page1 = () => {
             {/* Rating */}
             <div>
               {[1, 2, 3, 4, 5].map((v, i) => (
-                <Link href="#!">
+                <Link key={i} href="#!">
                   <a>
                     <span
                       key={i}
@@ -122,11 +122,11 @@ const page1 = () => {
           </div>
           {/* Triple columns */}
           <div className="md:col-span-3 sm:col-span-2">
-            {/* <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
+            <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
               {dataOfProducts.relatedProducts.map((product, i) => (
                 <SimpleCard key={i} product={product} />
               ))}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
