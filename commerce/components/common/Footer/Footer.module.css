@@ -2,7 +2,7 @@
   @apply border-t border-accent-2;
 }
 
-.link {
+/* .link {
   & > svg {
     @apply transform duration-75 ease-linear;
   }
@@ -10,4 +10,4 @@
   &:hover > svg {
     @apply scale-110;
   }
-}
+} */

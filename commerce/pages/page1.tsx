@@ -1,46 +1,22 @@
 import React from 'react'
 
+import laptop1 from '../public/assets/img/laptop1.png'
+
 import { Layout } from '@components/common'
 
 import Link from 'next/link'
-
+import { dataOfProducts } from './data1'
 import Head from 'next/head'
 
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
 import Image from 'next/image'
 import laptop from '../public/assets/img/mobile1.png'
-// import ListCBox from '@components/common/Checkbox/P_Page/ListCBox'
 import RSideDetails from '@components/common/Products/SingleProduct/RSideDetails'
 import TopLayer from '@components/common/Products/SingleProduct/TopLayer'
 import SideLinks from '@components/common/Productpage/SideLinks/SideLinks'
 import CheckBoxes from '@components/common/Productpage/CheckBoxes/CheckBoxes'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
-
-const links = [
-  { icon: 'payments', link: 'Installment' },
-  { link: '30-day money-back guarantee', icon: 'date_range' },
-  { link: '1-year-warranty', icon: 'add_business' },
-  { link: 'Free standard shipping', icon: 'local_shipping' },
-]
-
-const flips = [
-  {
-    category: 'Phone',
-    main: [
-      {
-        phone: 'Xiaomi Redmi',
-
-        links: [
-          'Redmi Y2',
-          'Redmi Y3',
-          'Redmi UX',
-          'Redmi Ultra',
-          'Redmi MaxPro',
-        ],
-      },
-    ],
-  },
-]
+import MainProduct from '@components/common/Products/MainProduct/MainProduct'
 
 // Main Func
 const page1 = () => {
@@ -56,7 +32,7 @@ const page1 = () => {
 
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
-        {links.map((l, i) => (
+        {dataOfProducts.linksOfProducts[0].links.map((l, i) => (
           <Link key={i} href="!#">
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
               <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
@@ -72,31 +48,47 @@ const page1 = () => {
       {/* MAIN PRODUCT */}
       <div className="my-6 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6">
         <div className="p-8 col-span-2 bg-white rounded-md">
-          <TopLayer />
-          <div className="w-full block md:flex md:flex-row md:items-center md:justify-between">
-            {/* IMG */}
-            <div className="mx-auto sm:block sm:mx-auto block md:w-1/2 mb-3">
-              <Image
-                objectFit="scale-down"
-                height={250}
-                width={300}
-                src={laptop}
-              />
-            </div>
-
-            <RSideDetails />
-
-            <button className="md:hidden sm:block block mt-4 bg-black rounded-sm w-full py-2 hover:bg-black-600 text-white">
-              See more
-            </button>
-          </div>
+          <MainProduct main={dataOfProducts.main} />
         </div>
         {/* left container */}
         <div className="p-6 rounded-md bg-white w-full mt-6 md:mt-0">
-          Lorem, ipsum dolor.lorem Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Iusto, excepturi vel, reprehenderit nemo hic vero
-          expedita suscipit amet blanditiis voluptas assumenda, atque numquam
-          saepe porro animi. Cum rem dolores voluptatibus.
+          <div>
+            {/* Rating */}
+            <div>
+              {[1, 2, 3, 4, 5].map((v, i) => (
+                <Link href="#!">
+                  <a>
+                    <span
+                      key={i}
+                      className="material-icons mr-1 text-yellow-400"
+                    >
+                      star
+                    </span>
+                  </a>
+                </Link>
+              ))}
+            </div>
+            <p className="my-2 text-gray-600 font-light text-xs">
+              {dataOfProducts.comments.reviews}
+            </p>
+          </div>
+          <div className="my-5 md:block h-0.5 w-full bg-gray-400 sm:hidden"></div>
+          {/* Customer Comments */}
+          <div>
+            <h4 className="my-1 text-black text-sm font-bold">
+              {dataOfProducts.comments.customers[0].name}
+            </h4>
+            <blockquote className="my-1 text-gray text-xs font-thin">
+              {dataOfProducts.comments.customers[0].msg}
+            </blockquote>
+          </div>
+
+          <button
+            className="mt-9 mx-auto block border-2 border-black rounded-sm w-full md:w-1/2 py-2 transition-colors duration-200 ease-in hover:bg-black
+          hover:text-white text-black"
+          >
+            See Review
+          </button>
         </div>
       </div>
 
@@ -117,7 +109,7 @@ const page1 = () => {
               <h2 className="text-black font-medium">Categories</h2>
               {/* Parent */}
               <ul className="list-inside">
-                <SideLinks flips={flips} />
+                <SideLinks flips={dataOfProducts.linksOfProducts} />
               </ul>
               <h1 className="my-2 text-black font-medium text-lg">
                 95 PRODUCTS
@@ -131,11 +123,8 @@ const page1 = () => {
           {/* Triple columns */}
           <div className="md:col-span-3 sm:col-span-2">
             <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
-              {[
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-                19, 20,
-              ].map((val, i) => (
-                <SimpleCard key={i} />
+              {dataOfProducts.relatedProducts.map((product, i) => (
+                <SimpleCard key={i} product={product} />
               ))}
             </div>
           </div>
