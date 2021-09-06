@@ -4,8 +4,6 @@ import laptop1 from '../../../../public/assets/img/mobile1.png'
 import SCardDesign from '@components/common/CardDesign/SCardDesign'
 import products from 'pages/api/catalog/products'
 
-
-
 const simpleCard = {
   product_flash_sale: 'Flash sale',
   product_img: laptop1,
@@ -19,15 +17,15 @@ type Props = {
 }
 
 type Product = {
-  flash_sale: string
-  img: StaticImageData
-  warranty: string
-  price: string
-  name: string
+  flash_sale?: string
+  img?: StaticImageData
+  warranty?: string
+  price?: string
+  name?: string
 }
 
 const SimpleCard = (props: Props) => {
-  const { flash_sale, img, warranty, price, name } = props.product
+  const { flash_sale, img, warranty, price, name } = props?.product
   return (
     <SCardDesign>
       <h5 className="text-black font-bold">{flash_sale}</h5>
