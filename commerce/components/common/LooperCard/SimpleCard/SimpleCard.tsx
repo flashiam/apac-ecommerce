@@ -30,7 +30,7 @@ const SimpleCard = (props: Props) => {
     <SCardDesign>
       <h5 className="text-black font-bold">{flash_sale}</h5>
       <div className="w-20 h-40 mx-auto">
-        <Image src={img} />
+        <Image src={laptop1} />
       </div>
       <h3 className="text-black-700 font-medium">{name}</h3>
       <h4 className="text-gray-500 font-thin">{warranty}</h4>

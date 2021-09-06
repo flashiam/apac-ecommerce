@@ -36,7 +36,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-<<<<<<< HEAD
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -57,5 +56,3 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 #amplify-do-not-edit-end
-=======
->>>>>>> 9c7f1056829a84aca74c74aaba633d3cbe96ba85
