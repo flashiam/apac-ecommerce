@@ -16,12 +16,10 @@ const Avatar: FC<Props> = ({}) => {
     <>
     <div
       ref={ref}
-     style={{ backgroundImage: userAvatar }}
-      className="inline-block h-8 w-8 rounded-full border-2 border-primary hover:border-secondary focus:border-secondary transition-colors ease-linear"
+    //  style={{ backgroundImage: userAvatar }}
+      className="flex justify-center items-center h-8 w-8 rounded-full border-2 hover:border-secondary focus:border-primary transition-colors ease-linear"
     >
- <span className="material-icons-outlined">
-{/* My profile */}
-</span>
+      <i className="material-icons text-black">menu</i>
     </div>
     </>
     
