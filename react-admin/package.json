@@ -3,7 +3,7 @@
     "name": "react-admin-lerna",
     "scripts": {
         "build": "lerna run build",
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+        "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
 
         "watch": "lerna run --parallel watch",
         "test-unit": "cross-env NODE_ENV=test cross-env BABEL_ENV=cjs NODE_ICU_DATA=./node_modules/full-icu jest",

@@ -23,6 +23,7 @@ const ListCBox = (props: Props) => {
         type="checkbox"
         className="checkbox"
         checked={checked}
+        //Abhi
         onChange={() => onCheckChange(numIndex)}
       />
       <label htmlFor={`check${changer}-${numIndex}`} className="label">
