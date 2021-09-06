@@ -16,15 +16,11 @@ import SideLinks from '@components/common/Productpage/SideLinks/SideLinks'
 import CheckBoxes from '@components/common/Productpage/CheckBoxes/CheckBoxes'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
 
-
-
-const links=[
-  {icon:"payments",link:'Installment'},
-  {link:'30-day money-back guarantee',icon:"date_range"},
-  {link:'1-year-warranty',icon:'add_business'},
-  {link:'Free standard shipping',icon:"local_shipping"},
-
-
+const links = [
+  { icon: 'payments', link: 'Installment' },
+  { link: '30-day money-back guarantee', icon: 'date_range' },
+  { link: '1-year-warranty', icon: 'add_business' },
+  { link: 'Free standard shipping', icon: 'local_shipping' },
 ]
 
 const flips = [
@@ -46,12 +42,8 @@ const flips = [
   },
 ]
 
-
 // Main Func
 const page1 = () => {
-
-
-
   return (
     <div className="md:p-10 p-5 sm:p-7 bg-gray-100">
       <Head>
@@ -67,31 +59,36 @@ const page1 = () => {
         {links.map((l, i) => (
           <Link key={i} href="!#">
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
-              <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">{l.icon}</span>
+              <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
+                {l.icon}
+              </span>
               {l.link}
             </a>
           </Link>
         ))}
       </div>
       {/* REFURBHISHED IPHONE 11 */}
-    <PheadDetails/>
+      <PheadDetails />
       {/* MAIN PRODUCT */}
       <div className="my-6 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6">
         <div className="p-8 col-span-2 bg-white rounded-md">
-        <TopLayer/>
+          <TopLayer />
           <div className="w-full block md:flex md:flex-row md:items-center md:justify-between">
             {/* IMG */}
             <div className="mx-auto sm:block sm:mx-auto block md:w-1/2 mb-3">
-              <Image objectFit="scale-down" height={250} width={300} src={laptop} />
+              <Image
+                objectFit="scale-down"
+                height={250}
+                width={300}
+                src={laptop}
+              />
             </div>
 
-            <RSideDetails/>
-         
-             <button className="md:hidden sm:block block mt-4 bg-black rounded-sm w-full py-2 hover:bg-black-600 text-white">
-            See more
-          </button>
-        
-           
+            <RSideDetails />
+
+            <button className="md:hidden sm:block block mt-4 bg-black rounded-sm w-full py-2 hover:bg-black-600 text-white">
+              See more
+            </button>
           </div>
         </div>
         {/* left container */}
@@ -102,8 +99,6 @@ const page1 = () => {
           saepe porro animi. Cum rem dolores voluptatibus.
         </div>
       </div>
-      
-
 
       {/*  All PRODUCTS  */}
       <div className="mb-4">
@@ -122,7 +117,7 @@ const page1 = () => {
               <h2 className="text-black font-medium">Categories</h2>
               {/* Parent */}
               <ul className="list-inside">
-                <SideLinks flips={flips}/>
+                <SideLinks flips={flips} />
               </ul>
               <h1 className="my-2 text-black font-medium text-lg">
                 95 PRODUCTS
@@ -131,8 +126,8 @@ const page1 = () => {
             {/* PRICE */}
             <div></div>
             {/* CONDITION */}
-            <CheckBoxes/>
-          </div> 
+            <CheckBoxes />
+          </div>
           {/* Triple columns */}
           <div className="md:col-span-3 sm:col-span-2">
             <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
@@ -153,14 +148,8 @@ const page1 = () => {
 export default page1
 page1.Layout = Layout
 
-
-
-
-
-
-
-
-      {/* <div className="my-6 grid md:grid-cols-3 sm:grid-cols-1 gap-6">
+{
+  /* <div className="my-6 grid md:grid-cols-3 sm:grid-cols-1 gap-6">
         <div className="md:p-8 sm:p-4 md:col-span-2 sm:col-span-1 bg-white rounded-md">
    
           <TopLayer />
@@ -187,4 +176,5 @@ page1.Layout = Layout
           expedita suscipit amet blanditiis voluptas assumenda, atque numquam
           saepe porro animi. Cum rem dolores voluptatibus.
         </div>
-      </div> */}
+      </div> */
+}
