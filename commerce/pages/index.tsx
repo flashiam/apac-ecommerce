@@ -3,6 +3,7 @@ import ecommerceImg2 from '../public/assets/ecommerce_carousel_2.jpg'
 import ecommerceImg3 from '../public/assets/ecommerce_carousel.jpg'
 import ecommerceImg4 from '../public/assets/ecommerce_carousel_4.jpg'
 import commerce from '@lib/api/commerce'
+import { dataOfProducts } from "./data1";
 import Link from 'next/link'
 import { Layout } from '@components/common'
 import EspecialProducts from '@components/home/Catofproducts/Especial/EspecialProducts'
@@ -243,8 +244,8 @@ export default function Home({
 
         {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
         <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((val, i) => (
-            <SimpleCard key={i} />
+          {dataOfProducts.relatedProducts.map((product, i) => (
+            <SimpleCard key={i} product={product} />
           ))}
         </div>
       </div>

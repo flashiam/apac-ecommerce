@@ -122,11 +122,11 @@ const page1 = () => {
           </div>
           {/* Triple columns */}
           <div className="md:col-span-3 sm:col-span-2">
-            <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
+            {/* <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
               {dataOfProducts.relatedProducts.map((product, i) => (
                 <SimpleCard key={i} product={product} />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
