@@ -244,7 +244,7 @@ export default function Home({
 
         {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
         <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
-          {dataOfProducts.relatedProducts.map((product, i) => (
+         {dataOfProducts.relatedProducts.map((product, i) => (
             <SimpleCard key={i} product={product} />
           ))}
         </div>
