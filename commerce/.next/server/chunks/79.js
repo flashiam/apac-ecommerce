@@ -1,14 +1,14 @@
-"use strict";
 exports.id = 79;
 exports.ids = [79];
 exports.modules = {
 
 /***/ 7079:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "l8": () => (/* binding */ useUI),
-/* harmony export */   "DA": () => (/* binding */ ManagedUIContext)
+/* harmony export */   "l8": function() { return /* binding */ useUI; },
+/* harmony export */   "DA": function() { return /* binding */ ManagedUIContext; }
 /* harmony export */ });
 /* unused harmony exports UIContext, UIProvider */
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5282);

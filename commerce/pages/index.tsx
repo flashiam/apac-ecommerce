@@ -161,7 +161,9 @@ export default function Home({
           <h2 className="text-black font-semibold my-3">Especially for you</h2>
           <div className="md:grid-cols-4 gap-8 grid-cols-2 grid md:grid">
             {[1, 2, 3, 4, 5, 6, 7].map((num, index) => (
-              <EspeciallyForU key={index} children={undefined} />
+              <EspeciallyForU key={index}>
+	      Hello World
+              </EspeciallyForU>
             ))}
           </div>
           <RdirectionLink linkText="SEE OUR BEST DEALS"/>

@@ -3,13 +3,13 @@ exports.ids = [386];
 exports.modules = {
 
 /***/ 7494:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ Search)
+  "Z": function() { return /* binding */ Search; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -39,9 +39,9 @@ const toPixels = value => {
   return value;
 };
 
-/* harmony default export */ const to_pixels = (toPixels);
+/* harmony default export */ var to_pixels = (toPixels);
 // EXTERNAL MODULE: ./components/ui/Skeleton/Skeleton.module.css
-var Skeleton_module = __webpack_require__(3920);
+var Skeleton_module = __webpack_require__(7953);
 var Skeleton_module_default = /*#__PURE__*/__webpack_require__.n(Skeleton_module);
 ;// CONCATENATED MODULE: ./components/ui/Skeleton/Skeleton.tsx
 
@@ -88,7 +88,7 @@ const Skeleton = ({
   });
 };
 
-/* harmony default export */ const Skeleton_Skeleton = (Skeleton);
+/* harmony default export */ var Skeleton_Skeleton = (Skeleton);
 // EXTERNAL MODULE: ./components/ui/Container/Container.tsx
 var Container = __webpack_require__(9698);
 // EXTERNAL MODULE: ./framework/local/product/use-search.tsx + 1 modules
@@ -519,13 +519,13 @@ Search.Layout = Layout/* default */.Z;
 /***/ }),
 
 /***/ 5604:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "n": () => (/* binding */ getSearchStaticProps)
+/* harmony export */   "n": function() { return /* binding */ getSearchStaticProps; }
 /* harmony export */ });
-/* harmony import */ var _lib_api_commerce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(393);
+/* harmony import */ var _lib_api_commerce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6473);
 
 async function getSearchStaticProps({
   preview,
@@ -563,8 +563,8 @@ async function getSearchStaticProps({
 
 /***/ }),
 
-/***/ 3920:
-/***/ ((module) => {
+/***/ 7953:
+/***/ (function(module) {
 
 // Exports
 module.exports = {

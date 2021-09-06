@@ -3,18 +3,15 @@ exports.ids = [350];
 exports.modules = {
 
 /***/ 135:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5282);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4058);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1664);
-/* harmony import */ var _ProductCard_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9759);
+/* harmony import */ var _ProductCard_module_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4810);
 /* harmony import */ var _ProductCard_module_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_ProductCard_module_css__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var next_image__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5675);
 /* harmony import */ var _components_wishlist_WishlistButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8921);
@@ -131,22 +128,19 @@ const ProductCard = ({
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductCard);
+/* harmony default export */ __webpack_exports__["Z"] = (ProductCard);
 
 /***/ }),
 
 /***/ 8166:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5282);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4058);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _ProductTag_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5947);
+/* harmony import */ var _ProductTag_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4599);
 /* harmony import */ var _ProductTag_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ProductTag_module_css__WEBPACK_IMPORTED_MODULE_2__);
 
 
@@ -180,18 +174,18 @@ const ProductTag = ({
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductTag);
+/* harmony default export */ __webpack_exports__["Z"] = (ProductTag);
 
 /***/ }),
 
 /***/ 8921:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ WishlistButton_WishlistButton)
+  "Z": function() { return /* binding */ WishlistButton_WishlistButton; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -216,7 +210,7 @@ function emptyHook() {
 
   return useEmptyHook;
 }
-/* harmony default export */ const use_add_item = (emptyHook);
+/* harmony default export */ var use_add_item = (emptyHook);
 // EXTERNAL MODULE: ./framework/local/customer/use-customer.tsx + 1 modules
 var use_customer = __webpack_require__(6708);
 // EXTERNAL MODULE: ./framework/local/wishlist/use-wishlist.tsx
@@ -224,7 +218,7 @@ var use_wishlist = __webpack_require__(3937);
 // EXTERNAL MODULE: ./framework/local/wishlist/use-remove-item.tsx
 var use_remove_item = __webpack_require__(52);
 // EXTERNAL MODULE: ./components/wishlist/WishlistButton/WishlistButton.module.css
-var WishlistButton_module = __webpack_require__(8655);
+var WishlistButton_module = __webpack_require__(5999);
 var WishlistButton_module_default = /*#__PURE__*/__webpack_require__.n(WishlistButton_module);
 ;// CONCATENATED MODULE: ./components/wishlist/WishlistButton/WishlistButton.tsx
 
@@ -322,17 +316,14 @@ const WishlistButton = (_ref) => {
   }));
 };
 
-/* harmony default export */ const WishlistButton_WishlistButton = (WishlistButton);
+/* harmony default export */ var WishlistButton_WishlistButton = (WishlistButton);
 
 /***/ }),
 
 /***/ 52:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* unused harmony export emptyHook */
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9297);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -348,17 +339,14 @@ function emptyHook(options) {
 
   return useEmptyHook;
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (emptyHook);
+/* harmony default export */ __webpack_exports__["Z"] = (emptyHook);
 
 /***/ }),
 
 /***/ 3937:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* unused harmony exports fetcher, extendHook */
 const defaultOpts = {};
 const fetcher = () => {
@@ -377,16 +365,16 @@ swrOptions) {
   useWishlist.extend = extendHook;
   return useWishlist;
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (extendHook(fetcher));
+/* harmony default export */ __webpack_exports__["ZP"] = (extendHook(fetcher));
 
 /***/ }),
 
 /***/ 9866:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ rangeMap)
+/* harmony export */   "Z": function() { return /* binding */ rangeMap; }
 /* harmony export */ });
 function rangeMap(n, fn) {
   const arr = [];
@@ -400,8 +388,8 @@ function rangeMap(n, fn) {
 
 /***/ }),
 
-/***/ 9759:
-/***/ ((module) => {
+/***/ 4810:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -419,8 +407,8 @@ module.exports = {
 
 /***/ }),
 
-/***/ 5947:
-/***/ ((module) => {
+/***/ 4599:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -433,8 +421,8 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8655:
-/***/ ((module) => {
+/***/ 5999:
+/***/ (function(module) {
 
 // Exports
 module.exports = {

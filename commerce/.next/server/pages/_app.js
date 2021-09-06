@@ -1,19 +1,19 @@
-"use strict";
-(() => {
+(function() {
 var exports = {};
 exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 9905:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 108:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ MyApp)
+  "default": function() { return /* binding */ MyApp; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -21,12 +21,12 @@ var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 ;// CONCATENATED MODULE: external "next/head"
-const head_namespaceObject = require("next/head");
+var head_namespaceObject = require("next/head");;
 var head_default = /*#__PURE__*/__webpack_require__.n(head_namespaceObject);
 // EXTERNAL MODULE: external "next-seo"
 var external_next_seo_ = __webpack_require__(2364);
 ;// CONCATENATED MODULE: ./config/seo.json
-const seo_namespaceObject = JSON.parse('{"title":"ACME Storefront | Powered by Next.js Commerce","titleTemplate":"%s - ACME Storefront","description":"Next.js Commerce - https://www.nextjs.org/commerce","openGraph":{"title":"ACME Storefront | Powered by Next.js Commerce","description":"Next.js Commerce - https://www.nextjs.org/commerce","type":"website","locale":"en_IE","url":"https://nextjs.org/commerce","site_name":"Next.js Commerce","images":[{"url":"/card.png","width":800,"height":600,"alt":"Next.js Commerce"}]},"twitter":{"handle":"@nextjs","site":"@nextjs","cardType":"summary_large_image"}}');
+var seo_namespaceObject = JSON.parse('{"title":"ACME Storefront | Powered by Next.js Commerce","titleTemplate":"%s - ACME Storefront","description":"Next.js Commerce - https://www.nextjs.org/commerce","openGraph":{"title":"ACME Storefront | Powered by Next.js Commerce","description":"Next.js Commerce - https://www.nextjs.org/commerce","type":"website","locale":"en_IE","url":"https://nextjs.org/commerce","site_name":"Next.js Commerce","images":[{"url":"/card.png","width":800,"height":600,"alt":"Next.js Commerce"}]},"twitter":{"handle":"@nextjs","site":"@nextjs","cardType":"summary_large_image"}}');
 ;// CONCATENATED MODULE: ./components/common/Head/Head.tsx
 
 
@@ -56,7 +56,7 @@ const Head = () => {
   });
 };
 
-/* harmony default export */ const Head_Head = (Head);
+/* harmony default export */ var Head_Head = (Head);
 // EXTERNAL MODULE: ./components/ui/context.tsx
 var context = __webpack_require__(7079);
 ;// CONCATENATED MODULE: ./pages/_app.tsx
@@ -106,30 +106,34 @@ function MyApp({
 /***/ }),
 
 /***/ 2364:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("next-seo");
+"use strict";
+module.exports = require("next-seo");;
 
 /***/ }),
 
 /***/ 2517:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("next-themes");
+"use strict";
+module.exports = require("next-themes");;
 
 /***/ }),
 
 /***/ 9297:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("react");
+"use strict";
+module.exports = require("react");;
 
 /***/ }),
 
 /***/ 5282:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("react/jsx-runtime");
+"use strict";
+module.exports = require("react/jsx-runtime");;
 
 /***/ })
 
@@ -139,8 +143,8 @@ module.exports = require("react/jsx-runtime");
 // load runtime
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
-var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [79], () => (__webpack_exec__(9905)));
+var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+var __webpack_exports__ = __webpack_require__.X(0, [79], function() { return __webpack_exec__(108); });
 module.exports = __webpack_exports__;
 
 })();

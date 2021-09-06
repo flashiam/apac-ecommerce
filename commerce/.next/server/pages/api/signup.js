@@ -1,29 +1,29 @@
-"use strict";
-(() => {
+(function() {
 var exports = {};
 exports.id = 964;
 exports.ids = [964];
 exports.modules = {
 
 /***/ 3588:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ signup)
+  "default": function() { return /* binding */ signup; }
 });
 
 ;// CONCATENATED MODULE: ./framework/local/api/endpoints/signup/index.ts
 function noopApi(...args) {}
 // EXTERNAL MODULE: ./lib/api/commerce.ts + 12 modules
-var commerce = __webpack_require__(393);
+var commerce = __webpack_require__(6473);
 ;// CONCATENATED MODULE: ./pages/api/signup.ts
 
 
-/* harmony default export */ const signup = (noopApi(commerce/* default */.Z));
+/* harmony default export */ var signup = (noopApi(commerce/* default */.Z));
 
 /***/ })
 
@@ -33,8 +33,8 @@ var commerce = __webpack_require__(393);
 // load runtime
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
-var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [393], () => (__webpack_exec__(3588)));
+var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+var __webpack_exports__ = __webpack_require__.X(0, [473], function() { return __webpack_exec__(3588); });
 module.exports = __webpack_exports__;
 
 })();

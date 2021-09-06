@@ -1,34 +1,34 @@
-"use strict";
-(() => {
+(function() {
 var exports = {};
 exports.id = 405;
 exports.ids = [405];
 exports.modules = {
 
-/***/ 3049:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 5680:
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ Home),
-  "getStaticProps": () => (/* binding */ getStaticProps)
+  "default": function() { return /* binding */ Home; },
+  "getStaticProps": function() { return /* binding */ getStaticProps; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
 ;// CONCATENATED MODULE: ./public/assets/ecommerce_carousel_3.jpg
-/* harmony default export */ const ecommerce_carousel_3 = ({"src":"/_next/static/image/public/assets/ecommerce_carousel_3.108dbaf2ed55cdbfa5aff1ceb37a654c.jpg","height":360,"width":800,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAQACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAE/9oACAEBAAAAAB//xAAUAQEAAAAAAAAAAAAAAAAAAAAF/9oACAECEAAAAEP/xAAUAQEAAAAAAAAAAAAAAAAAAAAF/9oACAEDEAAAADf/xAAeEAABBAEFAAAAAAAAAAAAAAABAgMEEQAFEiFBUv/aAAgBAQABPwCLEZXpSSRy5tN+bHWf/8QAGREAAgMBAAAAAAAAAAAAAAAAAQIAEiIy/9oACAECAQE/AAzWfR6n/8QAGhEAAgIDAAAAAAAAAAAAAAAAAQIAAxIiMv/aAAgBAwEBPwDBCteo5n//2Q=="});
+/* harmony default export */ var ecommerce_carousel_3 = ({"src":"/_next/static/image/public/assets/ecommerce_carousel_3.108dbaf2ed55cdbfa5aff1ceb37a654c.jpg","height":360,"width":800,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAQACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAE/9oACAEBAAAAAB//xAAUAQEAAAAAAAAAAAAAAAAAAAAF/9oACAECEAAAAEP/xAAUAQEAAAAAAAAAAAAAAAAAAAAF/9oACAEDEAAAADf/xAAeEAABBAEFAAAAAAAAAAAAAAABAgMEEQAFEiFBUv/aAAgBAQABPwCLEZXpSSRy5tN+bHWf/8QAGREAAgMBAAAAAAAAAAAAAAAAAQIAEiIy/9oACAECAQE/AAzWfR6n/8QAGhEAAgIDAAAAAAAAAAAAAAAAAQIAAxIiMv/aAAgBAwEBPwDBCteo5n//2Q=="});
 ;// CONCATENATED MODULE: ./public/assets/ecommerce_carousel_2.jpg
-/* harmony default export */ const ecommerce_carousel_2 = ({"src":"/_next/static/image/public/assets/ecommerce_carousel_2.e7ab2cde3b51027a0465fc64883af8fa.jpg","height":420,"width":936,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAQACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAE/9oACAEBAAAAAE//xAAUAQEAAAAAAAAAAAAAAAAAAAAD/9oACAECEAAAAE//xAAUAQEAAAAAAAAAAAAAAAAAAAAC/9oACAEDEAAAAB//xAAbEAABBQEBAAAAAAAAAAAAAAABAgMTIXEAEf/aAAgBAQABPwCMyNIDiwCbwCk57ff/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAgBAgEBPwCP/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAx/9oACAEDAQE/ANG//9k="});
+/* harmony default export */ var ecommerce_carousel_2 = ({"src":"/_next/static/image/public/assets/ecommerce_carousel_2.e7ab2cde3b51027a0465fc64883af8fa.jpg","height":420,"width":936,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAQACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAE/9oACAEBAAAAAE//xAAUAQEAAAAAAAAAAAAAAAAAAAAD/9oACAECEAAAAE//xAAUAQEAAAAAAAAAAAAAAAAAAAAC/9oACAEDEAAAAB//xAAbEAABBQEBAAAAAAAAAAAAAAABAgMTIXEAEf/aAAgBAQABPwCMyNIDiwCbwCk57ff/xAAVEQEBAAAAAAAAAAAAAAAAAAAAAf/aAAgBAgEBPwCP/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAx/9oACAEDAQE/ANG//9k="});
 ;// CONCATENATED MODULE: ./public/assets/ecommerce_carousel.jpg
-/* harmony default export */ const ecommerce_carousel = ({"src":"/_next/static/image/public/assets/ecommerce_carousel.121af1645e1837a288e27eedd8c36090.jpg","height":250,"width":750,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAMACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAG/9oACAEBAAAAAFv/xAAUAQEAAAAAAAAAAAAAAAAAAAAG/9oACAECEAAAABf/xAAUAQEAAAAAAAAAAAAAAAAAAAAG/9oACAEDEAAAAEn/xAAZEAACAwEAAAAAAAAAAAAAAAABAwARIUH/2gAIAQEAAT8ASTTd5P/EABkRAAIDAQAAAAAAAAAAAAAAAAEDABEhQv/aAAgBAgEBPwBxNL3mf//EABcRAAMBAAAAAAAAAAAAAAAAAAADQnH/2gAIAQMBAT8AXen/2Q=="});
+/* harmony default export */ var ecommerce_carousel = ({"src":"/_next/static/image/public/assets/ecommerce_carousel.121af1645e1837a288e27eedd8c36090.jpg","height":250,"width":750,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAMACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAG/9oACAEBAAAAAFv/xAAUAQEAAAAAAAAAAAAAAAAAAAAG/9oACAECEAAAABf/xAAUAQEAAAAAAAAAAAAAAAAAAAAG/9oACAEDEAAAAEn/xAAZEAACAwEAAAAAAAAAAAAAAAABAwARIUH/2gAIAQEAAT8ASTTd5P/EABkRAAIDAQAAAAAAAAAAAAAAAAEDABEhQv/aAAgBAgEBPwBxNL3mf//EABcRAAMBAAAAAAAAAAAAAAAAAAADQnH/2gAIAQMBAT8AXen/2Q=="});
 ;// CONCATENATED MODULE: ./public/assets/ecommerce_carousel_4.jpg
-/* harmony default export */ const ecommerce_carousel_4 = ({"src":"/_next/static/image/public/assets/ecommerce_carousel_4.8c3f79611920b1b3860aeda89a14fe83.jpg","height":255,"width":700,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAMACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAG/9oACAEBAAAAAGH/xAAUAQEAAAAAAAAAAAAAAAAAAAAE/9oACAECEAAAAH//xAAUAQEAAAAAAAAAAAAAAAAAAAAE/9oACAEDEAAAAD//xAAYEAEBAAMAAAAAAAAAAAAAAAABAgADEv/aAAgBAQABPwDu7rYVSgwmf//EABcRAAMBAAAAAAAAAAAAAAAAAAABAzL/2gAIAQIBAT8AlhH/xAAXEQADAQAAAAAAAAAAAAAAAAAAAQIy/9oACAEDAQE/AL0z/9k="});
+/* harmony default export */ var ecommerce_carousel_4 = ({"src":"/_next/static/image/public/assets/ecommerce_carousel_4.8c3f79611920b1b3860aeda89a14fe83.jpg","height":255,"width":700,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAMACAMBIgACEQEDEQH/xAAUAAEAAAAAAAAAAAAAAAAAAAAG/9oACAEBAAAAAGH/xAAUAQEAAAAAAAAAAAAAAAAAAAAE/9oACAECEAAAAH//xAAUAQEAAAAAAAAAAAAAAAAAAAAE/9oACAEDEAAAAD//xAAYEAEBAAMAAAAAAAAAAAAAAAABAgADEv/aAAgBAQABPwDu7rYVSgwmf//EABcRAAMBAAAAAAAAAAAAAAAAAAABAzL/2gAIAQIBAT8AlhH/xAAXEQADAQAAAAAAAAAAAAAAAAAAAQIy/9oACAEDAQE/AL0z/9k="});
 // EXTERNAL MODULE: ./lib/api/commerce.ts + 12 modules
-var commerce = __webpack_require__(393);
+var commerce = __webpack_require__(6473);
 // EXTERNAL MODULE: ./components/common/Layout/Layout.tsx + 33 modules
 var Layout = __webpack_require__(4331);
 // EXTERNAL MODULE: external "react"
@@ -101,7 +101,7 @@ const Carousel = ({
   });
 };
 
-/* harmony default export */ const Carousel_Carousel = (Carousel);
+/* harmony default export */ var Carousel_Carousel = (Carousel);
 ;// CONCATENATED MODULE: ./components/ui/ProductCat/Especially/EspeciallyForU.tsx
 
 
@@ -115,7 +115,7 @@ const EspeciallyForU = ({
   });
 };
 
-/* harmony default export */ const Especially_EspeciallyForU = (EspeciallyForU);
+/* harmony default export */ var Especially_EspeciallyForU = (EspeciallyForU);
 ;// CONCATENATED MODULE: ./components/ui/AppCard/AppCard.tsx
 
 
@@ -129,11 +129,11 @@ const AppCard = ({
   });
 };
 
-/* harmony default export */ const AppCard_AppCard = (AppCard);
+/* harmony default export */ var AppCard_AppCard = (AppCard);
 ;// CONCATENATED MODULE: ./public/assets/img/laptop1.png
-/* harmony default export */ const laptop1 = ({"src":"/_next/static/image/public/assets/img/laptop1.1df26692d83c9378bed0ffa8b0f9c6b0.png","height":1616,"width":1612,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAABCUlEQVR42mNwC6n+rmOR8jY6ruOes0/HOXf/2iMRCc0ze5rVmBhAICh+5n9Nm/r/4TGt/zWcO/4z6BX+94tsfl2YYcgKVhCfuuVPQOSOf4lJy/8um7Tmd21J3//wuMp7akpW7GAFmRmH/xfkXv7XVnnj/+GlN/9eO37p//Ezu+8xwEBBcffbypop/1vbZv3r7p33b9LU+f/mLl75f/m63Q5gBZV1zQUNHZP/z1q4+veyNdv+LVm17de6rYf+b9t78iJYwZGjF7laumY9aOqc8X/uovX/9x48/f/o6cv/1+888n/V1kPTwIrmLd5YP3X26v8r1u+5fer89VOXbtzftHX/iVlrth2qBQBH0IvWK3K7AgAAAABJRU5ErkJggg=="});
+/* harmony default export */ var laptop1 = ({"src":"/_next/static/image/public/assets/img/laptop1.1df26692d83c9378bed0ffa8b0f9c6b0.png","height":1616,"width":1612,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAABCUlEQVR42mNwC6n+rmOR8jY6ruOes0/HOXf/2iMRCc0ze5rVmBhAICh+5n9Nm/r/4TGt/zWcO/4z6BX+94tsfl2YYcgKVhCfuuVPQOSOf4lJy/8um7Tmd21J3//wuMp7akpW7GAFmRmH/xfkXv7XVnnj/+GlN/9eO37p//Ezu+8xwEBBcffbypop/1vbZv3r7p33b9LU+f/mLl75f/m63Q5gBZV1zQUNHZP/z1q4+veyNdv+LVm17de6rYf+b9t78iJYwZGjF7laumY9aOqc8X/uovX/9x48/f/o6cv/1+888n/V1kPTwIrmLd5YP3X26v8r1u+5fer89VOXbtzftHX/iVlrth2qBQBH0IvWK3K7AgAAAABJRU5ErkJggg=="});
 ;// CONCATENATED MODULE: ./public/assets/img/mobile2.png
-/* harmony default export */ const mobile2 = ({"src":"/_next/static/image/public/assets/img/mobile2.d3b56af2d1d4f08f92bc87451ff2e7bf.png","height":859,"width":640,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAICAYAAADaxo44AAAAo0lEQVR42mP4//8/AwhPmzqTef+MxUwg9qp165gY+vr7mEEcbWNdcwYxvr0MGYWMID5DTUkLK4hhpxE8IUw24r+3inQNWAJExESmC1hG270q8/P9HyNtEQOXsFT3TVRwq/rPEBL3SoGBgR8uoSRldEWdO/8/l37VYhC/oX0JC1hCRkaujkeU6b+IDIMfiF9aWgiWAGMVBU13ezt/IRD74IGDjACF3V2dHHQBaQAAAABJRU5ErkJggg=="});
+/* harmony default export */ var mobile2 = ({"src":"/_next/static/image/public/assets/img/mobile2.d3b56af2d1d4f08f92bc87451ff2e7bf.png","height":859,"width":640,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAICAYAAADaxo44AAAAo0lEQVR42mP4//8/AwhPmzqTef+MxUwg9qp165gY+vr7mEEcbWNdcwYxvr0MGYWMID5DTUkLK4hhpxE8IUw24r+3inQNWAJExESmC1hG270q8/P9HyNtEQOXsFT3TVRwq/rPEBL3SoGBgR8uoSRldEWdO/8/l37VYhC/oX0JC1hCRkaujkeU6b+IDIMfiF9aWgiWAGMVBU13ezt/IRD74IGDjACF3V2dHHQBaQAAAABJRU5ErkJggg=="});
 ;// CONCATENATED MODULE: ./components/ui/Carousel/ProductCarousel.tsx
 
 
@@ -153,7 +153,7 @@ const ProductCarousel = ({
   });
 };
 
-/* harmony default export */ const Carousel_ProductCarousel = (ProductCarousel);
+/* harmony default export */ var Carousel_ProductCarousel = (ProductCarousel);
 ;// CONCATENATED MODULE: ./components/ui/Link/Link.tsx
 
 
@@ -184,7 +184,7 @@ const Link = (_ref) => {
   });
 };
 
-/* harmony default export */ const Link_Link = (Link);
+/* harmony default export */ var Link_Link = (Link);
 ;// CONCATENATED MODULE: ./components/ui/ProductMarketInfo/ProductMInfo.tsx
 
 
@@ -228,7 +228,7 @@ const ProductMInfo = () => {
   });
 };
 
-/* harmony default export */ const ProductMarketInfo_ProductMInfo = (ProductMInfo);
+/* harmony default export */ var ProductMarketInfo_ProductMInfo = (ProductMInfo);
 ;// CONCATENATED MODULE: ./components/ui/Carousel/ArrDotCarousel.tsx
 
 
@@ -353,7 +353,7 @@ function ArrowRight(props) {
   });
 }
 
-/* harmony default export */ const Carousel_ArrDotCarousel = (ArrDotCarousel);
+/* harmony default export */ var Carousel_ArrDotCarousel = (ArrDotCarousel);
 ;// CONCATENATED MODULE: ./components/home/Linksofproducts/LinksOfProducts.tsx
 
 
@@ -386,7 +386,7 @@ const LinksOfProducts = ({
   });
 };
 
-/* harmony default export */ const Linksofproducts_LinksOfProducts = (LinksOfProducts);
+/* harmony default export */ var Linksofproducts_LinksOfProducts = (LinksOfProducts);
 ;// CONCATENATED MODULE: ./components/home/Templates/HomeTemplate.tsx
 
 
@@ -421,7 +421,7 @@ const HomeTemplate = () => {
   });
 };
 
-/* harmony default export */ const Templates_HomeTemplate = (HomeTemplate);
+/* harmony default export */ var Templates_HomeTemplate = (HomeTemplate);
 ;// CONCATENATED MODULE: ./components/home/Qforproducts/QforProducts.tsx
 
 
@@ -442,7 +442,7 @@ const QforProducts = () => {
   });
 };
 
-/* harmony default export */ const Qforproducts_QforProducts = (QforProducts);
+/* harmony default export */ var Qforproducts_QforProducts = (QforProducts);
 ;// CONCATENATED MODULE: ./components/links_directions/Rdirection_link/RdirectionLink.tsx
 
 
@@ -463,7 +463,7 @@ const RdirectionLink = ({
   });
 };
 
-/* harmony default export */ const Rdirection_link_RdirectionLink = (RdirectionLink);
+/* harmony default export */ var Rdirection_link_RdirectionLink = (RdirectionLink);
 ;// CONCATENATED MODULE: ./pages/index.tsx
 
 
@@ -644,9 +644,7 @@ function Home({
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
           className: "md:grid-cols-4 gap-8 grid-cols-2 grid md:grid",
           children: [1, 2, 3, 4, 5, 6, 7].map((num, index) => /*#__PURE__*/jsx_runtime_.jsx(Especially_EspeciallyForU, {
-            children: /*#__PURE__*/jsx_runtime_.jsx("h1", {
-              children: "Hello"
-            })
+            children: "Hello World"
           }, index))
         }), /*#__PURE__*/jsx_runtime_.jsx(Rdirection_link_RdirectionLink, {
           linkText: "SEE OUR BEST DEALS"
@@ -751,212 +749,162 @@ Home.Layout = Layout/* default */.Z;
 /***/ }),
 
 /***/ 8023:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("body-scroll-lock");
+"use strict";
+module.exports = require("body-scroll-lock");;
 
 /***/ }),
 
 /***/ 4058:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("classnames");
+"use strict";
+module.exports = require("classnames");;
 
 /***/ }),
 
 /***/ 506:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("email-validator");
+"use strict";
+module.exports = require("email-validator");;
 
 /***/ }),
 
 /***/ 6155:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("js-cookie");
+"use strict";
+module.exports = require("js-cookie");;
 
 /***/ }),
 
 /***/ 1471:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("keen-slider/react");
+"use strict";
+module.exports = require("keen-slider/react");;
 
 /***/ }),
 
 /***/ 3739:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("lodash.random");
+"use strict";
+module.exports = require("lodash.random");;
 
 /***/ }),
 
 /***/ 1602:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("lodash.throttle");
+"use strict";
+module.exports = require("lodash.throttle");;
 
 /***/ }),
 
 /***/ 2517:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("next-themes");
-
-/***/ }),
-
-/***/ 9325:
-/***/ ((module) => {
-
-module.exports = require("next/dist/server/denormalize-page-path.js");
+"use strict";
+module.exports = require("next-themes");;
 
 /***/ }),
 
-/***/ 822:
-/***/ ((module) => {
+/***/ 5273:
+/***/ (function(module) {
 
-module.exports = require("next/dist/server/image-config.js");
-
-/***/ }),
-
-/***/ 6695:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/head.js");
+"use strict";
+module.exports = require("next/dist/next-server/lib/head.js");;
 
 /***/ }),
 
-/***/ 8300:
-/***/ ((module) => {
+/***/ 8417:
+/***/ (function(module) {
 
-module.exports = require("next/dist/shared/lib/i18n/detect-domain-locale.js");
-
-/***/ }),
-
-/***/ 5378:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/i18n/normalize-locale-path.js");
+"use strict";
+module.exports = require("next/dist/next-server/lib/router-context.js");;
 
 /***/ }),
 
-/***/ 7162:
-/***/ ((module) => {
+/***/ 2238:
+/***/ (function(module) {
 
-module.exports = require("next/dist/shared/lib/mitt.js");
-
-/***/ }),
-
-/***/ 8773:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/router-context.js");
+"use strict";
+module.exports = require("next/dist/next-server/lib/router/utils/get-asset-path-from-route.js");;
 
 /***/ }),
 
-/***/ 2248:
-/***/ ((module) => {
+/***/ 5519:
+/***/ (function(module) {
 
-module.exports = require("next/dist/shared/lib/router/utils/get-asset-path-from-route.js");
-
-/***/ }),
-
-/***/ 9372:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/router/utils/is-dynamic.js");
+"use strict";
+module.exports = require("next/dist/next-server/lib/to-base-64.js");;
 
 /***/ }),
 
-/***/ 665:
-/***/ ((module) => {
+/***/ 444:
+/***/ (function(module) {
 
-module.exports = require("next/dist/shared/lib/router/utils/parse-relative-url.js");
-
-/***/ }),
-
-/***/ 2747:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/router/utils/querystring.js");
-
-/***/ }),
-
-/***/ 333:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/router/utils/route-matcher.js");
-
-/***/ }),
-
-/***/ 3456:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/router/utils/route-regex.js");
-
-/***/ }),
-
-/***/ 556:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/to-base-64.js");
-
-/***/ }),
-
-/***/ 7620:
-/***/ ((module) => {
-
-module.exports = require("next/dist/shared/lib/utils.js");
+"use strict";
+module.exports = require("next/dist/next-server/server/image-config.js");;
 
 /***/ }),
 
 /***/ 9639:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("next/dynamic");
+"use strict";
+module.exports = require("next/dynamic");;
 
 /***/ }),
 
 /***/ 6731:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("next/router");
+"use strict";
+module.exports = require("next/router");;
 
 /***/ }),
 
 /***/ 9297:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("react");
+"use strict";
+module.exports = require("react");;
 
 /***/ }),
 
 /***/ 123:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("react-merge-refs");
+"use strict";
+module.exports = require("react-merge-refs");;
 
 /***/ }),
 
 /***/ 5282:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("react/jsx-runtime");
+"use strict";
+module.exports = require("react/jsx-runtime");;
 
 /***/ }),
 
 /***/ 7749:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("swr");
+"use strict";
+module.exports = require("swr");;
 
 /***/ }),
 
 /***/ 8047:
-/***/ ((module) => {
+/***/ (function(module) {
 
-module.exports = require("tabbable");
+"use strict";
+module.exports = require("tabbable");;
 
 /***/ })
 
@@ -966,8 +914,8 @@ module.exports = require("tabbable");
 // load runtime
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
-var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [61,393,79,679], () => (__webpack_exec__(3049)));
+var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+var __webpack_exports__ = __webpack_require__.X(0, [597,61,473,79,315], function() { return __webpack_exec__(5680); });
 module.exports = __webpack_exports__;
 
 })();

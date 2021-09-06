@@ -1,16 +1,13 @@
-(() => {
+(function() {
 var exports = {};
 exports.id = 737;
 exports.ids = [737];
 exports.modules = {
 
 /***/ 52:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* unused harmony export emptyHook */
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9297);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -26,17 +23,14 @@ function emptyHook(options) {
 
   return useEmptyHook;
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (emptyHook);
+/* harmony default export */ __webpack_exports__["Z"] = (emptyHook);
 
 /***/ }),
 
 /***/ 3937:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
 /* unused harmony exports fetcher, extendHook */
 const defaultOpts = {};
 const fetcher = () => {
@@ -55,12 +49,12 @@ swrOptions) {
   useWishlist.extend = extendHook;
   return useWishlist;
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (extendHook(fetcher));
+/* harmony default export */ __webpack_exports__["ZP"] = (extendHook(fetcher));
 
 /***/ }),
 
 /***/ 2756:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
@@ -68,14 +62,14 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ Wishlist),
-  "getStaticProps": () => (/* binding */ getStaticProps)
+  "default": function() { return /* binding */ Wishlist; },
+  "getStaticProps": function() { return /* binding */ getStaticProps; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: ./lib/api/commerce.ts + 12 modules
-var commerce = __webpack_require__(393);
+var commerce = __webpack_require__(6473);
 // EXTERNAL MODULE: ./components/icons/Heart.tsx
 var Heart = __webpack_require__(8909);
 // EXTERNAL MODULE: ./components/common/Layout/Layout.tsx + 33 modules
@@ -96,7 +90,7 @@ var next_link = __webpack_require__(1664);
 // EXTERNAL MODULE: ./node_modules/next/image.js
 var next_image = __webpack_require__(5675);
 // EXTERNAL MODULE: ./components/wishlist/WishlistCard/WishlistCard.module.css
-var WishlistCard_module = __webpack_require__(3910);
+var WishlistCard_module = __webpack_require__(4277);
 var WishlistCard_module_default = /*#__PURE__*/__webpack_require__.n(WishlistCard_module);
 ;// CONCATENATED MODULE: ./components/icons/Trash.tsx
 
@@ -145,7 +139,7 @@ const Trash = (_ref) => {
   }));
 };
 
-/* harmony default export */ const icons_Trash = (Trash);
+/* harmony default export */ var icons_Trash = (Trash);
 // EXTERNAL MODULE: ./components/ui/Button/Button.tsx
 var Button = __webpack_require__(1180);
 // EXTERNAL MODULE: ./components/ui/context.tsx
@@ -286,7 +280,7 @@ const WishlistCard = ({
   });
 };
 
-/* harmony default export */ const WishlistCard_WishlistCard = (WishlistCard);
+/* harmony default export */ var WishlistCard_WishlistCard = (WishlistCard);
 // EXTERNAL MODULE: ./framework/local/wishlist/use-wishlist.tsx
 var use_wishlist = __webpack_require__(3937);
 ;// CONCATENATED MODULE: ./pages/wishlist.tsx
@@ -384,8 +378,8 @@ Wishlist.Layout = Layout/* default */.Z;
 
 /***/ }),
 
-/***/ 3910:
-/***/ ((module) => {
+/***/ 4277:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -397,242 +391,162 @@ module.exports = {
 /***/ }),
 
 /***/ 8023:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("body-scroll-lock");
+module.exports = require("body-scroll-lock");;
 
 /***/ }),
 
 /***/ 4058:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("classnames");
+module.exports = require("classnames");;
 
 /***/ }),
 
 /***/ 506:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("email-validator");
+module.exports = require("email-validator");;
 
 /***/ }),
 
 /***/ 6155:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("js-cookie");
+module.exports = require("js-cookie");;
 
 /***/ }),
 
 /***/ 1471:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("keen-slider/react");
+module.exports = require("keen-slider/react");;
 
 /***/ }),
 
 /***/ 3739:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("lodash.random");
+module.exports = require("lodash.random");;
 
 /***/ }),
 
 /***/ 1602:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("lodash.throttle");
+module.exports = require("lodash.throttle");;
 
 /***/ }),
 
 /***/ 2517:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next-themes");
+module.exports = require("next-themes");;
 
 /***/ }),
 
-/***/ 9325:
-/***/ ((module) => {
+/***/ 5273:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/server/denormalize-page-path.js");
+module.exports = require("next/dist/next-server/lib/head.js");;
 
 /***/ }),
 
-/***/ 822:
-/***/ ((module) => {
+/***/ 8417:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/server/image-config.js");
+module.exports = require("next/dist/next-server/lib/router-context.js");;
 
 /***/ }),
 
-/***/ 6695:
-/***/ ((module) => {
+/***/ 2238:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/shared/lib/head.js");
+module.exports = require("next/dist/next-server/lib/router/utils/get-asset-path-from-route.js");;
 
 /***/ }),
 
-/***/ 8300:
-/***/ ((module) => {
+/***/ 5519:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/shared/lib/i18n/detect-domain-locale.js");
+module.exports = require("next/dist/next-server/lib/to-base-64.js");;
 
 /***/ }),
 
-/***/ 5378:
-/***/ ((module) => {
+/***/ 444:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/shared/lib/i18n/normalize-locale-path.js");
-
-/***/ }),
-
-/***/ 7162:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/mitt.js");
-
-/***/ }),
-
-/***/ 8773:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router-context.js");
-
-/***/ }),
-
-/***/ 2248:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/get-asset-path-from-route.js");
-
-/***/ }),
-
-/***/ 9372:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/is-dynamic.js");
-
-/***/ }),
-
-/***/ 665:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/parse-relative-url.js");
-
-/***/ }),
-
-/***/ 2747:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/querystring.js");
-
-/***/ }),
-
-/***/ 333:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/route-matcher.js");
-
-/***/ }),
-
-/***/ 3456:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/route-regex.js");
-
-/***/ }),
-
-/***/ 556:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/to-base-64.js");
-
-/***/ }),
-
-/***/ 7620:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/utils.js");
+module.exports = require("next/dist/next-server/server/image-config.js");;
 
 /***/ }),
 
 /***/ 9639:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dynamic");
+module.exports = require("next/dynamic");;
 
 /***/ }),
 
 /***/ 6731:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/router");
+module.exports = require("next/router");;
 
 /***/ }),
 
 /***/ 9297:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("react");
+module.exports = require("react");;
 
 /***/ }),
 
 /***/ 123:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("react-merge-refs");
+module.exports = require("react-merge-refs");;
 
 /***/ }),
 
 /***/ 5282:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("react/jsx-runtime");
+module.exports = require("react/jsx-runtime");;
 
 /***/ }),
 
 /***/ 7749:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("swr");
+module.exports = require("swr");;
 
 /***/ }),
 
 /***/ 8047:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("tabbable");
+module.exports = require("tabbable");;
 
 /***/ })
 
@@ -642,8 +556,8 @@ module.exports = require("tabbable");
 // load runtime
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
-var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [61,393,79,679], () => (__webpack_exec__(2756)));
+var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+var __webpack_exports__ = __webpack_require__.X(0, [597,61,473,79,315], function() { return __webpack_exec__(2756); });
 module.exports = __webpack_exports__;
 
 })();

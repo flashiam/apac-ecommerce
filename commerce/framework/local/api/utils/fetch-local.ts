@@ -1,7 +1,7 @@
 import { FetcherError } from '@commerce/utils/errors'
 import type { GraphQLFetcher } from '@commerce/api'
 import type { LocalConfig } from '../index'
-import fetch from './fetch'
+// import fetch from './fetch'
 
 const fetchGraphqlApi: (getConfig: () => LocalConfig) => GraphQLFetcher =
   (getConfig) =>

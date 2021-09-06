@@ -1,11 +1,11 @@
-(() => {
+(function() {
 var exports = {};
 exports.id = 915;
 exports.ids = [915];
 exports.modules = {
 
 /***/ 8884:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 // ESM COMPAT FLAG
@@ -13,9 +13,9 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ Slug),
-  "getStaticPaths": () => (/* binding */ getStaticPaths),
-  "getStaticProps": () => (/* binding */ getStaticProps)
+  "default": function() { return /* binding */ Slug; },
+  "getStaticPaths": function() { return /* binding */ getStaticPaths; },
+  "getStaticProps": function() { return /* binding */ getStaticProps; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -23,7 +23,7 @@ var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: external "next/router"
 var router_ = __webpack_require__(6731);
 // EXTERNAL MODULE: ./lib/api/commerce.ts + 12 modules
-var commerce = __webpack_require__(393);
+var commerce = __webpack_require__(6473);
 // EXTERNAL MODULE: ./components/common/Layout/Layout.tsx + 33 modules
 var Layout = __webpack_require__(4331);
 // EXTERNAL MODULE: external "classnames"
@@ -34,7 +34,7 @@ var next_image = __webpack_require__(5675);
 // EXTERNAL MODULE: external "next-seo"
 var external_next_seo_ = __webpack_require__(2364);
 // EXTERNAL MODULE: ./components/product/ProductView/ProductView.module.css
-var ProductView_module = __webpack_require__(6734);
+var ProductView_module = __webpack_require__(6680);
 var ProductView_module_default = /*#__PURE__*/__webpack_require__.n(ProductView_module);
 // EXTERNAL MODULE: ./framework/commerce/product/use-price.tsx
 var use_price = __webpack_require__(5420);
@@ -46,12 +46,12 @@ var react_ = __webpack_require__(1471);
 var external_react_ = __webpack_require__(9297);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 ;// CONCATENATED MODULE: external "@react-spring/web"
-const web_namespaceObject = require("@react-spring/web");
+var web_namespaceObject = require("@react-spring/web");;
 // EXTERNAL MODULE: ./components/product/ProductSlider/ProductSlider.module.css
-var ProductSlider_module = __webpack_require__(6041);
+var ProductSlider_module = __webpack_require__(8497);
 var ProductSlider_module_default = /*#__PURE__*/__webpack_require__.n(ProductSlider_module);
 // EXTERNAL MODULE: ./components/product/ProductSliderControl/ProductSliderControl.module.css
-var ProductSliderControl_module = __webpack_require__(9197);
+var ProductSliderControl_module = __webpack_require__(8695);
 var ProductSliderControl_module_default = /*#__PURE__*/__webpack_require__.n(ProductSliderControl_module);
 ;// CONCATENATED MODULE: ./components/icons/ArrowLeft.tsx
 
@@ -86,7 +86,7 @@ const ArrowLeft = (_ref) => {
   }));
 };
 
-/* harmony default export */ const icons_ArrowLeft = (ArrowLeft);
+/* harmony default export */ var icons_ArrowLeft = (ArrowLeft);
 ;// CONCATENATED MODULE: ./components/icons/ArrowRight.tsx
 
 
@@ -121,7 +121,7 @@ const ArrowRight = (_ref) => {
   }));
 };
 
-/* harmony default export */ const icons_ArrowRight = (ArrowRight);
+/* harmony default export */ var icons_ArrowRight = (ArrowRight);
 ;// CONCATENATED MODULE: ./components/product/ProductSliderControl/ProductSliderControl.tsx
 
 
@@ -148,7 +148,7 @@ const ProductSliderControl = ({
   })]
 });
 
-/* harmony default export */ const ProductSliderControl_ProductSliderControl = (/*#__PURE__*/(0,external_react_.memo)(ProductSliderControl));
+/* harmony default export */ var ProductSliderControl_ProductSliderControl = (/*#__PURE__*/(0,external_react_.memo)(ProductSliderControl));
 ;// CONCATENATED MODULE: ./components/product/ProductSlider/ProductSlider.tsx
 
 
@@ -272,7 +272,7 @@ const ProductSlider = ({
   });
 };
 
-/* harmony default export */ const ProductSlider_ProductSlider = (ProductSlider);
+/* harmony default export */ var ProductSlider_ProductSlider = (ProductSlider);
 // EXTERNAL MODULE: ./components/product/ProductCard/ProductCard.tsx
 var ProductCard = __webpack_require__(135);
 // EXTERNAL MODULE: ./components/ui/Container/Container.tsx
@@ -280,12 +280,12 @@ var Container = __webpack_require__(9698);
 // EXTERNAL MODULE: ./components/ui/Text/Text.tsx
 var Text = __webpack_require__(2361);
 // EXTERNAL MODULE: ./components/product/ProductSidebar/ProductSidebar.module.css
-var ProductSidebar_module = __webpack_require__(284);
+var ProductSidebar_module = __webpack_require__(1367);
 var ProductSidebar_module_default = /*#__PURE__*/__webpack_require__.n(ProductSidebar_module);
 // EXTERNAL MODULE: ./framework/local/cart/use-add-item.tsx + 1 modules
 var use_add_item = __webpack_require__(3929);
 // EXTERNAL MODULE: ./components/product/Swatch/Swatch.module.css
-var Swatch_module = __webpack_require__(2890);
+var Swatch_module = __webpack_require__(6338);
 var Swatch_module_default = /*#__PURE__*/__webpack_require__.n(Swatch_module);
 // EXTERNAL MODULE: ./components/icons/Check.tsx
 var Check = __webpack_require__(7207);
@@ -355,7 +355,7 @@ const Swatch = /*#__PURE__*/external_react_default().memo((_ref) => {
     }), !color ? label : null]
   }));
 });
-/* harmony default export */ const Swatch_Swatch = (Swatch);
+/* harmony default export */ var Swatch_Swatch = (Swatch);
 ;// CONCATENATED MODULE: ./components/product/ProductOptions/ProductOptions.tsx
 
 
@@ -403,7 +403,7 @@ const ProductOptions = ({
   });
 };
 
-/* harmony default export */ const ProductOptions_ProductOptions = (/*#__PURE__*/(0,external_react_.memo)(ProductOptions));
+/* harmony default export */ var ProductOptions_ProductOptions = (/*#__PURE__*/(0,external_react_.memo)(ProductOptions));
 // EXTERNAL MODULE: ./components/ui/context.tsx
 var context = __webpack_require__(7079);
 // EXTERNAL MODULE: ./lib/range-map.ts
@@ -432,7 +432,7 @@ const Star = (_ref) => {
   }));
 };
 
-/* harmony default export */ const icons_Star = (Star);
+/* harmony default export */ var icons_Star = (Star);
 ;// CONCATENATED MODULE: ./components/ui/Rating/Rating.tsx
 
 
@@ -452,14 +452,14 @@ const Quantity = ({
   }, `star_${i}`))
 });
 
-/* harmony default export */ const Rating = (/*#__PURE__*/(0,external_react_.memo)(Quantity));
+/* harmony default export */ var Rating = (/*#__PURE__*/(0,external_react_.memo)(Quantity));
 // EXTERNAL MODULE: ./components/ui/Collapse/Collapse.module.css
-var Collapse_module = __webpack_require__(8752);
+var Collapse_module = __webpack_require__(4077);
 var Collapse_module_default = /*#__PURE__*/__webpack_require__.n(Collapse_module);
 // EXTERNAL MODULE: ./components/icons/ChevronRight.tsx
 var ChevronRight = __webpack_require__(2760);
 ;// CONCATENATED MODULE: external "react-use-measure"
-const external_react_use_measure_namespaceObject = require("react-use-measure");
+var external_react_use_measure_namespaceObject = require("react-use-measure");;
 var external_react_use_measure_default = /*#__PURE__*/__webpack_require__.n(external_react_use_measure_namespaceObject);
 ;// CONCATENATED MODULE: ./components/ui/Collapse/Collapse.tsx
 
@@ -529,7 +529,7 @@ const Collapse = /*#__PURE__*/external_react_default().memo(({
     })]
   });
 });
-/* harmony default export */ const Collapse_Collapse = (Collapse);
+/* harmony default export */ var Collapse_Collapse = (Collapse);
 ;// CONCATENATED MODULE: ./components/product/helpers.ts
 function helpers_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -643,7 +643,7 @@ const ProductSidebar = ({
   });
 };
 
-/* harmony default export */ const ProductSidebar_ProductSidebar = (ProductSidebar);
+/* harmony default export */ var ProductSidebar_ProductSidebar = (ProductSidebar);
 // EXTERNAL MODULE: ./components/product/ProductTag/ProductTag.tsx
 var ProductTag = __webpack_require__(8166);
 ;// CONCATENATED MODULE: ./components/product/ProductView/ProductView.tsx
@@ -753,7 +753,7 @@ const ProductView = ({
   });
 };
 
-/* harmony default export */ const ProductView_ProductView = (ProductView);
+/* harmony default export */ var ProductView_ProductView = (ProductView);
 ;// CONCATENATED MODULE: ./pages/product/[slug].tsx
 
 
@@ -852,8 +852,8 @@ Slug.Layout = Layout/* default */.Z;
 
 /***/ }),
 
-/***/ 284:
-/***/ ((module) => {
+/***/ 1367:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -874,8 +874,8 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9197:
-/***/ ((module) => {
+/***/ 8695:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -887,8 +887,8 @@ module.exports = {
 
 /***/ }),
 
-/***/ 6041:
-/***/ ((module) => {
+/***/ 8497:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -903,8 +903,8 @@ module.exports = {
 
 /***/ }),
 
-/***/ 6734:
-/***/ ((module) => {
+/***/ 6680:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -922,11 +922,11 @@ module.exports = {
 
 /***/ }),
 
-/***/ 2890:
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ 6338:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_ICSS_IMPORT_0___ = __webpack_require__(8583);
+var ___CSS_LOADER_ICSS_IMPORT_0___ = __webpack_require__(8447);
 // Exports
 module.exports = {
 	"swatch": "Swatch_swatch__1aJ-S " + ___CSS_LOADER_ICSS_IMPORT_0___["root"] + "",
@@ -939,8 +939,8 @@ module.exports = {
 
 /***/ }),
 
-/***/ 8752:
-/***/ ((module) => {
+/***/ 4077:
+/***/ (function(module) {
 
 // Exports
 module.exports = {
@@ -956,250 +956,170 @@ module.exports = {
 /***/ }),
 
 /***/ 8023:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("body-scroll-lock");
+module.exports = require("body-scroll-lock");;
 
 /***/ }),
 
 /***/ 4058:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("classnames");
+module.exports = require("classnames");;
 
 /***/ }),
 
 /***/ 506:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("email-validator");
+module.exports = require("email-validator");;
 
 /***/ }),
 
 /***/ 6155:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("js-cookie");
+module.exports = require("js-cookie");;
 
 /***/ }),
 
 /***/ 1471:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("keen-slider/react");
+module.exports = require("keen-slider/react");;
 
 /***/ }),
 
 /***/ 3739:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("lodash.random");
+module.exports = require("lodash.random");;
 
 /***/ }),
 
 /***/ 1602:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("lodash.throttle");
+module.exports = require("lodash.throttle");;
 
 /***/ }),
 
 /***/ 2364:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next-seo");
+module.exports = require("next-seo");;
 
 /***/ }),
 
 /***/ 2517:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next-themes");
+module.exports = require("next-themes");;
 
 /***/ }),
 
-/***/ 9325:
-/***/ ((module) => {
+/***/ 5273:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/server/denormalize-page-path.js");
+module.exports = require("next/dist/next-server/lib/head.js");;
 
 /***/ }),
 
-/***/ 822:
-/***/ ((module) => {
+/***/ 8417:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/server/image-config.js");
+module.exports = require("next/dist/next-server/lib/router-context.js");;
 
 /***/ }),
 
-/***/ 6695:
-/***/ ((module) => {
+/***/ 2238:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/shared/lib/head.js");
+module.exports = require("next/dist/next-server/lib/router/utils/get-asset-path-from-route.js");;
 
 /***/ }),
 
-/***/ 8300:
-/***/ ((module) => {
+/***/ 5519:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/shared/lib/i18n/detect-domain-locale.js");
+module.exports = require("next/dist/next-server/lib/to-base-64.js");;
 
 /***/ }),
 
-/***/ 5378:
-/***/ ((module) => {
+/***/ 444:
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dist/shared/lib/i18n/normalize-locale-path.js");
-
-/***/ }),
-
-/***/ 7162:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/mitt.js");
-
-/***/ }),
-
-/***/ 8773:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router-context.js");
-
-/***/ }),
-
-/***/ 2248:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/get-asset-path-from-route.js");
-
-/***/ }),
-
-/***/ 9372:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/is-dynamic.js");
-
-/***/ }),
-
-/***/ 665:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/parse-relative-url.js");
-
-/***/ }),
-
-/***/ 2747:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/querystring.js");
-
-/***/ }),
-
-/***/ 333:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/route-matcher.js");
-
-/***/ }),
-
-/***/ 3456:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/router/utils/route-regex.js");
-
-/***/ }),
-
-/***/ 556:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/to-base-64.js");
-
-/***/ }),
-
-/***/ 7620:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("next/dist/shared/lib/utils.js");
+module.exports = require("next/dist/next-server/server/image-config.js");;
 
 /***/ }),
 
 /***/ 9639:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/dynamic");
+module.exports = require("next/dynamic");;
 
 /***/ }),
 
 /***/ 6731:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("next/router");
+module.exports = require("next/router");;
 
 /***/ }),
 
 /***/ 9297:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("react");
+module.exports = require("react");;
 
 /***/ }),
 
 /***/ 123:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("react-merge-refs");
+module.exports = require("react-merge-refs");;
 
 /***/ }),
 
 /***/ 5282:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("react/jsx-runtime");
+module.exports = require("react/jsx-runtime");;
 
 /***/ }),
 
 /***/ 7749:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("swr");
+module.exports = require("swr");;
 
 /***/ }),
 
 /***/ 8047:
-/***/ ((module) => {
+/***/ (function(module) {
 
 "use strict";
-module.exports = require("tabbable");
+module.exports = require("tabbable");;
 
 /***/ })
 
@@ -1209,8 +1129,8 @@ module.exports = require("tabbable");
 // load runtime
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
-var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [61,393,79,679,350], () => (__webpack_exec__(8884)));
+var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
+var __webpack_exports__ = __webpack_require__.X(0, [597,61,473,79,315,350], function() { return __webpack_exec__(8884); });
 module.exports = __webpack_exports__;
 
 })();

@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-commerce-dev-45810-authRole",
+      "UnauthRoleArn": "arn:aws:iam::648827138086:role/amplify-commerce-dev-45810-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::648827138086:role/amplify-commerce-dev-45810-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-commerce-dev-45810-deployment",
+      "UnauthRoleName": "amplify-commerce-dev-45810-unauthRole",
+      "StackName": "amplify-commerce-dev-45810",
+      "StackId": "arn:aws:cloudformation:us-east-1:648827138086:stack/amplify-commerce-dev-45810/48658720-06c5-11ec-bfdc-12122e89cfa9",
+      "AmplifyAppId": "d3apsw44ya38mv"
+    }
+  }
+}

@@ -1,17 +1,17 @@
-"use strict";
 exports.id = 255;
 exports.ids = [255];
 exports.modules = {
 
 /***/ 2255:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ auth_SignUpView)
+  "default": function() { return /* binding */ auth_SignUpView; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -58,7 +58,7 @@ const Info = (_ref) => {
   }));
 };
 
-/* harmony default export */ const icons_Info = (Info);
+/* harmony default export */ var icons_Info = (Info);
 // EXTERNAL MODULE: ./components/ui/context.tsx
 var context = __webpack_require__(7079);
 // EXTERNAL MODULE: ./components/ui/Logo/Logo.tsx
@@ -223,7 +223,7 @@ const SignUpView = () => {
   });
 };
 
-/* harmony default export */ const auth_SignUpView = (SignUpView);
+/* harmony default export */ var auth_SignUpView = (SignUpView);
 
 /***/ })
 
