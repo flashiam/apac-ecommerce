@@ -1,6 +1,3 @@
-// [...pages].tsx
-
-
 import type {
   GetStaticPathsContext,
   GetStaticPropsContext,
@@ -14,7 +11,7 @@ import { missingLocaleInPages } from '@lib/usage-warns'
 import type { Page } from '@commerce/types/page'
 import { useRouter } from 'next/router'
 
- export async function getStaticProps({
+export async function getStaticProps({
   preview,
   params,
   locale,
@@ -40,10 +37,10 @@ import { useRouter } from 'next/router'
 
   const page = data?.page
 
-  if (!page) {
-    // We throw to make sure this fails at build time as this is never expected to happen
-    throw new Error(`Page with slug '${slug}' not found`)
-  }
+  // if (!page) {
+  // We throw to make sure this fails at build time as this is never expected to happen
+  // throw new Error(`Page with slug '${slug}' not found`)
+  // }
 
   return {
     props: { pages, page, categories },
@@ -70,8 +67,7 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
     paths,
     fallback: 'blocking',
   }
-}
-
+  }
 export default function Pages({
   page,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -81,7 +77,10 @@ export default function Pages({
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
     <div className="max-w-2xl mx-8 sm:mx-auto py-20">
-      {page?.body && <Text html={page.body} />}
+      {/* {page?.body && <Text html={page.body} />} */}
+HEY I AM THERE
+
+
     </div>
   )
 }
