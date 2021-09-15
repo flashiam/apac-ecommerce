@@ -3,12 +3,14 @@ import cn from 'classnames'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
 
+
 interface Props {
   className?: string
   id?: string
+  ph?:string
 }
 
-const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
+const Searchbar: FC<Props> = ({ className, id = 'search' ,ph}) => {
   const router = useRouter()
 
   useEffect(() => {
@@ -40,7 +42,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
       <input
         id={id}
         className={s.input}
-        placeholder="Search for products..."
+        placeholder={ph}
         defaultValue={router.query.q}
         onKeyUp={handleKeyUp}
       />
@@ -58,3 +60,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
 }
 
 export default memo(Searchbar)
+
+Searchbar.defaultProps={
+  ph:"Search for products..."
+}

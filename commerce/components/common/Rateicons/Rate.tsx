@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
-
-const Rate = () => {
+ interface Props {
+  w?:string,
+  h?:string,
+  m?:string,
+}
+const Rate = (props:Props) => {
   const [star, setStar] = useState(0)
   const [reset, setReset] = useState(false)
-
-
+const {h,w,m}=props;
+ 
 
   useEffect(() => {
     console.log(star)
@@ -16,7 +20,7 @@ const Rate = () => {
         <span
           key={i}
           style={{ cursor: 'default' }}
-          className="material-icons mr-1 text-yellow-500"
+          className={`material-icons w-${w} h-${h} mr-${m} text-yellow-500`}
           onClick={() => {
             if (star === 1 && reset) {
               console.log('if' + star)
@@ -43,5 +47,11 @@ const Rate = () => {
       ))}
     </>
   )
+}
+
+Rate.prototype={
+  w:"5",
+  h:"5",
+  m:"1",
 }
 export default Rate
