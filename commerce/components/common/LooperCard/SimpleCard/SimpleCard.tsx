@@ -2,15 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import laptop1 from '../../../../public/assets/img/mobile1.png'
 import SCardDesign from '@components/common/CardDesign/SCardDesign'
-import products from 'pages/api/catalog/products'
-
-const simpleCard = {
-  product_flash_sale: 'Flash sale',
-  product_img: laptop1,
-  product_warranty: '12 Months',
-  product_price: '$56.99',
-  product_name: 'Bose SoundSport Earbud Bluetooth',
-}
 
 type Props = {
   product: Product
@@ -25,7 +16,7 @@ type Product = {
 }
 
 const SimpleCard = (props: Props) => {
-  const { flash_sale, img, warranty, price, name } = props?.product
+  const { flash_sale, img, warranty, price, name } = props.product
   return (
     <SCardDesign>
       <h5 className="text-black font-bold">{flash_sale}</h5>

@@ -2,17 +2,26 @@ import SCardDesign from "@components/common/CardDesign/SCardDesign"
 import Image from "next/image"
 import mobile2 from "../../../../public/assets/img/mobile2.png"
 
-interface NumIndex{
+interface Props{
   numIndex: number 
+otherCat:{name:string,details:string}
+
 }
-const OtherCat = ({ numIndex }:NumIndex) => {
+
+const otherCat = {
+  name: "MacBook",
+  details:"Lorem ipsum dolor sit amet consectetur adipisicing elit.Explicabo, vel. Voluptate, quisquam."
+}
+const OtherCat = (props: Props) => {
+  
+  const {name,details}=props.otherCat
 
     return (
         
            <div
                 
                 className={`${
-                  numIndex <= 1 ? 'md:col-span-3  col-span-3 ' : 'md:col-span-2 md:block hidden'
+                  props.numIndex <= 1 ? 'md:col-span-3  col-span-3 ' : 'md:col-span-2 md:block hidden'
                 }`}>
                 <SCardDesign>
                 <div className="w-20 h-30 mx-auto">
@@ -20,11 +29,10 @@ const OtherCat = ({ numIndex }:NumIndex) => {
                   </div>
                   <div>
                     <h3 className="text-black text-sm font-semibold">
-                      MacBook
+                      {name}
                     </h3>
                     <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Explicabo, vel. Voluptate, quisquam.
+                     {details}
                     </p>
                   </div>
                 </SCardDesign>

@@ -1,7 +1,3 @@
-import ecommerceImg from '../public/assets/ecommerce_carousel_3.jpg'
-import ecommerceImg2 from '../public/assets/ecommerce_carousel_2.jpg'
-import ecommerceImg3 from '../public/assets/ecommerce_carousel.jpg'
-import ecommerceImg4 from '../public/assets/ecommerce_carousel_4.jpg'
 import commerce from '@lib/api/commerce'
 import { dataOfProducts } from '../data1'
 import { Layout } from '@components/common'
@@ -19,8 +15,20 @@ import LinksOfProducts from '@components/home/Linksofproducts/LinksOfProducts'
 import HomeTemplate from '@components/home/Templates/HomeTemplate'
 import QforProducts from '@components/home/Qforproducts/QforProducts'
 import RdirectionLink from '@components/links_directions/Rdirection_link/RdirectionLink'
+
+import {
+  pdtslinks,
+  productsH,
+  especially,
+  details,
+  otherCat,
+  carousels,
+  pCarousel,
+} from '../data2'
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
 import FirstProducts from '@components/home/Catofproducts/First/FirstProducts'
+// import Head from "@components/Head"
+import Head from '@components/common/Head/Head'
 
 export async function getStaticProps({
   preview,
@@ -57,51 +65,26 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   // console.log(products);
 
-  const carousels = [
-    {
-      img: ecommerceImg,
-      link: '/flash_sale',
-    },
-    {
-      img: ecommerceImg2,
-      link: '/flash_sale',
-    },
-    {
-      img: ecommerceImg3,
-      link: '/flash_sale',
-    },
-    {
-      img: ecommerceImg4,
-      link: '/flash_sale',
-    },
-  ]
   interface TypeDef {
     numi: number
   }
-  const pLinks = [
-    { link: 'mobile' },
-    { link: 'screen saver' },
-    { link: 'earphones' },
-    { link: 'headphones' },
-    { link: 'usb-cable' },
-    { link: 'charger' },
-    { link: 'covers' },
-  ]
+
   return (
     <div>
+      <Head title="Home|Quack-Quack"/>
       <Carousel carousels={carousels} />
       {/* Product showcase */}
       <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
         {/* First Products */}
-        <div className="my-6">
+        <div className="my-1">
           <h2 className="font-semibold text-black">The heavy weights</h2>
           <p className="text-sm text-black-400">
             -Googled more often than Muhammad Ali.
           </p>
           {/* FOr Desktop */}
           <div className="md:grid-cols-6 gap-2 md:grid hidden">
-            {[1, 2, 3, 4, 5].map((num, i) => (
-              <FirstProducts key={i} numIndex={i} />
+            {productsH.map((p, i) => (
+              <FirstProducts key={i} numIndex={i} products={p} />
             ))}
           </div>
         </div>
@@ -109,13 +92,13 @@ export default function Home({
         {/* For Mobo */}
         <div className="block md:hidden">
           <ProductCarousel>
-            {[1, 2, 3, 4].map((num, i) => (
-              <div key={num} className="keen-slider__slide slide">
+            {pCarousel.map((p, i) => (
+              <div key={i} className="keen-slider__slide slide">
                 <AppCard>
                   <div className="h-20 w-20">
-                    <Image src={laptop} />
+                    <Image src={p.img} />
                   </div>
-                  <h3 className="text-black text-md">MacBook</h3>
+                  <h3 className="text-black text-md">{p.name}</h3>
                 </AppCard>
               </div>
             ))}
@@ -128,7 +111,7 @@ export default function Home({
             Information About back Market
           </h2>
           <div className="p-8 bg-white border-2 border-gray-200 rounded-md gap-4">
-            <ProductMInfo />
+            <ProductMInfo details={details} />
           </div>
 
           <RdirectionLink linkText="LEARN MORE ABOUT BACK MARKET" />
@@ -138,8 +121,8 @@ export default function Home({
         <div className="my-8 md:block">
           <h2 className="text-black font-semibold my-3">Especially for you</h2>
           <div className="md:grid-cols-4 gap-2 grid-cols-2 grid md:grid">
-            {[1, 2, 3, 4, 5, 6, 7].map((num, index) => (
-              <EspecialProducts key={index} value={num} />
+            {especially.map((esp, index) => (
+              <EspecialProducts key={index} esp={esp} value={index} />
             ))}
           </div>
           <RdirectionLink linkText="SEE OUR BEST DEALS" />
@@ -156,28 +139,42 @@ export default function Home({
           </span>
 
           <div className="md:grid-cols-6 grid grid-cols-6 md:grid gap-2">
-            {[1, 2, 3, 4, 5].map((num, i) => (
-              <OtherCat key={i} numIndex={i} />
+            {otherCat.map((other, i) => (
+              <OtherCat key={i} numIndex={i} otherCat={other} />
             ))}
           </div>
         </div>
 
         {/* Product Carousel */}
+
+        {/* For Mobo */}
         <div className="block md:hidden">
           <ProductCarousel>
-            {[1, 2, 3, 4].map((num, i) => (
-              <div key={num} className="keen-slider__slide slide">
+            {pCarousel.map((p, i) => (
+              <div key={i} className="keen-slider__slide slide">
                 <AppCard>
                   <div className="h-20 w-20">
-                    <Image src={laptop} alt="product" />
+                    <Image src={p.img} />
                   </div>
-                  <h3 className="text-black text-md">MacBook</h3>
+                  <h3 className="text-black text-md">{p.name}</h3>
                 </AppCard>
               </div>
             ))}
           </ProductCarousel>
         </div>
 
+        {/* Loooper  */}
+
+        {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
+
+        <h2 className="text-black block font-semibold my-3 uppercase">
+          Your Products
+        </h2>
+        <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
+          {dataOfProducts.relatedProducts.map((product, i) => (
+            <SimpleCard key={i} product={product} />
+          ))}
+        </div>
         {/* They love us they really love us */}
         <div className="my-6">
           <span className="text-black font-semibold inline-block my-3">
@@ -222,21 +219,14 @@ export default function Home({
             </span>
             {/* Discover all of our high-tech devices   – lovingly restored and squeaky cleanask: */}
             <div className="md:grid sm:grid md:grid-cols-6 gap-6 sm:grid-cols-2 my-6">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16].map(
-                (num, i) => (
-                  <LinksOfProducts key={i} pl={pLinks} />
-                )
-              )}
+              {pdtslinks.map((pl, i) => (
+                <LinksOfProducts key={i} pl={pl} />
+              ))}
             </div>
           </div>
         </div>
 
-        {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
-        <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
-          {dataOfProducts.relatedProducts.map((product, i) => (
-            <SimpleCard key={i} product={product} />
-          ))}
-        </div>
+        {/*gggggggg*/}
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import { Star } from '@components/icons'
 import cn from 'classnames'
 
 export interface RatingProps {
-  value: number
+  value?: number
 }
 
 const Quantity: FC<RatingProps> = ({ value = 5 }) => (
@@ -13,7 +13,7 @@ const Quantity: FC<RatingProps> = ({ value = 5 }) => (
       <span
         key={`star_${i}`}
         className={cn('inline-block ml-1 ', {
-          'text-accent-5': i >= Math.floor(value),
+          'text-yellow': i >= Math.floor(value),
         })}
       >
         <Star />

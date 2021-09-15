@@ -1,58 +1,53 @@
-import React,{FC} from 'react'
-import Link from "next/link"
-type Props ={
-flips:BulkLinks[];
+import React, { FC } from 'react'
+import type { StartLinks, Main } from '../../../../data1'
+import Link from 'next/link'
+type Props = {
+  flips: Main
 }
 
-interface BulkLinks {
-  category:string,
-  main:BulkLinks2[],
+// interface BulkLinks {
+//   links: { link: string; icon: string }[]
+//   category: string
+//   main: BulkLinks2[]
+// }
+// interface BulkLinks2 {
+//   phone: string
+//   slinks: string[]
+// }
 
-}
-interface BulkLinks2 {
-phone:string,
-links:string[]
-}
-
-
-const SideLinks:FC<Props> = (props) => {
-    return (
-        <>
-             {props.flips.map((l, i) => (
-                  <li key={i}>
-                    <Link href="#!">
-                      <a className="text-gray-600 text-sm font-light">
-                        {l.category}
-                      </a>
-                    </Link>
-                    {/*Child */}
-                    <ul className="list-inside ml-3">
-                      {l.main.map((m, i) => (
-                        <li key={i}>
-                          <Link href="#!">
-                            <a className="text-gray-600 text-xs font-light">
-                              {m.phone}
-                            </a>
-                          </Link>
-                          {/*Nested child */}
-                          <ul className="list-inside ml-3">
-                            {m.links.map((n, i) => (
-                              <li key={i}>
-                                <Link href="#!">
-                                  <a className="text-gray-600 text-2xs font-light">
-                                    {n}
-                                  </a>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </li>
-                      ))}
-                    </ul>
-                  </li>
+const SideLinks: FC<Props> = (props) => {
+  // const {  } = props.flips
+  const { phone, slinks, category } = props.flips
+  return (
+    <>
+      
+      <li>
+        <Link href="#!">
+          <a className="text-gray-600 text-sm font-light">{category}</a>
+        </Link>
+        {/*Child */}
+        <ul className="list-inside ml-3">
+          <li>
+            <Link href="#!">
+              <a className="text-gray-600 text-xs font-light">{phone}</a>
+            </Link>
+            {/*Nested child */}
+            <ul className="list-inside ml-3">
+              {slinks.map((n, i) => (
+                <li key={i}>
+                  <Link href="#!">
+                    <a className="text-gray-600 text-2xs font-light">{n}</a>
+                  </Link>
+                </li>
               ))}
-        </>
-    )
+            </ul>
+          </li>
+        
+        </ul>
+      </li>
+
+    </>
+  )
 }
 
 export default SideLinks

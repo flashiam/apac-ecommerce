@@ -33,7 +33,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
-    "pages/[...pages].tsx"
+    "pages/pj.tsx"
   ],
   "exclude": [
     "node_modules",
