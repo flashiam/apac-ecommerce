@@ -1,5 +1,6 @@
 :root {
   --primary: #ffffff;
+  /* --primary: #f02ad5; */
   --primary-2: #f1f3f5;
   --secondary: #000000;
   --secondary-2: #111;
@@ -50,6 +51,7 @@
   --hover-1: rgba(255, 255, 255, 0.15);
   --hover-2: rgba(255, 255, 255, 0.25);
   --selection: var(--purple);
+  --white:"yellow";
 
   --text-base: white;
   --text-primary: white;

@@ -19,6 +19,7 @@ import type { Big } from '../../data1'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
 import { itemsOfProducts, dataOfProducts } from '../../data1'
+import Rate from '@components/common/Rateicons/Rate'
 
 // Static path function
 // Main Func
@@ -58,18 +59,7 @@ const page1 = () => {
           <div>
             {/* Rating */}
             <div>
-              {[1, 2, 3, 4, 5].map((v, i) => (
-                <Link key={i} href="#!">
-                  <a>
-                    <span
-                      key={i}
-                      className="material-icons mr-1 text-yellow-400"
-                    >
-                      star
-                    </span>
-                  </a>
-                </Link>
-              ))}
+              <Rate />
             </div>
             <p className="my-2 3text-gray-600 font-light text-xs">
               {dataOfProducts.comments.reviews}
@@ -104,7 +94,7 @@ const page1 = () => {
         </div>
 
         {/* Grid */}
-        <div className="md:grid md:grid-cols-4 sm:grid sm:grid-cols-3">
+        <div className="md:grid md:grid-cols-4 sm:grid sm:grid-cols-3 grid grid-cols-2 2xm:grid-cols-1">
           {/* Single columns */}
           <div className="md:col-span-1 sm:col-span-1 md:bg-transparent pt-2 col-span-1">
             {/*SPAN-1 LEFT SIDE LINKS */}
@@ -123,8 +113,8 @@ const page1 = () => {
             {/* CONDITION */}
             <CheckBoxes />
           </div>
-          {/* Triple columns */}
-          <div className="md:col-span-3 sm:col-span-2 col-span-2">
+          {/* Span Triple columns */}
+          <div className="md:col-span-3 sm:col-span-2 col-span-1">
             <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
               {dataOfProducts.relatedProducts.map((product: any, i: any) => (
                 <SimpleCard key={i} product={product} />
@@ -139,66 +129,35 @@ const page1 = () => {
 
 export default page1
 
-// // Static paths function
-// export const getStaticPaths = async () => {
-//   try {
-//     const rest = await Promise.resolve(itemsOfProducts)
-//     const idPaths = rest?.map((product) => ({
-//       params: { id: product.id.toString() },
-//     })) // [{params: {id: 1}},{params: {id: 2}}]
-//     // console.log(idPaths)
-//     return {
-//       paths: idPaths,
-//       fallback: false,
-//     }
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
+// Static paths function
+export const getStaticPaths = async () => {
+  try {
+    const rest = await Promise.resolve(itemsOfProducts)
+    const idPaths = rest?.map((product) => ({
+      params: { id: product.id.toString() },
+    })) // [{params: {id: 1}},{params: {id: 2}}]
+    // console.log(idPaths)
+    return {
+      paths: idPaths,
+      fallback: false,
+    }
+  } catch (err) {
+    console.error(err)
+  }
+}
 // Static props function
-// export const getStaticProps = async (props: any) => {
-//   console.log(props)
-//   try {
-//     const res = await Promise.resolve(itemsOfProducts)
-//     return {
-//       props: {
-//         res,
-//       },
-//     }
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
+export const getStaticProps = async (props: any) => {
+  // console.log(props)
+  try {
+    const res = await Promise.resolve(itemsOfProducts)
+    return {
+      props: {
+        res,
+      },
+    }
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 page1.Layout = Layout
-
-{
-  /* <div className="my-6 grid md:grid-cols-3 sm:grid-cols-1 gap-6">
-        <div className="md:p-8 sm:p-4 md:col-span-2 sm:col-span-1 bg-white rounded-md">
-   
-          <TopLayer />
-
-          <div className="md:mb-4 md:flex md:flex-1 md:flex-row md:justify-between md:items-center sm:flex-col">
-           
-            <div className="mx-auto w-20 h-80 flex">
-              <Image src={laptop} />
-            </div>
-
-     
-
-            <RSideDetails />
-          </div>
-
-          <button className="inline-block md:right-3 text-center md:relative mt-4 bg-violet rounded-sm md:w-1/3 sm:w-full py-2 hover:bg-violet-700 text-white">
-            See more
-          </button>
-        </div>
-
-        <div className="md:p-6 md:rounded-md bg-white">
-          Lorem, ipsum dolor.lorem Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Iusto, excepturi vel, reprehenderit nemo hic vero
-          expedita suscipit amet blanditiis voluptas assumenda, atque numquam
-          saepe porro animi. Cum rem dolores voluptatibus.
-        </div>
-      </div> */
-}

@@ -15,6 +15,9 @@ module.exports = {
     },
   },
   theme: {
+    container: {
+      '2xm': '455px',
+    },
     extend: {
       fontSize: {
         '2xs': '.688rem',
@@ -84,4 +87,6 @@ module.exports = {
       borderColor: ['checked'],
     },
   },
+  // plugins: [require()]
+ 
 }

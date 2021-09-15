@@ -27,6 +27,8 @@ import {
 } from '../data2'
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
 import FirstProducts from '@components/home/Catofproducts/First/FirstProducts'
+// import Head from "@components/Head"
+import Head from '@components/common/Head/Head'
 
 export async function getStaticProps({
   preview,
@@ -69,11 +71,12 @@ export default function Home({
 
   return (
     <div>
+      <Head title="Home|Quack-Quack"/>
       <Carousel carousels={carousels} />
       {/* Product showcase */}
       <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
         {/* First Products */}
-        <div className="my-6">
+        <div className="my-1">
           <h2 className="font-semibold text-black">The heavy weights</h2>
           <p className="text-sm text-black-400">
             -Googled more often than Muhammad Ali.
@@ -222,7 +225,7 @@ export default function Home({
             </div>
           </div>
         </div>
-        
+
         {/*gggggggg*/}
       </div>
     </div>

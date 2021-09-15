@@ -20,14 +20,13 @@ const SideLinks: FC<Props> = (props) => {
   const { phone, slinks, category } = props.flips
   return (
     <>
-      {/* {links.map((l, i) => ( */}
+      
       <li>
         <Link href="#!">
           <a className="text-gray-600 text-sm font-light">{category}</a>
         </Link>
         {/*Child */}
         <ul className="list-inside ml-3">
-          {/* {main.map((m, i) => ( */}
           <li>
             <Link href="#!">
               <a className="text-gray-600 text-xs font-light">{phone}</a>
@@ -43,10 +42,10 @@ const SideLinks: FC<Props> = (props) => {
               ))}
             </ul>
           </li>
-          {/* ))} */}
+        
         </ul>
       </li>
-      {/* ))} */}
+
     </>
   )
 }

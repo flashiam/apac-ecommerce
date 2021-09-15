@@ -1,0 +1,25 @@
+{
+  "name": "apac-ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "adkit": "npm start --prefix material-kit-react",
+    "com": "npm run dev --prefix commerce",
+    "dual": "concurrently \"npm run adkit\" \"npm run com\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flashiam/apac-ecommerce.git"
+  },
+  "keywords": [],
+  "author": "Manas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flashiam/apac-ecommerce/issues"
+  },
+  "homepage": "https://github.com/flashiam/apac-ecommerce#readme",
+  "devDependencies": {
+    "concurrently": "^6.2.1"
+  }
+}

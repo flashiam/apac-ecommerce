@@ -17,6 +17,9 @@ import SideLinks from '@components/common/Productpage/SideLinks/SideLinks'
 import CheckBoxes from '@components/common/Productpage/CheckBoxes/CheckBoxes'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
+import { Rating } from '@components/ui'
+import Rate from '@components/common/Rateicons/Rate'
+import { Ch } from '@components/testing/Ch'
 
 // Main Func
 const producti = () => {
@@ -29,6 +32,8 @@ const producti = () => {
         ></link>
         <title>Page Products</title>
       </Head>
+      {/* <Ch handleFilters={filters=>handleFilter} /> */}
+      {/* <Rate /> */}
 
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
@@ -56,9 +61,9 @@ const producti = () => {
         </div>
 
         {/* Grid */}
-        <div className="md:grid md:grid-cols-4 sm:grid sm:grid-cols-3">
+        <div className="md:grid md:grid-cols-4 sm:grid sm:grid-cols-3 grid-cols-2">
           {/* Single columns */}
-          <div className="md:col-span-1 sm:col-span-1 md:bg-transparent col-span-1 pt-2">
+          <div className="md:col-span-1 sm:col-span-1 md:bg-transparent pt-2">
             {/*SPAN-1 LEFT SIDE LINKS */}
             <div>
               <h2 className="text-black font-medium">Categories</h2>
@@ -75,9 +80,10 @@ const producti = () => {
             {/* CONDITION */}
             <CheckBoxes />
           </div>
+
           {/* Triple columns */}
-          <div className="md:col-span-3 sm:col-span-2 col-span-2">
-            <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3 md:bg-transparent gap-4 grid grid-cols-1">
+          <div className="md:col-span-3 sm:col-span-2">
+            <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3 md:bg-transparent gap-4 grid">
               {dataOfProducts.relatedProducts.map((product, i) => (
                 <SimpleCard key={i} product={product} />
               ))}

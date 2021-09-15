@@ -7,3 +7,4 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 }
 
 export default Search
+// /products/[id]/tv/[i]

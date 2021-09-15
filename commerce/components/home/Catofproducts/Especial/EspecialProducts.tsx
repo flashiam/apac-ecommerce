@@ -20,22 +20,23 @@ const EspecialProducts = (props: Props) => {
 
   if (props.value === 4) {
     return (
-      <div className="md:col-span-2 border-2 border-black col-span-2 block p-4 rounded-md md:block">
+      <div className="md:col-span-2 bg-xxmain col-span-2 block p-4 rounded-md md:block">
         <EspCardDesign>
-          <h3 className="text-black text-center font-medium">
+          <h3 className="text-black text-center font-medium text-xl">
             Best Deals For Our Valuable Customers
           </h3>
-          <div className="text-gray-200 font-thin text-xs">
-            <h3>
+          <div className="text-gray-600 font-thin text-xs">
+            <h3 className="text-black">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas
               autem ipsam similique possimus ratione ipsa accusantium error in
               placeat officia commodi numquam non, voluptates magnam sequi
               voluptatem dolorem praesentium? Deleniti.
             </h3>
+            <h5 className="text-black font-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quibusdam porro quasi consectetur dignissimos perferendis!</h5>
             <p>Lorem ipsum dolor sit amet.</p>
             <button
-              className="mt-3 mx-auto block border-2 border-black rounded-sm w-full md:w-1/2 py-2 transition-colors duration-200 ease-in hover:bg-black font-medium
-          hover:text-white text-black"
+              className="mt-3 mx-auto block border-2 border-black rounded-sm w-1/2 md:w-1/4 py-1 transition-colors duration-200 ease-in hover:bg-black font-medium
+          hover:text-white text-base text-black"
             >
               Click here for more
             </button>
@@ -47,7 +48,7 @@ const EspecialProducts = (props: Props) => {
 
   return (
     <Link href="!#">
-      <a className="block hover:bg-white bg-xxmain block p-4 duration-150 transition-shadow hover:shadow-xl rounded-md">
+      <a className="block hover:bg-white bg-xxmain p-4 duration-150 transition-shadow hover:shadow-xl rounded-md">
         <EspCardDesign>
           <h3 className="text-black font-medium">Flash Sale</h3>
           <div className="w-20 h-27 mx-auto">
