@@ -13,7 +13,7 @@ interface FaqList {
 
 }
 
-
+``
 
 const faq = () => {
   const listOfLists = [
