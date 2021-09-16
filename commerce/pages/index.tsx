@@ -15,6 +15,7 @@ import LinksOfProducts from '@components/home/Linksofproducts/LinksOfProducts'
 import HomeTemplate from '@components/home/Templates/HomeTemplate'
 import QforProducts from '@components/home/Qforproducts/QforProducts'
 import RdirectionLink from '@components/links_directions/Rdirection_link/RdirectionLink'
+import Testimonials from '@components/testimonials/Testimonials'
 
 import {
   pdtslinks,
@@ -71,7 +72,7 @@ export default function Home({
 
   return (
     <div>
-      <Head title="Home|Quack-Quack"/>
+      <Head title="Home|Quack-Quack" />
       <Carousel carousels={carousels} />
       {/* Product showcase */}
       <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
@@ -188,6 +189,9 @@ export default function Home({
           <ArrDotCarousel carousels={carousels} />
           <RdirectionLink linkText="SEE ALL THE BUZZ" />
         </div>
+
+        {/* Testimonials */}
+        <Testimonials />
 
         {/* Site templates */}
         <div>

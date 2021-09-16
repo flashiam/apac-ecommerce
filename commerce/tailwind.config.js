@@ -15,6 +15,13 @@ module.exports = {
     },
   },
   theme: {
+    customForms: (theme) => ({
+      default: {
+        option: {
+          padding: 10,
+        },
+      },
+    }),
     container: {
       '2xm': '455px',
     },
@@ -79,6 +86,7 @@ module.exports = {
       scale: {
         120: '1.2',
       },
+      appearance: ['hover', 'focus'],
     },
   },
   variants: {
@@ -87,6 +95,11 @@ module.exports = {
       borderColor: ['checked'],
     },
   },
-  // plugins: [require()]
- 
+
+  plugins: [require('@tailwindcss/forms')],
+  //   plugins: [
+  //  require("@tailwindcss/forms")({
+  //    strategy: 'class',
+  //  }),
+  // ],
 }
