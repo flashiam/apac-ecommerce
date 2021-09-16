@@ -13,10 +13,10 @@ interface Testimonial {
 
 interface Props {
   testimonials: Testimonial[]
-  color: string
+  color?: string
 }
 
-const Testimonials: FC<Props> = ({ testimonials }) => {
+const Testimonials: FC<Props> = ({ testimonials, color }) => {
   const [currentSlide, setCurrentSlide] = useState<number>(0)
   const [pause, setPause] = useState<boolean>(false)
   let timer: any
@@ -91,7 +91,7 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
                 slider.moveToSlideRelative(i)
               }}
               className={`h-2 w-2 rounded-full transform transition bg-gray-400 focus:outline-none ${
-                currentSlide === i ? 'scale-120 bg-gray-900' : ''
+                currentSlide === i ? `scale-120 ${color || 'bg-gray-900'}` : ''
               }`}
             />
           ))}

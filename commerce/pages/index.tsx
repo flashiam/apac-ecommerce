@@ -191,7 +191,7 @@ export default function Home({
         </div>
 
         {/* Testimonials */}
-        <Testimonials testimonials={testimonials} />
+        <Testimonials testimonials={testimonials} color="bg-gray-900" />
 
         {/* Site templates */}
         <div>
