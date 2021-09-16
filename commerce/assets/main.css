@@ -51,7 +51,22 @@ select.custom-select option:hover {
   /* box-shadow: 0 0 10px 100px pink inset; */
   background: aquamarine;
 }
+.testimonial::before {
+  content: '"';
+}
+.testimonial::after {
+  content: '"';
+}
 
+.testimonial::before,
+.testimonial::after {
+  position: absolute;
+  font-size: 2rem;
+}
+
+.blockquote {
+  @apply text-lg text-gray-400 absolute;
+}
 /* .label{
     font-size:1.2rem;
     font-weight:bold;
