@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import type { StartLinks, Main } from '../../../../data1'
+import type { StartLinks, Main, ObjLinks } from '../../../../data1'
 import Link from 'next/link'
 type Props = {
   flips: Main
@@ -20,7 +20,6 @@ const SideLinks: FC<Props> = (props) => {
   const { phone, slinks, category } = props.flips
   return (
     <>
-      
       <li>
         <Link href="#!">
           <a className="text-gray-600 text-sm font-light">{category}</a>
@@ -42,10 +41,8 @@ const SideLinks: FC<Props> = (props) => {
               ))}
             </ul>
           </li>
-        
         </ul>
       </li>
-
     </>
   )
 }

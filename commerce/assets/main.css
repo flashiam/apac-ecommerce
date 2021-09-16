@@ -23,12 +23,10 @@
   height: 20px;
   left: -25px;
   position: absolute;
-  cursor:pointer;
+  cursor: pointer;
   width: 20px;
 }
 .label::after {
-
-
   /* bottom:1.9px; */
   /* top:1px; */
   /* top:50%; */
@@ -38,7 +36,7 @@
   font-weight: 500;
   height: 20px;
   left: -20.7px;
-  bottom:0.5px;
+  bottom: 0.5px;
   margin-bottom: 3px;
   position: absolute;
   transform: scale(0);
@@ -49,6 +47,26 @@
   transform: scale(1);
 }
 
+select.custom-select option:hover {
+  /* box-shadow: 0 0 10px 100px pink inset; */
+  background: aquamarine;
+}
+.testimonial::before {
+  content: '"';
+}
+.testimonial::after {
+  content: '"';
+}
+
+.testimonial::before,
+.testimonial::after {
+  position: absolute;
+  font-size: 2rem;
+}
+
+.blockquote {
+  @apply text-lg text-gray-400 absolute;
+}
 /* .label{
     font-size:1.2rem;
     font-weight:bold;
@@ -90,6 +108,3 @@ transition: transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
 .check.active{
     transform: scale(1);
 } */
-
-
-

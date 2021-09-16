@@ -32,7 +32,7 @@ const page1 = () => {
 
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
-        {dataOfProducts.linksOfProducts[0].links.map((l, i) => (
+        {dataOfProducts.linksOfProducts.links.map((l, i) => (
           <Link key={i} href="!#">
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
               <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
@@ -76,10 +76,10 @@ const page1 = () => {
           {/* Customer Comments */}
           <div>
             <h4 className="my-1 text-black text-sm font-bold">
-              {dataOfProducts.comments.customers[0].name}
+              {dataOfProducts.comments.customers.name}
             </h4>
             <blockquote className="my-1 text-gray text-xs font-thin">
-              {dataOfProducts.comments.customers[0].msg}
+              {dataOfProducts.comments.customers.msg}
             </blockquote>
           </div>
 
@@ -109,7 +109,7 @@ const page1 = () => {
               <h2 className="text-black font-medium">Categories</h2>
               {/* Parent */}
               <ul className="list-inside">
-                <SideLinks flips={dataOfProducts.linksOfProducts} />
+                <SideLinks flips={dataOfProducts.linksOfProducts.main} />
               </ul>
               <h1 className="my-2 text-black font-medium text-lg">
                 95 PRODUCTS
