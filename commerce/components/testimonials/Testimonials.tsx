@@ -13,6 +13,7 @@ interface Testimonial {
 
 interface Props {
   testimonials: Testimonial[]
+  color: string
 }
 
 const Testimonials: FC<Props> = ({ testimonials }) => {
@@ -48,14 +49,14 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
   return (
     <>
       <Head />
-      <div className="mb-6 overflow-hidden md:max-h-48 md:h-48 max-h-72 h-72 pb-5">
+      <div className="mb-6 overflow-hidden md:h-60 pb-15">
         <h1 className="text-xl font-semibold pb-8">What customers say -</h1>
 
         <div ref={sliderRef} className="keen_slider flex h-full w-full">
           {testimonials?.map((test) => (
             <div
               key={test.id}
-              className="keen-slider__slide flex flex-col space-x-5 items-center justify-center md:flex-row md:items-center md:justify-center h-full w-full"
+              className="keen-slider__slide flex flex-col space-x-5 items-center justify-center md:flex-row md:items-center md:justify-center md:pb-20 pb-5"
             >
               <div>
                 <Image
@@ -89,10 +90,9 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
               onClick={() => {
                 slider.moveToSlideRelative(i)
               }}
-              className={
-                'h-2 w-2 rounded-full transform transition bg-gray-400 focus:outline-none' +
-                (currentSlide === i ? ' scale-120' : '')
-              }
+              className={`h-2 w-2 rounded-full transform transition bg-gray-400 focus:outline-none ${
+                currentSlide === i ? 'scale-120 bg-gray-900' : ''
+              }`}
             />
           ))}
         </div>
