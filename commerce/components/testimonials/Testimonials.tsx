@@ -47,8 +47,8 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
 
   return (
     <>
+      <Head />
       <div className="mb-6 overflow-hidden md:max-h-48 md:h-48 max-h-72 h-72 pb-5">
-        <Head />
         <h1 className="text-xl font-semibold pb-8">What customers say -</h1>
 
         <div ref={sliderRef} className="keen_slider flex h-full w-full">
@@ -78,39 +78,6 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
               </div>
             </div>
           ))}
-          {slider && (
-            <div className="w-full space-x-3">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    slider.moveToSlideRelative(i)
-                  }}
-                  className={
-                    'h-5 w-5 rounded-full bg-gray-400' +
-                    (currentSlide === i ? ' bg-red' : '')
-                  }
-                />
-              ))}
-            </div>
-          )}
-          {/* 
-        {slider && (
-        <div className="w-full">
-        {testimonials.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              slider.moveToSlideRelative(i)
-            }}
-            className={
-              'h-10 w-10 rounded-full bg-red'+
-              (currentSlide === i ? ' bg-red' : '')
-            }
-          />
-        ))}
-        </div>
-        )}  */}
         </div>
       </div>
 
@@ -123,7 +90,7 @@ const Testimonials: FC<Props> = ({ testimonials }) => {
                 slider.moveToSlideRelative(i)
               }}
               className={
-                'h-2 w-2 rounded-full transform transition bg-gray-400' +
+                'h-2 w-2 rounded-full transform transition bg-gray-400 focus:outline-none' +
                 (currentSlide === i ? ' scale-120' : '')
               }
             />
