@@ -6,7 +6,8 @@
   "scripts": {
     "adkit": "npm start --prefix material-kit-react",
     "com": "npm run dev --prefix commerce",
-    "dual": "concurrently \"npm run adkit\" \"npm run com\""
+    "dual": "concurrently \"npm run adkit\" \"npm run com\"",
+    "installer":"concurrently \"npm i --prefix material-kit-react\" \"npm i --prefix commerce\""
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react'
 
-import laptop1 from '../public/assets/img/laptop1.png'
+import laptop1 from '../../public/assets/img/laptop2.png'
+import laptop2 from '../../public/assets/img/laptop1.png'
+import p1 from '../../public/assets/profile/p1.jpg'
+import p2 from '../../public/assets/profile/p2.jpg'
+import p3 from '../../public/assets/profile/p3.jpg'
+import p4 from '../../public/assets/profile/p4.jpg'
 // import {getStaticProps }
-import { Layout } from '@components/common'
+import { Layout, Searchbar } from '@components/common'
 
 import Link from 'next/link'
 
@@ -20,6 +25,62 @@ import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetai
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
 import { itemsOfProducts, dataOfProducts } from '../../data1'
 import Rate from '@components/common/Rateicons/Rate'
+import { Rating } from '@components/ui'
+import Review from '@components/common/Productpage/Review/Review'
+
+
+const photos=[
+  laptop1,
+  laptop2,
+  laptop1,
+  laptop2,
+  laptop1,
+]
+
+const reviews=[
+  {
+    img:p1,
+name:"Manas",
+title:"That is worst product!!",
+comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
+photos:photos
+},
+  {
+    img:p1,
+
+name:"Abhishek",
+title:"That is worst product!!",
+comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
+photos:photos
+
+},
+  {
+    img:p1,
+
+name:"Sagar",
+title:"That is worst product!!",
+comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
+photos:photos
+
+},
+{
+    img:p3,
+name:"Dubey",
+title:"That is worst product!!",
+comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
+photos:photos
+
+},
+  {
+    img:p2,
+
+name:"Himanshu",
+title:"That is worst product!!",
+comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
+photos:photos
+
+},
+]
 
 // Static path function
 // Main Func
@@ -113,6 +174,7 @@ const page1 = () => {
             {/* CONDITION */}
             <CheckBoxes />
           </div>
+
           {/* Span Triple columns */}
           <div className="md:col-span-3 sm:col-span-2 col-span-1">
             <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
@@ -121,8 +183,31 @@ const page1 = () => {
               ))}
             </div>
           </div>
+
         </div>
+
       </div>
+        {/* Reviews and posts */}
+        <div className="my-6">
+        <h2 className="mb-7 text-black font-medium text-xl">Ask something about this products</h2>
+        <Searchbar ph="Your Questions...."/>
+        {/*Customers reviews  */}
+        <div className="mt-7">
+         <h3 className="text-black font-medium text-lg">Customer Reviews</h3>
+        {/* Customer pic and Name */}
+        <div>
+        {reviews.map((r,i)=>(
+       <Review key={i} review={r}/>
+     ))}
+        </div>
+      
+
+       </div>
+
+        </div>
+
+        {/* Review section end */}
+
     </div>
   )
 }
