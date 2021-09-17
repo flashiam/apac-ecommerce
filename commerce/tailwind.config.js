@@ -40,6 +40,7 @@ module.exports = {
         footerbg: '#151515',
         xxmain: '#F9F9F9',
         purpleD: '#440244',
+        fbColor: '#2276C5',
         // 'primary-2': 'var(--primary-2)',
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',

@@ -42,8 +42,14 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
 
   // console.log(useTheme())
   const [display, setDisplay] = useState(false)
-  const { closeSidebarIfPresent } = useUI()
+  const { closeSidebarIfPresent, openModal, setModalView } = useUI()
   const ref = useRef() as React.MutableRefObject<HTMLUListElement>
+
+  // Function to allow user to sign in
+  const userSignIn = () => {
+    setModalView('LOGIN_VIEW')
+    return openModal()
+  }
 
   useEffect(() => {
     if (ref.current) {
@@ -110,14 +116,30 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   </div>
                 </a>
               </li>
+              <li onClick={userSignIn}>
+                <a
+                  className={cn(s.link, 'border-t border-accent-2 mt-4')}
+                  // onClick={() => logout()}
+                >
+                  Sign In
+                </a>
+              </li>
               <li>
+                <a
+                  className={cn(s.link)}
+                  // onClick={() => logout()}
+                >
+                  Sign Up
+                </a>
+              </li>
+              {/* <li>
                 <a
                   className={cn(s.link, 'border-t border-accent-2 mt-4')}
                   onClick={() => logout()}
                 >
                   Logout
                 </a>
-              </li>
+              </li> */}
             </ul>
           )}
         </div>
