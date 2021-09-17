@@ -28,58 +28,49 @@ import Rate from '@components/common/Rateicons/Rate'
 import { Rating } from '@components/ui'
 import Review from '@components/common/Productpage/Review/Review'
 
+const photos = [laptop1, laptop2, laptop1, laptop2, laptop1]
 
-const photos=[
-  laptop1,
-  laptop2,
-  laptop1,
-  laptop2,
-  laptop1,
-]
-
-const reviews=[
+const reviews = [
   {
-    img:p1,
-name:"Manas",
-title:"That is worst product!!",
-comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
-photos:photos
-},
+    img: p1,
+    name: 'Manas',
+    title: 'That is worst product!!',
+    comment:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
+    photos: photos,
+  },
   {
-    img:p1,
-
-name:"Abhishek",
-title:"That is worst product!!",
-comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
-photos:photos
-
-},
+    img: p1,
+    name: 'Abhishek',
+    title: 'That is worst product!!',
+    comment:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
+    photos: photos,
+  },
   {
-    img:p1,
-
-name:"Sagar",
-title:"That is worst product!!",
-comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
-photos:photos
-
-},
-{
-    img:p3,
-name:"Dubey",
-title:"That is worst product!!",
-comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
-photos:photos
-
-},
+    img: p1,
+    name: 'Sagar',
+    title: 'That is worst product!!',
+    comment:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
+    photos: photos,
+  },
   {
-    img:p2,
-
-name:"Himanshu",
-title:"That is worst product!!",
-comment:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.",
-photos:photos
-
-},
+    img: p3,
+    name: 'Dubey',
+    title: 'That is worst product!!',
+    comment:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
+    photos: photos,
+  },
+  {
+    img: p2,
+    name: 'Himanshu',
+    title: 'That is worst product!!',
+    comment:
+      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
+    photos: photos,
+  },
 ]
 
 // Static path function
@@ -183,31 +174,27 @@ const page1 = () => {
               ))}
             </div>
           </div>
-
         </div>
-
       </div>
-        {/* Reviews and posts */}
-        <div className="my-6">
-        <h2 className="mb-7 text-black font-medium text-xl">Ask something about this products</h2>
-        <Searchbar ph="Your Questions...."/>
+      {/* Reviews and posts */}
+      <div className="my-6">
+        <h2 className="mb-7 text-black font-medium text-xl">
+          Ask something about this products
+        </h2>
+        <Searchbar ph="Your Questions...." />
         {/*Customers reviews  */}
         <div className="mt-7">
-         <h3 className="text-black font-medium text-lg">Customer Reviews</h3>
-        {/* Customer pic and Name */}
-        <div>
-        {reviews.map((r,i)=>(
-       <Review key={i} review={r}/>
-     ))}
+          <h3 className="text-black font-medium text-lg">Customer Reviews</h3>
+          {/* Customer pic and Name */}
+          <div>
+            {reviews.map((r, i) => (
+              <Review key={i} review={r} />
+            ))}
+          </div>
         </div>
-      
+      </div>
 
-       </div>
-
-        </div>
-
-        {/* Review section end */}
-
+      {/* Review section end */}
     </div>
   )
 }

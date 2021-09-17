@@ -3,7 +3,9 @@ import laptop1 from './public/assets/img/laptop1.png'
 import laptop2 from './public/assets/img/mobile2.png'
 import laptop3 from './public/assets/img/mobile2.png'
 import mobile from './public/assets/img/mobile1.png'
-
+import p1 from './public/assets/profile/p1.jpg'
+import p2 from './public/assets/profile/p2.jpg'
+import p3 from './public/assets/profile/p3.jpg'
 const productsX = [
   {
     flash_sale: 'Flash sale',
@@ -236,5 +238,29 @@ export const itemsOfProducts = [
         },
       ],
     },
+  },
+]
+
+export const testimonials = [
+  {
+    id: 1,
+    profilePic: p1,
+    name: 'John Doe',
+    review:
+      'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
+  },
+  {
+    id: 2,
+    profilePic: p2,
+    name: 'Jane Doe',
+    review:
+      'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
+  },
+  {
+    id: 3,
+    profilePic: p3,
+    name: 'Brad Doe',
+    review:
+      'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
   },
 ]

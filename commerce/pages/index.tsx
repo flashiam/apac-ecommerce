@@ -1,5 +1,5 @@
 import commerce from '@lib/api/commerce'
-import { dataOfProducts } from '../data1'
+import { dataOfProducts, testimonials } from '../data1'
 import { Layout } from '@components/common'
 import EspecialProducts from '@components/home/Catofproducts/Especial/EspecialProducts'
 import OtherCat from '@components/home/Catofproducts/Other/OtherCat'
@@ -191,7 +191,7 @@ export default function Home({
         </div>
 
         {/* Testimonials */}
-        <Testimonials />
+        <Testimonials testimonials={testimonials} color="bg-gray-900" />
 
         {/* Site templates */}
         <div>
