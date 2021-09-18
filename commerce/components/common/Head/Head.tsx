@@ -16,7 +16,7 @@ const Head: FC<Props> = ({ link, title }) => {
 
         <link rel="manifest" href={link} />
         <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined"
           rel="stylesheet"
         />
         <title>{title}</title>

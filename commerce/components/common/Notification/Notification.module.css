@@ -1,0 +1,24 @@
+.notificationTab {
+  @apply fixed right-0 mt-2 origin-top-right outline-none bg-primary z-40 w-full h-full;
+
+  @screen lg {
+    @apply absolute top-10 border border-accent-1 shadow-lg w-56 h-auto;
+  }
+}
+
+.notifLink {
+  @apply text-primary cursor-pointer px-6 py-3 transition ease-in-out duration-150 leading-6;
+  text-transform: initial;
+}
+
+.notifLink:hover {
+  @apply bg-accent-1;
+}
+
+.notifLink.active {
+  @apply font-bold bg-accent-2;
+}
+
+.off {
+  @apply hidden;
+}

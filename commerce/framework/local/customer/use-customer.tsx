@@ -9,7 +9,13 @@ export const handler: SWRHook<any> = {
   async fetcher({ input, options, fetch }) {},
   useHook: () => () => {
     return async function addItem() {
-      return {}
+      return {
+        customer: {
+          id: 1,
+          name: 'brad',
+          email: 'brad123@gmail.com',
+        },
+      }
     }
   },
 }
