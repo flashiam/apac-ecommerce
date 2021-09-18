@@ -11,6 +11,7 @@ import 'keen-slider/keen-slider.min.css'
 import DropdownMenu from '../UserNav/DropdownMenu'
 import { WishlistButton } from '@components/wishlist'
 import Wish from 'pages/wishlist'
+import Notification from '../Notification/Notification'
 
 interface Link {
   href: string
@@ -90,7 +91,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                 ))}
               </nav>
 
-              <div className="flex items-center">
+              <div className="flex items-center justify-between space-x-5">
                 <WishlistButton
                   productId="23"
                   variant={{
@@ -104,6 +105,8 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                     ],
                   }}
                 />
+                {/* Notification */}
+                <Notification />
                 {/* <CartSidebarView /> */}
                 <DropdownMenu />
               </div>

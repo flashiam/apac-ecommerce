@@ -51,6 +51,12 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     return openModal()
   }
 
+  // Function to allow user to sign up
+  const userSignUp = () => {
+    setModalView('SIGNUP_VIEW')
+    return openModal()
+  }
+
   useEffect(() => {
     if (ref.current) {
       if (display) {
@@ -116,19 +122,16 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   </div>
                 </a>
               </li>
-              <li onClick={userSignIn}>
+              <li>
                 <a
                   className={cn(s.link, 'border-t border-accent-2 mt-4')}
-                  // onClick={() => logout()}
+                  onClick={userSignIn}
                 >
                   Sign In
                 </a>
               </li>
               <li>
-                <a
-                  className={cn(s.link)}
-                  // onClick={() => logout()}
-                >
+                <a className={cn(s.link)} onClick={userSignUp}>
                   Sign Up
                 </a>
               </li>

@@ -4,6 +4,7 @@ import { Info } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import { Logo, Button, Input } from '@components/ui'
 import useSignup from '@framework/auth/use-signup'
+import SocialAuth from './SocialAuth'
 
 interface Props {}
 
@@ -63,7 +64,7 @@ const SignUpView: FC<Props> = () => {
   return (
     <form
       onSubmit={handleSignup}
-      className="w-80 flex flex-col justify-between p-3"
+      className="w-80 flex flex-col justify-between p-1"
     >
       <div className="flex justify-center pb-12 ">
         <Logo width="64px" height="64px" />
@@ -95,7 +96,7 @@ const SignUpView: FC<Props> = () => {
             Sign Up
           </Button>
         </div>
-
+        <SocialAuth />
         <span className="pt-1 text-center text-sm">
           <span className="text-accent-7">Do you have an account?</span>
           {` `}
