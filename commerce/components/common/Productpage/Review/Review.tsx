@@ -16,9 +16,14 @@ const Review = (props: Props) => {
   return (
     <>
       <div className="mb-6">
-        <div className="flex my-8">
+        <div className="flex my-8 items-center">
           <div className="rounded-full w-10 h-10 mr-4">
-            <Image src={img} className="rounded-full w-full" />
+            <Image
+              src={img}
+              height="100%"
+              width="100%"
+              className="rounded-full w-full object-cover"
+            />
           </div>
           <span>
             <h5 className="text-black text-lg font-bold">{name}</h5>
@@ -36,8 +41,8 @@ const Review = (props: Props) => {
         <div className="mt-6 my-5">
           {photos.map((p) => (
             <div
-              className="w-12 inline-flex h-12 mr-2"
-              style={{ border: '1px solid grey' }}
+              className="w-12 inline-flex h-12 mr-2 p-2 border-2 border-accent-2"
+              // style={{ border: '1px solid grey' }}
             >
               <Image src={p} className="w-full" />
             </div>
