@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, { useEffect } from 'react'
+import { useQuery } from 'react-query'
 import laptop1 from '../public/assets/img/laptop1.png'
 
 import { Layout } from '@components/common'
@@ -20,9 +20,25 @@ import MainProduct from '@components/common/Products/MainProduct/MainProduct'
 import { Rating } from '@components/ui'
 import Rate from '@components/common/Rateicons/Rate'
 import { Ch } from '@components/testing/Ch'
+import axios from 'axios'
+import { getUserProfile } from '../utils'
+
+// Function to fetch test posts
+const fetchPosts = async () => {
+  const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
+  return res.data
+}
 
 // Main Func
-const producti = () => {
+const producti = ({ posts }: any) => {
+  const { data } = useQuery('posts', fetchPosts, {
+    initialData: posts,
+  })
+
+  useEffect(() => {
+    getUserProfile()
+  }, [])
+
   return (
     <div className="md:p-10 p-5 sm:p-7 bg-gray-100">
       <Head>
@@ -90,9 +106,26 @@ const producti = () => {
             </div>
           </div>
         </div>
+        {/* {data?.map((post: any) => (
+          <h1 key={post.id}>{post.title}</h1>
+        ))} */}
       </div>
     </div>
   )
+}
+
+// Test fetching from API
+export const getStaticProps = async () => {
+  try {
+    const data = await fetchPosts()
+    return {
+      props: {
+        posts: data,
+      },
+    }
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 export default producti

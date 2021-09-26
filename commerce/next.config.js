@@ -14,8 +14,11 @@ const isVendure = provider === 'vendure'
 module.exports = withCommerceConfig({
   commerce,
   i18n: {
-    locales: ['en-US', 'es'],
-    defaultLocale: 'en-US',
+    locales: ['en-US', 'es', 'fr', 'nl-NL'],
+    defaultLocale: 'nl-NL',
+  },
+  images: {
+    domains: ['lh3.googleusercontent.com'],
   },
   rewrites() {
     return [

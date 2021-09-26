@@ -1,8 +1,10 @@
 import cn from 'classnames'
 import React, { FC } from 'react'
+import { QueryClientProvider, QueryClient } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import Head from "../Head/Head"
+import Head from '../Head/Head'
 import { CommerceProvider } from '@framework'
 import { useUI } from '@components/ui/context'
 import type { Page } from '@commerce/types/page'
@@ -102,26 +104,31 @@ const Layout: FC<Props> = ({
     href: `/search/${c.slug}`,
   }))
 
+  const client = new QueryClient()
+
   return (
-    <CommerceProvider locale={locale}>
-   <Head/>
-      <div className={cn(s.root)}>
-        <Navbar links={navBarlinks} />
-        <main className="fit">{children}</main>
-        <Footer pages={pageProps.pages} />
-        <ModalUI />
-        <SidebarUI />
-        <FeatureBar
-          title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
-          hide={acceptedCookies}
-          action={
-            <Button className="mx-5" onClick={() => onAcceptCookies()}>
-              Accept cookies
-            </Button>
-          }
-        />
-      </div>
-    </CommerceProvider>
+    <QueryClientProvider client={client}>
+      <CommerceProvider locale={locale}>
+        <Head />
+        <div className={cn(s.root)}>
+          <Navbar links={navBarlinks} />
+          <main className="fit">{children}</main>
+          <Footer pages={pageProps.pages} />
+          <ModalUI />
+          <SidebarUI />
+          <FeatureBar
+            title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
+            hide={acceptedCookies}
+            action={
+              <Button className="mx-5" onClick={() => onAcceptCookies()}>
+                Accept cookies
+              </Button>
+            }
+          />
+        </div>
+      </CommerceProvider>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   )
 }
 

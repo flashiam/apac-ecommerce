@@ -1,6 +1,5 @@
 // Extra
-
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import Link from 'next/link'
 import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
@@ -10,8 +9,8 @@ import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 import DropdownMenu from '../UserNav/DropdownMenu'
 import { WishlistButton } from '@components/wishlist'
-import Wish from 'pages/wishlist'
 import Notification from '../Notification/Notification'
+import { useRouter } from 'next/router'
 
 interface Link {
   href: string
@@ -21,9 +20,6 @@ interface NavbarProps {
   links?: Link[]
 }
 
-// interface Refery{
-//   refer?:LegacyRef<HTMLDivElement>
-// }
 interface Category {
   label: string
   link: string
@@ -59,12 +55,17 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
     { label: '5G Phones', link: '/page1' },
   ])
 
+  const router = useRouter()
+
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slidesPerView: 10,
     mode: 'free',
     spacing: 1,
   })
 
+  useEffect(() => {
+    console.log(navigator.language)
+  }, [])
   return (
     <>
       <NavbarRoot>
@@ -106,7 +107,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                   }}
                 />
                 {/* Notification */}
-                <Notification />
+                <Notification color="bg-purple" />
                 {/* <CartSidebarView /> */}
                 <DropdownMenu />
               </div>
