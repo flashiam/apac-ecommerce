@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react'
 import { getAuth } from 'firebase/auth'
 import app from 'firebase-config'
-import { useGoogleSignin } from '../../hooks'
+import { useGoogleSignin, useFacebookSignin } from '../../hooks'
 import { getUserProfile } from '../../utils'
 
 const SocialAuth: FC = () => {
@@ -16,9 +16,21 @@ const SocialAuth: FC = () => {
     }
   }
 
+  // Function for facebook sign in
+  const facebookSignIn = async () => {
+    try {
+      await useFacebookSignin(auth)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <div className="flex justify-between items-center pt-4">
-      <button className="flex items-center bg-fbColor text-white py-2 px-6">
+      <button
+        onClick={facebookSignIn}
+        className="flex items-center bg-fbColor text-white py-2 px-6"
+      >
         <i className="fab fa-facebook pr-3"></i>
         Facebook
       </button>
