@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "adkit": "npm start --prefix material-kit-react",
-    "com": "npm run dev --prefix commerce",
-    "dual": "concurrently \"npm run adkit\" \"npm run com\"",
-    "installer":"concurrently \"npm i --prefix material-kit-react\" \"npm i --prefix commerce\""
+    "adkit": "yarn start --prefix material-kit-react",
+    "com": "yarn dev --prefix commerce",
+    "dual": "concurrently \"yarn run adkit\" \"yarn run com\"",
+    "installer": "concurrently \"yarn install --prefix material-kit-react\" \"yarn install --prefix commerce\""
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,9 @@
   "homepage": "https://github.com/flashiam/apac-ecommerce#readme",
   "devDependencies": {
     "concurrently": "^6.2.1"
+  },
+  "dependencies": {
+    "firebase": "^9.1.0",
+    "firebaseui": "^5.0.0"
   }
 }

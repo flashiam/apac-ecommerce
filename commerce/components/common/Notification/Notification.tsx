@@ -19,13 +19,18 @@ const Notification: FC<Props> = ({ color }) => {
           onClick={() => setActive((prev) => !prev)}
         >
           <i className="material-icons-outlined text-3xl">notifications</i>
-          <span
-            className={cn(
-              'absolute flex justify-center items-center h-5 w-5 rounded-full bg-gray-600 -top-1 -right-1 text-xs text-white',
-              color
-            )}
-          >
-            1
+          <span className="absolute  top-2 right-2 flex justify-center items-center">
+            <span
+              className={`absolute animate-ping rounded-full h-4 w-4 ${color}-400`}
+            ></span>
+            <span
+              className={cn(
+                'absolute flex justify-center items-center h-4 w-4 rounded-full bg-gray-600  text-xs text-white',
+                color
+              )}
+            >
+              1
+            </span>
           </span>
         </button>
         {active && (

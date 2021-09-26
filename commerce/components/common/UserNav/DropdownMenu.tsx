@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import Link from 'next/link'
+import Image, { ImageProps } from 'next/image'
 import { FC, useRef, useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
@@ -9,12 +10,15 @@ import { Moon, Sun } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import ClickOutside from '@lib/click-outside'
 import useLogout from '@framework/auth/use-logout'
+import testImg from '../../../public/assets/test_avatar.jpg'
 
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
+import getUserProfile from '@utils/getUserProfile'
+import { useUserProfile } from '../../../hooks'
 
 interface DropdownMenuProps {
   open?: boolean
@@ -40,7 +44,6 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const { pathname } = useRouter()
   const { theme, setTheme } = useTheme()
 
-  // console.log(useTheme())
   const [display, setDisplay] = useState(false)
   const { closeSidebarIfPresent, openModal, setModalView } = useUI()
   const ref = useRef() as React.MutableRefObject<HTMLUListElement>
@@ -57,7 +60,11 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     return openModal()
   }
 
+  const userName = useUserProfile()?.displayName
+  const profilePic = useUserProfile()?.photoURL
+
   useEffect(() => {
+    console.log(profilePic)
     if (ref.current) {
       if (display) {
         disableBodyScroll(ref.current)
@@ -68,7 +75,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     return () => {
       clearAllBodyScrollLocks()
     }
-  }, [display])
+  }, [display, profilePic])
 
   return (
     <>
@@ -83,6 +90,25 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
           </button>
           {display && (
             <ul className={s.dropdownMenu} ref={ref}>
+              <li className="mx-6 py-3">
+                <div className="flex justify-start items-center">
+                  <div className="h-12 w-12">
+                    <Image
+                      src={profilePic || (testImg as any)}
+                      height="100%"
+                      width="100%"
+                      alt="test profile"
+                      className="object-cover rounded-full"
+                    />
+                  </div>
+                  <p className="text-md font-semibold pl-2 flex flex-col items-start text-gray-700">
+                    Hello,{' '}
+                    <span className="text-xl font-bold">
+                      {userName?.split(' ')[0] || 'Anonymous'}
+                    </span>
+                  </p>
+                </div>
+              </li>
               {LINKS.map(({ name, href }) => (
                 <li key={href}>
                   <div>
