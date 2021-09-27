@@ -12,14 +12,14 @@ import {
   Typography
 } from '@material-ui/core';
 import {
-  AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
   Lock as LockIcon,
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   UserPlus as UserPlusIcon,
-  Users as UsersIcon
+  Users as UsersIcon,
+  MessageSquare as MessageIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -66,9 +66,9 @@ const items = [
     title: 'Register'
   },
   {
-    href: '/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
+    href: '/app/support',
+    icon: MessageIcon,
+    title: 'Support'
   }
 ];
 
