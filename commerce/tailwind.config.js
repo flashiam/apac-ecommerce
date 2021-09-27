@@ -92,6 +92,8 @@ module.exports = {
   },
   variants: {
     extend: {
+      translate: ['group-hover'],
+      rotate: ['group-hover'],
       backgroundColor: ['checked'],
       borderColor: ['checked'],
     },

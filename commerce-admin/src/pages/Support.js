@@ -1,5 +1,11 @@
 import React from 'react';
-import { Box, Container, Button, TextField } from '@material-ui/core';
+import {
+  Box,
+  Container,
+  Button,
+  TextField,
+  IconButton
+} from '@material-ui/core';
 import { Helmet } from 'react-helmet';
 import { ChevronLeft, MessageSquare, Paperclip } from 'react-feather';
 import PropTypes from 'prop-types';
@@ -97,7 +103,12 @@ const Support = () => (
               placeholder="Type your queries here"
             />
           </Box>
-          <Paperclip />
+          <IconButton
+            sx={{ backgroundColor: 'primary.main', color: 'background.paper' }}
+            color="primary"
+          >
+            <Paperclip />
+          </IconButton>
         </Box>
       </Container>
     </Box>
