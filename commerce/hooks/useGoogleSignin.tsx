@@ -1,6 +1,10 @@
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import { Auth, OAuthCredential, User } from '@firebase/auth'
-import { FirebaseError } from '@firebase/util'
+import {
+  Auth,
+  OAuthCredential,
+  sendEmailVerification,
+  User,
+} from '@firebase/auth'
 
 interface Response {
   user: User | null
@@ -27,6 +31,10 @@ const useGoogleSignin = async (auth: Auth): Promise<Response> => {
     response.user = user
     response.credentials = credentials
     response.isLoading = false
+
+    // Sending email
+    if (auth.currentUser) await sendEmailVerification(auth?.currentUser)
+    console.log('Email sent for verfication')
   } catch (error) {
     // const credentials = GoogleAuthProvider.credentialFromError(error)
     response.isLoading = false

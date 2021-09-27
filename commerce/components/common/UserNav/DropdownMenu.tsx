@@ -11,7 +11,7 @@ import { useUI } from '@components/ui/context'
 import ClickOutside from '@lib/click-outside'
 import useLogout from '@framework/auth/use-logout'
 import testImg from '../../../public/assets/test_avatar.jpg'
-
+import { getAuth, signOut, deleteUser } from 'firebase/auth'
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -19,6 +19,7 @@ import {
 } from 'body-scroll-lock'
 import getUserProfile from '@utils/getUserProfile'
 import { useUserProfile } from '../../../hooks'
+import app from 'firebase-config'
 
 interface DropdownMenuProps {
   open?: boolean
@@ -43,6 +44,10 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const logout = useLogout()
   const { pathname } = useRouter()
   const { theme, setTheme } = useTheme()
+  // Using firebase auth
+  const auth = getAuth(app)
+  // State for user signin status
+  const [isLoggedIn, setLoggedIn] = useState(false)
 
   const [display, setDisplay] = useState(false)
   const { closeSidebarIfPresent, openModal, setModalView } = useUI()
@@ -60,11 +65,24 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     return openModal()
   }
 
+  // Function to sign out a user
+  const logOut = async () => {
+    try {
+      await signOut(auth)
+      await auth.currentUser?.delete()
+      setLoggedIn(false)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   const userName = useUserProfile()?.displayName
   const profilePic = useUserProfile()?.photoURL
+  const isVerified = useUserProfile()?.emailVerified
 
   useEffect(() => {
-    console.log(profilePic)
+    auth.currentUser ? setLoggedIn(true) : setLoggedIn(false)
+
     if (ref.current) {
       if (display) {
         disableBodyScroll(ref.current)
@@ -75,7 +93,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     return () => {
       clearAllBodyScrollLocks()
     }
-  }, [display, profilePic])
+  }, [display, profilePic, auth])
 
   return (
     <>
@@ -94,7 +112,11 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                 <div className="flex justify-start items-center">
                   <div className="h-12 w-12">
                     <Image
-                      src={profilePic || (testImg as any)}
+                      src={
+                        isLoggedIn
+                          ? auth.currentUser?.photoURL
+                          : (testImg as any)
+                      }
                       height="100%"
                       width="100%"
                       alt="test profile"
@@ -104,7 +126,9 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   <p className="text-md font-semibold pl-2 flex flex-col items-start text-gray-700">
                     Hello,{' '}
                     <span className="text-xl font-bold">
-                      {userName?.split(' ')[0] || 'Anonymous'}
+                      {isLoggedIn
+                        ? auth.currentUser?.displayName?.split(' ')[0]
+                        : 'Anonymous'}
                     </span>
                   </p>
                 </div>
@@ -148,27 +172,32 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   </div>
                 </a>
               </li>
-              <li>
-                <a
-                  className={cn(s.link, 'border-t border-accent-2 mt-4')}
-                  onClick={userSignIn}
-                >
-                  Sign In
-                </a>
-              </li>
-              <li>
-                <a className={cn(s.link)} onClick={userSignUp}>
-                  Sign Up
-                </a>
-              </li>
-              {/* <li>
-                <a
-                  className={cn(s.link, 'border-t border-accent-2 mt-4')}
-                  onClick={() => logout()}
-                >
-                  Logout
-                </a>
-              </li> */}
+              {isLoggedIn ? (
+                <li>
+                  <a
+                    className={cn(s.link, 'border-t border-accent-2 mt-4')}
+                    onClick={logOut}
+                  >
+                    Sign Out
+                  </a>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <a
+                      className={cn(s.link, 'border-t border-accent-2 mt-4')}
+                      onClick={userSignIn}
+                    >
+                      Sign In
+                    </a>
+                  </li>
+                  <li>
+                    <a className={cn(s.link)} onClick={userSignUp}>
+                      Sign Up
+                    </a>
+                  </li>
+                </>
+              )}
             </ul>
           )}
         </div>

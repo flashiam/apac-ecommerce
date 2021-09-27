@@ -6,6 +6,7 @@ import app from 'firebase-config'
 interface Profile {
   username: string | null
   profilePic: string | StaticImageData
+  verfied: boolean | string | null
 }
 
 type UserProfile = {
@@ -18,6 +19,8 @@ const useUserProfile = (): User | null => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setProfile(user)
+    } else {
+      console.log('user sign out')
     }
   })
 
