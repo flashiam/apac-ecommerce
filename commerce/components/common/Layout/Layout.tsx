@@ -50,6 +50,7 @@ interface Props {
     pages?: Page[]
     categories: Category[]
   }
+  showFooter: boolean
 }
 
 const ModalView: FC<{ modalView: string; closeModal(): any }> = ({
@@ -96,6 +97,7 @@ const SidebarUI: FC = () => {
 const Layout: FC<Props> = ({
   children,
   pageProps: { categories = [], ...pageProps },
+  showFooter,
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   const { locale = 'en-US' } = useRouter()
@@ -113,7 +115,7 @@ const Layout: FC<Props> = ({
         <div className={cn(s.root)}>
           <Navbar links={navBarlinks} />
           <main className="fit">{children}</main>
-          <Footer pages={pageProps.pages} />
+          {showFooter && <Footer pages={pageProps.pages} />}
           <ModalUI />
           <SidebarUI />
           <FeatureBar

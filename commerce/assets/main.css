@@ -46,6 +46,9 @@
 .checkbox:checked + .label::after {
   transform: scale(1);
 }
+.rounded-btn {
+  @apply rounded-full flex items-center justify-center;
+}
 
 select.custom-select option:hover {
   /* box-shadow: 0 0 10px 100px pink inset; */
