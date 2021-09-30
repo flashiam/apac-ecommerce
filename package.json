@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "adkit": "yarn start --prefix material-kit-react",
-    "com": "yarn dev --prefix commerce",
-    "dual": "concurrently \"yarn run adkit\" \"yarn run com\"",
+    "adkit": "npm start --prefix commerce-admin",
+    "com": "npm run dev --prefix commerce",
+    "server": "npm run dev --prefix commerce-backend",
+    "triple": "concurrently \"npm run adkit\" \"npm run com\" \"npm run server\"",
     "installer": "concurrently \"yarn install --prefix material-kit-react\" \"yarn install --prefix commerce\""
   },
   "repository": {
