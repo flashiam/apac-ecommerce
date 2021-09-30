@@ -1,11 +1,72 @@
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Layout, UserNav } from '@components/common'
 import SidebarLayout from '@components/common/SidebarLayout'
 import testImg from '../public/assets/test_avatar.jpg'
+import socketClient from 'socket.io-client'
+import cn from 'classnames'
+
+const url = 'http://localhost:3030'
+const socket = socketClient(url)
+
+interface Message {
+  id: string
+  name: string
+  msg: string
+}
+
+type Props = {
+  message: Message
+}
+
+// Component to render each message
+const ChatMessage: FC<Props> = ({ message }) => {
+  const { id, msg } = message
+
+  // Function to check user
+  // const isClient = () => id?.slice(id.length - 2, id.length) === 'cl'
+
+  return (
+    <div
+      className={cn('flex w-full mb-1', {
+        'justify-end': id === socket.id,
+      })}
+    >
+      <div
+        className={cn('p-2 max-w-xl sm:max-w-sm mb-2 rounded-md', {
+          'bg-purple-200': id === socket.id,
+          'bg-gray-200': id !== socket.id,
+        })}
+      >
+        {msg}
+      </div>
+    </div>
+  )
+}
 
 const Support = () => {
+  const [message, setMessage] = useState('')
+  const [chats, setChats] = useState<Message[]>([])
+
+  useEffect(() => {
+    socket.on('chat-msg', (res) => setChats([...chats, res]))
+  }, [socket])
+
+  // Function to send the message to admin
+  const onMessageSend = async (name: string, msg: string) => {
+    if (msg !== '') {
+      const clientMsg: Message = {
+        id: socket.id,
+        name,
+        msg,
+      }
+      await socket.emit('client-msg', clientMsg)
+      setMessage('')
+    }
+    console.log('fill up the fields u moron')
+  }
+
   return (
     <div className="relative h-screen flex">
       {/* Sidebar */}
@@ -49,23 +110,9 @@ const Support = () => {
         </Link>
         {/* Chat ground */}
         <div className="relative flex-grow">
-          <div className="flex justify-end w-full mb-1">
-            <div className="bg-purple-200 p-2">Worst service ever</div>
-          </div>
-          <div className="flex justify-start w-full mb-1">
-            <div className="bg-gray-200 p-2 max-w-2xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Est eius
-              necessitatibus vel a molestiae saepe, quaerat sequi ea, laborum,
-              in at delectus pariatur labore? Facere aspernatur cum similique at
-              quod?
-            </div>
-          </div>
-          <div className="flex justify-start w-full mb-1">
-            <div className="bg-gray-200 p-2">Sorry for inconvenience</div>
-          </div>
-          <div className="flex  justify-end w-full mb-1">
-            <div className="bg-purple-200 p-2">Worst service ever</div>
-          </div>
+          {chats?.map((chat) => (
+            <ChatMessage key={chat.id} message={chat} />
+          ))}
         </div>
       </div>
       {/* Input message field */}
@@ -78,12 +125,18 @@ const Support = () => {
           <input
             type="text"
             name="client-msg"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyUp={(e) => e.key === 'Enter' && onMessageSend('Tony', message)}
             className="w-4/5 border-0"
             placeholder="Type your queries here..."
           />
         </div>
         <div className="flex items-center" style={{ width: '28%' }}>
-          <button className="mr-2">
+          <button
+            className="mr-2"
+            onClick={() => onMessageSend('Abhishek', message)}
+          >
             <i className="material-icons rounded-btn h-12 w-12 bg-purple-500 text-white text-md">
               send
             </i>
