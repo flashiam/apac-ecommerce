@@ -1,42 +1,38 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Layout, UserNav } from '@components/common'
-import SidebarLayout from '@components/common/SidebarLayout'
 import testImg from '../public/assets/test_avatar.jpg'
-import socketClient from 'socket.io-client'
 import cn from 'classnames'
+import { io, Socket } from 'socket.io-client'
 
-const url = 'http://localhost:3030'
-const socket = socketClient(url)
+const url = 'http://localhost:8000'
 
 interface Message {
   id: string
+  socketid?: string
   name: string
   msg: string
 }
 
 type Props = {
   message: Message
+  socket?: Socket
 }
 
 // Component to render each message
-const ChatMessage: FC<Props> = ({ message }) => {
+const ChatMessage: FC<Props> = ({ message, socket }) => {
   const { id, msg } = message
-
-  // Function to check user
-  // const isClient = () => id?.slice(id.length - 2, id.length) === 'cl'
 
   return (
     <div
       className={cn('flex w-full mb-1', {
-        'justify-end': id === socket.id,
+        'justify-end': id === socket?.id,
       })}
     >
       <div
         className={cn('p-2 max-w-xl sm:max-w-sm mb-2 rounded-md', {
-          'bg-purple-200': id === socket.id,
-          'bg-gray-200': id !== socket.id,
+          'bg-purple-200': id === socket?.id,
+          'bg-gray-200': id !== socket?.id,
         })}
       >
         {msg}
@@ -48,27 +44,81 @@ const ChatMessage: FC<Props> = ({ message }) => {
 const Support = () => {
   const [message, setMessage] = useState('')
   const [chats, setChats] = useState<Message[]>([])
+  const [socket, setSocket] = useState<Socket>()
+  const [isTyping, setTyping] = useState(false)
+  const chatWindow = useRef<HTMLDivElement>(null)
+  const dummyDiv = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    socket.on('chat-msg', (res) => setChats([...chats, res]))
-  }, [socket])
-
-  // Function to send the message to admin
-  const onMessageSend = async (name: string, msg: string) => {
-    if (msg !== '') {
-      const clientMsg: Message = {
-        id: socket.id,
-        name,
-        msg,
-      }
-      await socket.emit('client-msg', clientMsg)
-      setMessage('')
-    }
-    console.log('fill up the fields u moron')
+  // Functon to move the scrollbar at the bottom when new msg has been sent
+  const moveScroll = () => {
+    dummyDiv.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  // Function to send the message to admin
+  const onMessageSend = (name: string) => {
+    if (!message) {
+      console.log('fill up the fields u moron')
+    } else if (socket) {
+      const clientMsg: Message = {
+        id: socket?.id,
+        name,
+        msg: message,
+      }
+      socket?.emit('user-msg', clientMsg)
+      setMessage('')
+    } else {
+      console.log('Socket connection is not established yet')
+    }
+  }
+
+  const onTypingTimeout = () => {
+    setTyping(false)
+  }
+
+  // Function to send through keyboard events
+  const sendWithKeyboard = (currentKey: string) => {
+    if (currentKey !== 'Enter') {
+      let timeout
+      if (isTyping === false) {
+        // Started typing
+        setTyping(true)
+        timeout = setTimeout(onTypingTimeout, 5000)
+      } else {
+        // Typed another word instantly before 5 sec
+        clearTimeout(timeout)
+        timeout = setTimeout(onTypingTimeout, 5000)
+      }
+    } else {
+      // Send the message
+      onMessageSend('Abhishek')
+    }
+  }
+
+  useEffect(() => {
+    // Connecting to socket instance
+    const newSocket = io(url)
+    setSocket(newSocket)
+
+    // Checking network logs
+    newSocket.on('connect', () => console.log('Connected to server'))
+    newSocket.on('error', (reason) => console.log(reason))
+    newSocket.on('connect_failed', (reason) => console.log(reason))
+    newSocket.on('server-msg', (res) => {
+      setChats((prevMsg) => [...prevMsg, res])
+      moveScroll()
+    })
+    // Disconnecting from socket instance
+    return () => {
+      newSocket.disconnect()
+    }
+  }, [])
+
+  useEffect(() => {
+    // Emit an typing event when user is typing
+  }, [isTyping])
+
   return (
-    <div className="relative h-screen flex">
+    <div className="relative h-screen flex overflow-hidden">
       {/* Sidebar */}
       <div className="sticky w-1/4 bg-gray-200 top-0 left-0 bottom-0 h-full flex-1">
         <h3 className="text-center font-semibold text-2xl py-2">
@@ -99,7 +149,7 @@ const Support = () => {
         </ul>
       </div>
       {/* Chat box */}
-      <div className="px-8 py-2 w-4/5">
+      <div ref={chatWindow} className="px-8 pt-2 w-4/5 overflow-auto pb-16">
         <Link href="/">
           <a className="group py-1 flex items-center">
             <i className="material-icons transform transition rotate-180 duration-300 group-hover:rotate-0">
@@ -111,13 +161,15 @@ const Support = () => {
         {/* Chat ground */}
         <div className="relative flex-grow">
           {chats?.map((chat) => (
-            <ChatMessage key={chat.id} message={chat} />
+            <ChatMessage key={chat?.socketid} message={chat} socket={socket} />
           ))}
+          {/* Dummy div to be focused when new message will arrive (for auto scroll feature) */}
+          <div ref={dummyDiv} className="h-8"></div>
         </div>
       </div>
       {/* Input message field */}
       <div
-        className="fixed bottom-0 border-t-2 w-full border-accent flex items-center justify-between py-9 px-8 left-1/6 right-0 h-11"
+        className="fixed bg-white bottom-0 border-t-2 w-full border-accent flex items-center justify-between py-9 px-8 left-1/6 right-0 h-11"
         style={{ left: '20%' }}
       >
         <div className="flex items-center" style={{ width: '70%' }}>
@@ -127,16 +179,13 @@ const Support = () => {
             name="client-msg"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyUp={(e) => e.key === 'Enter' && onMessageSend('Tony', message)}
+            onKeyUp={(e) => sendWithKeyboard(e.key)}
             className="w-4/5 border-0"
             placeholder="Type your queries here..."
           />
         </div>
         <div className="flex items-center" style={{ width: '28%' }}>
-          <button
-            className="mr-2"
-            onClick={() => onMessageSend('Abhishek', message)}
-          >
+          <button className="mr-2" onClick={() => onMessageSend('Abhishek')}>
             <i className="material-icons rounded-btn h-12 w-12 bg-purple-500 text-white text-md">
               send
             </i>

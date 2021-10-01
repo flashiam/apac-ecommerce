@@ -7,8 +7,8 @@
     "adkit": "npm start --prefix commerce-admin",
     "com": "npm run dev --prefix commerce",
     "server": "npm run dev --prefix commerce-backend",
-    "triple": "concurrently \"npm run adkit\" \"npm run com\" \"npm run server\"",
-    "installer": "concurrently \"yarn install --prefix material-kit-react\" \"yarn install --prefix commerce\""
+    "triple": "concurrently \"npm run server\" \"npm run com\" \"npm run adkit\"",
+    "installer": "concurrently \"npm install --prefix commerce-backend\" \"yarn install --prefix commerce-admin\" \"yarn install --prefix commerce\""
   },
   "repository": {
     "type": "git",

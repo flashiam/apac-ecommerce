@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   Box,
   Container,
@@ -12,11 +12,9 @@ import { ChevronLeft, MessageSquare, Paperclip, Send } from 'react-feather';
 import PropTypes from 'prop-types';
 import socketClient from 'socket.io-client';
 
-const url = 'http://localhost:3030';
-const socket = socketClient(url);
+const url = 'http://localhost:8000';
 
-const Message = ({ msgDetails }) => {
-  // const [admin, setAdmin] = useState(false);
+const Message = ({ msgDetails, socket }) => {
   const { id, msg } = msgDetails;
 
   const adminMsgStyle = {
@@ -28,6 +26,7 @@ const Message = ({ msgDetails }) => {
     maxWidth: '50%',
     color: 'background.paper'
   };
+
   const customerMsgStyle = {
     left: 0,
     p: 2,
@@ -39,21 +38,17 @@ const Message = ({ msgDetails }) => {
   // Function to check user
   // const isAdmin = () => id?.slice(id.length - 2, id.length) === 'ad';
 
-  useEffect(() => {
-    console.log(id?.slice(id.length - 1, id.length));
-  }, []);
-
   return (
     <Box
       sx={{
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: id === socket.id ? 'flex-end' : 'flex-start',
+        alignItems: id === socket?.id ? 'flex-end' : 'flex-start',
         pb: 1
       }}
     >
-      <Box sx={id === socket.id ? adminMsgStyle : customerMsgStyle}>
+      <Box sx={id === socket?.id ? adminMsgStyle : customerMsgStyle}>
         <p>{msg}</p>
       </Box>
       <Typography sx={{ fontSize: '0.6rem', color: '#333' }}>12:23</Typography>
@@ -64,20 +59,27 @@ const Message = ({ msgDetails }) => {
 const Support = () => {
   const [message, setMessage] = useState('');
   const [chats, setChats] = useState([]);
+  const [socket, setSocket] = useState({});
+  const dummyDiv = useRef(null);
   // let supportChats = [];
+
+  // Function to auto scroll when new message arrives
+  const moveScroll = () => {
+    dummyDiv.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   // Function to send message to customer
   const onMessageSend = (name, msg) => {
     if (msg === '') {
       alert('Type something first!!');
-    } else if (message) {
+    } else if (message && socket) {
       const adminMsg = {
-        id: socket.id,
+        id: socket?.id,
         name,
         msg
       };
       console.log(socket);
-      socket.emit('admin-msg', adminMsg);
+      socket?.emit('user-msg', adminMsg);
       setMessage('');
     } else {
       console.log(socket);
@@ -86,12 +88,25 @@ const Support = () => {
 
   // Function to set chats
   const fetchChats = (chatMsg) => {
-    setChats([...chats, chatMsg]);
+    setChats((prevMsg) => [...prevMsg, chatMsg]);
+    moveScroll();
   };
 
   useEffect(() => {
-    socket.on('server-msg', (res) => fetchChats(res));
-  }, [socket]);
+    // Connecting to socket instance
+    const newSocket = socketClient(url);
+    setSocket(newSocket);
+    // Checking network logs
+    newSocket.on('connect', () => console.log('Connected to server'));
+    newSocket.on('error', (reason) => console.log(reason));
+    newSocket.on('connect_failed', (reason) => console.log(reason));
+    newSocket.on('server-msg', (res) => fetchChats(res));
+
+    // Disconnecting from socket instance
+    return () => {
+      newSocket.disconnect();
+    };
+  }, []);
 
   return (
     <>
@@ -103,8 +118,9 @@ const Support = () => {
           backgroundColor: 'background.default',
           minHeight: '100%',
           position: 'relative',
-          py: 3,
-          mx: 3
+          pt: 3,
+          mx: 3,
+          pb: '4rem'
         }}
       >
         <Container maxWidth="lg">
@@ -115,24 +131,33 @@ const Support = () => {
           {/* Chat messages */}
           <Box sx={{ mt: 2 }}>
             {chats?.map((chat) => (
-              <Message key={chat.id} msgDetails={chat} />
+              <Message key={chat?.socketid} msgDetails={chat} socket={socket} />
             ))}
+            {/* Dummy div to be shown when new message arrives (auto scroll feature) */}
+            <div ref={dummyDiv} style={{ height: '2rem' }} />
           </Box>
           {/* Bottom message input */}
           <Box
             sx={{
-              position: 'absolute',
+              position: 'fixed',
               bottom: 0,
-              left: 0,
+              // left: '10%',
               right: 0,
-              width: '100%',
+              width: '84%',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              py: 2
+              p: 2,
+              backgroundColor: 'background.paper'
             }}
           >
-            <Box sx={{ display: 'flex', alignItems: 'center', width: '80%' }}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                width: '80%'
+              }}
+            >
               <MessageSquare />
               <TextField
                 sx={{
@@ -155,7 +180,8 @@ const Support = () => {
                 onClick={() => onMessageSend('John Doe', message)}
                 sx={{
                   backgroundColor: 'primary.main',
-                  color: 'background.paper'
+                  color: 'background.paper',
+                  mr: '1rem'
                 }}
                 color="primary"
               >
@@ -179,6 +205,7 @@ const Support = () => {
 };
 
 Message.propTypes = {
-  msgDetails: PropTypes.object.isRequired
+  msgDetails: PropTypes.object.isRequired,
+  socket: PropTypes.object.isRequired
 };
 export default Support;

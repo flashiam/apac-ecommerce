@@ -6,17 +6,21 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import api from "./api";
 import http from "http";
-// import { Server } from "socket.io";
-const socket = require("socket.io");
+import { Server } from "socket.io";
+import { v4 as uuidV4 } from "uuid";
 
 const app = express();
 
 // Initializing main server
 // const io = new Server()
-const { PORT = 3030 } = process.env;
-const httpServer = http.Server(app);
-const io = socket(httpServer, {
-  cors: "*",
+const { PORT = 8000 } = process.env;
+
+const httpServer = http.createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
 });
 
 app.use(cors());
@@ -30,23 +34,23 @@ app.use("/", api);
 // Array consisting all of the chat messages b/w admin and customer
 // const messages = [];
 
-// Ready to take ws request
-io.on("connection", socket => {
-  // Send the recieved msg from client to admin
-  socket.on("user-msg", res => {
-    io.emit("server-msg", res);
-  });
-  // Send the recieved msg from admin to client
-  // socket.on("admin-msg", res => {
-  //   socket.broadcast.emit("chat-msg", res);
-  // });
+// httpServer.listen(PORT, () =>
+//   console.log(`server started at http://localhost:${PORT}`)
+// );
+httpServer.listen(PORT, () => {
+  console.log(`server started at http://localhost:${PORT}`);
 });
 
-httpServer.listen(PORT, () =>
-  console.log(`server started at http://localhost:${PORT}`)
-);
-// app.listen(PORT, () => {
-//   console.log(`server started at http://localhost:${PORT}`);
-// });
+// Ready to take ws request
+io.on("connection", socket => {
+  console.log("user connected");
+  // Send the recieved msg from client to admin
+  socket.on("user-msg", res => {
+    res.socketid = uuidV4();
+    io.emit("server-msg", res);
+  });
+  // Send the message to user when any user gets disconnected
+  socket.on("disconnect", reason => console.log(reason));
+});
 
 export default app;
