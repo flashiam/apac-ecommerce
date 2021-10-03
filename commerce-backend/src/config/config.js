@@ -3,7 +3,7 @@ require("dotenv/config");
 module.exports = {
   development: {
     username: "apac",
-    password: "Specsoid1209",
+    password: "specsoid1209",
     database: "database-1",
     host: "database-1.cldioj2t2wzr.us-east-1.rds.amazonaws.com",
     dialect: "mysql",
@@ -13,7 +13,7 @@ module.exports = {
   },
   test: {
     username: "apac",
-    password: "Specsoid1209",
+    password: "specsoid1209",
     database: "database-1",
     host: "database-1.cldioj2t2wzr.us-east-1.rds.amazonaws.com",
     dialect: "mysql",
