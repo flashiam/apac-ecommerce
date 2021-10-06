@@ -32,7 +32,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = (0, _express2.default)();
 var _process$env$PORT = process.env.PORT,
-    PORT = _process$env$PORT === undefined ? 3000 : _process$env$PORT;
+    PORT = _process$env$PORT === undefined ? 3030 : _process$env$PORT;
 
 
 app.use((0, _cors2.default)());

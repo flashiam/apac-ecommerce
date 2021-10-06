@@ -1,5 +1,10 @@
 import { useState } from 'react'
 
+interface Conti {
+  id: number
+  name: string
+}
+
 export const Ch = () => {
   const conti = [
     {
@@ -35,7 +40,7 @@ export const Ch = () => {
       name: 'Axia',
     },
   ]
-  const [checked, setChecked] = useState([])
+  const [checked, setChecked] = useState<Conti[]>([])
   const handToggle = (val: any) => {
     // setChecked(!checked)
     const cI = checked.indexOf(val)

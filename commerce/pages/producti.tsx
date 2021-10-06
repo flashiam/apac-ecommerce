@@ -22,21 +22,28 @@ import Rate from '@components/common/Rateicons/Rate'
 import { Ch } from '@components/testing/Ch'
 import axios from 'axios'
 import { getUserProfile } from '../utils'
+import { socket } from '../utils/socket'
 
 // Function to fetch test posts
-const fetchPosts = async () => {
-  const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
-  return res.data
-}
+// const fetchPosts = async () => {
+//   const res = await axios.get('https://jsonplaceholder.typicode.com/posts')
+//   return res.data
+// }
 
 // Main Func
-const producti = ({ posts }: any) => {
-  const { data } = useQuery('posts', fetchPosts, {
-    initialData: posts,
-  })
+const producti = () => {
+  // const { data } = useQuery('posts', fetchPosts, {
+  //   initialData: posts,
+  // })
 
   useEffect(() => {
+    // socket.connect()
+    socket.on('connect', () => console.log('product connected'))
     getUserProfile()
+
+    return () => {
+      socket.disconnect()
+    }
   }, [])
 
   return (
@@ -115,18 +122,18 @@ const producti = ({ posts }: any) => {
 }
 
 // Test fetching from API
-export const getStaticProps = async () => {
-  try {
-    const data = await fetchPosts()
-    return {
-      props: {
-        posts: data,
-      },
-    }
-  } catch (err) {
-    console.log(err)
-  }
-}
+// export const getStaticProps = async () => {
+//   try {
+//     const data = await fetchPosts()
+//     return {
+//       props: {
+//         posts: data,
+//       },
+//     }
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
 
 export default producti
 producti.Layout = Layout

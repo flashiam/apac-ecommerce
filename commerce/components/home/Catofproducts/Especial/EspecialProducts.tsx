@@ -32,7 +32,10 @@ const EspecialProducts = (props: Props) => {
               placeat officia commodi numquam non, voluptates magnam sequi
               voluptatem dolorem praesentium? Deleniti.
             </h3>
-            <h5 className="text-black font-base">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quibusdam porro quasi consectetur dignissimos perferendis!</h5>
+            <h5 className="text-black font-base">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem
+              quibusdam porro quasi consectetur dignissimos perferendis!
+            </h5>
             <p>Lorem ipsum dolor sit amet.</p>
             <button
               className="mt-3 mx-auto block border-2 border-black rounded-sm w-1/2 md:w-1/4 py-1 transition-colors duration-200 ease-in hover:bg-black font-medium
@@ -47,7 +50,7 @@ const EspecialProducts = (props: Props) => {
   }
 
   return (
-    <Link href="!#">
+    <Link href="items/111">
       <a className="block hover:bg-white bg-xxmain p-4 duration-150 transition-shadow hover:shadow-xl rounded-md">
         <EspCardDesign>
           <h3 className="text-black font-medium">Flash Sale</h3>
