@@ -1,9 +1,18 @@
-import React, { FC, useState, useEffect, useRef } from 'react'
+import React, {
+  FC,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import testImg from '../public/assets/test_avatar.jpg'
 import cn from 'classnames'
-import { io, Socket } from 'socket.io-client'
+// import { io, Socket } from 'socket.io-client'
+import { Socket } from 'socket.io-client'
+import { socket } from '../utils/socket'
 
 const url = 'http://localhost:8000'
 
@@ -16,11 +25,11 @@ interface Message {
 
 type Props = {
   message: Message
-  socket?: Socket
+  socketClient?: Socket
 }
 
 // Component to render each message
-const ChatMessage: FC<Props> = ({ message, socket }) => {
+const ChatMessage: FC<Props> = ({ message, socketClient }) => {
   const { id, msg } = message
 
   return (
@@ -42,10 +51,13 @@ const ChatMessage: FC<Props> = ({ message, socket }) => {
 }
 
 const Support = () => {
+  // Connecting to socket instance
+  // const newSocket = io(url)
   const [message, setMessage] = useState('')
   const [chats, setChats] = useState<Message[]>([])
-  const [socket, setSocket] = useState<Socket>()
+  // const [socket, setSocket] = useState<Socket>()
   const [isTyping, setTyping] = useState(false)
+  const [someoneTyping, setSomeoneTyping] = useState(false)
   const chatWindow = useRef<HTMLDivElement>(null)
   const dummyDiv = useRef<HTMLDivElement>(null)
 
@@ -90,31 +102,40 @@ const Support = () => {
       }
     } else {
       // Send the message
+      setTyping(false)
       onMessageSend('Abhishek')
     }
   }
 
-  useEffect(() => {
-    // Connecting to socket instance
-    const newSocket = io(url)
-    setSocket(newSocket)
+  // Callback to check typing state of another user repeatedly
+  const onTypingCallback = useCallback(() => {
+    socket?.on('show-typing', (state) => setSomeoneTyping(state?.typing))
+  }, [someoneTyping])
 
+  useEffect(() => {
+    // setSocket(socket)
     // Checking network logs
-    newSocket.on('connect', () => console.log('Connected to server'))
-    newSocket.on('error', (reason) => console.log(reason))
-    newSocket.on('connect_failed', (reason) => console.log(reason))
-    newSocket.on('server-msg', (res) => {
+    socket?.on('connect', () => console.log('Connected to server'))
+    socket?.on('error', (reason) => console.log(reason))
+    socket?.on('connect_failed', (reason) => console.log(reason))
+    socket?.on('server-msg', (res) => {
+      console.log(res)
       setChats((prevMsg) => [...prevMsg, res])
       moveScroll()
     })
+
+    onTypingCallback()
     // Disconnecting from socket instance
     return () => {
-      newSocket.disconnect()
+      socket?.disconnect()
     }
   }, [])
 
   useEffect(() => {
     // Emit an typing event when user is typing
+    isTyping
+      ? socket?.emit('user-typing', { typing: true })
+      : socket?.emit('user-typing', { typing: false })
   }, [isTyping])
 
   return (
@@ -160,9 +181,19 @@ const Support = () => {
         </Link>
         {/* Chat ground */}
         <div className="relative flex-grow">
-          {chats?.map((chat) => (
-            <ChatMessage key={chat?.socketid} message={chat} socket={socket} />
-          ))}
+          {socket &&
+            chats?.map((chat) => (
+              <ChatMessage
+                key={chat?.socketid}
+                message={chat}
+                socketClient={socket}
+              />
+            ))}
+          {someoneTyping && (
+            <div className="p-2 max-w-xl sm:max-w-sm mb-2 rounded-md bg-gray-200">
+              Typing...
+            </div>
+          )}
           {/* Dummy div to be focused when new message will arrive (for auto scroll feature) */}
           <div ref={dummyDiv} className="h-8"></div>
         </div>

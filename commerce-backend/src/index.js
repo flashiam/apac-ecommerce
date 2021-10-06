@@ -49,6 +49,11 @@ io.on("connection", socket => {
     res.socketid = uuidV4();
     io.emit("server-msg", res);
   });
+  // Checking the typing state of the user and correspond according to that
+  socket.on("user-typing", state => {
+    // Show the typing state to another user except the one who's typing
+    socket.broadcast.emit("show-typing", state);
+  });
   // Send the message to user when any user gets disconnected
   socket.on("disconnect", reason => console.log(reason));
 });
