@@ -14,7 +14,7 @@
     }
   },
   "rules": {
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": ["error", "windows"],
     "comma-dangle": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "max-len": "off",
