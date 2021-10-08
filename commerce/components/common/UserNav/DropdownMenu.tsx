@@ -50,6 +50,10 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const { theme, setTheme } = useTheme()
   // Using firebase auth
   const auth = getAuth(app)
+
+  console.log(auth)
+  
+  // localStorage.setItem()
   // State for user signin status
   const [isLoggedIn, setLoggedIn] = useState(false)
 

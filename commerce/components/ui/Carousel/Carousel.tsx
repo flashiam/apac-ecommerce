@@ -48,11 +48,11 @@ const Carousel = ({ carousels }: Props) => {
   }, [pause, slider])
 
   return (
-    <div ref={sliderRef} className="keen-slider">
+    <div ref={sliderRef} className="keen-slider my-8 rounded-md">
       {carousels.map((carousel, i) => (
         <div key={i} className="keen-slider__slide offer-slide">
           <Link href={carousel.link}>
-            <Image src={carousel.img} />
+            <Image src={carousel.img} height={150} layout="responsive" />
           </Link>
         </div>
       ))}

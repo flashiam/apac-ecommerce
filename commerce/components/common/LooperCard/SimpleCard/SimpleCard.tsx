@@ -5,6 +5,8 @@ import SCardDesign from '@components/common/CardDesign/SCardDesign'
 
 type Props = {
   product: Product
+  index?:string|number
+
 }
 
 type Product = {
@@ -16,12 +18,12 @@ type Product = {
 }
 
 const SimpleCard = (props: Props) => {
-  const { flash_sale, img, warranty, price, name } = props.product
+  const { flash_sale, img, warranty, price, name,} = props.product
   return (
-    <SCardDesign>
+    <SCardDesign index={props.index}>
       <h5 className="text-black font-bold">{flash_sale}</h5>
       <div className="w-20 h-40 mx-auto">
-        <Image src={laptop1} />
+        <Image src={img?img:laptop1} />
       </div>
       <h3 className="text-black-700 font-medium">{name}</h3>
       <h4 className="text-gray-500 font-thin">{warranty}</h4>

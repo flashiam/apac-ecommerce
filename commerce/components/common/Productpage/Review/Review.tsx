@@ -39,8 +39,8 @@ const Review = (props: Props) => {
         </div>
         {/*Images */}
         <div className="mt-6 my-5">
-          {photos.map((p) => (
-            <div
+          {photos.map((p,i) => (
+            <div key={i}
               className="w-12 inline-flex h-12 mr-2 p-2 border-2 border-accent-2"
               // style={{ border: '1px solid grey' }}
             >

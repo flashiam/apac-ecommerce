@@ -44,7 +44,7 @@ const page1 = () => {
         ))}
       </div>
       {/* REFURBHISHED IPHONE 11 */}
-      <PheadDetails />
+      {/* <PheadDetails /> */}
       {/* MAIN PRODUCT */}
       <div className="my-6 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6">
         <div className="p-8 col-span-2 bg-white rounded-md">
