@@ -8,7 +8,7 @@ import p3 from '../../public/assets/profile/p3.jpg'
 import p4 from '../../public/assets/profile/p4.jpg'
 // import {getStaticProps }
 import { Layout, Searchbar } from '@components/common'
-
+import {server} from "../../config/index"
 import Link from 'next/link'
 
 import Head from 'next/head'
@@ -20,64 +20,27 @@ import RSideDetails from '@components/common/Products/SingleProduct/RSideDetails
 import TopLayer from '@components/common/Products/SingleProduct/TopLayer'
 import SideLinks from '@components/common/Productpage/SideLinks/SideLinks'
 import CheckBoxes from '@components/common/Productpage/CheckBoxes/CheckBoxes'
-import type { Big } from '../../data1'
+// import type { Big } from '../../data1'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
-import { itemsOfProducts, dataOfProducts } from '../../data1'
+import { itemsOfProducts, dataOfProducts ,photos,reviews} from '../../data1'
+import type {Big } from '../../data1'
 import Rate from '@components/common/Rateicons/Rate'
 import { Rating } from '@components/ui'
 import Review from '@components/common/Productpage/Review/Review'
+import ProductCarousel from '@components/ui/Carousel/ProductCarousel'
+import AppCard from '@components/ui/AppCard/AppCard'
+import { pCarousel } from 'data2'
 
-const photos = [laptop1, laptop2, laptop1, laptop2, laptop1]
-
-const reviews = [
-  {
-    img: p1,
-    name: 'Manas',
-    title: 'That is worst product!!',
-    comment:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
-    photos: photos,
-  },
-  {
-    img: p1,
-    name: 'Abhishek',
-    title: 'That is worst product!!',
-    comment:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
-    photos: photos,
-  },
-  {
-    img: p1,
-    name: 'Sagar',
-    title: 'That is worst product!!',
-    comment:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
-    photos: photos,
-  },
-  {
-    img: p3,
-    name: 'Dubey',
-    title: 'That is worst product!!',
-    comment:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
-    photos: photos,
-  },
-  {
-    img: p2,
-    name: 'Himanshu',
-    title: 'That is worst product!!',
-    comment:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis beatae assumenda, perspiciatis quis explicabo itaque quod laboriosam, consequatur consequuntur cupiditate ipsam facere quidem earum ratione.',
-    photos: photos,
-  },
-]
 
 // Static path function
 // Main Func
-const page1 = () => {
+const productPage = ({res}:any) => {
+
+
+  // console.log(res)
   return (
-    <div className="md:p-10 p-5 sm:p-7 bg-gray-100">
+    <div className="md:p-13 p-5 sm:p-7 bg-gray-100">
       <Head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -88,32 +51,34 @@ const page1 = () => {
 
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
-        {dataOfProducts.linksOfProducts.links.map((l, i) => (
-          <Link key={i} href="!#">
+        {res.linksOfProducts.links.map((l:any, i:any) => (
+          <h4 key={i} >
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
               <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
                 {l.icon}
               </span>
               {l.link}
             </a>
-          </Link>
+          </h4>
         ))}
       </div>
-      {/* REFURBHISHED IPHONE 11 */}
-      <PheadDetails />
-      {/* MAIN PRODUCT */}
-      <div className="my-6 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6">
-        <div className="p-8 col-span-2 bg-white rounded-md">
-          <MainProduct main={dataOfProducts.main} />
+      {/* REFURBHISHED Product Name */}
+      <PheadDetails pname={res.main.name} />
+      {/* MAIN PRODUCT Grid Change to div */}
+      <div className="my-6">
+        <div className="p-6 bg-white rounded-md">
+          <MainProduct main={res.main} rev={reviews[0].photos} />
         </div>
-        {/* left container */}
-        <div className="p-6 rounded-md bg-white w-full mt-6 md:mt-0">
+   
+      </div>
+     {/*  Main container */}
+     <div className="p-6 rounded-md bg-white w-full mt-6">
           <div>
             {/* Rating */}
             <div>
               <Rate />
             </div>
-            <p className="my-2 3text-gray-600 font-light text-xs">
+            <p className="my-2 text-gray-600 font-light text-xs">
               {dataOfProducts.comments.reviews}
             </p>
           </div>
@@ -135,47 +100,24 @@ const page1 = () => {
             See Review
           </button>
         </div>
-      </div>
+     
 
-      {/*  All PRODUCTS  */}
-      <div className="mb-4">
-        <div className="mb-6">
-          <Link href="!#">
-            <a className="my-4 text-black text-2xl">All Products</a>
-          </Link>
+         {/* For Mobo */}
+      <div className="my-6">
+        <h1 className="text-xl mb-7 font-medium text-black">Related Products</h1>
+          <ProductCarousel>
+            {pCarousel.map((p, i) => (
+              <div key={i} className="keen-slider__slide slide">
+                <AppCard>
+                  <div className="h-20 w-20">
+                    <Image src={p.img} />
+                  </div>
+                  <h3 className="text-black text-md">{p.name}</h3>
+                </AppCard>
+              </div>
+            ))}
+          </ProductCarousel>
         </div>
-
-        {/* Grid */}
-        <div className="md:grid md:grid-cols-4 sm:grid sm:grid-cols-3 grid grid-cols-2 2xm:grid-cols-1">
-          {/* Single columns */}
-          <div className="md:col-span-1 sm:col-span-1 md:bg-transparent pt-2 col-span-1">
-            {/*SPAN-1 LEFT SIDE LINKS */}
-            <div>
-              <h2 className="text-black font-medium">Categories</h2>
-              {/* Parent */}
-              <ul className="list-inside">
-                <SideLinks flips={dataOfProducts.linksOfProducts.main} />
-              </ul>
-              <h1 className="my-2 text-black font-medium text-lg">
-                95 PRODUCTS
-              </h1>
-            </div>
-            {/* PRICE */}
-            <div></div>
-            {/* CONDITION */}
-            <CheckBoxes />
-          </div>
-
-          {/* Span Triple columns */}
-          <div className="md:col-span-3 sm:col-span-2 col-span-1">
-            <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
-              {dataOfProducts.relatedProducts.map((product: any, i: any) => (
-                <SimpleCard key={i} product={product} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
       {/* Reviews and posts */}
       <div className="my-6">
         <h2 className="mb-7 text-black font-medium text-xl">
@@ -199,18 +141,20 @@ const page1 = () => {
   )
 }
 
-export default page1
+export default productPage
 
 // Static paths function
 export const getStaticPaths = async () => {
   try {
-    const rest = await Promise.resolve(itemsOfProducts)
-    const idPaths = rest?.map((product) => ({
-      params: { id: product.id.toString() },
-    })) // [{params: {id: 1}},{params: {id: 2}}]
-    // console.log(idPaths)
+    // const rest = await Promise.resolve(itemsOfProducts)
+const data=await fetch(`${server}/api/items`)
+    const jsonData = await data.json();
+    // console.log(jsonData)
+    const ids= jsonData?.map((p:any) => (p.id)) // [{params: {id: 1}},{params: {id: 2}}]
+    const paths = ids.map((id: any) => ({ params: { id:id.toString() } }));
+    console.log(paths);
     return {
-      paths: idPaths,
+       paths:paths,
       fallback: false,
     }
   } catch (err) {
@@ -218,13 +162,17 @@ export const getStaticPaths = async () => {
   }
 }
 // Static props function
-export const getStaticProps = async (props: any) => {
+export const getStaticProps = async({ params: { id } }:any) => {
   // console.log(props)
   try {
-    const res = await Promise.resolve(itemsOfProducts)
+    // const res = await Promise.resolve(itemsOfProducts)
+
+    const data=await fetch(`${server}/api/items/${id}`)
+    const res = await data.json();
+    // console.log(res)
     return {
       props: {
-        res,
+        res
       },
     }
   } catch (err) {
@@ -232,4 +180,4 @@ export const getStaticProps = async (props: any) => {
   }
 }
 
-page1.Layout = Layout
+productPage.Layout = Layout

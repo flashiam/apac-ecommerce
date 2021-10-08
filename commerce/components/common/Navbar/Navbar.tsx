@@ -27,17 +27,17 @@ interface Category {
 
 const Navbar: FC<NavbarProps> = ({ links }) => {
   const [categories] = useState<Category[]>([
-    { label: 'Flash Sale!', link: '/items/111' },
-    { label: 'Back to Work', link: '/items/111' },
-    { label: 'Student Discount', link: '/items/111' },
+    { label: 'Flash Sale!', link: '/bestdeals/FlashSale' },
+    { label: 'Back to Work', link: '/bestdeals/backtowork' },
+    { label: 'Student Discount', link: '/bestdeals/student_discount' },
     { label: 'IPhone XS', link: '/items/111' },
-    { label: 'Macbook', link: '/items/111' },
-    { label: 'IPhone 11', link: '/items/111' },
-    { label: 'IPhone', link: '/items/111' },
+    { label: 'Macbook', link: '/items/112' },
+    { label: 'IPhone 11', link: '/items/113' },
+    { label: 'IPhone', link: '/items/114' },
     { label: 'IPad', link: '/items/111' },
-    { label: 'IPhone XR', link: '/items/111' },
-    { label: 'Best Sellers', link: '/items/111' },
-    { label: 'Apple Watch', link: '/items/111' },
+    { label: 'IPhone XR', link: '/items/112' },
+    { label: 'Best Sellers', link: '/items/113' },
+    { label: 'Apple Watch', link: '/items/114' },
     { label: 'Samsung Galaxy', link: '/items/111' },
     { label: 'Certified Renewed', link: '/items/111' },
     { label: 'IPhone X', link: '/items/111' },
@@ -128,7 +128,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           <div className="hidden md:block">
             <div ref={sliderRef} className="keen-slider">
               {categories.map((cat, i) => (
-                <Link key={i} href={cat.link}>
+                <Link key={i} href={cat.link}  >
                   <a className={`keen-slider__slide slide`}>{cat.label}</a>
                 </Link>
               ))}

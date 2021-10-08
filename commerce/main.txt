@@ -1,0 +1,39 @@
+ {/*  All PRODUCTS  */}
+      <div className="mb-4">
+        <div className="mb-6">
+          <Link href="!#">
+            <a className="my-4 text-black text-2xl">All Products</a>
+          </Link>
+        </div>
+
+        {/* Grid */}
+        <div className="md:grid md:grid-cols-4 sm:grid sm:grid-cols-3 grid grid-cols-2 2xm:grid-cols-1">
+          {/* Single columns */}
+          <div className="md:col-span-1 sm:col-span-1 md:bg-transparent pt-2 col-span-1">
+            {/*SPAN-1 LEFT SIDE LINKS */}
+            <div>
+              <h2 className="text-black font-medium">Categories</h2>
+              {/* Parent */}
+              <ul className="list-inside">
+                <SideLinks flips={dataOfProducts.linksOfProducts.main} />
+              </ul>
+              <h1 className="my-2 text-black font-medium text-lg">
+                95 PRODUCTS
+              </h1>
+            </div>
+            {/* PRICE */}
+            <div></div>
+            {/* CONDITION */}
+            <CheckBoxes />
+          </div>
+
+          {/* Span Triple columns */}
+          <div className="md:col-span-3 sm:col-span-2 col-span-1">
+            <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
+              {dataOfProducts.relatedProducts.map((product: any, i: any) => (
+                <SimpleCard key={i} product={product} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
