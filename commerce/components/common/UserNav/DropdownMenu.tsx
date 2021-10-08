@@ -10,7 +10,7 @@ import { Moon, Sun } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import ClickOutside from '@lib/click-outside'
 import useLogout from '@framework/auth/use-logout'
-import testImg from '../../../public/assets/test_avatar.jpg'
+// import testImg from '../../../public/assets/test_avatar.jpg'
 import { getAuth, signOut, deleteUser } from 'firebase/auth'
 import {
   disableBodyScroll,
@@ -52,7 +52,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const auth = getAuth(app)
 
   console.log(auth)
-  
+
   // localStorage.setItem()
   // State for user signin status
   const [isLoggedIn, setLoggedIn] = useState(false)
@@ -119,7 +119,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
               <li className="mx-6 py-3">
                 <div className="flex justify-start items-center">
                   <div className="h-12 w-12">
-                    <Image
+                    {/* <Image
                       src={
                         isLoggedIn
                           ? auth.currentUser?.photoURL
@@ -129,7 +129,8 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                       width="100%"
                       alt="test profile"
                       className="object-cover rounded-full"
-                    />
+                    /> */}
+                    <i>User</i>
                   </div>
                   <p className="text-md font-semibold pl-2 flex flex-col items-start text-gray-700">
                     Hello,{' '}
