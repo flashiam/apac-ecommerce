@@ -13,6 +13,7 @@ type UserProfile = {
   user: User
 }
 
+
 const useUserProfile = (): User | null => {
   const [profile, setProfile] = useState<User | null>(null)
   const auth = getAuth(app)

@@ -13,7 +13,7 @@ interface Response {
   isError: boolean
 }
 
-const useGoogleSignin = async (auth: Auth): Promise<Response> => {
+const GoogleSignin = async (auth: Auth): Promise<Response> => {
   const response: Response = {
     user: null,
     credentials: null,
@@ -44,4 +44,4 @@ const useGoogleSignin = async (auth: Auth): Promise<Response> => {
   return response
 }
 
-export default useGoogleSignin
+export default GoogleSignin

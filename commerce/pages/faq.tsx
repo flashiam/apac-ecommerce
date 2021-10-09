@@ -65,8 +65,8 @@ const faq = () => {
           <option value="" disabled>
             Select
           </option>
-          {faqList.map((faq) => (
-            <option className="flex items-center p-5 hover:bg-black">
+          {faqList.map((faq,i) => (
+            <option key={ i} className="flex items-center p-5 hover:bg-black">
               <span className="flex space-x-3 justify-between py-2 hover:bg-purple-300">
                 {/* <span className="material-icons">{faq.icon}</span> */}
                 <span className="w-12 font-medium">{faq.name}</span>

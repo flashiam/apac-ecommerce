@@ -31,7 +31,7 @@ import { socket } from '../utils/socket'
 // }
 
 // Main Func
-const producti = () => {
+const Producti = () => {
   // const { data } = useQuery('posts', fetchPosts, {
   //   initialData: posts,
   // })
@@ -135,8 +135,9 @@ const producti = () => {
 //   }
 // }
 
-export default producti
-producti.Layout = Layout
+export default Producti
+Producti.Layout = Layout
+
 
 {
   /* <div className="my-6 grid md:grid-cols-3 sm:grid-cols-1 gap-6">

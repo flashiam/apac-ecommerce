@@ -34,7 +34,7 @@ interface WithRouterProps {
 interface MyComponentProps extends WithRouterProps {}
 // Static path function
 // Main Func
-const bestDeals = (props:any) => {
+const BestDeals = (props:any) => {
 
   const router = useRouter()
   
@@ -137,7 +137,7 @@ const mainTitle=bid?.toString().toUpperCase()
   )
 }
 
-export default bestDeals
+export default BestDeals
 
 
 
@@ -214,5 +214,5 @@ export default bestDeals
 //   }
 // }
 
-bestDeals.Layout = Layout
+BestDeals.Layout = Layout
 
