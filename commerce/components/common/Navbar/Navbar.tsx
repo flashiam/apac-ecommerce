@@ -11,6 +11,7 @@ import DropdownMenu from '../UserNav/DropdownMenu'
 import { WishlistButton } from '@components/wishlist'
 import Notification from '../Notification/Notification'
 import { useRouter } from 'next/router'
+import CartButton from '../Cart/CartButton'
 
 interface Link {
   href: string
@@ -106,10 +107,14 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                     ],
                   }}
                 />
+
                 {/* Notification */}
                 <Notification color="bg-purple" />
                 {/* <CartSidebarView /> */}
                 <DropdownMenu />
+
+                {/* CartButton */}
+             <CartButton/>
               </div>
             </div>
             {process.env.COMMERCE_SEARCH_ENABLED && (
@@ -134,7 +139,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
               ))}
             </div>
           </div>
+
         </Container>
+
       </NavbarRoot>
     </>
   )

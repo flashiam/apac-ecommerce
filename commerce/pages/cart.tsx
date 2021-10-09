@@ -6,6 +6,7 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import { useRouter } from 'next/router'
 
 export async function getStaticProps({
   preview,
