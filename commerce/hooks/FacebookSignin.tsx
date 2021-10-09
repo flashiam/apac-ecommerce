@@ -1,6 +1,6 @@
 import { FacebookAuthProvider, Auth, signInWithPopup } from 'firebase/auth'
 
-const useFacebookSignin = async (auth: Auth) => {
+const FacebookSignin = async (auth: Auth) => {
   try {
     const provider = new FacebookAuthProvider()
     provider.addScope('user-birthday')
@@ -11,4 +11,4 @@ const useFacebookSignin = async (auth: Auth) => {
   }
 }
 
-export default useFacebookSignin
+export default FacebookSignin

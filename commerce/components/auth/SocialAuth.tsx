@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from 'react'
 import { getAuth } from 'firebase/auth'
 import app from 'firebase-config'
-import { useGoogleSignin, useFacebookSignin } from '../../hooks'
+import { GoogleSignin, FacebookSignin } from '../../hooks'
 import { getUserProfile } from '../../utils'
 
 const SocialAuth: FC = () => {
@@ -10,7 +10,7 @@ const SocialAuth: FC = () => {
   // Function for google sign in
   const googleSignIn = async () => {
     try {
-      const { user, credentials } = await useGoogleSignin(auth)
+      const { user, credentials } = await GoogleSignin(auth)
     } catch (err) {
       console.log(err)
     }
@@ -19,7 +19,7 @@ const SocialAuth: FC = () => {
   // Function for facebook sign in
   const facebookSignIn = async () => {
     try {
-      await useFacebookSignin(auth)
+      await FacebookSignin(auth)
     } catch (error) {
       console.log(error)
     }

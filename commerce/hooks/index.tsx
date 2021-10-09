@@ -1,5 +1,5 @@
-import useGoogleSignin from './useGoogleSignin'
-import useUserProfile from './useUserProfile'
-import useFacebookSignin from './useFacebookSignin'
+import GoogleSignin from './GoogleSignin'
+import UserProfile from './UserProfile'
+import FacebookSignin from './FacebookSignin'
 
-export { useGoogleSignin, useUserProfile, useFacebookSignin }
+export { GoogleSignin, UserProfile, FacebookSignin }

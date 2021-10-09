@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import type { StartLinks, Main, ObjLinks } from '../../../../data1'
+import type { Main } from '../../../../data1'
 import Link from 'next/link'
 type Props = {
   flips: Main

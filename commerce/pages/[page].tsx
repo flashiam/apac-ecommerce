@@ -19,7 +19,7 @@ import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetai
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
 
 // Main Func
-const page1 = () => {
+const Page1 = () => {
   return (
     <div className="md:p-10 p-5 sm:p-7 bg-gray-100">
       <Head>
@@ -48,7 +48,7 @@ const page1 = () => {
       {/* MAIN PRODUCT */}
       <div className="my-6 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6">
         <div className="p-8 col-span-2 bg-white rounded-md">
-          <MainProduct main={dataOfProducts.main} />
+          {/* <MainProduct main={dataOfProducts.main} /> */}
         </div>
         {/* left container */}
         <div className="p-6 rounded-md bg-white w-full mt-6 md:mt-0">
@@ -134,8 +134,8 @@ const page1 = () => {
   )
 }
 
-export default page1
-page1.Layout = Layout
+export default Page1
+Page1.Layout = Layout
 
 {
   /* <div className="my-6 grid md:grid-cols-3 sm:grid-cols-1 gap-6">

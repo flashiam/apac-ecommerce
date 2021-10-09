@@ -18,9 +18,9 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
 import getUserProfile from '@utils/getUserProfile'
-import { useUserProfile } from '../../../hooks'
+import { UserProfile } from '../../../hooks'
 import app from 'firebase-config'
-
+import testImg from "../../../public/assets/profile/p2.jpg"
 interface DropdownMenuProps {
   open?: boolean
 }
@@ -51,9 +51,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   // Using firebase auth
   const auth = getAuth(app)
 
-  console.log(auth)
-
-  // localStorage.setItem()
+  
   // State for user signin status
   const [isLoggedIn, setLoggedIn] = useState(false)
 
@@ -84,9 +82,9 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     }
   }
 
-  const userName = useUserProfile()?.displayName
-  const profilePic = useUserProfile()?.photoURL
-  const isVerified = useUserProfile()?.emailVerified
+  const userName = UserProfile()?.displayName
+  const profilePic = UserProfile()?.photoURL
+  const isVerified = UserProfile()?.emailVerified
 
   useEffect(() => {
     auth.currentUser ? setLoggedIn(true) : setLoggedIn(false)
@@ -119,7 +117,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
               <li className="mx-6 py-3">
                 <div className="flex justify-start items-center">
                   <div className="h-12 w-12">
-                    {/* <Image
+                    <Image
                       src={
                         isLoggedIn
                           ? auth.currentUser?.photoURL
@@ -129,15 +127,14 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                       width="100%"
                       alt="test profile"
                       className="object-cover rounded-full"
-                    /> */}
-                    <i>User</i>
+                    />
                   </div>
                   <p className="text-md font-semibold pl-2 flex flex-col items-start text-gray-700">
                     Hello,{' '}
                     <span className="text-xl font-bold">
                       {isLoggedIn
                         ? auth.currentUser?.displayName?.split(' ')[0]
-                        : 'Anonymous'}
+                        : 'Henry'}
                     </span>
                   </p>
                 </div>
