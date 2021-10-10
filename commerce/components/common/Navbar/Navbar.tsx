@@ -1,5 +1,5 @@
 // Extra
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
@@ -57,6 +57,8 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
   ])
 
   const router = useRouter()
+  const navLinkRef = useRef<HTMLDivElement>(null)
+  const [scrollOffset, setScrollOffset] = useState(0)
 
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slidesPerView: 10,
@@ -64,9 +66,28 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
     spacing: 1,
   })
 
+  // Function to hide links on scroll
+  const hideOnScroll = () => {
+    window.addEventListener('scroll', () => {
+      if (scrollY >= 100 && navLinkRef.current) {
+        // Hide the nav links
+        navLinkRef.current.style.display = 'none'
+      } else if (navLinkRef.current)
+        // Show the nav links
+        navLinkRef.current.style.display = 'block'
+    })
+  }
+  //
+
   useEffect(() => {
     console.log(navigator.language)
-  }, [])
+    // setScrollOffset(window.scrollY)
+    // if(scrollOffset > 10) {
+    //   alert('Hide the links')
+    // }
+    hideOnScroll()
+    // console.log(scrollOffset)
+  }, [navLinkRef.current])
   return (
     <>
       <NavbarRoot>
@@ -109,13 +130,11 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                 />
 
                 {/* Notification */}
-                <Notification color="bg-purple" />
-                    {/* CartButton */}
-             <CartButton/>
+                <Notification color="bg-gray-200" />
+                {/* CartButton */}
+                <CartButton color="bg-gray-200" />
                 {/* <CartSidebarView /> */}
                 <DropdownMenu />
-
-            
               </div>
             </div>
             {process.env.COMMERCE_SEARCH_ENABLED && (
@@ -131,18 +150,16 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             <Searchbar id="mobile-search" />
           </div>
 
-          <div className="hidden md:block">
+          <div ref={navLinkRef}>
             <div ref={sliderRef} className="keen-slider">
               {categories.map((cat, i) => (
-                <Link key={i} href={cat.link}  >
+                <Link key={i} href={cat.link}>
                   <a className={`keen-slider__slide slide`}>{cat.label}</a>
                 </Link>
               ))}
             </div>
           </div>
-
         </Container>
-
       </NavbarRoot>
     </>
   )

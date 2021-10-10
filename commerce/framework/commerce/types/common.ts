@@ -5,7 +5,7 @@ export type Discount = {
 
 export type Measurement = {
   value: number
-  unit: 'KILOGRAMS' | 'GRAMS' | 'POUNDS' | 'OUNCES'
+  unit: 'KILOGRAMS' | 'GRAMS' | 'POUNDS' | 'OUNCES' | 'INCHES' | 'FOOT'
 }
 
 export type Image = {

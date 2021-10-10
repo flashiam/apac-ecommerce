@@ -10,6 +10,7 @@ import usePrice from '@framework/product/use-price'
 import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import Quantity from '@components/ui/Quantity'
+import { CartProduct } from '../../../data1'
 
 type ItemOption = {
   name: string
@@ -18,6 +19,8 @@ type ItemOption = {
   valueId: number
 }
 
+type Props = {}
+
 const CartItem = ({
   item,
   variant = 'default',
@@ -25,20 +28,22 @@ const CartItem = ({
   ...rest
 }: {
   variant?: 'default' | 'display'
-  item: LineItem
+  item: CartProduct
   currencyCode: string
 }) => {
   const { closeSidebarIfPresent } = useUI()
   const [removing, setRemoving] = useState(false)
   const [quantity, setQuantity] = useState<number>(item.quantity)
+  const [totalPrice, setTotalPrice] = useState<number>(0)
+  const [price, setPrice] = useState<number>(item.price)
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
 
-  const { price } = usePrice({
-    amount: item.variant.price * item.quantity,
-    baseAmount: item.variant.listPrice * item.quantity,
-    currencyCode,
-  })
+  // const { price } = usePrice({
+  //   amount: item.variant.price * item.quantity,
+  //   baseAmount: item.variant.listPrice * item.quantity,
+  //   currencyCode,
+  // })
 
   const handleChange = async ({
     target: { value },
@@ -51,6 +56,7 @@ const CartItem = ({
     const val = Number(quantity) + n
     setQuantity(val)
     await updateItem({ quantity: val })
+    setPrice(item.price * val)
   }
 
   const handleRemove = async () => {
@@ -60,6 +66,11 @@ const CartItem = ({
     } catch (error) {
       setRemoving(false)
     }
+  }
+
+  // Function to calculate price
+  const calcPrice = () => {
+    setPrice(price * quantity)
   }
 
   // TODO: Add a type for this
@@ -74,6 +85,10 @@ const CartItem = ({
     // do this differently as it could break easily
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item.quantity])
+
+  useEffect(() => {
+    setPrice(quantity * item.price)
+  }, [])
 
   return (
     <li
@@ -90,14 +105,14 @@ const CartItem = ({
               className={s.productImage}
               width={150}
               height={150}
-              src={item.variant.image!.url}
-              alt={item.variant.image!.altText}
+              src={item.img}
+              alt={item.name}
               unoptimized
             />
           </Link>
         </div>
         <div className="flex-1 flex flex-col text-base">
-          <Link href={`/product/${item.path}`} passHref={false}>
+          <Link href={`/items/${item.path}`} passHref={false}>
             <span
               className={s.productName}
               onClick={() => closeSidebarIfPresent()}
@@ -131,11 +146,11 @@ const CartItem = ({
             </div>
           )}
           {variant === 'display' && (
-            <div className="text-sm tracking-wider">{quantity}x</div>
+            <div className="text-sm tracking-wider">{quantity}</div>
           )}
         </div>
         <div className="flex flex-col justify-between space-y-2 text-sm">
-          <span>{price}</span>
+          <span>$ {price}</span>
         </div>
       </div>
       {variant === 'default' && (

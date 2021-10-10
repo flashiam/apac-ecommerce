@@ -9,6 +9,24 @@ export type SelectedOption = {
   value: string
 }
 
+export interface MProduct {
+  id: number
+  totalReview?: string
+  qna?: string
+  rating: string
+  name: string
+  support_sims?: string
+  works_with: string
+  price: string
+  dis: string
+  warranty: string
+  cond: string
+  details: string
+  priceoff: string
+  img: StaticImageData
+  description?: string
+}
+
 export type LineItem = {
   id: string
   variantId: string

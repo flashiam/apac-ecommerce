@@ -15,6 +15,9 @@ module.exports = {
     },
   },
   theme: {
+    // screens:{
+    //   "c1":"950px"
+    // },
     customForms: (theme) => ({
       default: {
         option: {
