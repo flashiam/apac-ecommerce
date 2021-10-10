@@ -110,11 +110,12 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
 
                 {/* Notification */}
                 <Notification color="bg-purple" />
+                    {/* CartButton */}
+             <CartButton/>
                 {/* <CartSidebarView /> */}
                 <DropdownMenu />
 
-                {/* CartButton */}
-             <CartButton/>
+            
               </div>
             </div>
             {process.env.COMMERCE_SEARCH_ENABLED && (
