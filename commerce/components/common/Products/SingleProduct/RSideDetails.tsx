@@ -35,7 +35,7 @@ const RSideDetails = (props:mainProduct ) => {
   }
   return (
     <>
-      <div className=" md:overflow-y-scroll md:w-5/12 flex-none sm:w-full md:flex-1 block rounded-sm p-1 m-0 sm:block md:bg-white bg-gray-100 md:scr" >
+      <div className="scrollbar md:overflow-y-scroll md:w-5/12 flex-none sm:w-full md:flex-1 block rounded-sm p-1 m-0 sm:block md:bg-white bg-gray-100 md:scr" >
         <div className="flex justify-between">
         <h1 className="md:text-2xl md:text-black font-medium md:block sm:hidden">
             {price} &nbsp; <span className="font-extralight text-sm text-gray-400 relative">
@@ -99,7 +99,7 @@ const RSideDetails = (props:mainProduct ) => {
         </button>
         </div>
       
-        {/* <Button/> */}
+      
       </div>
     </>
   )
