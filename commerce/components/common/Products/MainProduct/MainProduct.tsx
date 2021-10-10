@@ -45,7 +45,7 @@ const MainProduct = (props: mainProduct) => {
           <div className="md:block hidden md:w-1/12" >
           {props.rev.map((p:any,i:any) => (
             <div key={i}
-              className="w-12 h-12 border-2 border-accent-2 mb-3 cursor-pointer" >
+              className="w-12 h-12 border-2 border-gray-700 mb-3 cursor-pointer" >
               <Image src={p} className="w-full" />
             </div>
           ))}
@@ -65,10 +65,10 @@ const MainProduct = (props: mainProduct) => {
             <RSideDetails main={props.main} />
 
           <div className="flex sm:flex-row flex-col sm:justify-between sm:gap-4">
-          <button className="md:hidden sm:inline-block block mt-4 bg-violet rounded-sm sm:w-1/2 py-1 hover:bg-violet-400 w-full text-white">
+          <button className="md:hidden duration-200 focus:sm:inline-block block mt-4 hover:bg-gray-800 rounded-sm sm:w-1/2 py-1 bg-black w-full text-white">
             Add to Cart
             </button>
-            <button className="md:hidden sm:inline-block block mt-4 bg-pink rounded-sm sm:w-1/2 py-1 hover:bg-pink w-full text-white">
+            <button className="md:hidden sm:inline-block block mt-4 bg-gray-100 hover:bg-white duration-200 rounded-sm sm:w-1/2 py-1 border-2 border-black w-full text-black">
               Buy Now
             </button>
      </div>

@@ -106,7 +106,7 @@ const mainTitle=bid?.toString().toUpperCase()
 
           {/* Span Triple columns */}
           <div className="md:col-span-3 sm:col-span-2 col-span-1">
-            <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
+            <div className="rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
               {dataOfProducts.relatedProducts.map((product: any, i: string|number) => (
                 <SimpleCard key={i} index={i} product={product} />
               ))}
@@ -114,23 +114,33 @@ const mainTitle=bid?.toString().toUpperCase()
           </div>
         </div>
       </div>
-      {/* Reviews and posts */}
-      <div className="my-6">
-        <h2 className="mb-7 text-black font-medium text-xl">
-          Ask something about this products
-        </h2>
-        <Searchbar ph="Your Questions...." />
-        {/*Customers reviews  */}
-        <div className="mt-7">
-          <h3 className="text-black font-medium text-lg">Customer Reviews</h3>
-          {/* Customer pic and Name */}
-          <div>
-            {reviews.map((r, i) => (
-              <Review key={i} review={r} />
-            ))}
-          </div>
-        </div>
+
+
+      {/* Pagination */}
+      <div className="flex justify-around items-center my-4" style={{maxWidth:"800px",margin:"0 auto"}}>
+        <Link href="#!">
+      <a className="border-2 p-2 bg-white font-semibold"> 
+             Prev
+            </a>
+        </Link>
+        {
+          [1,2,3,5,6,7].map((n,i)=>(
+            <Link href={`/bestdeals/${i}`} key={i}>
+            <a className="border-2 p-2 font-semibold bg-white"> 
+            {n}
+            </a>
+          </Link>
+          ))
+        }
+
+<Link href="#!">
+<a className="border-2 p-2 bg-white font-semibold"> 
+         Next
+            </a>
+        </Link>
+    
       </div>
+    
 
       {/* Review section end */}
     </div>
@@ -142,6 +152,23 @@ export default BestDeals
 
 
 
+//   {/* Reviews and posts */}
+//   <div className="my-6">
+//   <h2 className="mb-7 text-black font-medium text-xl">
+//     Ask something about this products
+//   </h2>
+//   <Searchbar ph="Your Questions...." />
+//   {/*Customers reviews  */}
+//   <div className="mt-7">
+//     <h3 className="text-black font-medium text-lg">Customer Reviews</h3>
+//     {/* Customer pic and Name */}
+//     <div>
+//       {reviews.map((r, i) => (
+//         <Review key={i} review={r} />
+//       ))}
+//     </div>
+//   </div>
+// </div>
 
 // // Static paths function
 // export const getStaticPaths = async () => {
