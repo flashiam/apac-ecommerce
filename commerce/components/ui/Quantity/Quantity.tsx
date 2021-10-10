@@ -34,7 +34,7 @@ const Quantity: FC<QuantityProps> = ({
           type="number"
           max={max}
           min="0"
-          readOnly
+          disabled
         />
       </label>
       <button

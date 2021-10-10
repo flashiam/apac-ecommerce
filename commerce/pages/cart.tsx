@@ -7,6 +7,10 @@ import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import { useRouter } from 'next/router'
+import { LineItem } from '../framework/commerce/types/cart'
+import { Discount } from '../framework/commerce/types/common'
+import testImg from '../public/assets/img/iphone.png'
+import { CartProduct } from 'data1'
 
 export async function getStaticProps({
   preview,
@@ -41,10 +45,39 @@ export default function Cart() {
     }
   )
 
+  const cartItems: CartProduct[] = [
+    {
+      id: '1',
+      img: testImg,
+      name: 'Xiaomi',
+      inStock: true,
+      price: 450,
+      quantity: 2,
+      color: 'red',
+      storage: 64,
+      ram: 4,
+      modelno: 'C-55934',
+      path: '111',
+    },
+    {
+      id: '2',
+      img: testImg,
+      name: 'Vivo',
+      inStock: true,
+      price: 800,
+      quantity: 2,
+      color: 'purple',
+      storage: 64,
+      ram: 4,
+      modelno: 'C-55934',
+      path: '111',
+    },
+  ]
+
   return (
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
-        {isLoading || isEmpty ? (
+        {/* {isLoading || isEmpty ? (
           <div className="flex-1 px-12 py-24 flex flex-col justify-center items-center ">
             <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-12 rounded-lg text-primary">
               <Bag className="absolute" />
@@ -66,44 +99,44 @@ export default function Cart() {
               information and try again.
             </h2>
           </div>
-        ) : success ? (
-          <div className="flex-1 px-4 flex flex-col justify-center items-center">
+        ) : success ? ( */}
+        {/* <div className="flex-1 px-4 flex flex-col justify-center items-center">
             <span className="border border-white rounded-full flex items-center justify-center w-16 h-16">
               <Check />
             </span>
             <h2 className="pt-6 text-xl font-light text-center">
               Thank you for your order.
             </h2>
-          </div>
-        ) : (
-          <div className="px-4 sm:px-6 flex-1">
-            <Text variant="pageHeading">My Cart</Text>
-            <Text variant="sectionHeading">Review your Order</Text>
-            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accent-2 border-b border-accent-2">
-              {data!.lineItems.map((item: any) => (
-                <CartItem
-                  key={item.id}
-                  item={item}
-                  currencyCode={data?.currency.code!}
+          </div> */}
+        {/* ) : ( */}
+        <div className="px-4 sm:px-6 flex-1">
+          <Text variant="pageHeading">My Cart</Text>
+          <Text variant="sectionHeading">Review your Order</Text>
+          <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accent-2 border-b border-accent-2">
+            {cartItems.map((item: any) => (
+              <CartItem
+                key={item.id}
+                item={item}
+                currencyCode={data?.currency.code!}
+              />
+            ))}
+          </ul>
+          <div className="my-6">
+            {/* <Text>
+              Before you leave, take a look at these items. We picked them just
+              for you
+            </Text> */}
+            {/* <div className="flex py-6 space-x-6">
+              {[1, 2, 3, 4, 5, 6].map((x) => (
+                <div
+                  key={x}
+                  className="border border-accent-3 w-full h-24 bg-accent-2 bg-opacity-50 transform cursor-pointer hover:scale-110 duration-75"
                 />
               ))}
-            </ul>
-            <div className="my-6">
-              <Text>
-                Before you leave, take a look at these items. We picked them
-                just for you
-              </Text>
-              <div className="flex py-6 space-x-6">
-                {[1, 2, 3, 4, 5, 6].map((x) => (
-                  <div
-                    key={x}
-                    className="border border-accent-3 w-full h-24 bg-accent-2 bg-opacity-50 transform cursor-pointer hover:scale-110 duration-75"
-                  />
-                ))}
-              </div>
-            </div>
+            </div> */}
           </div>
-        )}
+        </div>
+        {/* )} */}
       </div>
       <div className="lg:col-span-4">
         <div className="flex-shrink-0 px-4 py-24 sm:px-6">
@@ -176,3 +209,64 @@ export default function Cart() {
 }
 
 Cart.Layout = Layout
+
+// const cartItems = [
+//   {
+//     id: '1',
+//     variantId: '22',
+//     productId: '34',
+//     name: 'Chole Kulche',
+//     quantity: 10,
+//     discounts: [
+//       {
+//         value: 24,
+//       },
+//       {
+//         value: 25,
+//       },
+//       {
+//         value: 26,
+//       },
+//     ],
+//     path: 'chole',
+//     variant: {
+//       id: '34',
+//       sku: 'butter',
+//       name: 'Chole Kulche',
+//       requireShipping: true,
+//       price: 599,
+//       listPrice: 67,
+//       isInStock: true,
+//       image: {
+//         url: testImg,
+//         altText: 'butter kulche',
+//         width: 78,
+//         height: 24,
+//       },
+//       availableForSale: false,
+//       weight: {
+//         value: 250,
+//         unit: 'KILOGRAMS',
+//       },
+//       height: {
+//         value: 10,
+//         unit: 'INCHES',
+//       },
+//       width: {
+//         value: 10,
+//         unit: 'INCHES',
+//       },
+//       depth: {
+//         value: 10,
+//         unit: 'INCHES',
+//       },
+//     },
+//     options: [
+//       {
+//         id: '34',
+//         name: 'sabzi',
+//         value: 'roti',
+//       },
+//     ],
+//   },
+// ]

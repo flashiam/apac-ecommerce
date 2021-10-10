@@ -9,41 +9,38 @@ import p1 from './public/assets/profile/p1.jpg'
 import p2 from './public/assets/profile/p2.jpg'
 import p3 from './public/assets/profile/p3.jpg'
 
-
-
-
-
 // Main Product
 const mproduct1 = {
   name: 'iPhone 11 64GB -Black',
   // support_sims: '(GSM & CDMA)',
-  totalReview: "5k",
-  qna:"22k",
+  totalReview: '5k',
+  qna: '22k',
   priceoff: '$19.99',
-rating:"2",
+  rating: '2',
   works_with: '',
   price: '$428.99',
   dis: '28%',
   warranty: '12 Months',
-  description:"lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?",
+  description:
+    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
   cond: 'conition fair',
   details: 'This is best products',
   img: iphone,
 }
 const mproduct2 = {
-
-   totalReview: "25k",
-  qna:"1.2k",
+  totalReview: '25k',
+  qna: '1.2k',
   name: 'ASUS Laptop',
   // support_sims: '(GSM & CDMA)',
   priceoff: '$0.99',
-  rating:"3.6",
+  rating: '3.6',
 
   works_with: '',
   price: '$428.99',
   dis: '15%',
   warranty: '12 Months',
-  description:"lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?",
+  description:
+    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
   cond: 'conition fair',
   details: 'This is best products',
   img: laptop2,
@@ -52,23 +49,24 @@ const mproduct3 = {
   name: 'Iphone',
   support_sims: '(GSM & CDMA)',
   works_with: '',
-rating:"4.9",
-totalReview: "5.8k",
-qna:"18k",
+  rating: '4.9',
+  totalReview: '5.8k',
+  qna: '18k',
   price: '$428.99',
   priceoff: '$2.99',
   dis: '15%',
   warranty: '12 Months',
-  description:"lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?",
+  description:
+    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
   cond: 'conition fair',
   details: 'This is best products',
   img: mobile1,
 }
 const mproduct4 = {
   priceoff: '$9.99',
-  rating:"2.3",
-  totalReview: "7.9k",
-  qna:"0.32k",
+  rating: '2.3',
+  totalReview: '7.9k',
+  qna: '0.32k',
   name: 'Samsung',
   support_sims: '(GSM & CDMA)',
   works_with: '',
@@ -76,12 +74,11 @@ const mproduct4 = {
   dis: '15%',
   warranty: '12 Months',
   cond: 'conition fair',
-  description:"lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?",
+  description:
+    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
   details: 'This is best products',
   img: mobile2,
 }
-
-
 
 const productsX = [
   {
@@ -192,7 +189,6 @@ const flips = {
   },
 }
 
-
 export type Main = { phone: string; category: string; slinks: string[] }
 
 export type FirstLink = { link: string; icon: string }[]
@@ -202,9 +198,7 @@ export type LinksAndMain = {
   main: Main
 }
 
-
-
-export const dataOfProducts:Big = {
+export const dataOfProducts: Big = {
   id: 112,
   relatedProducts: productsX,
   linksOfProducts: flips,
@@ -237,9 +231,8 @@ export type Big = {
 
 export interface MProduct {
   totalReview?: string
-  qna?:string
-  
-  rating:string
+  qna?: string
+  rating: string
   name: string
   support_sims?: string
   works_with: string
@@ -248,11 +241,27 @@ export interface MProduct {
   warranty: string
   cond: string
   details: string
-  priceoff:string
+  priceoff: string
   img: StaticImageData
-  description?:string
+  description?: string
 }
-export const itemsOfProducts:Big[] = [
+
+// Custom cart item data
+export interface CartProduct {
+  id: string
+  img: StaticImageData
+  name: string
+  inStock: boolean
+  price: number
+  quantity: number
+  color: string
+  ram: number
+  storage: number
+  modelno: string
+  path: string
+}
+
+export const itemsOfProducts: Big[] = [
   {
     id: 111,
     relatedProducts: productsX,
@@ -273,12 +282,10 @@ export const itemsOfProducts:Big[] = [
     main: mproduct2,
     comments: {
       reviews: 'Average of 1,138 reviews from the past 6 months',
-      customers: 
-        {
-          name: " That's according to Sai krishna V.",
-          msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora" ',
-        },
-      
+      customers: {
+        name: " That's according to Sai krishna V.",
+        msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora" ',
+      },
     },
   },
   {
@@ -288,12 +295,10 @@ export const itemsOfProducts:Big[] = [
     main: mproduct3,
     comments: {
       reviews: 'Average of 1,138 reviews from the past 6 months',
-      customers:
-        {
-          name: " That's according to Sai krishna V.",
-          msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora" ',
-        },
-      
+      customers: {
+        name: " That's according to Sai krishna V.",
+        msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora" ',
+      },
     },
   },
   {
@@ -303,18 +308,13 @@ export const itemsOfProducts:Big[] = [
     main: mproduct4,
     comments: {
       reviews: 'Average of 1,138 reviews from the past 6 months',
-      customers: 
-        {
-          name: " That's according to Sai krishna V.",
-          msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora" ',
-        },
-      
+      customers: {
+        name: " That's according to Sai krishna V.",
+        msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora" ',
+      },
     },
   },
 ]
-
-
-
 
 export const testimonials = [
   {
@@ -340,11 +340,7 @@ export const testimonials = [
   },
 ]
 
-
-
 // Reviews
-
-
 
 export const photos = [laptop1, mobile1, laptop2, iphone, mobile2]
 

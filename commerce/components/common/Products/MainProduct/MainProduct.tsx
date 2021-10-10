@@ -1,79 +1,127 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import {images} from "../../../../next.config"
-import TopLayer from '../SingleProduct/TopLayer';
-import Image from 'next/image';
-import RSideDetails from '../SingleProduct/RSideDetails';
-import type {MProduct}  from "../../../../data1"
+import TopLayer from '../SingleProduct/TopLayer'
+import Image from 'next/image'
+import RSideDetails from '../SingleProduct/RSideDetails'
+import type { MProduct } from '../../../../data1'
+import testImg from '../../../../public/assets/img/iphone.png'
 
 type mainProduct = {
   main: MProduct
-  rev:StaticImageData[]
-  }
-  // type ProductDetails = {
-  //   name: string
-  //   works_with: string
-  //   price: string
-  //   dis: string
-  //   warranty: string
-  //   cond: string
-  
-  //     details: string,
-  //     img: StaticImageData,
-  //     support_sims?:string|null
-    
-  // }
+  rev: StaticImageData[]
+}
+// type ProductDetails = {
+//   name: string
+//   works_with: string
+//   price: string
+//   dis: string
+//   warranty: string
+//   cond: string
+
+//     details: string,
+//     img: StaticImageData,
+//     support_sims?:string|null
+
+// }
 
 const MainProduct = (props: mainProduct) => {
-    const { name, works_with, price, dis, warranty, cond, details,img,support_sims } = props.main
-    return (
-        <>
-            {/* <TopLayer/> */}
-            <div className="md:flex md:justify-between sm:block">
-            <h2 className="md:self-start text-black-400 text-lg bg-white font-medium mb-3">
-              Our very best Refurbished {name}:
-            </h2>
-                <h1 className="md:hidden sm:block sm:text-3xl sm:text-black font-medium">{name} {' '}{support_sims}</h1>
-            <p className="sm:block sm:my-2 md:hidden text-gray-600 font-light text-xs">
+  // State for current showcase img
+  const [currentImg, setCurrentImg] = useState<StaticImageData>(testImg)
+  const {
+    name,
+    works_with,
+    price,
+    dis,
+    warranty,
+    cond,
+    details,
+    img,
+    support_sims,
+  } = props.main
+
+  // Function to set the current img on hover
+  const changeImgOnHover = (img: StaticImageData) => {
+    setCurrentImg(img)
+  }
+
+  return (
+    <>
+      {/* <TopLayer/> */}
+
+      <div className=" md:flex md:justify-between sm:block">
+        <h2 className="md:hidden block text-black-400 text-lg bg-white font-medium mb-3">
+          Our very best Refurbished {name}:
+        </h2>
+        <h1 className="md:hidden sm:block sm:text-3xl sm:text-black font-medium">
+          {name} {support_sims}
+        </h1>
+        <p className="sm:block sm:my-2 md:hidden text-gray-600 font-light text-xs">
           Works with :{works_with}
         </p>
-            {/* <div className="md:h-20 md:w-20 md:text-white md:bg-green md:rounded-full md:flex md:items-center md:text-2xl md:justify-center sm:hidden hidden">{dis}
+        {/* <div className="md:h-20 md:w-20 md:text-white md:bg-green md:rounded-full md:flex md:items-center md:text-2xl md:justify-center sm:hidden hidden">{dis}
             </div> */}
-            </div>
-            {/* TopLayerEnd */}
-          <div className="w-full block md:flex md:flex-row sm:flex-col md:justify-between h-full">
-            {/* IMG */}
-          <div className="md:block hidden md:w-1/12" >
-          {props.rev.map((p:any,i:any) => (
-            <div key={i}
-              className="w-12 h-12 border-2 border-gray-700 mb-3 cursor-pointer" >
-              <Image src={p} className="w-full" />
-            </div>
-          ))}
-            </div>
-          <div className=" mx-auto sm:mx-auto  sm:w-25 mb-3 block md:w-5/12" >
-            
-              <Image
-              objectFit="contain"
-              // sizes={image.sizes}
-               height={120}
-              width={200}
-                src={img}
-                layout="responsive"
-              />
-            </div>
+      </div>
 
-            <RSideDetails main={props.main} />
+      {/* TopLayerEnd */}
+      <div>
+        <div className="w-full relative flex-col md:flex sm:flex-row md:items-start md:flex-row md:justify-between h-full">
+          {/* Container for sticky showcase */}
+          <div className=" md:sticky md:left-0 md:top-20 border-2  border-gray-200 rounded-md md:w-1/2 h-full md:p-3">
+            <div className=" md:flex md:flex-row md:gap-4 block">
+              {/* IMG */}
+              <div className="md:relative">
+                <div className="md:sticky md:top-25 md:block hidden md:w-1/12">
+                  {props.rev.map((p: any, i: any) => (
+                    <div
+                      key={i}
+                      className="w-12 h-12 border-2 border-gray-200 mb-3 p-2 rounded-md cursor-pointer"
+                      onMouseOver={() => changeImgOnHover(p)}
+                    >
+                      <Image src={p} className="w-full" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              {/* Main Product image */}
+              <div className="md:w-11/12 md:sticky">
+                <div className=" mb-3 block w-full md:sticky">
+                  <Image
+                    objectFit="contain"
+                    // sizes={image.sizes}
+                    height="40%"
+                    width="65%"
+                    src={currentImg}
+                    layout="responsive"
+                  />
+                </div>
 
-          <div className="flex sm:flex-row flex-col sm:justify-between sm:gap-4">
-          <button className="md:hidden duration-200 focus:sm:inline-block block mt-4 hover:bg-gray-800 rounded-sm sm:w-1/2 py-1 bg-black w-full text-white">
-            Add to Cart
+                {/* Desktop View Buttons */}
+                <div className="hidden md:flex c1:block sm:block lg:flex-row md:flex-col lg:gap-4 md:sticky">
+                  <button className=" duration-200 c1:block focus:sm:block  mt-2 hover:bg-gray-800 rounded-sm sm:w-full py-2 bg-black w-full text-white">
+                    Add to Cart
+                  </button>
+                  <button className=" sm:block c1:block  mt-2 bg-gray-100 hover:bg-white duration-200 rounded-sm sm:w-full py-2 border-2 border-black w-full text-black">
+                    Buy Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile View buttons */}
+          <div className="md:hidden sm:hidden block w-full">
+            <button className=" duration-200  block mt-2 hover:bg-gray-800 rounded-sm sm:w-full py-2 bg-black w-full text-white">
+              Add to Cart
             </button>
-            <button className="md:hidden sm:inline-block block mt-4 bg-gray-100 hover:bg-white duration-200 rounded-sm sm:w-1/2 py-1 border-2 border-black w-full text-black">
+            <button className=" block mt-2 bg-gray-100 hover:bg-white duration-200 rounded-sm sm:w-full py-2 border-2 border-black w-full text-black">
               Buy Now
             </button>
-     </div>
-          </div> 
-        </>
-    )
+          </div>
+          {/* Description */}
+          <RSideDetails main={props.main} />
+        </div>
+      </div>
+    </>
+  )
 }
-export default MainProduct;
+export default MainProduct

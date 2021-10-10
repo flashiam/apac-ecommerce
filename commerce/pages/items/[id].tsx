@@ -40,7 +40,7 @@ const productPage = ({res}:any) => {
 
   // console.log(res)
   return (
-    <div className="md:p-13 p-5 sm:p-7 bg-gray-100">
+    <div className="md:px-14 px-5 sm:px-7 dark:bg-gray-900 bg-gray-200">
       <Head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"

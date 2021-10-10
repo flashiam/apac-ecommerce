@@ -6,6 +6,29 @@
 
 @tailwind utilities;
 
+
+
+
+html::-webkit-scrollbar{
+  width:0.6vw;
+}
+html::-webkit-scrollbar-thumb{
+  background-color: rgb(109, 94, 94);
+  border-radius:7px;
+}
+html::-webkit-scrollbar-track{
+  background:#e2e1e1 ;
+}
+html::-webkit-scrollbar-thumb:hover{
+  background:#111111 ;
+}
+
+
+
+
+
+
+
 .label {
   position: relative;
 }
