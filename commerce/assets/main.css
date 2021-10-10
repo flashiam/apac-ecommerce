@@ -70,6 +70,12 @@ select.custom-select option:hover {
 .blockquote {
   @apply text-lg text-gray-400 absolute;
 }
+
+html{
+  scrollbar-width: thin;
+  scrollbar-color: black;
+}
+
 /* .label{
     font-size:1.2rem;
     font-weight:bold;
