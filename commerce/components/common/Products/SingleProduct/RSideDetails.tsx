@@ -55,7 +55,7 @@ const RSideDetails = (props: mainProduct) => {
         </h2>
         <div className="flex justify-between items-center">
           <h1 className="md:text-xl md:text-black font-medium md:block sm:hidden">
-            {price} &nbsp;{' '}
+            ${price} &nbsp;{' '}
             <span className="font-extralight text-sm text-gray-400 relative">
               <span className="absolute bottom-1/2 inline-block bg-gray-500 h-0.5 w-10"></span>
               {priceoff}

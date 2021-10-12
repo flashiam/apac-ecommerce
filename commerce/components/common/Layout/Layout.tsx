@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import dynamic from 'next/dynamic'
@@ -16,6 +16,8 @@ import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import { Sidebar, Button, Modal, LoadingDots } from '@components/ui'
 import PaymentMethodView from '@components/checkout/PaymentMethodView'
 import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchCartItems } from '../../../actions/productAction'
 
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
@@ -107,6 +109,13 @@ const Layout: FC<Props> = ({
   }))
 
   const client = new QueryClient()
+
+  // hooks for redux
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCartItems())
+  }, [dispatch])
 
   return (
     <QueryClientProvider client={client}>

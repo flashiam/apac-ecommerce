@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, FC, useState } from 'react'
 
 import laptop1 from '../../public/assets/img/laptop2.png'
 import laptop2 from '../../public/assets/img/laptop1.png'
@@ -8,7 +8,7 @@ import p3 from '../../public/assets/profile/p3.jpg'
 import p4 from '../../public/assets/profile/p4.jpg'
 // import {getStaticProps }
 import { Layout, Searchbar } from '@components/common'
-import {server} from "../../config/index"
+import { server } from '../../config/index'
 import Link from 'next/link'
 
 import Head from 'next/head'
@@ -23,22 +23,48 @@ import CheckBoxes from '@components/common/Productpage/CheckBoxes/CheckBoxes'
 // import type { Big } from '../../data1'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
-import { itemsOfProducts, dataOfProducts ,photos,reviews} from '../../data1'
-import type {Big } from '../../data1'
+import {
+  // itemsOfProducts,
+  // dataOfProducts,
+  photos,
+  reviews,
+  MProduct,
+  FirstLink,
+} from '../../data1'
+import type { Big } from '../../data1'
 import Rate from '@components/common/Rateicons/Rate'
 import { Rating } from '@components/ui'
 import Review from '@components/common/Productpage/Review/Review'
 import ProductCarousel from '@components/ui/Carousel/ProductCarousel'
 import AppCard from '@components/ui/AppCard/AppCard'
-import { pCarousel } from 'data2'
+import { pCarousel, productsH } from 'data2'
 
-
+type Props = {
+  res: MProduct
+}
 // Static path function
 // Main Func
-const productPage = ({res}:any) => {
-
-
+const productPage = ({ res }: Props) => {
+  // Destructuring products
+  const { relatedProducts, linksOfProducts } = res
   // console.log(res)
+
+  // State for related product
+  const [related, setRelated] = useState<MProduct[]>([])
+
+  // Function to store related products
+  const storeRelatedProducts = () => {
+    const products = relatedProducts.flatMap((rel) =>
+      productsH.filter((product) => product.id === rel.id)
+    )
+    setRelated(products)
+  }
+
+  useEffect(() => {
+    storeRelatedProducts()
+    console.log(res)
+  }, [])
+
   return (
     <div className="md:px-14 px-5 sm:px-7 dark:bg-gray-900 bg-gray-200">
       <Head>
@@ -51,8 +77,8 @@ const productPage = ({res}:any) => {
 
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
-        {res.linksOfProducts.links.map((l:any, i:any) => (
-          <h4 key={i} >
+        {linksOfProducts?.links.map((l: FirstLink, i: number) => (
+          <h4 key={i}>
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
               <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
                 {l.icon}
@@ -63,61 +89,67 @@ const productPage = ({res}:any) => {
         ))}
       </div>
       {/* REFURBHISHED Product Name */}
-      <PheadDetails pname={res.main.name} />
+      <PheadDetails pname={res.name} />
       {/* MAIN PRODUCT Grid Change to div */}
       <div className="my-6">
         <div className="p-6 bg-white rounded-md">
-          <MainProduct main={res.main} rev={reviews[0].photos} />
+          <MainProduct main={res} rev={reviews[0].photos} />
         </div>
-   
       </div>
-     {/*  Main container */}
-     <div className="p-6 rounded-md bg-white w-full mt-6">
+      {/*  Main container */}
+      <div className="p-6 rounded-md bg-white w-full mt-6">
+        <div>
+          {/* Rating */}
           <div>
-            {/* Rating */}
-            <div>
-              <Rate />
-            </div>
-            <p className="my-2 text-gray-600 font-light text-xs">
-              {dataOfProducts.comments.reviews}
-            </p>
+            <Rate />
           </div>
-          <div className="my-5 md:block h-0.5 w-full bg-gray-400 sm:hidden"></div>
-          {/* Customer Comments */}
-          <div>
-            <h4 className="my-1 text-black text-sm font-bold">
-              {dataOfProducts.comments.customers.name}
-            </h4>
-            <blockquote className="my-1 text-gray text-xs font-thin">
-              {dataOfProducts.comments.customers.msg}
-            </blockquote>
-          </div>
-
-          <button
-            className="mt-9 mx-auto block border-2 border-black rounded-sm w-full md:w-1/2 py-2 transition-colors duration-200 ease-in hover:bg-black
-          hover:text-white text-black"
-          >
-            See Review
-          </button>
+          <p className="my-2 text-gray-600 font-light text-xs">
+            {res.comments?.reviews}
+          </p>
         </div>
-     
+        <div className="my-5 md:block h-0.5 w-full bg-gray-400 sm:hidden"></div>
+        {/* Customer Comments */}
+        <div>
+          <h4 className="my-1 text-black text-sm font-bold">
+            {res.comments?.customers.name}
+          </h4>
+          <blockquote className="my-1 text-gray text-xs font-thin">
+            {res.comments?.customers.msg}
+          </blockquote>
+        </div>
 
-         {/* For Mobo */}
-      <div className="my-6">
-        <h1 className="text-xl mb-7 font-medium text-black">Related Products</h1>
+        <button
+          className="mt-9 mx-auto block border-2 border-black rounded-sm w-full md:w-1/2 py-2 transition-colors duration-200 ease-in hover:bg-black
+          hover:text-white text-black"
+        >
+          See Review
+        </button>
+      </div>
+
+      {/* For Mobo */}
+      {!!related.length && (
+        <div className="my-6">
+          <h1 className="text-xl mb-7 font-medium text-black">
+            Related Products
+          </h1>
           <ProductCarousel>
-            {pCarousel.map((p, i) => (
-              <div key={i} className="keen-slider__slide slide">
-                <AppCard>
-                  <div className="h-20 w-20">
-                    <Image src={p.img} />
-                  </div>
-                  <h3 className="text-black text-md">{p.name}</h3>
-                </AppCard>
+            {related.map((p, i) => (
+              <div key={i} className="keen-slider__slide w-3/12 slide">
+                <Link href={`/items/${p.id}`}>
+                  <a>
+                    <AppCard>
+                      <div className="h-20 w-20">
+                        <Image height="100%" width="100%" src={p.img} />
+                      </div>
+                      <h3 className="text-black text-md">{p.name}</h3>
+                    </AppCard>
+                  </a>
+                </Link>
               </div>
             ))}
           </ProductCarousel>
         </div>
+      )}
       {/* Reviews and posts */}
       <div className="my-6">
         <h2 className="mb-7 text-black font-medium text-xl">
@@ -147,14 +179,14 @@ export default productPage
 export const getStaticPaths = async () => {
   try {
     // const rest = await Promise.resolve(itemsOfProducts)
-const data=await fetch(`${server}/api/items`)
-    const jsonData = await data.json();
+    const data = await fetch(`${server}/api/items`)
+    const jsonData = await data.json()
     // console.log(jsonData)
-    const ids= jsonData?.map((p:any) => (p.id)) // [{params: {id: 1}},{params: {id: 2}}]
-    const paths = ids.map((id: any) => ({ params: { id:id.toString() } }));
-    console.log(paths);
+    const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
+    const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
+    console.log(paths)
     return {
-       paths:paths,
+      paths: paths,
       fallback: false,
     }
   } catch (err) {
@@ -162,17 +194,17 @@ const data=await fetch(`${server}/api/items`)
   }
 }
 // Static props function
-export const getStaticProps = async({ params: { id } }:any) => {
+export const getStaticProps = async ({ params: { id } }: any) => {
   // console.log(props)
   try {
     // const res = await Promise.resolve(itemsOfProducts)
 
-    const data=await fetch(`${server}/api/items/${id}`)
-    const res = await data.json();
+    const data = await fetch(`${server}/api/items/${id}`)
+    const res = await data.json()
     // console.log(res)
     return {
       props: {
-        res
+        res,
       },
     }
   } catch (err) {

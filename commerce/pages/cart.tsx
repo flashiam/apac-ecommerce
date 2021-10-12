@@ -6,11 +6,12 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
-import { useRouter } from 'next/router'
-import { LineItem } from '../framework/commerce/types/cart'
-import { Discount } from '../framework/commerce/types/common'
 import testImg from '../public/assets/img/iphone.png'
-import { CartProduct } from 'data1'
+import { CartProduct, GlobalState } from 'data1'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { stat } from 'fs'
+import { removeCartItem } from '../actions/productAction'
 
 export async function getStaticProps({
   preview,
@@ -27,7 +28,7 @@ export async function getStaticProps({
   }
 }
 
-export default function Cart() {
+const Cart = () => {
   const error = null
   const success = null
   const { data, isLoading, isEmpty } = useCart()
@@ -45,38 +46,54 @@ export default function Cart() {
     }
   )
 
-  const cartItems: CartProduct[] = [
-    {
-      id: '1',
-      img: testImg,
-      name: 'Xiaomi',
-      inStock: true,
-      price: 450,
-      quantity: 2,
-      color: 'red',
-      storage: 64,
-      ram: 4,
-      modelno: 'C-55934',
-      path: '111',
-    },
-    {
-      id: '2',
-      img: testImg,
-      name: 'Vivo',
-      inStock: true,
-      price: 800,
-      quantity: 2,
-      color: 'purple',
-      storage: 64,
-      ram: 4,
-      modelno: 'C-55934',
-      path: '111',
-    },
-  ]
+  // Using redux hooks
+  const product = useSelector((state: GlobalState) => state.product)
+  const { cartItems } = product
 
   return (
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
+        {!!cartItems.length ? (
+          <div className="px-4 sm:px-6 flex-1">
+            <Text variant="pageHeading">My Cart</Text>
+            <Text variant="sectionHeading">Review your Order</Text>
+            <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accent-2 border-b border-accent-2">
+              {cartItems?.map((item: any) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  currencyCode={data?.currency.code!}
+                />
+              ))}
+            </ul>
+            <div className="my-6">
+              {/* <Text>
+                Before you leave, take a look at these items. We picked them just
+                for you
+              </Text> */}
+              {/* <div className="flex py-6 space-x-6">
+                {[1, 2, 3, 4, 5, 6].map((x) => (
+                  <div
+                    key={x}
+                    className="border border-accent-3 w-full h-24 bg-accent-2 bg-opacity-50 transform cursor-pointer hover:scale-110 duration-75"
+                  />
+                ))}
+              </div> */}
+            </div>
+          </div>
+        ) : (
+          <div className="flex-1 px-12 py-24 flex flex-col justify-center items-center ">
+            <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-12 rounded-lg text-primary">
+              <Bag className="absolute" />
+            </span>
+            <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
+              Your cart is empty
+            </h2>
+            <p className="text-accent-6 px-10 text-center pt-2">
+              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+            </p>
+          </div>
+        )}
         {/* {isLoading || isEmpty ? (
           <div className="flex-1 px-12 py-24 flex flex-col justify-center items-center ">
             <span className="border border-dashed border-secondary flex items-center justify-center w-16 h-16 bg-primary p-12 rounded-lg text-primary">
@@ -109,7 +126,7 @@ export default function Cart() {
             </h2>
           </div> */}
         {/* ) : ( */}
-        <div className="px-4 sm:px-6 flex-1">
+        {/* <div className="px-4 sm:px-6 flex-1">
           <Text variant="pageHeading">My Cart</Text>
           <Text variant="sectionHeading">Review your Order</Text>
           <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accent-2 border-b border-accent-2">
@@ -121,12 +138,12 @@ export default function Cart() {
               />
             ))}
           </ul>
-          <div className="my-6">
-            {/* <Text>
+          <div className="my-6"> */}
+        {/* <Text>
               Before you leave, take a look at these items. We picked them just
               for you
             </Text> */}
-            {/* <div className="flex py-6 space-x-6">
+        {/* <div className="flex py-6 space-x-6">
               {[1, 2, 3, 4, 5, 6].map((x) => (
                 <div
                   key={x}
@@ -134,8 +151,8 @@ export default function Cart() {
                 />
               ))}
             </div> */}
-          </div>
-        </div>
+        {/* </div> */}
+        {/* </div> */}
         {/* )} */}
       </div>
       <div className="lg:col-span-4">
@@ -208,6 +225,12 @@ export default function Cart() {
   )
 }
 
+// Function to map state to props
+// const mapStateToProps = (state: any) => ({
+//   product: state.product,
+// })
+
+export default Cart
 Cart.Layout = Layout
 
 // const cartItems = [

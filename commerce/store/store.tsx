@@ -1,14 +1,17 @@
 // Store => Globalized State
-// Action 
+// Action
 // Reducer
 // Dispatch
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
-import rootReducer from "../reducers"
-import { composeWithDevTools } from "redux-devtools-extension";
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import rootReducer from '../reducers'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-const initialState = {};
+const initialState = {}
 
 const middleware = [thunk]
-export const store=createStore(rootReducer,initialState,composeWithDevTools(applyMiddleware(...middleware)))
-
+export const store = createStore(
+  rootReducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+)

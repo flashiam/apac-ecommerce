@@ -1,5 +1,5 @@
 import commerce from '@lib/api/commerce'
-import { dataOfProducts, testimonials } from '../data1'
+import { testimonials } from '../data1'
 import { Layout } from '@components/common'
 import EspecialProducts from '@components/home/Catofproducts/Especial/EspecialProducts'
 import OtherCat from '@components/home/Catofproducts/Other/OtherCat'
@@ -172,7 +172,7 @@ export default function Home({
           Your Products
         </h2>
         <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
-          {dataOfProducts.relatedProducts.map((product, i) => (
+          {productsH.slice(5, 8).map((product, i) => (
             <SimpleCard key={i} product={product} />
           ))}
         </div>

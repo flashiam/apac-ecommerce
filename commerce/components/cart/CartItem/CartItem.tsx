@@ -11,6 +11,8 @@ import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
 import Quantity from '@components/ui/Quantity'
 import { CartProduct } from '../../../data1'
+import { useDispatch } from 'react-redux'
+import { removeCartItem } from '../../../actions/productAction'
 
 type ItemOption = {
   name: string
@@ -31,6 +33,8 @@ const CartItem = ({
   item: CartProduct
   currencyCode: string
 }) => {
+  const dispatch = useDispatch()
+
   const { closeSidebarIfPresent } = useUI()
   const [removing, setRemoving] = useState(false)
   const [quantity, setQuantity] = useState<number>(item.quantity)
@@ -39,6 +43,7 @@ const CartItem = ({
   const removeItem = useRemoveItem()
   const updateItem = useUpdateItem({ item })
 
+  const { id: productId } = item
   // const { price } = usePrice({
   //   amount: item.variant.price * item.quantity,
   //   baseAmount: item.variant.listPrice * item.quantity,
@@ -66,6 +71,9 @@ const CartItem = ({
     } catch (error) {
       setRemoving(false)
     }
+
+    // Remove through reduce
+    dispatch(removeCartItem(productId))
   }
 
   // Function to calculate price
@@ -99,7 +107,7 @@ const CartItem = ({
     >
       <div className="flex flex-row space-x-4 py-4">
         <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer z-0">
-          <Link href={`/product/${item.path}`} passHref={false}>
+          <Link href={`/product/${item.id}`} passHref={false}>
             <Image
               onClick={() => closeSidebarIfPresent()}
               className={s.productImage}
@@ -112,7 +120,7 @@ const CartItem = ({
           </Link>
         </div>
         <div className="flex-1 flex flex-col text-base">
-          <Link href={`/items/${item.path}`} passHref={false}>
+          <Link href={`/items/${item.id}`} passHref={false}>
             <span
               className={s.productName}
               onClick={() => closeSidebarIfPresent()}
