@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, SyntheticEvent, useEffect } from 'react'
+import router from 'next/router'
 // import {images} from "../../../../next.config"
 import TopLayer from '../SingleProduct/TopLayer'
 import Image from 'next/image'
 import RSideDetails from '../SingleProduct/RSideDetails'
-import type { MProduct } from '../../../../data1'
+import type { CartProduct, MProduct } from '../../../../data1'
 import testImg from '../../../../public/assets/img/iphone.png'
+import { useDispatch } from 'react-redux'
+import { addCartItem } from '../../../../actions/productAction'
 
 type mainProduct = {
   main: MProduct
@@ -25,11 +28,16 @@ type mainProduct = {
 // }
 
 const MainProduct = (props: mainProduct) => {
-  // State for current showcase img
-  const [currentImg, setCurrentImg] = useState<StaticImageData>(testImg)
   const {
+    id,
     name,
     works_with,
+    inStock,
+    quantity,
+    color,
+    ram,
+    storage,
+    modelno,
     price,
     dis,
     warranty,
@@ -37,12 +45,53 @@ const MainProduct = (props: mainProduct) => {
     details,
     img,
     support_sims,
+    // cartItem,
   } = props.main
+
+  const imgResultRef = useRef<SyntheticEvent>(null)
+  // State for added item
+  const [addedItem, setAddedItem] = useState<CartProduct>()
+  // State for current showcase img
+  const [currentImg, setCurrentImg] = useState<StaticImageData>(img)
+  // Destructing required properties
+
+  // Creating cart item
+  const cartItem: CartProduct = {
+    id,
+    img,
+    name,
+    price,
+    inStock,
+    quantity,
+    color,
+    ram,
+    storage,
+    modelno,
+  }
+  // Hooks to use redux
+  const dispatch = useDispatch()
 
   // Function to set the current img on hover
   const changeImgOnHover = (img: StaticImageData) => {
     setCurrentImg(img)
   }
+
+  // Function for auto zoom feature
+  const autoZoomImg = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+    // console.log(e.currentTarget.offsetWidth, e.currentTarget.offsetHeight)
+    // console.log()
+  }
+
+  // Function to add item to cart
+  const addItem = (item: CartProduct) => {
+    dispatch(addCartItem(item))
+    // Redirect to cart page
+    router.push('/cart')
+  }
+
+  useEffect(() => {
+    setCurrentImg(img)
+  }, [])
 
   return (
     <>
@@ -92,12 +141,16 @@ const MainProduct = (props: mainProduct) => {
                     width="65%"
                     src={currentImg}
                     layout="responsive"
+                    // onLoad={(e) => autoZoomImg(e)}
                   />
                 </div>
 
                 {/* Desktop View Buttons */}
                 <div className="hidden md:flex c1:block sm:block lg:flex-row md:flex-col lg:gap-4 md:sticky">
-                  <button className=" duration-200 c1:block focus:sm:block  mt-2 hover:bg-gray-800 rounded-sm sm:w-full py-2 bg-black w-full text-white">
+                  <button
+                    onClick={() => addItem(cartItem)}
+                    className=" duration-200 c1:block focus:sm:block  mt-2 hover:bg-gray-800 rounded-sm sm:w-full py-2 bg-black w-full text-white"
+                  >
                     Add to Cart
                   </button>
                   <button className=" sm:block c1:block  mt-2 bg-gray-100 hover:bg-white duration-200 rounded-sm sm:w-full py-2 border-2 border-black w-full text-black">
@@ -110,7 +163,10 @@ const MainProduct = (props: mainProduct) => {
 
           {/* Mobile View buttons */}
           <div className="md:hidden sm:hidden block w-full">
-            <button className=" duration-200  block mt-2 hover:bg-gray-800 rounded-sm sm:w-full py-2 bg-black w-full text-white">
+            <button
+              onClick={() => addItem(cartItem)}
+              className=" duration-200  block mt-2 hover:bg-gray-800 rounded-sm sm:w-full py-2 bg-black w-full text-white"
+            >
               Add to Cart
             </button>
             <button className=" block mt-2 bg-gray-100 hover:bg-white duration-200 rounded-sm sm:w-full py-2 border-2 border-black w-full text-black">

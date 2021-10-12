@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Modal,
   Typography,
@@ -7,8 +7,13 @@ import {
   Select,
   MenuItem
 } from '@material-ui/core';
+import ExcelJS from 'exceljs'
+import testFile from '../../xlsx_files/Test.xlsx'
 
 const AddProductModal = () => {
+  const workbook = new ExcelJS.Workbook()
+  const workSheet = workbook.addWorksheet(testFile)
+
   const productCat = [
     {
       id: 1,
@@ -46,8 +51,13 @@ const AddProductModal = () => {
       sign: '¥'
     }
   ];
+
+  useEffect(() => {
+    console.log(workSheet)
+  },[])
+  
   return (
-    <Modal open sx={{ m: 10 }}>
+    <Modal sx={{ m: 10 }}>
       <Box
         sx={{
           backgroundColor: 'background.paper',

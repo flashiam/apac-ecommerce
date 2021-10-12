@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import laptop from '../../../../public/assets/img/laptop2.png'
-
+import { MProduct } from '../../../../data1'
 import SCardDesign from '@components/common/CardDesign/SCardDesign'
 
 // const fp = {
@@ -13,20 +13,20 @@ import SCardDesign from '@components/common/CardDesign/SCardDesign'
 interface FProducts {
   name: string
   details: string
-  img:StaticImageData
+  img: StaticImageData
 }
 
 type Props = {
-  products: FProducts
+  products: MProduct
   numIndex: number
 }
 const FirstProducts = (props: Props) => {
-  const { name, details,img } = props.products
+  const { id, name, details, img } = props.products
   return (
     <div
       className={`${props.numIndex <= 1 ? 'md:col-span-3' : 'md:col-span-2'}`}
     >
-      <SCardDesign>
+      <SCardDesign productId={id}>
         <div className="h-32 w-20 mx-auto">
           <Image src={img} />
         </div>

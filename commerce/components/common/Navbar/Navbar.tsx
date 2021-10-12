@@ -80,14 +80,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
   //
 
   useEffect(() => {
-    console.log(navigator.language)
-    // setScrollOffset(window.scrollY)
-    // if(scrollOffset > 10) {
-    //   alert('Hide the links')
-    // }
     hideOnScroll()
-    // console.log(scrollOffset)
   }, [navLinkRef.current])
+
   return (
     <>
       <NavbarRoot>
@@ -130,9 +125,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
                 />
 
                 {/* Notification */}
-                <Notification color="bg-gray-200" />
+                <Notification color="bg-gray" />
                 {/* CartButton */}
-                <CartButton color="bg-gray-200" />
+                <CartButton color="bg-gray" />
                 {/* <CartSidebarView /> */}
                 <DropdownMenu />
               </div>
