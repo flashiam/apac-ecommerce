@@ -84,12 +84,14 @@ const Support = () => {
       const email = currentUser.email || ''
 
       const user: Customer = { id, name, email, profilePic }
+      // console.log(user)
       setUser(user)
     }
   }
 
   // Function to request for a chat
   const onChatRequest = () => {
+    console.log(user)
     socket.emit('chat-request', user)
   }
 
@@ -155,7 +157,6 @@ const Support = () => {
       setChats((prevMsg) => [...prevMsg, res])
       moveScroll()
     })
-    console.log(getAuth(app))
     onTypingCallback()
     // Disconnecting from socket instance
     return () => {
