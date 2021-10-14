@@ -27,11 +27,11 @@ import CustomerItem from './customer/CustomerItem';
 import { p1, p2, p3, p4 } from '../img';
 import NavItem from './NavItem';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
-};
+// const user = {
+//   avatar: '/static/images/avatars/avatar_6.png',
+//   jobTitle: 'Senior Developer',
+//   name: 'Katarina Smith'
+// };
 
 const items = [
   {
@@ -106,6 +106,12 @@ const clientProfile = [
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const location = useLocation();
   const isChatting = useSelector((state) => state.chat.isChatting);
+  const currentProfile=useSelector((state)=>state.currentUser.currentUserData)
+
+  useEffect(() => {
+    console.log(currentProfile.currentUserData);
+  },[currentProfile])
+
   const dispatch = useDispatch();
 
   // Function to change the chatting state by checking pathname
@@ -146,7 +152,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
       >
         <Avatar
           component={RouterLink}
-          src={user.avatar}
+          src={currentProfile.profilePic}
           sx={{
             cursor: 'pointer',
             width: 64,
@@ -155,10 +161,10 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           to="/app/account"
         />
         <Typography color="textPrimary" variant="h5">
-          {user.name}
+          {currentProfile.name}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
+          {currentProfile.email}
         </Typography>
       </Box>
       <Divider />

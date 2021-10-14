@@ -1,4 +1,6 @@
 import React from 'react';
+// import  from 'react';
+
 import {
   Avatar,
   ListItem,
@@ -6,17 +8,31 @@ import {
   ListItemText,
   ListItemAvatar,
   Typography,
-  Box
+  Box,
+  Button
 } from '@material-ui/core';
 // import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { p1 } from '../../img';
+import {currentProfile} from "../../actions/cur_userAction"
+
 
 const CustomerItem = ({ userRoom }) => {
   const { name, email, profilePic } = userRoom;
+
+
+
+  const dispatch = useDispatch();
+
+  const currentUser = (user) => {
+
+    dispatch(currentProfile(user));
+  }
   return (
     <>
-      <ListItem alignItems="flex-start" sx={{ padding: '0.6rem 0.3rem' }}>
+      <Button alignItems="flex-start" sx={{width:"100%",display:"block",padding: '0.6rem 0.3rem'}} onClick={()=>currentUser(userRoom)}>
+      <ListItem  >
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src={profilePic || p1} />
         </ListItemAvatar>
@@ -42,6 +58,8 @@ const CustomerItem = ({ userRoom }) => {
           }
         />
       </ListItem>
+      </Button>
+    
       <Divider variant="fullWidth" component="li" />
     </>
   );
