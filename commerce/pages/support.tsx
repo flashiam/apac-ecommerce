@@ -8,11 +8,16 @@ import React, {
 } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import testImg from '../public/assets/test_avatar.jpg'
 import cn from 'classnames'
+import { useSelector } from 'react-redux'
 // import { io, Socket } from 'socket.io-client'
 import { Socket } from 'socket.io-client'
 import { socket } from '../utils/socket'
+import { v4 as uuidV4 } from 'uuid'
+import { getAuth } from 'firebase/auth'
+import app from 'firebase-config'
+import { Customer, ChatState } from 'data1'
+import p1 from '../public/assets/profile/p1.jpg'
 
 const url = 'http://localhost:8000'
 
@@ -53,17 +58,39 @@ const ChatMessage: FC<Props> = ({ message, socketClient }) => {
 const Support = () => {
   // Connecting to socket instance
   // const newSocket = io(url)
+  // Init socket io
+  // const socket: Socket = useSelector((state: ChatState) => state.socket)
   const [message, setMessage] = useState('')
   const [chats, setChats] = useState<Message[]>([])
-  // const [socket, setSocket] = useState<Socket>()
+  // const [socket, setSocket] = useState<Socket>(socketCon)
   const [isTyping, setTyping] = useState(false)
   const [someoneTyping, setSomeoneTyping] = useState(false)
   const chatWindow = useRef<HTMLDivElement>(null)
   const dummyDiv = useRef<HTMLDivElement>(null)
+  const [user, setUser] = useState<Customer>()
 
   // Functon to move the scrollbar at the bottom when new msg has been sent
   const moveScroll = () => {
     dummyDiv.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  // Function to fetch user
+  const fetchUser = () => {
+    const { currentUser } = getAuth(app)
+    if (currentUser) {
+      const id = currentUser.uid
+      const name = currentUser.displayName || 'Anonymous'
+      const profilePic = currentUser.photoURL || p1
+      const email = currentUser.email || ''
+
+      const user: Customer = { id, name, email, profilePic }
+      setUser(user)
+    }
+  }
+
+  // Function to request for a chat
+  const onChatRequest = () => {
+    socket.emit('chat-request', user)
   }
 
   // Function to send the message to admin
@@ -72,10 +99,12 @@ const Support = () => {
       console.log('fill up the fields u moron')
     } else if (socket) {
       const clientMsg: Message = {
-        id: socket?.id,
+        id: uuidV4(),
+        socketid: socket?.id,
         name,
         msg: message,
       }
+      setChats([...chats, clientMsg])
       socket?.emit('user-msg', clientMsg)
       setMessage('')
     } else {
@@ -115,6 +144,9 @@ const Support = () => {
   useEffect(() => {
     // setSocket(socket)
     // Checking network logs
+    // Fetch user details
+    console.log(socket)
+    fetchUser()
     socket?.on('connect', () => console.log('Connected to server'))
     socket?.on('error', (reason) => console.log(reason))
     socket?.on('connect_failed', (reason) => console.log(reason))
@@ -123,7 +155,7 @@ const Support = () => {
       setChats((prevMsg) => [...prevMsg, res])
       moveScroll()
     })
-
+    console.log(getAuth(app))
     onTypingCallback()
     // Disconnecting from socket instance
     return () => {
@@ -139,9 +171,9 @@ const Support = () => {
   }, [isTyping])
 
   return (
-    <div className="relative h-screen flex overflow-hidden">
+    <div className="relative h-screen overflow-hidden w-full">
       {/* Sidebar */}
-      <div className="sticky w-1/4 bg-gray-200 top-0 left-0 bottom-0 h-full flex-1">
+      {/* <div className="sticky w-1/4 bg-gray-200 top-0 left-0 bottom-0 h-full flex-1">
         <h3 className="text-center font-semibold text-2xl py-2">
           Chat Support
         </h3>
@@ -168,9 +200,9 @@ const Support = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
       {/* Chat box */}
-      <div ref={chatWindow} className="px-8 pt-2 w-4/5 overflow-auto pb-16">
+      <div ref={chatWindow} className="px-8 pt-2 overflow-auto pb-16">
         <Link href="/">
           <a className="group py-1 flex items-center">
             <i className="material-icons transform transition rotate-180 duration-300 group-hover:rotate-0">
@@ -180,7 +212,16 @@ const Support = () => {
           </a>
         </Link>
         {/* Chat ground */}
-        <div className="relative flex-grow">
+        <div className="relative flex-grow w-full">
+          <div className="flex flex-col items-center w-full justify-center pt-20">
+            <h3 className="text-4xl text-gray-600">No Recent chats yet</h3>
+            <button
+              onClick={onChatRequest}
+              className="px-3 py-2 bg-gray-800 text-white mt-4 hover:bg-gray-700 rounded-md"
+            >
+              Request for a chat
+            </button>
+          </div>
           {socket &&
             chats?.map((chat) => (
               <ChatMessage
@@ -199,11 +240,8 @@ const Support = () => {
         </div>
       </div>
       {/* Input message field */}
-      <div
-        className="fixed bg-white bottom-0 border-t-2 w-full border-accent flex items-center justify-between py-9 px-8 left-1/6 right-0 h-11"
-        style={{ left: '20%' }}
-      >
-        <div className="flex items-center" style={{ width: '70%' }}>
+      <div className="fixed bg-white bottom-0 border-t-2 w-full border-accent flex items-center justify-between py-9 px-8 left-1/6 right-0 h-11">
+        <div className="flex items-center">
           <i className="material-icons mr-4">message</i>
           <input
             type="text"
@@ -211,11 +249,11 @@ const Support = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onKeyUp={(e) => sendWithKeyboard(e.key)}
-            className="w-4/5 border-0"
+            className="border-0"
             placeholder="Type your queries here..."
           />
         </div>
-        <div className="flex items-center" style={{ width: '28%' }}>
+        <div className="flex items-center">
           <button className="mr-2" onClick={() => onMessageSend('Abhishek')}>
             <i className="material-icons rounded-btn h-12 w-12 bg-purple-500 text-white text-md">
               send

@@ -17,5 +17,5 @@ productRouter.get(
 );
 productRouter.get("/search", productController.searchProducts);
 productRouter.get("/:product_id", productController.getSingleProduct);
-
+productRouter.post('/',productController.addProduct)
 export default productRouter;

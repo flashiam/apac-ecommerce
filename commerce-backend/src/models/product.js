@@ -24,14 +24,31 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: '0.00'
     },
+    ram: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    storage: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    inStock: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
+    warrenty: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     image: DataTypes.STRING(150),
     image_2: DataTypes.STRING(150),
     thumbnail: DataTypes.STRING(150),
-    display:{
-        type:DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: '0'
-    },
+    // display:{
+    //     type:DataTypes.INTEGER,
+    //     allowNull: false,
+    //     defaultValue: '0'
+    // },
   },
   {
     timestamps: false,
