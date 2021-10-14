@@ -1,24 +1,24 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _bcrypt = require('bcrypt');
+var _bcrypt = require("bcrypt");
 
 var _bcrypt2 = _interopRequireDefault(_bcrypt);
 
-var _jsonwebtoken = require('jsonwebtoken');
+var _jsonwebtoken = require("jsonwebtoken");
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
-var _joi = require('@hapi/joi');
+var _joi = require("@hapi/joi");
 
 var _joi2 = _interopRequireDefault(_joi);
 
-require('dotenv/config');
+require("dotenv/config");
 
-var _validationSchema = require('./validationSchema');
+var _validationSchema = require("./validationSchema");
 
 var _validationSchema2 = _interopRequireDefault(_validationSchema);
 
@@ -26,7 +26,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var options = { language: { key: '{{key}} ' } };
+var options = { language: { key: "{{key}} " } };
 
 exports.default = {
   hashPassword: function () {
@@ -41,10 +41,10 @@ exports.default = {
 
             case 2:
               hash = _context.sent;
-              return _context.abrupt('return', hash);
+              return _context.abrupt("return", hash);
 
             case 4:
-            case 'end':
+            case "end":
               return _context.stop();
           }
         }
@@ -69,10 +69,10 @@ exports.default = {
 
             case 2:
               match = _context2.sent;
-              return _context2.abrupt('return', match);
+              return _context2.abrupt("return", match);
 
             case 4:
-            case 'end':
+            case "end":
               return _context2.stop();
           }
         }
@@ -119,17 +119,23 @@ exports.default = {
         status: status,
         code: code,
         message: message,
-        field: field || ''
+        field: field || ""
       }
     });
   },
+
+
+  // lorem ipsum doler sit amet
+  // lorem ipsum...
   truncateDescription: function truncateDescription(products, descriptionLength) {
     var allProducts = products.map(function (product) {
       var length = product.dataValues.description.length;
 
+      console.log(length, descriptionLength);
       if (length > descriptionLength) {
-        product.dataValues.description = product.dataValues.description.slice(0, descriptionLength) + '...';
+        product.dataValues.description = product.dataValues.description.slice(0, descriptionLength) + "...";
       }
+      // console.log(product);
       return product;
     });
     return allProducts;

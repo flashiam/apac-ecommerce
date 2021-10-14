@@ -423,6 +423,74 @@ var ProductController = function () {
 
       return getProductsInDepartment;
     }()
+
+    /**
+     * @description -Add a product (Admin only)
+     * @param {object} req - The request payload sent from the router
+     * @param {object} res - The response payload sent back from the controller
+     * @returns {object} - Message regarding the product added
+     */
+
+  }, {
+    key: "addProduct",
+    value: function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(req, res) {
+        var product, addedProduct;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+
+                // Get the product data from the request
+                product = req.body;
+
+                if (product) {
+                  _context6.next = 4;
+                  break;
+                }
+
+                return _context6.abrupt("return", res.status(400).json({ msg: "Please give some products" }));
+
+              case 4:
+                _context6.next = 6;
+                return Product.sync();
+
+              case 6:
+                _context6.next = 8;
+                return Product.create(product);
+
+              case 8:
+                addedProduct = _context6.sent;
+
+                console.log(addedProduct);
+                // if(!addedProduct) throw new DatabaseError
+                // console.log(addedProduct.product_id)
+                res.status(200).json({ msg: "Product saved!!" });
+                _context6.next = 16;
+                break;
+
+              case 13:
+                _context6.prev = 13;
+                _context6.t0 = _context6["catch"](0);
+
+                // console.error(er err)
+                res.status(500).json({ error: "Internal Server Error" });
+
+              case 16:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[0, 13]]);
+      }));
+
+      function addProduct(_x11, _x12) {
+        return _ref6.apply(this, arguments);
+      }
+
+      return addProduct;
+    }()
   }]);
 
   return ProductController;
