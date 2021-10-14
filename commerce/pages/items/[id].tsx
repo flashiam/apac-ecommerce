@@ -66,7 +66,7 @@ const productPage = ({ res }: Props) => {
   }, [])
 
   return (
-    <div className="md:px-14 px-5 sm:px-7 dark:bg-gray-900 bg-gray-200">
+    <div className="md:px-14 px-5 py-5 sm:px-7 dark:bg-gray-900 bg-gray-200">
       <Head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -128,8 +128,8 @@ const productPage = ({ res }: Props) => {
 
       {/* For Mobo */}
       {!!related.length && (
-        <div className="my-6">
-          <h1 className="text-xl mb-7 font-medium text-black">
+        <div className="my-5">
+          <h1 className="text-xl mb-5 font-medium text-black">
             Related Products
           </h1>
           <ProductCarousel>
@@ -151,19 +151,28 @@ const productPage = ({ res }: Props) => {
         </div>
       )}
       {/* Reviews and posts */}
-      <div className="my-6">
-        <h2 className="mb-7 text-black font-medium text-xl">
+      <div className="my-5">
+        <h2 className="mb-5 text-black font-medium text-xl">
           Ask something about this products
         </h2>
         <Searchbar ph="Your Questions...." />
         {/*Customers reviews  */}
-        <div className="mt-7">
-          <h3 className="text-black font-medium text-lg">Customer Reviews</h3>
+        <div className="my-5">
+          <h3 className="block text-black mb-5 font-medium text-xl">
+            Customer Reviews
+          </h3>
           {/* Customer pic and Name */}
           <div>
-            {reviews.map((r, i) => (
+            {reviews.slice(0, 3).map((r, i) => (
               <Review key={i} review={r} />
             ))}
+            <Link href="/reviews">
+              <a className="flex items-center hover:text-gray-700 duration-200 text-gray-700 font-semibold text-lg">
+                {' '}
+                See More Reviews{' '}
+                <span className="material-icons">chevron_right</span>
+              </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 /* eslint no-restricted-globals: ["error", "event", "fdescribe"] */
 
 import "dotenv/config";
-import { Op } from "sequelize";
+import { DatabaseError, Op } from "sequelize";
 import redis from "async-redis";
 import helpers from "../../helpers/util";
 import db from "../../models";
@@ -252,6 +252,31 @@ export default class ProductController {
       const count = products.length;
       return res.status(200).json({ count, rows: products });
     } catch (error) {
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
+  /**
+   * @description -Add a product (Admin only)
+   * @param {object} req - The request payload sent from the router
+   * @param {object} res - The response payload sent back from the controller
+   * @returns {object} - Message regarding the product added
+   */
+  static async addProduct(req, res) {
+    try {
+      // Get the product data from the request
+      const product = req.body;
+
+      if (!product)
+        return res.status(400).json({ msg: "Please give some products" });
+      await Product.sync();
+      const addedProduct = await Product.create(product);
+      console.log(addedProduct);
+      // if(!addedProduct) throw new DatabaseError
+      // console.log(addedProduct.product_id)
+      res.status(200).json({ msg: "Product saved!!" });
+    } catch (err) {
+      // console.error(er err)
       res.status(500).json({ error: "Internal Server Error" });
     }
   }

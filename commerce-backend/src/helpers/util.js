@@ -1,10 +1,10 @@
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import Joi from '@hapi/joi';
-import 'dotenv/config';
-import schema from './validationSchema';
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import Joi from "@hapi/joi";
+import "dotenv/config";
+import schema from "./validationSchema";
 
-const options = { language: { key: '{{key}} ' } };
+const options = { language: { key: "{{key}} " } };
 
 export default {
   async hashPassword(password) {
@@ -18,7 +18,11 @@ export default {
 
   createToken(user) {
     const { customer_id: customerId, name, email } = user;
-    return jwt.sign({ customer_id: customerId, name, email }, process.env.SECRET, { expiresIn: 86400 });
+    return jwt.sign(
+      { customer_id: customerId, name, email },
+      process.env.SECRET,
+      { expiresIn: 86400 }
+    );
   },
 
   validateRegisterDetails(user) {
@@ -50,19 +54,26 @@ export default {
         status,
         code,
         message,
-        field: field || ''
-      }
+        field: field || "",
+      },
     });
   },
 
+  // lorem ipsum doler sit amet
+  // lorem ipsum...
   truncateDescription(products, descriptionLength) {
     const allProducts = products.map((product) => {
       const { length } = product.dataValues.description;
+      console.log(length, descriptionLength);
       if (length > descriptionLength) {
-        product.dataValues.description = `${product.dataValues.description.slice(0, descriptionLength)}...`;
+        product.dataValues.description = `${product.dataValues.description.slice(
+          0,
+          descriptionLength
+        )}...`;
       }
+      // console.log(product);
       return product;
     });
     return allProducts;
-  }
+  },
 };

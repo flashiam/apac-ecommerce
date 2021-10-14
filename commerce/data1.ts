@@ -8,6 +8,7 @@ import iphone from './public/assets/img/iphone.png'
 import p1 from './public/assets/profile/p1.jpg'
 import p2 from './public/assets/profile/p2.jpg'
 import p3 from './public/assets/profile/p3.jpg'
+import { Socket } from 'socket.io-client'
 
 export const flips = {
   links: [
@@ -64,6 +65,9 @@ const mproduct1: MProduct = {
       id: '89021',
       name: " That's according to Sai krishna V.",
       msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
+      email: 'sai34@gmail.com',
+      profilePic: p2,
+      authToken: '454sdfsd',
     },
   },
   tags: ['iphone', 'apple', 'phone'],
@@ -106,6 +110,9 @@ const mproduct2: MProduct = {
       id: '89021',
       name: " That's according to Sai krishna V.",
       msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
+      email: 'sai34@gmail.com',
+      profilePic: p2,
+      authToken: '454sdfsd',
     },
   },
   tags: ['asus', 'asus laptops', 'laptop'],
@@ -148,9 +155,13 @@ const mproduct3: MProduct = {
       id: '89021',
       name: " That's according to Sai krishna V.",
       msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
+      email: 'sai34@gmail.com',
+      profilePic: p2,
+      authToken: '454sdfsd',
     },
   },
   tags: ['iphone', 'apple', 'phone'],
+  delivered: true,
 }
 
 const mproduct4: MProduct = {
@@ -191,9 +202,13 @@ const mproduct4: MProduct = {
       id: '89021',
       name: " That's according to Sai krishna V.",
       msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
+      email: 'sai34@gmail.com',
+      profilePic: p2,
+      authToken: '454sdfsd',
     },
   },
   tags: ['samsung', 'phone'],
+  delivered: true,
 }
 
 const productsX = [
@@ -316,6 +331,9 @@ export type LinksAndMain = {
 export interface Customer {
   id: string
   name: string
+  email: string
+  authToken?: string
+  profilePic: StaticImageData | string
 }
 
 export interface CustomerMsg extends Customer {
@@ -377,7 +395,7 @@ export interface MProduct {
   comments?: UserComments
   tags: string[]
   flashSale?: string
-
+  delivered?: boolean
   // cartItem: CartProduct
 }
 // export interface MProduct {
@@ -413,10 +431,25 @@ export interface CartProduct {
   modelno: string
 }
 
+// Order item
+export interface MyOrderedItem {
+  id: string
+  name: string
+  price: string
+  quantity: string
+  delivered: boolean
+  img: StaticImageData
+  link?: string
+}
+
 export interface ProductState {
   cartItems: CartProduct[]
   loading: boolean
   totalCartPrice: number
+}
+
+export interface ChatState {
+  socket: Socket
 }
 
 export interface GlobalState {

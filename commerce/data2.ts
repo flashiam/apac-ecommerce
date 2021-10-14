@@ -78,6 +78,7 @@ export const productsH: MProduct[] = [
     },
     tags: ['iphone', 'apple', 'phone'],
     flashSale: 'flash sale',
+    delivered: true,
   },
   {
     id: '8450',
@@ -122,6 +123,7 @@ export const productsH: MProduct[] = [
     },
     tags: ['iphone', 'apple', 'phone'],
     flashSale: 'flash sale',
+    delivered: true,
   },
   {
     id: '89670',
@@ -169,6 +171,7 @@ export const productsH: MProduct[] = [
     },
     tags: ['iphone', 'apple', 'phone'],
     flashSale: 'flash sale',
+    delivered: true,
   },
   {
     id: '5900',
