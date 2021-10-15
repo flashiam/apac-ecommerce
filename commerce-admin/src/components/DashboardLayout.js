@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getChatRequest } from '../actions/notificationAction';
 import DashboardNavbar from './DashboardNavbar';
 import DashboardSidebar from './DashboardSidebar';
@@ -39,11 +39,23 @@ const DashboardLayoutContent = styled('div')({
 
 const DashboardLayout = () => {
   const dispatch = useDispatch();
+  const notifs = useSelector(({ notification }) => notification.notifications);
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
+  // Function to emit the client loading state for chat
+  const showSupportLoading = (notifications, socketid) => {
+    // Loop from notification and show the loading state
+    notifications.forEach((notif) => {
+      socketid.emit('client-waiting', true, notif.id);
+    });
+  };
+
   useEffect(() => {
+    console.log(socket);
+    if (notifs.length > 0) showSupportLoading(notifs, socket);
+    // socket.on('to-admin', (res) => console.log(res));
     dispatch(getChatRequest(socket));
-  }, [dispatch]);
+  }, [dispatch, notifs]);
 
   return (
     <DashboardLayoutRoot>

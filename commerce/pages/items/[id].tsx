@@ -44,7 +44,7 @@ type Props = {
 }
 // Static path function
 // Main Func
-const productPage = ({ res }: Props) => {
+const ProductPage = ({ res }: Props) => {
   // Destructuring products
   const { relatedProducts, linksOfProducts } = res
   // console.log(res)
@@ -182,7 +182,7 @@ const productPage = ({ res }: Props) => {
   )
 }
 
-export default productPage
+export default ProductPage
 
 // Static paths function
 export const getStaticPaths = async () => {
@@ -221,4 +221,4 @@ export const getStaticProps = async ({ params: { id } }: any) => {
   }
 }
 
-productPage.Layout = Layout
+ProductPage.Layout = Layout

@@ -26,190 +26,6 @@ export const flips = {
 }
 
 // Main Product
-const mproduct1: MProduct = {
-  id: '345',
-  name: 'iPhone 11 64GB -Black',
-  // support_sims: '(GSM & CDMA)',
-  totalReview: '5k',
-  qna: '22k',
-  priceoff: '$19.99',
-  rating: '2',
-  inStock: true,
-  works_with: '',
-  price: 899,
-  // price: '$428.99',
-  quantity: 5,
-  ram: 4,
-  storage: 64,
-  color: 'blazing red',
-  dis: '28%',
-  modelno: 'C-458',
-  warranty: '12 Months',
-  description:
-    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
-  cond: 'conition fair',
-  details: 'This is best products',
-  img: iphone,
-  relatedProducts: [
-    {
-      id: '78',
-    },
-    {
-      id: '778',
-    },
-  ],
-  linksOfProducts: flips,
-  comments: {
-    reviews: 'Average of 1,138 reviews from the past 6 months',
-    customers: {
-      id: '89021',
-      name: " That's according to Sai krishna V.",
-      msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
-      email: 'sai34@gmail.com',
-      profilePic: p2,
-      authToken: '454sdfsd',
-    },
-  },
-  tags: ['iphone', 'apple', 'phone'],
-}
-const mproduct2: MProduct = {
-  id: '899',
-  totalReview: '25k',
-  qna: '1.2k',
-  name: 'ASUS Laptop',
-  // support_sims: '(GSM & CDMA)',
-  priceoff: '$0.99',
-  rating: '3.6',
-  works_with: '',
-  price: 1899,
-  dis: '15%',
-  warranty: '12 Months',
-  inStock: true,
-  color: 'black',
-  quantity: 5,
-  ram: 8,
-  storage: 640,
-  modelno: 'C-458',
-  description:
-    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
-  cond: 'conition fair',
-  details: 'This is best products',
-  img: laptop2,
-  relatedProducts: [
-    {
-      id: '78',
-    },
-    {
-      id: '778',
-    },
-  ],
-  linksOfProducts: flips,
-  comments: {
-    reviews: 'Average of 1,138 reviews from the past 6 months',
-    customers: {
-      id: '89021',
-      name: " That's according to Sai krishna V.",
-      msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
-      email: 'sai34@gmail.com',
-      profilePic: p2,
-      authToken: '454sdfsd',
-    },
-  },
-  tags: ['asus', 'asus laptops', 'laptop'],
-}
-const mproduct3: MProduct = {
-  id: '1200',
-  name: 'Iphone',
-  support_sims: '(GSM & CDMA)',
-  works_with: '',
-  rating: '4.9',
-  totalReview: '5.8k',
-  qna: '18k',
-  price: 899,
-  inStock: true,
-  priceoff: '$2.99',
-  dis: '15%',
-  quantity: 5,
-  color: 'blazing red',
-  warranty: '12 Months',
-  ram: 4,
-  storage: 64,
-  modelno: 'C-458',
-  description:
-    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
-  cond: 'conition fair',
-  details: 'This is best products',
-  img: mobile1,
-  relatedProducts: [
-    {
-      id: '78',
-    },
-    {
-      id: '778',
-    },
-  ],
-  linksOfProducts: flips,
-  comments: {
-    reviews: 'Average of 1,138 reviews from the past 6 months',
-    customers: {
-      id: '89021',
-      name: " That's according to Sai krishna V.",
-      msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
-      email: 'sai34@gmail.com',
-      profilePic: p2,
-      authToken: '454sdfsd',
-    },
-  },
-  tags: ['iphone', 'apple', 'phone'],
-  delivered: true,
-}
-
-const mproduct4: MProduct = {
-  id: '750',
-  priceoff: '$9.99',
-  rating: '2.3',
-  totalReview: '7.9k',
-  qna: '0.32k',
-  name: 'Samsung',
-  quantity: 5,
-  support_sims: '(GSM & CDMA)',
-  works_with: '',
-  inStock: true,
-  color: 'blazing red',
-  price: 560,
-  storage: 64,
-  ram: 4,
-  dis: '15%',
-  warranty: '12 Months',
-  modelno: 'C-458',
-  cond: 'conition fair',
-  description:
-    'lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,facere nesciunt excepturi dolorum accusantium hic quasi explicabo debitis nihil a recusandae, beatae suscipit iste! Blanditiis?',
-  details: 'This is best products',
-  img: mobile2,
-  relatedProducts: [
-    {
-      id: '78',
-    },
-    {
-      id: '778',
-    },
-  ],
-  linksOfProducts: flips,
-  comments: {
-    reviews: 'Average of 1,138 reviews from the past 6 months',
-    customers: {
-      id: '89021',
-      name: " That's according to Sai krishna V.",
-      msg: '"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exmolestiae enim similique esse temporibus tempora"',
-      email: 'sai34@gmail.com',
-      profilePic: p2,
-      authToken: '454sdfsd',
-    },
-  },
-  tags: ['samsung', 'phone'],
-  delivered: true,
-}
 
 const productsX = [
   {
@@ -332,8 +148,9 @@ export interface Customer {
   id: string
   name: string
   email: string
-  authToken?: string
+  accessToken: string
   profilePic: StaticImageData | string
+  provider: string
 }
 
 export interface CustomerMsg extends Customer {
@@ -452,9 +269,14 @@ export interface ChatState {
   socket: Socket
 }
 
+export interface CustomerState {
+  customer: Customer | null
+  loggedIn: boolean
+}
+
 export interface GlobalState {
   product: ProductState
-  customers: Customer
+  customers: CustomerState
 }
 
 // export const itemsOfProducts: Big[] = [

@@ -106,11 +106,13 @@ const clientProfile = [
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const location = useLocation();
   const isChatting = useSelector((state) => state.chat.isChatting);
-  const currentProfile=useSelector((state)=>state.currentUser.currentUserData)
+  const currentProfile = useSelector(
+    (state) => state.currentUser.currentUserData
+  );
 
   useEffect(() => {
-    console.log(currentProfile.currentUserData);
-  },[currentProfile])
+    console.log(currentProfile?.currentUserData);
+  }, [currentProfile]);
 
   const dispatch = useDispatch();
 
@@ -152,7 +154,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
       >
         <Avatar
           component={RouterLink}
-          src={currentProfile.profilePic}
+          src={currentProfile?.profilePic || p2}
           sx={{
             cursor: 'pointer',
             width: 64,
@@ -161,10 +163,10 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           to="/app/account"
         />
         <Typography color="textPrimary" variant="h5">
-          {currentProfile.name}
+          {currentProfile?.name || ''}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {currentProfile.email}
+          {currentProfile?.email || ''}
         </Typography>
       </Box>
       <Divider />

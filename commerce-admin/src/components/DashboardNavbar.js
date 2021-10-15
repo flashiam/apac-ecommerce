@@ -54,6 +54,7 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
 
   useEffect(() => {
     setNotificationNum(notifications.length);
+    console.log(notifications);
   }, [notificationNum, notifications]);
 
   return (
@@ -62,18 +63,18 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
         <Toolbar>
           <RouterLink to="/">{/* <Logo /> */}</RouterLink>
           <Box sx={{ flexGrow: 1 }} />
-          <Hidden xlDown>
-            <IconButton color="inherit" size="large" onClick={accessCurrentEl}>
-              <Badge badgeContent={notificationNum} color="primary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton color="hamcolor" size="large">
-              <InputIcon />
-            </IconButton>
-          </Hidden>
+          {/* <Hidden xlUp> */}
+          <IconButton color="inherit" size="large" onClick={accessCurrentEl}>
+            <Badge badgeContent={notificationNum} color="primary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit" size="large">
+            <InputIcon />
+          </IconButton>
+          {/* </Hidden> */}
           <Hidden lgUp>
-            <IconButton color="hamcolor" onClick={onMobileNavOpen} size="large">
+            <IconButton color="inherit" onClick={onMobileNavOpen} size="large">
               <MenuIcon />
             </IconButton>
           </Hidden>

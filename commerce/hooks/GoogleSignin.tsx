@@ -5,43 +5,50 @@ import {
   sendEmailVerification,
   User,
 } from '@firebase/auth'
+import { useDispatch } from 'react-redux'
+import { Customer } from '../data1'
+import { addCustomer } from '../actions/customerAction'
 
 interface Response {
   user: User | null
+  accessToken: null
   credentials: OAuthCredential | null
-  isLoading: boolean
+  provider: string | null
   isError: boolean
 }
 
-const GoogleSignin = async (auth: Auth): Promise<Response> => {
-  const response: Response = {
-    user: null,
-    credentials: null,
-    isLoading: true,
-    isError: false,
-  }
+const GoogleSignin = async (auth: Auth) => {
+  // const dispatch = useDispatch()
   try {
     const provider = new GoogleAuthProvider()
     const res = await signInWithPopup(auth, provider)
     // Fething credentials
     const credentials = GoogleAuthProvider.credentialFromResult(res)
+    console.log(credentials)
     // Fetching user profile
-    const user = res.user
+    const { uid, displayName, email, photoURL, providerId } = res.user
 
-    response.user = user
-    response.credentials = credentials
-    response.isLoading = false
+    // response.user = user
+    // response.credentials = credentials
+    // response.provider = user.providerId
 
+    const response: Customer = {
+      id: uid,
+      name: displayName || '',
+      email: email || '',
+      accessToken: credentials?.accessToken || '',
+      profilePic: photoURL || '',
+      provider: providerId,
+    }
+    // dispatch(addCustomer(response))
     // Sending email
     if (auth.currentUser) await sendEmailVerification(auth?.currentUser)
     console.log('Email sent for verfication')
+    return response
   } catch (error) {
     // const credentials = GoogleAuthProvider.credentialFromError(error)
-    response.isLoading = false
-    response.isError = true
+    console.log(error)
   }
-
-  return response
 }
 
 export default GoogleSignin

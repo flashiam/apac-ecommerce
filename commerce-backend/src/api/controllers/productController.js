@@ -8,7 +8,7 @@ import db from "../../models";
 
 const redisClient = redis.createClient(process.env.REDIS_URL);
 
-const { Product } = db;
+const { Product, Features } = db;
 
 const { errorResponse, truncateDescription } = helpers;
 
@@ -277,6 +277,36 @@ export default class ProductController {
       res.status(200).json({ msg: "Product saved!!" });
     } catch (err) {
       // console.error(er err)
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
+  /**
+   * @description -Add product features (Admin only)
+   * @param {object} req - The request payload sent from the router
+   * @param {object} res - The response payload sent back from the controller
+   * @returns {object} - Message regarding the product added
+   */
+  static async addProductFeatures(req, res) {
+    try {
+      // Get the product data from the request
+      // const product = req.body;
+      const feature = {
+        feature_id: 1,
+        ram: 1024 * 4,
+        storage: 1024 * 64,
+        modelno: "C-5678",
+        color: "Light Gray",
+      };
+
+      await Features.sync();
+      const addedFeatures = await Features.create(feature);
+      console.log(addedFeatures);
+      // if(!addedProduct) throw new DatabaseError
+      // console.log(addedProduct.product_id)
+      res.status(200).json({ msg: "Features saved!!" });
+    } catch (err) {
+      console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }

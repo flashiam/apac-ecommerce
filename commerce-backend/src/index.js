@@ -99,6 +99,7 @@ io.on("connection", (socket) => {
 
   // ADMIN give indication to client for waiting
   socket.on("client-waiting", (waiting, id) => {
+    console.log(waiting, id);
     // SERVER emit this indicator to specific client
     ChatController.triggerPersonalEvents(id, "on-waiting", waiting);
   });

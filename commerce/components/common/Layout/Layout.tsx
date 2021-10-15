@@ -18,6 +18,8 @@ import PaymentMethodView from '@components/checkout/PaymentMethodView'
 import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchCartItems } from '../../../actions/productAction'
+import { fetchCustomer } from '../../../actions/customerAction'
+import app from 'firebase-config'
 
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
@@ -115,6 +117,7 @@ const Layout: FC<Props> = ({
 
   useEffect(() => {
     dispatch(fetchCartItems())
+    dispatch(fetchCustomer())
   }, [dispatch])
 
   return (
