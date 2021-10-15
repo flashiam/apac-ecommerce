@@ -190,21 +190,23 @@ export const getStaticPaths = async () => {
     // const rest = await Promise.resolve(itemsOfProducts)
     const data = await fetch(`${server}/api/items`)
     const jsonData = await data.json()
-    // console.log(jsonData)
     const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
     const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
-    console.log(paths)
     return {
       paths: paths,
       fallback: false,
     }
   } catch (err) {
     console.error(err)
+    return {
+      paths: [],
+      fallback: false,
+    }
   }
 }
 // Static props function
 export const getStaticProps = async ({ params: { id } }: any) => {
-  // console.log(props)
+  console.log(id)
   try {
     // const res = await Promise.resolve(itemsOfProducts)
 

@@ -269,14 +269,14 @@ export default class ProductController {
 
       if (!product)
         return res.status(400).json({ msg: "Please give some products" });
-      await Product.sync();
+      // await Product.sync();
       const addedProduct = await Product.create(product);
       console.log(addedProduct);
       // if(!addedProduct) throw new DatabaseError
       // console.log(addedProduct.product_id)
       res.status(200).json({ msg: "Product saved!!" });
     } catch (err) {
-      // console.error(er err)
+      console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
@@ -291,16 +291,10 @@ export default class ProductController {
     try {
       // Get the product data from the request
       // const product = req.body;
-      const feature = {
-        feature_id: 1,
-        ram: 1024 * 4,
-        storage: 1024 * 64,
-        modelno: "C-5678",
-        color: "Light Gray",
-      };
+      console.log(req.body);
 
-      await Features.sync();
-      const addedFeatures = await Features.create(feature);
+      // await Features.sync();
+      const addedFeatures = await Features.create(req.body);
       console.log(addedFeatures);
       // if(!addedProduct) throw new DatabaseError
       // console.log(addedProduct.product_id)

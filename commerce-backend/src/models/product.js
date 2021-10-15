@@ -9,11 +9,6 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      feature_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-      },
       name: {
         type: DataTypes.STRING(100),
         allowNull: false,
@@ -65,6 +60,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "product_id",
       through: "product_category",
     });
+    // Product.belongsTo(models.Features, { targetKey: "feature_id" });
   };
   return Product;
 };
