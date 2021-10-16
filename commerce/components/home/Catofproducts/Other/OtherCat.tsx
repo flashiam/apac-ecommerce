@@ -29,7 +29,10 @@ const OtherCat = (props: Props) => {
         </div>
         <div>
           <h3 className="text-black text-sm font-semibold">{name}</h3>
-          <p>{details}</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Reiciendis, tenetur.
+          </p>
         </div>
       </SCardDesign>
     </div>

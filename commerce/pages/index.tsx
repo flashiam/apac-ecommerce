@@ -91,7 +91,7 @@ export default function Home({
         </div>
 
         {/* For Mobo */}
-        <div className="block md:hidden">
+        <div className="block md:hidden sm:hidden">
           <ProductCarousel>
             {pCarousel.map((p, i) => (
               <div key={i} className="keen-slider__slide slide">
@@ -139,7 +139,7 @@ export default function Home({
             </span>
           </span>
 
-          <div className="md:grid-cols-6 grid grid-cols-6 md:grid gap-2">
+          <div className="md:grid-cols-6 md:grid sm:grid sm:grid-cols-6 hidden gap-2">
             {otherCat.map((other, i) => (
               <OtherCat key={i} numIndex={i} otherCat={other} />
             ))}
@@ -149,7 +149,7 @@ export default function Home({
         {/* Product Carousel */}
 
         {/* For Mobo */}
-        <div className="block md:hidden">
+        <div className="block md:hidden sm:hidden">
           <ProductCarousel>
             {pCarousel.map((p, i) => (
               <div key={i} className="keen-slider__slide slide">

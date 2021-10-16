@@ -38,7 +38,7 @@ const EspecialProducts = (props: Props) => {
             </h5>
             <p>Lorem ipsum dolor sit amet.</p>
             <button
-              className="mt-3 mx-auto block border-2 border-black rounded-sm w-1/2 md:w-1/4 py-1 transition-colors duration-200 ease-in hover:bg-black font-medium
+              className="mt-3 mx-auto block border-2 border-black rounded-sm w-full md:w-1/2 py-1 transition-colors duration-200 ease-in hover:bg-black font-medium
           hover:text-white text-base text-black"
             >
               Click here for more
