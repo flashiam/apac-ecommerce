@@ -13,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(100),
         allowNull: false,
       },
+      brand_name: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
+      model_no: {
+        type: DataTypes.STRING(150),
+        allowNull: false,
+      },
       description: {
         type: DataTypes.STRING(1000),
         allowNull: false,
@@ -26,7 +34,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         defaultValue: "0.00",
       },
-      inStock: {
+      quantity: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      in_stock: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true,
@@ -38,14 +50,9 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.STRING(150),
       image_2: DataTypes.STRING(150),
       thumbnail: DataTypes.STRING(150),
-      // display:{
-      //     type:DataTypes.INTEGER,
-      //     allowNull: false,
-      //     defaultValue: '0'
-      // },
     },
     {
-      timestamps: false,
+      timestamps: true,
       tableName: "product",
     }
   );
@@ -60,7 +67,10 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "product_id",
       through: "product_category",
     });
-    // Product.belongsTo(models.Features, { targetKey: "feature_id" });
+    Product.belongsTo(models.Features, {
+      as: "feature",
+      foreignKey: "feature_id",
+    });
   };
   return Product;
 };
