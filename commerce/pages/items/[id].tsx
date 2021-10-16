@@ -41,10 +41,13 @@ import { pCarousel, productsH } from 'data2'
 
 type Props = {
   res: MProduct
+  loading: boolean
 }
 // Static path function
 // Main Func
-const ProductPage = ({ res }: Props) => {
+const ProductPage = ({ res, loading }: Props) => {
+  // State to show loading
+  const [isLoading, setLoading] = useState(true)
   // Destructuring products
   const { relatedProducts, linksOfProducts } = res
   // console.log(res)
@@ -63,7 +66,11 @@ const ProductPage = ({ res }: Props) => {
   useEffect(() => {
     storeRelatedProducts()
     console.log(res)
-  }, [])
+    setLoading(loading)
+    console.log(isLoading)
+  }, [loading, isLoading])
+
+  if (isLoading) return <h1>Loading...</h1>
 
   return (
     <div className="md:px-14 px-5 py-5 sm:px-7 dark:bg-gray-900 bg-gray-200">
@@ -186,21 +193,18 @@ export default ProductPage
 
 // Static paths function
 export const getStaticPaths = async () => {
-  let paths,
-    fallback = false
   try {
     // const rest = await Promise.resolve(itemsOfProducts)
     const data = await fetch(`${server}/api/items`)
     const jsonData = await data.json()
     const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
-    const idPaths = ids.map((id: any) => ({ params: { id: id.toString() } }))
-    paths = idPaths
+    const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
+    return {
+      paths,
+      fallback: false,
+    }
   } catch (err) {
     console.error(err)
-  }
-  return {
-    paths,
-    fallback,
   }
 }
 // Static props function
@@ -208,13 +212,15 @@ export const getStaticProps = async ({ params: { id } }: any) => {
   console.log(id)
   try {
     // const res = await Promise.resolve(itemsOfProducts)
-
+    let loading = true
     const data = await fetch(`${server}/api/items/${id}`)
     const res = await data.json()
-    // console.log(res)
+
+    loading = false
     return {
       props: {
         res,
+        loading,
       },
     }
   } catch (err) {
