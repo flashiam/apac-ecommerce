@@ -148,7 +148,14 @@ const ProductPage = ({ res, loading }: Props) => {
                       <div className="h-20 w-20">
                         <Image height="100%" width="100%" src={p.img} />
                       </div>
-                      <h3 className="text-black text-md">{p.name}</h3>
+                      {/* <h3 className="text-black text-md">{p.name}</h3> */}
+                      <h3 className="text-black text-sm font-semibold">
+                        {p.name}
+                      </h3>
+                      <p className="text-black text-xs">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing
+                        elit.
+                      </p>
                     </AppCard>
                   </a>
                 </Link>
@@ -193,18 +200,14 @@ export default ProductPage
 
 // Static paths function
 export const getStaticPaths = async () => {
-  try {
-    // const rest = await Promise.resolve(itemsOfProducts)
-    const data = await fetch(`${server}/api/items`)
-    const jsonData = await data.json()
-    const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
-    const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
-    return {
-      paths,
-      fallback: false,
-    }
-  } catch (err) {
-    console.error(err)
+  // const rest = await Promise.resolve(itemsOfProducts)
+  const data = await fetch(`${server}/api/items`)
+  const jsonData = await data.json()
+  const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
+  const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
+  return {
+    paths,
+    fallback: false,
   }
 }
 // Static props function
@@ -229,3 +232,13 @@ export const getStaticProps = async ({ params: { id } }: any) => {
 }
 
 ProductPage.Layout = Layout
+
+{
+  /* <div className="h-32 w-20 mx-auto">
+<Image src={img} />
+</div>
+<div>
+<h3 className="text-black text-sm font-semibold">{name}</h3>
+<p className="text-black text-xs">{details}</p>
+</div> */
+}

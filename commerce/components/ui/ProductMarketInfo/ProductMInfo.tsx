@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from '../Link'
-type bestObj= {
+type bestObj = {
   title: string
   title_d: string
-  
 }
 
 type Props = {
@@ -13,14 +12,12 @@ type Props = {
   }
 }
 
-
-
-const ProductMInfo = (props:Props) => {
+const ProductMInfo = (props: Props) => {
   const { seeReview, bestThings } = props.details
   return (
     <>
       <div className="md:col-span-3 sm:col-span-7 col-span-7 text-center">
-        <h1 className="text-black text-4xl text font-bold">
+        <h1 className="text-black sm:text-xl md:text-4xl text font-semibold sm:font-bold md:font-bold">
           Welcome to Back Market, the refurbished (super) market.
         </h1>
         {/* See Review */}
@@ -32,7 +29,7 @@ const ProductMInfo = (props:Props) => {
         </button>
       </div>
 
-      <div className="md:col-span-4 sm:col-span-7 col-span-7">
+      <div className="md:col-span-4 hidden sm:col-span-7 col-span-7">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
           {bestThings.map((d, i) => (
             <div key={i} className="border-2 border-gray-200 text-center">

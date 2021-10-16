@@ -62,6 +62,16 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
 
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     slidesPerView: 10,
+    breakpoints: {
+      '(max-width: 768px)': {
+        slidesPerView: 5,
+        mode: 'free-snap',
+      },
+      '(max-width: 500px)': {
+        slidesPerView: 3.5,
+        mode: 'free-snap',
+      },
+    },
     mode: 'free',
     spacing: 1,
   })
@@ -149,7 +159,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             <div ref={sliderRef} className="keen-slider">
               {categories.map((cat, i) => (
                 <Link key={i} href={cat.link}>
-                  <a className="keen-slider__slide slide">{cat.label}</a>
+                  <a className="keen-slider__slide slide w-full">{cat.label}</a>
                 </Link>
               ))}
             </div>
