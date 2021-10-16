@@ -5,7 +5,7 @@ import laptop1 from '../public/assets/img/laptop1.png'
 import { Layout } from '@components/common'
 
 import Link from 'next/link'
-import { dataOfProducts } from '../data1'
+import { MProduct } from '../data1'
 import Head from 'next/head'
 
 import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
@@ -17,6 +17,7 @@ import SideLinks from '@components/common/Productpage/SideLinks/SideLinks'
 import CheckBoxes from '@components/common/Productpage/CheckBoxes/CheckBoxes'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
+import { productsH } from 'data2'
 
 // Main Func
 const Page1 = () => {
@@ -32,7 +33,7 @@ const Page1 = () => {
 
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
-        {dataOfProducts.linksOfProducts.links.map((l, i) => (
+        {productsH[0]?.linksOfProducts.links.map((l, i) => (
           <Link key={i} href="!#">
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
               <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
@@ -69,17 +70,17 @@ const Page1 = () => {
               ))}
             </div>
             <p className="my-2 text-gray-600 font-light text-xs">
-              {dataOfProducts.comments.reviews}
+              {productsH[0].comments?.reviews}
             </p>
           </div>
           <div className="my-5 md:block h-0.5 w-full bg-gray-400 sm:hidden"></div>
           {/* Customer Comments */}
           <div>
             <h4 className="my-1 text-black text-sm font-bold">
-              {dataOfProducts.comments.customers.name}
+              {productsH[0].comments?.customers.name}
             </h4>
             <blockquote className="my-1 text-gray text-xs font-thin">
-              {dataOfProducts.comments.customers.msg}
+              {productsH[0].comments?.customers.msg}
             </blockquote>
           </div>
 
@@ -109,7 +110,7 @@ const Page1 = () => {
               <h2 className="text-black font-medium">Categories</h2>
               {/* Parent */}
               <ul className="list-inside">
-                <SideLinks flips={dataOfProducts.linksOfProducts.main} />
+                <SideLinks flips={productsH[0].linksOfProducts.main} />
               </ul>
               <h1 className="my-2 text-black font-medium text-lg">
                 95 PRODUCTS
@@ -123,7 +124,7 @@ const Page1 = () => {
           {/* Triple columns */}
           <div className="md:col-span-3 sm:col-span-2">
             <div className="md:p-4 rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
-              {dataOfProducts.relatedProducts.map((product, i) => (
+              {productsH.map((product: MProduct, i: number) => (
                 <SimpleCard key={i} product={product} />
               ))}
             </div>

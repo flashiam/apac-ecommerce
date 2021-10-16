@@ -1,25 +1,15 @@
-import React, {
-  FC,
-  useContext,
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from 'react'
+import React, { FC, useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
 import { useSelector } from 'react-redux'
-// import { io, Socket } from 'socket.io-client'
 import { Socket } from 'socket.io-client'
 import { socket } from '../utils/socket'
 import { v4 as uuidV4 } from 'uuid'
 import { getAuth } from 'firebase/auth'
 import app from 'firebase-config'
-import { Customer, ChatState } from 'data1'
+import { Customer, ChatState, GlobalState } from 'data1'
 import p1 from '../public/assets/profile/p1.jpg'
-
-const url = 'http://localhost:8000'
 
 interface Message {
   id: string
@@ -60,8 +50,12 @@ const Support = () => {
   // const newSocket = io(url)
   // Init socket io
   // const socket: Socket = useSelector((state: ChatState) => state.socket)
+  const { customer, loggedIn } = useSelector(
+    (state: GlobalState) => state.customers
+  )
   const [message, setMessage] = useState('')
   const [chats, setChats] = useState<Message[]>([])
+  const [chatLoading, setChatLoading] = useState<boolean>(false)
   // const [socket, setSocket] = useState<Socket>(socketCon)
   const [isTyping, setTyping] = useState(false)
   const [someoneTyping, setSomeoneTyping] = useState(false)
@@ -75,40 +69,46 @@ const Support = () => {
   }
 
   // Function to fetch user
-  const fetchUser = () => {
-    const { currentUser } = getAuth(app)
-    if (currentUser) {
-      const id = currentUser.uid
-      const name = currentUser.displayName || 'Anonymous'
-      const profilePic = currentUser.photoURL || p1
-      const email = currentUser.email || ''
+  // const fetchUser = () => {
+  //   Promise.resolve(getAuth(app))
+  //     .then(({ currentUser }) => {
+  //       if (currentUser) {
+  //         const id = currentUser.uid
+  //         const name = currentUser.displayName || 'Anonymous'
+  //         const profilePic = currentUser.photoURL || p1
+  //         const email = currentUser.email || ''
 
-      const user: Customer = { id, name, email, profilePic }
-      setUser(user)
-    }
-  }
+  //         const user: Customer = { id, name, email, profilePic }
+  //         // console.log(user)
+  //         setUser(user)
+  //       }
+  //     })
+  //     .catch((err) => console.log(`Error occurred ${err}`))
+  // }
 
   // Function to request for a chat
   const onChatRequest = () => {
-    socket.emit('chat-request', user)
+    socket.emit('chat-request', customer)
   }
 
   // Function to send the message to admin
-  const onMessageSend = (name: string) => {
+  const onMessageSend = () => {
     if (!message) {
       console.log('fill up the fields u moron')
-    } else if (socket) {
+    } else if (!loggedIn) {
+      console.log('you should be logged in first')
+    } else if (!socket) {
+      console.log('Socket connection is not established yet')
+    } else {
       const clientMsg: Message = {
         id: uuidV4(),
         socketid: socket?.id,
-        name,
+        name: customer?.name || '',
         msg: message,
       }
       setChats([...chats, clientMsg])
       socket?.emit('user-msg', clientMsg)
       setMessage('')
-    } else {
-      console.log('Socket connection is not established yet')
     }
   }
 
@@ -132,7 +132,7 @@ const Support = () => {
     } else {
       // Send the message
       setTyping(false)
-      onMessageSend('Abhishek')
+      onMessageSend()
     }
   }
 
@@ -146,7 +146,7 @@ const Support = () => {
     // Checking network logs
     // Fetch user details
     console.log(socket)
-    fetchUser()
+    // fetchUser()
     socket?.on('connect', () => console.log('Connected to server'))
     socket?.on('error', (reason) => console.log(reason))
     socket?.on('connect_failed', (reason) => console.log(reason))
@@ -155,13 +155,13 @@ const Support = () => {
       setChats((prevMsg) => [...prevMsg, res])
       moveScroll()
     })
-    console.log(getAuth(app))
     onTypingCallback()
+    socket.on('on-waiting', (isLoading) => setChatLoading(isLoading))
     // Disconnecting from socket instance
     return () => {
       socket?.disconnect()
     }
-  }, [])
+  }, [chatLoading])
 
   useEffect(() => {
     // Emit an typing event when user is typing
@@ -215,12 +215,16 @@ const Support = () => {
         <div className="relative flex-grow w-full">
           <div className="flex flex-col items-center w-full justify-center pt-20">
             <h3 className="text-4xl text-gray-600">No Recent chats yet</h3>
-            <button
-              onClick={onChatRequest}
-              className="px-3 py-2 bg-gray-800 text-white mt-4 hover:bg-gray-700 rounded-md"
-            >
-              Request for a chat
-            </button>
+            {chatLoading ? (
+              <p className="text-lg text-gray-500">Loading...</p>
+            ) : (
+              <button
+                onClick={onChatRequest}
+                className="px-3 py-2 bg-gray-800 text-white mt-4 hover:bg-gray-700 rounded-md"
+              >
+                Request for a chat
+              </button>
+            )}
           </div>
           {socket &&
             chats?.map((chat) => (
@@ -254,7 +258,7 @@ const Support = () => {
           />
         </div>
         <div className="flex items-center">
-          <button className="mr-2" onClick={() => onMessageSend('Abhishek')}>
+          <button className="mr-2" onClick={() => onMessageSend()}>
             <i className="material-icons rounded-btn h-12 w-12 bg-purple-500 text-white text-md">
               send
             </i>

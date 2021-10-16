@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 
-import {server} from "../../config"
+import { server } from '../../config'
 import Carousel from '@components/ui/Carousel/Carousel'
 // import {getStaticProps }
 
-import {carousels} from "../../data2"
+import { carousels } from '../../data2'
 import { Layout, Searchbar } from '@components/common'
 
 import Link from 'next/link'
@@ -20,12 +20,13 @@ import CheckBoxes from '@components/common/Productpage/CheckBoxes/CheckBoxes'
 // import type { Big } from '../../data1'
 import PheadDetails from '@components/common/Productpage/PheadDetails/PheadDetails'
 import MainProduct from '@components/common/Products/MainProduct/MainProduct'
-import { itemsOfProducts, dataOfProducts ,photos,reviews} from '../../data1'
-import type {Big } from '../../data1'
+import { MProduct } from '../../data1'
+import { productsH } from '../../data2'
+import type { Big } from '../../data1'
 import Rate from '@components/common/Rateicons/Rate'
 import { Rating } from '@components/ui'
 import Review from '@components/common/Productpage/Review/Review'
-import { withRouter,NextRouter,useRouter } from 'next/router'
+import { withRouter, NextRouter, useRouter } from 'next/router'
 
 interface WithRouterProps {
   router: NextRouter
@@ -34,13 +35,14 @@ interface WithRouterProps {
 interface MyComponentProps extends WithRouterProps {}
 // Static path function
 // Main Func
-const BestDeals = (props:any) => {
-
+const BestDeals = (props: any) => {
   const router = useRouter()
-  
+
   console.log(router)
-  const { query: { bid } } = router;
-const mainTitle=bid?.toString().toUpperCase()
+  const {
+    query: { bid },
+  } = router
+  const mainTitle = bid?.toString().toUpperCase()
 
   return (
     <div className="md:p-10 p-5 sm:p-7 bg-gray-100">
@@ -52,14 +54,13 @@ const mainTitle=bid?.toString().toUpperCase()
         <title>{mainTitle}</title>
       </Head>
 
-
-      <h1 className="font-medium text-4xl my-10 text-center text-gray-600">OUR {mainTitle}</h1>
+      <h1 className="font-medium text-4xl my-10 text-center text-gray-600">
+        OUR {mainTitle}
+      </h1>
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
-
-     
-        {dataOfProducts.linksOfProducts.links.map((l:any, i:any) => (
-          <h4 key={i} >
+        {productsH[0].linksOfProducts.links.map((l: any, i: any) => (
+          <h4 key={i}>
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
               <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
                 {l.icon}
@@ -69,11 +70,8 @@ const mainTitle=bid?.toString().toUpperCase()
           </h4>
         ))}
       </div>
-    
-
 
       <Carousel carousels={carousels} />
-
 
       {/*  All PRODUCTS  */}
       <div className="mb-4">
@@ -92,7 +90,7 @@ const mainTitle=bid?.toString().toUpperCase()
               <h2 className="text-black font-medium">Categories</h2>
               {/* Parent */}
               <ul className="list-inside">
-                <SideLinks flips={dataOfProducts.linksOfProducts.main} />
+                <SideLinks flips={productsH[0].linksOfProducts.main} />
               </ul>
               <h1 className="my-2 text-black font-medium text-lg">
                 95 PRODUCTS
@@ -107,7 +105,7 @@ const mainTitle=bid?.toString().toUpperCase()
           {/* Span Triple columns */}
           <div className="md:col-span-3 sm:col-span-2 col-span-1">
             <div className="rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
-              {dataOfProducts.relatedProducts.map((product: any, i: string|number) => (
+              {productsH.map((product: MProduct, i: string | number) => (
                 <SimpleCard key={i} index={i} product={product} />
               ))}
             </div>
@@ -115,32 +113,24 @@ const mainTitle=bid?.toString().toUpperCase()
         </div>
       </div>
 
-
       {/* Pagination */}
-      <div className="flex justify-around items-center my-4" style={{maxWidth:"800px",margin:"0 auto"}}>
+      <div
+        className="flex justify-around items-center my-4"
+        style={{ maxWidth: '800px', margin: '0 auto' }}
+      >
         <Link href="#!">
-      <a className="border-2 p-2 bg-white font-semibold"> 
-             Prev
-            </a>
+          <a className="border-2 p-2 bg-white font-semibold">Prev</a>
         </Link>
-        {
-          [1,2,3,5,6,7].map((n,i)=>(
-            <Link href={`/bestdeals/${i}`} key={i}>
-            <a className="border-2 p-2 font-semibold bg-white"> 
-            {n}
-            </a>
+        {[1, 2, 3, 5, 6, 7].map((n, i) => (
+          <Link href={`/bestdeals/${i}`} key={i}>
+            <a className="border-2 p-2 font-semibold bg-white">{n}</a>
           </Link>
-          ))
-        }
+        ))}
 
-<Link href="#!">
-<a className="border-2 p-2 bg-white font-semibold"> 
-         Next
-            </a>
+        <Link href="#!">
+          <a className="border-2 p-2 bg-white font-semibold">Next</a>
         </Link>
-    
       </div>
-    
 
       {/* Review section end */}
     </div>
@@ -148,9 +138,6 @@ const mainTitle=bid?.toString().toUpperCase()
 }
 
 export default BestDeals
-
-
-
 
 //   {/* Reviews and posts */}
 //   <div className="my-6">
@@ -207,12 +194,10 @@ export default BestDeals
 //   }
 // }
 
-
 // // Static paths function
 // export const getStaticPaths = async () => {
 //   try {
 //     const rest = await Promise.resolve(itemsOfProducts)
-
 
 //     const idPaths = rest?.map((product) => ({
 //       params: { id: product.id.toString() },
@@ -242,4 +227,3 @@ export default BestDeals
 // }
 
 BestDeals.Layout = Layout
-

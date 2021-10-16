@@ -44,7 +44,7 @@ type Props = {
 }
 // Static path function
 // Main Func
-const productPage = ({ res }: Props) => {
+const ProductPage = ({ res }: Props) => {
   // Destructuring products
   const { relatedProducts, linksOfProducts } = res
   // console.log(res)
@@ -182,7 +182,7 @@ const productPage = ({ res }: Props) => {
   )
 }
 
-export default productPage
+export default ProductPage
 
 // Static paths function
 export const getStaticPaths = async () => {
@@ -190,21 +190,23 @@ export const getStaticPaths = async () => {
     // const rest = await Promise.resolve(itemsOfProducts)
     const data = await fetch(`${server}/api/items`)
     const jsonData = await data.json()
-    // console.log(jsonData)
     const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
     const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
-    console.log(paths)
     return {
       paths: paths,
       fallback: false,
     }
   } catch (err) {
     console.error(err)
+    return {
+      paths: [],
+      fallback: false,
+    }
   }
 }
 // Static props function
 export const getStaticProps = async ({ params: { id } }: any) => {
-  // console.log(props)
+  console.log(id)
   try {
     // const res = await Promise.resolve(itemsOfProducts)
 
@@ -221,4 +223,4 @@ export const getStaticProps = async ({ params: { id } }: any) => {
   }
 }
 
-productPage.Layout = Layout
+ProductPage.Layout = Layout

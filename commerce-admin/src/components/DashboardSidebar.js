@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Avatar,
   Box,
@@ -21,13 +21,17 @@ import {
   Users as UsersIcon,
   MessageSquare as MessageIcon
 } from 'react-feather';
+import { enableChatMode, disabledChatMode } from '../actions/chatAction';
+
+import CustomerItem from './customer/CustomerItem';
+import { p1, p2, p3, p4 } from '../img';
 import NavItem from './NavItem';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
-};
+// const user = {
+//   avatar: '/static/images/avatars/avatar_6.png',
+//   jobTitle: 'Senior Developer',
+//   name: 'Katarina Smith'
+// };
 
 const items = [
   {
@@ -72,14 +76,65 @@ const items = [
   }
 ];
 
+const clientProfile = [
+  {
+    id: 1,
+    name: 'John Doe',
+    email: 'john23@gmail.com',
+    profilePic: p1
+  },
+  {
+    id: 2,
+    name: 'Jane Doe',
+    email: 'jane90@gmail.com',
+    profilePic: p2
+  },
+  {
+    id: 3,
+    name: 'Mike Doe',
+    email: 'mik45@gmail.com',
+    profilePic: p3
+  },
+  {
+    id: 4,
+    name: 'Jake Doe',
+    email: 'jake23@gmail.com',
+    profilePic: p4
+  }
+];
+
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
   const location = useLocation();
+  const isChatting = useSelector((state) => state.chat.isChatting);
+  const currentProfile = useSelector(
+    (state) => state.currentUser.currentUserData
+  );
+
+  useEffect(() => {
+    console.log(currentProfile?.currentUserData);
+  }, [currentProfile]);
+
+  const dispatch = useDispatch();
+
+  // Function to change the chatting state by checking pathname
+  const changeChatState = () => {
+    const currentPath = location.pathname.split('/')[2];
+    if (currentPath === 'support') {
+      dispatch(enableChatMode());
+    }
+  };
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
-  }, [location.pathname]);
+    changeChatState();
+
+    // Disable the chat model on unmount
+    return () => {
+      dispatch(disabledChatMode());
+    };
+  }, [location.pathname, isChatting]);
 
   const content = (
     <Box
@@ -99,7 +154,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
       >
         <Avatar
           component={RouterLink}
-          src={user.avatar}
+          src={currentProfile?.profilePic || p2}
           sx={{
             cursor: 'pointer',
             width: 64,
@@ -108,24 +163,32 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           to="/app/account"
         />
         <Typography color="textPrimary" variant="h5">
-          {user.name}
+          {currentProfile?.name || ''}
         </Typography>
         <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
+          {currentProfile?.email || ''}
         </Typography>
       </Box>
       <Divider />
       <Box sx={{ p: 2 }}>
-        <List>
-          {items.map((item) => (
-            <NavItem
-              href={item.href}
-              key={item.title}
-              title={item.title}
-              icon={item.icon}
-            />
-          ))}
-        </List>
+        {isChatting ? (
+          <List>
+            {clientProfile.map((userRoom) => (
+              <CustomerItem key={userRoom.id} userRoom={userRoom} />
+            ))}
+          </List>
+        ) : (
+          <List>
+            {items.map((item) => (
+              <NavItem
+                href={item.href}
+                key={item.title}
+                title={item.title}
+                icon={item.icon}
+              />
+            ))}
+          </List>
+        )}
       </Box>
       <Box sx={{ flexGrow: 1 }} />
     </Box>

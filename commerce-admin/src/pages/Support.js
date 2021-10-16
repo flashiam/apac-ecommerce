@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { ChevronLeft, MessageSquare, Paperclip, Send } from 'react-feather';
 import PropTypes from 'prop-types';
 import { io } from 'socket.io-client';
+// import {  } from 'react-router-dom'
 
 const url = 'http://localhost:8000';
 
@@ -34,7 +35,6 @@ const customerMsgStyle = {
 
 const Message = ({ msgDetails, socket }) => {
   const { id, msg } = msgDetails;
-
   // Function to check user
   // const isAdmin = () => id?.slice(id.length - 2, id.length) === 'ad';
 
@@ -166,7 +166,7 @@ const Support = () => {
         }}
       >
         <Container maxWidth="lg">
-          <Button variant="text">
+          <Button variant="text" onClick={() => window.history.back(-1)}>
             <ChevronLeft />
             Back
           </Button>

@@ -48,10 +48,11 @@ io.on("connection", (socket) => {
   socket.on("chat-request", (user) => {
     const notification = {
       id: socket.id,
+      user,
       msg: `${user.name} wants to chat with you`,
     };
     console.log(user);
-    // ChatController.triggerGlobalEvents("to-admin", notification);
+    ChatController.triggerGlobalEvents("to-admin", notification);
   });
 
   socket.on("request-alert", (alert) =>
@@ -98,6 +99,7 @@ io.on("connection", (socket) => {
 
   // ADMIN give indication to client for waiting
   socket.on("client-waiting", (waiting, id) => {
+    console.log(waiting, id);
     // SERVER emit this indicator to specific client
     ChatController.triggerPersonalEvents(id, "on-waiting", waiting);
   });

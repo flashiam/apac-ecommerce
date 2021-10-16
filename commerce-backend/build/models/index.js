@@ -22,12 +22,12 @@ var db = {};
 //     },
 //   }
 // );
-var sequelize = void 0;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// let sequelize;
+// if (config.use_env_variable) {
+//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
+var sequelize = new Sequelize(config.database, config.username, config.password, config);
+// }
 sequelize.authenticate().then(function () {
   return console.log("connection successful");
 }).catch(function (err) {

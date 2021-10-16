@@ -10,6 +10,7 @@ import { Moon, Sun } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import ClickOutside from '@lib/click-outside'
 import useLogout from '@framework/auth/use-logout'
+import { useSelector, useDispatch } from 'react-redux'
 // import testImg from '../../../public/assets/test_avatar.jpg'
 import { getAuth, signOut, deleteUser } from 'firebase/auth'
 import {
@@ -20,7 +21,10 @@ import {
 import getUserProfile from '@utils/getUserProfile'
 import { UserProfile } from '../../../hooks'
 import app from 'firebase-config'
-import testImg from "../../../public/assets/profile/p2.jpg"
+import testImg from '../../../public/assets/profile/p2.jpg'
+import { Customer, CustomerState, GlobalState } from 'data1'
+import { removeCustomer } from '../../../actions/customerAction'
+
 interface DropdownMenuProps {
   open?: boolean
 }
@@ -46,12 +50,15 @@ const LINKS = [
 
 const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const logout = useLogout()
+  const dispatch = useDispatch()
+  const { customer, loggedIn } = useSelector(
+    ({ customers }: GlobalState) => customers
+  )
   const { pathname } = useRouter()
   const { theme, setTheme } = useTheme()
   // Using firebase auth
   const auth = getAuth(app)
 
-  
   // State for user signin status
   const [isLoggedIn, setLoggedIn] = useState(false)
 
@@ -76,6 +83,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     try {
       await signOut(auth)
       await auth.currentUser?.delete()
+      dispatch(removeCustomer())
       setLoggedIn(false)
     } catch (err) {
       console.log(err)
@@ -119,8 +127,8 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   <div className="h-12 w-12">
                     <Image
                       src={
-                        isLoggedIn
-                          ? auth.currentUser?.photoURL
+                        loggedIn && customer
+                          ? customer.profilePic
                           : (testImg as any)
                       }
                       height="100%"
@@ -132,9 +140,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   <p className="text-md font-semibold pl-2 flex flex-col items-start text-gray-700">
                     Hello,{' '}
                     <span className="text-xl font-bold">
-                      {isLoggedIn
-                        ? auth.currentUser?.displayName?.split(' ')[0]
-                        : 'Henry'}
+                      {loggedIn ? customer?.name.split(' ')[0] : 'Henry'}
                     </span>
                   </p>
                 </div>
@@ -178,7 +184,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                   </div>
                 </a>
               </li>
-              {isLoggedIn ? (
+              {loggedIn ? (
                 <li>
                   <a
                     className={cn(s.link, 'border-t border-accent-2 mt-4')}

@@ -23,5 +23,5 @@ productRouter.get("/incategory/:categoryId", _productController2.default.getProd
 productRouter.get("/inDepartment/:departmentId", _productController2.default.getProductsInDepartment);
 productRouter.get("/search", _productController2.default.searchProducts);
 productRouter.get("/:product_id", _productController2.default.getSingleProduct);
-
+productRouter.post('/', _productController2.default.addProduct);
 exports.default = productRouter;
