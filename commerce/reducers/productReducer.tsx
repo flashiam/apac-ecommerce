@@ -23,7 +23,7 @@ const first = (state = initialState, action: any) => {
     case FETCH_CART_ITEMS:
       return {
         ...state,
-        cartItems: action.payload,
+        cartItems: action.payload || [],
         loading: false,
       }
     case REMOVE_CART_ITEM:

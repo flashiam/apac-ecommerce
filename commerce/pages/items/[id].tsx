@@ -186,22 +186,21 @@ export default ProductPage
 
 // Static paths function
 export const getStaticPaths = async () => {
+  let paths,
+    fallback = false
   try {
     // const rest = await Promise.resolve(itemsOfProducts)
     const data = await fetch(`${server}/api/items`)
     const jsonData = await data.json()
     const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
-    const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
-    return {
-      paths: paths,
-      fallback: false,
-    }
+    const idPaths = ids.map((id: any) => ({ params: { id: id.toString() } }))
+    paths = idPaths
   } catch (err) {
     console.error(err)
-    return {
-      paths: [],
-      fallback: false,
-    }
+  }
+  return {
+    paths,
+    fallback,
   }
 }
 // Static props function
