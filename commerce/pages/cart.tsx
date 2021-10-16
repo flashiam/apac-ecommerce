@@ -53,7 +53,7 @@ const Cart = () => {
   return (
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
-        {!!cartItems.length ? (
+        {cartItems && !!cartItems.length ? (
           <div className="px-4 sm:px-6 flex-1">
             <Text variant="pageHeading">My Cart</Text>
             <Text variant="sectionHeading">Review your Order</Text>

@@ -30,6 +30,7 @@ export default class ProductController {
     try {
       const { description_length: descriptionLength, limit, page } = req.query;
       const productsQuery = {
+        include: "feature",
         limit: parseInt(limit || 20),
         offset: parseInt(limit || 20) * (parseInt(page) - 1) || 0,
       };

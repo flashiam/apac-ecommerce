@@ -15,16 +15,13 @@ module.exports = (sequelize, DataTypes) => {
       storage: {
         type: DataTypes.STRING(1000),
       },
-      modelno: {
-        type: DataTypes.STRING(1000),
-      },
       color: {
         type: DataTypes.STRING(100),
       },
       battery: {
         type: DataTypes.INTEGER,
       },
-      screenType: {
+      screen_type: {
         type: DataTypes.STRING(150),
       },
       processor: {
@@ -36,18 +33,19 @@ module.exports = (sequelize, DataTypes) => {
       os: {
         type: DataTypes.STRING(150),
       },
-      sreenLock: {
+      sreen_lock: {
         type: DataTypes.STRING(150),
       },
     },
     {
-      timestamps: true,
+      timestamps: false,
       tableName: "features",
     }
   );
   Features.associate = function (models) {
     // associations can be defined here
     Features.hasMany(models.Product, {
+      as: "feature",
       foreignKey: "feature_id",
     });
   };

@@ -149,7 +149,7 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
             <div ref={sliderRef} className="keen-slider">
               {categories.map((cat, i) => (
                 <Link key={i} href={cat.link}>
-                  <a className={`keen-slider__slide slide`}>{cat.label}</a>
+                  <a className="keen-slider__slide slide">{cat.label}</a>
                 </Link>
               ))}
             </div>
