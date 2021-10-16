@@ -1,5 +1,5 @@
 import React, { useEffect, FC, useState } from 'react'
-
+import router from 'next/router'
 import laptop1 from '../../public/assets/img/laptop2.png'
 import laptop2 from '../../public/assets/img/laptop1.png'
 import p1 from '../../public/assets/profile/p1.jpg'
@@ -40,37 +40,32 @@ import AppCard from '@components/ui/AppCard/AppCard'
 import { pCarousel, productsH } from 'data2'
 
 type Props = {
-  res: MProduct
+  id: string
   loading: boolean
 }
 // Static path function
 // Main Func
-const ProductPage = ({ res, loading }: Props) => {
-  // State to show loading
-  const [isLoading, setLoading] = useState(true)
+const ProductPage = ({ id, loading, ...props }: Props) => {
+  const [products, setProducts] = useState<MProduct[]>(productsH)
+  const [product, setProduct] = useState<MProduct>()
   // Destructuring products
-  const { relatedProducts, linksOfProducts } = res
   // console.log(res)
 
-  // State for related product
+  // State for related product props.params.id
   const [related, setRelated] = useState<MProduct[]>([])
 
   // Function to store related products
   const storeRelatedProducts = () => {
-    const products = relatedProducts.flatMap((rel) =>
+    const relProducts = product?.relatedProducts.flatMap((rel) =>
       productsH.filter((product) => product.id === rel.id)
     )
-    setRelated(products)
+    relProducts && setRelated(relProducts)
   }
 
   useEffect(() => {
+    setProduct(products?.filter((product) => product.id === id)[0])
     storeRelatedProducts()
-    console.log(res)
-    setLoading(loading)
-    console.log(isLoading)
-  }, [loading, isLoading])
-
-  if (isLoading) return <h1>Loading...</h1>
+  }, [])
 
   return (
     <div className="md:px-14 px-5 py-5 sm:px-7 dark:bg-gray-900 bg-gray-200">
@@ -84,7 +79,7 @@ const ProductPage = ({ res, loading }: Props) => {
 
       {/* Links */}
       <div className="bg-white my-4 p-4 flex flex-col md:flex-row justify-around rounded-md md:shadow-sm align-center divide-y divide-gray-300 md:divide-y-0">
-        {linksOfProducts?.links.map((l: FirstLink, i: number) => (
+        {product?.linksOfProducts?.links.map((l: FirstLink, i: number) => (
           <h4 key={i}>
             <a className="text-black text-center text-sm font-base py-2 md:py-0 flex flex-row items-center gap-2">
               <span className="material-icons inline-block text-black md:mr-2 ml-1 mr-1">
@@ -96,11 +91,11 @@ const ProductPage = ({ res, loading }: Props) => {
         ))}
       </div>
       {/* REFURBHISHED Product Name */}
-      <PheadDetails pname={res.name} />
+      <PheadDetails pname={product?.name || ''} />
       {/* MAIN PRODUCT Grid Change to div */}
       <div className="my-6">
         <div className="p-6 bg-white rounded-md">
-          <MainProduct main={res} rev={reviews[0].photos} />
+          {product && <MainProduct main={product} rev={reviews[0].photos} />}
         </div>
       </div>
       {/*  Main container */}
@@ -111,17 +106,17 @@ const ProductPage = ({ res, loading }: Props) => {
             <Rate />
           </div>
           <p className="my-2 text-gray-600 font-light text-xs">
-            {res.comments?.reviews}
+            {product?.comments?.reviews}
           </p>
         </div>
         <div className="my-5 md:block h-0.5 w-full bg-gray-400 sm:hidden"></div>
         {/* Customer Comments */}
         <div>
           <h4 className="my-1 text-black text-sm font-bold">
-            {res.comments?.customers.name}
+            {product?.comments?.customers.name}
           </h4>
           <blockquote className="my-1 text-gray text-xs font-thin">
-            {res.comments?.customers.msg}
+            {product?.comments?.customers.msg}
           </blockquote>
         </div>
 
@@ -201,13 +196,22 @@ export default ProductPage
 // Static paths function
 export const getStaticPaths = async () => {
   // const rest = await Promise.resolve(itemsOfProducts)
-  const data = await fetch(`${server}/api/items`)
-  const jsonData = await data.json()
-  const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
-  const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
-  return {
-    paths,
-    fallback: false,
+  try {
+    const data = await fetch(`${server}/api/items`)
+    const jsonData = await data.json()
+    const ids = jsonData?.map((p: any) => p.id) // [{params: {id: 1}},{params: {id: 2}}]
+    const paths = ids.map((id: any) => ({ params: { id: id.toString() } }))
+    return {
+      paths,
+      fallback: false,
+    }
+  } catch (err) {
+    console.log(err)
+    const paths = productsH.map((product) => ({ params: { id: product.id } }))
+    return {
+      paths,
+      fallback: true,
+    }
   }
 }
 // Static props function
@@ -215,15 +219,12 @@ export const getStaticProps = async ({ params: { id } }: any) => {
   console.log(id)
   try {
     // const res = await Promise.resolve(itemsOfProducts)
-    let loading = true
-    const data = await fetch(`${server}/api/items/${id}`)
-    const res = await data.json()
+    // const data = await fetch(`${server}/api/items/${id}`)
+    // const res = await data.json()
 
-    loading = false
     return {
       props: {
-        res,
-        loading,
+        id,
       },
     }
   } catch (err) {
