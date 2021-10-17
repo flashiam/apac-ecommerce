@@ -45,7 +45,7 @@ const BestDeals = (props: any) => {
   const mainTitle = bid?.toString().toUpperCase()
 
   return (
-    <div className="md:p-10 p-5 sm:p-7 bg-gray-100">
+    <div className="md:p-6 p-5 sm:p-4 bg-gray-100">
       <Head>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -82,9 +82,9 @@ const BestDeals = (props: any) => {
         </div>
 
         {/* Grid */}
-        <div className="md:grid md:grid-cols-4 sm:grid sm:grid-cols-3 grid grid-cols-2 2xm:grid-cols-1">
+        <div className=" md:grid-cols-6 md:gap-0 lg:gap-0 gap-3 sm:grid-cols-4 grid grid-cols-1 xs:grid-cols-1">
           {/* Single columns */}
-          <div className="md:col-span-1 sm:col-span-1 md:bg-transparent pt-2 col-span-1">
+          <div className=" md:col-span-1 sm:col-span-1 md:bg-transparent pt-2 col-span-1">
             {/*SPAN-1 LEFT SIDE LINKS */}
             <div>
               <h2 className="text-black font-medium">Categories</h2>
@@ -96,15 +96,16 @@ const BestDeals = (props: any) => {
                 95 PRODUCTS
               </h1>
             </div>
-            {/* PRICE */}
-            <div></div>
+
+            <div className="grid grid-cols-2 md:block sm:block">
+              <CheckBoxes />
+            </div>
             {/* CONDITION */}
-            <CheckBoxes />
           </div>
 
           {/* Span Triple columns */}
-          <div className="md:col-span-3 sm:col-span-2 col-span-1">
-            <div className="rounded-md sm:grid-cols-2 md:grid-cols-3  md:bg-transparent gap-4 grid">
+          <div className="md:col-span-5 sm:col-span-3 col-span-1">
+            <div className="rounded-md sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  md:bg-transparent grid-cols-2 md:gap-4 gap-2 sm:gap-3 grid">
               {productsH.map((product: MProduct, i: string | number) => (
                 <SimpleCard key={i} index={i} product={product} />
               ))}
