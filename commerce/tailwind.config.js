@@ -41,6 +41,7 @@ module.exports = {
       colors: {
         cbcolor: '#6B7280',
         footerbg: '#151515',
+        xxmain2: '#FFFEFE',
         xxmain: '#F9F9F9',
         purpleD: '#440244',
         fbColor: '#2276C5',

@@ -110,19 +110,6 @@ const CheckBoxes = () => {
           getSelectedOptions={(options: CategoryItem) => console.log(options)}
         />
       </div>
-      <div className="py-4">
-        <h2 className="text-black font-medium">I want a phone for...</h2>
-        {iwantphone.map((k, i) => (
-          <ListCBox
-            key={i}
-            changer="2"
-            value={k}
-            numIndex={i}
-            checked={false}
-            onCheckChange={onCheckChange}
-          />
-        ))}
-      </div>
       {/* ... And that is */}
       <div className="py-4">
         <h2 className="text-black font-medium">Color</h2>

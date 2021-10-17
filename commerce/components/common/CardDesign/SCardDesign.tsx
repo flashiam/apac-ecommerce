@@ -9,7 +9,7 @@ type Props = {
 const SCardDesign: FC<Props> = ({ productId, ...props }) => {
   return (
     <Link href={`items/${productId}`}>
-      <a className="hover:bg-white bg-xxmain block p-4 duration-150 transition-shadow hover:shadow-xl rounded-md">
+      <a className="hover:bg-white bg-xxmain2 block p-4 duration-150 transition-shadow hover:shadow-xl rounded-md">
         {props.children}
       </a>
     </Link>
