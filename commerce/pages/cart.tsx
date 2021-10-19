@@ -6,12 +6,12 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
 import testImg from '../public/assets/img/iphone.png'
 import { CartProduct, GlobalState } from 'data1'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
-import { stat } from 'fs'
-import { removeCartItem } from '../actions/productAction'
+import { useEffect, useState } from 'react'
+import PaypalCheckout from '@components/PaypalCheckout'
 
 export async function getStaticProps({
   preview,
@@ -33,12 +33,12 @@ const Cart = () => {
   const success = null
   const { data, isLoading, isEmpty } = useCart()
 
-  const { price: subTotal } = usePrice(
-    data && {
-      amount: Number(data.subtotalPrice),
-      currencyCode: data.currency.code,
-    }
-  )
+  // const { price: subTotal } = usePrice(
+  //   data && {
+  //     amount: Number(data.subtotalPrice),
+  //     currencyCode: data.currency.code,
+  //   }
+  // )
   const { price: total } = usePrice(
     data && {
       amount: Number(data.totalPrice),
@@ -49,7 +49,20 @@ const Cart = () => {
   // Using redux hooks
   const product = useSelector((state: GlobalState) => state.product)
   const { cartItems } = product
+  const [totalPrice, setTotalPrice] = useState(0)
 
+  // Function to calc total price from the cart items
+  const calcTotalPrice = () => {
+    const total = cartItems.reduce(
+      (prevItem, curItem) => prevItem + curItem.price * curItem.quantity,
+      0
+    )
+    setTotalPrice(total)
+  }
+
+  useEffect(() => {
+    calcTotalPrice()
+  }, [cartItems, totalPrice])
   return (
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
@@ -167,10 +180,6 @@ const Cart = () => {
                 </div>
                 <div className="text-sm text-center font-medium">
                   <span className="uppercase">+ Add Shipping Address</span>
-                  {/* <span>
-                    1046 Kearny Street.<br/>
-                    San Franssisco, California
-                  </span> */}
                 </div>
               </div>
               {/* Payment Method */}
@@ -181,7 +190,6 @@ const Cart = () => {
                 </div>
                 <div className="text-sm text-center font-medium">
                   <span className="uppercase">+ Add Payment Method</span>
-                  {/* <span>VISA #### #### #### 2345</span> */}
                 </div>
               </div>
             </>
@@ -190,7 +198,7 @@ const Cart = () => {
             <ul className="py-3">
               <li className="flex justify-between py-1">
                 <span>Subtotal</span>
-                <span>{subTotal}</span>
+                <span>{0}</span>
               </li>
               <li className="flex justify-between py-1">
                 <span>Taxes</span>
@@ -203,18 +211,16 @@ const Cart = () => {
             </ul>
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-10">
               <span>Total</span>
-              <span>{total}</span>
+              <span>{totalPrice ?? 0}</span>
             </div>
           </div>
           <div className="flex flex-row justify-end">
             <div className="w-full lg:w-72">
-              {isEmpty ? (
+              {!!cartItems.length ? (
+                <PaypalCheckout />
+              ) : (
                 <Button href="/" Component="a" width="100%">
                   Continue Shopping
-                </Button>
-              ) : (
-                <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
                 </Button>
               )}
             </div>
@@ -224,11 +230,6 @@ const Cart = () => {
     </div>
   )
 }
-
-// Function to map state to props
-// const mapStateToProps = (state: any) => ({
-//   product: state.product,
-// })
 
 export default Cart
 Cart.Layout = Layout

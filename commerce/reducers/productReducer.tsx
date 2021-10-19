@@ -1,4 +1,10 @@
-import { ADD_TO_CART, FETCH_CART_ITEMS, REMOVE_CART_ITEM } from 'actions/types'
+import {
+  ADD_TO_CART,
+  FETCH_CART_ITEMS,
+  REMOVE_CART_ITEM,
+  CALCULATE_CART_TOTAL,
+  UPDATE_CART_QUANTITY,
+} from 'actions/types'
 import { ProductState } from 'data1'
 
 const initialState: ProductState = {
@@ -18,6 +24,7 @@ const first = (state = initialState, action: any) => {
       return {
         ...state,
         cartItems: [...state.cartItems, action.payload],
+        totalCartPrice: state.totalCartPrice + action.payload.price,
         loading: false,
       }
     case FETCH_CART_ITEMS:
@@ -30,6 +37,22 @@ const first = (state = initialState, action: any) => {
       return {
         ...state,
         cartItems: state.cartItems.filter((item) => item.id !== action.payload),
+        loading: false,
+      }
+    case CALCULATE_CART_TOTAL:
+      return {
+        ...state,
+        totalCartPrice: action.payload,
+      }
+    case UPDATE_CART_QUANTITY:
+      // console.log(action.payload)
+      return {
+        ...state,
+        cartItems: state.cartItems.map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: action.payload.quantity }
+            : item
+        ),
         loading: false,
       }
     default:
