@@ -12,7 +12,10 @@ import useRemoveItem from '@framework/cart/use-remove-item'
 import Quantity from '@components/ui/Quantity'
 import { CartProduct } from '../../../data1'
 import { useDispatch } from 'react-redux'
-import { removeCartItem } from '../../../actions/productAction'
+import {
+  removeCartItem,
+  updateCartQuantity,
+} from '../../../actions/productAction'
 
 type ItemOption = {
   name: string
@@ -56,12 +59,57 @@ const CartItem = ({
     setQuantity(Number(value))
     await updateItem({ quantity: Number(value) })
   }
+  // Function to update the cart price when user increase the quantity
+  const onUpdateQuantity = () => {
+    dispatch(updateCartQuantity(item.id, quantity))
+  }
 
-  const increaseQuantity = async (n = 1) => {
-    const val = Number(quantity) + n
-    setQuantity(val)
-    await updateItem({ quantity: val })
-    setPrice(item.price * val)
+  // const increaseQuantity = async (n:any) => {
+
+  //   const val = Number(quantity) + n
+  //   setQuantity(val)
+  //   console.log(val)
+  //   await updateItem({ quantity: val })
+  //   setPrice(item.price * val)
+  // }
+
+  // const decreaseQuantity = async (qty: number) => {
+
+  //   setQuantity(qty)
+  //   // console.log(val)
+  //   setPrice(item.price * val)
+  // }
+
+  // Function to increase the quantity
+  const increaseQuantity = () => {
+    const itemQty = quantity + 1
+    let updatedPrice = 0
+    setQuantity(itemQty)
+    updatedPrice = item.price * itemQty
+    console.log(updatedPrice)
+    setPrice(updatedPrice)
+    console.log(itemQty)
+  }
+
+  // Function to decrease the quantity
+  const decreaseQuantity = () => {
+    let itemQty = quantity
+
+    if (itemQty === 1) {
+      itemQty = 1
+    } else {
+      itemQty = quantity - 1
+    }
+
+    setQuantity(itemQty)
+    let updatedPrice = 0
+    updatedPrice = price - item.price
+    // if (quantity === 1) {
+    //   updatedPrice = item.price
+    // } else {
+    //   updatedPrice = price - item.price
+    // }
+    setPrice(updatedPrice)
   }
 
   const handleRemove = async () => {
@@ -83,7 +131,6 @@ const CartItem = ({
 
   // TODO: Add a type for this
   const options = (item as any).options
-
   useEffect(() => {
     // Reset the quantity state if the item quantity changes
     if (item.quantity !== Number(quantity)) {
@@ -95,7 +142,13 @@ const CartItem = ({
   }, [item.quantity])
 
   useEffect(() => {
-    setPrice(quantity * item.price)
+    // setPrice(quantity * item.price)
+    onUpdateQuantity()
+    // console.log(price)
+  }, [quantity])
+
+  useEffect(() => {
+    console.log(price)
   }, [])
 
   return (
@@ -107,7 +160,7 @@ const CartItem = ({
     >
       <div className="flex flex-row space-x-4 py-4">
         <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer z-0">
-          <Link href={`/product/${item.id}`} passHref={false}>
+          <Link href={`/items/${item.id}`} passHref={false}>
             <Image
               onClick={() => closeSidebarIfPresent()}
               className={s.productImage}
@@ -158,7 +211,7 @@ const CartItem = ({
           )}
         </div>
         <div className="flex flex-col justify-between space-y-2 text-sm">
-          <span>$ {price}</span>
+          <span>${price}</span>
         </div>
       </div>
       {variant === 'default' && (
@@ -166,8 +219,8 @@ const CartItem = ({
           value={quantity}
           handleRemove={handleRemove}
           handleChange={handleChange}
-          increase={() => increaseQuantity(1)}
-          decrease={() => increaseQuantity(-1)}
+          increase={increaseQuantity}
+          decrease={decreaseQuantity}
         />
       )}
     </li>

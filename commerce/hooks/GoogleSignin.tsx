@@ -28,10 +28,6 @@ const GoogleSignin = async (auth: Auth) => {
     // Fetching user profile
     const { uid, displayName, email, photoURL, providerId } = res.user
 
-    // response.user = user
-    // response.credentials = credentials
-    // response.provider = user.providerId
-
     const response: Customer = {
       id: uid,
       name: displayName || '',
