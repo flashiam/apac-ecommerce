@@ -1,6 +1,11 @@
 import { Dispatch } from 'redux'
-import { ADD_CUSTOMER, FETCH_CUSTOMER, REMOVE_CUSTOMER } from './types'
-import { Customer } from '../data1'
+import {
+  ADD_CUSTOMER,
+  FETCH_CUSTOMER,
+  REMOVE_CUSTOMER,
+  ADD_ADDRESS,
+} from './types'
+import { Address, Customer } from '../data1'
 
 // Function to set the customer's details
 export const addCustomer = (custData: Customer) => (dispatch: Dispatch) => {
@@ -27,5 +32,14 @@ export const fetchCustomer = () => (dispatch: Dispatch) => {
 export const removeCustomer = () => (dispatch: Dispatch) => {
   dispatch({
     type: REMOVE_CUSTOMER,
+  })
+}
+
+// Function to add an address
+export const addAddress = (address: Address) => (dispatch: Dispatch) => {
+  console.log(address)
+  dispatch({
+    type: ADD_ADDRESS,
+    payload: address,
   })
 }

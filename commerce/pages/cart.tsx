@@ -1,9 +1,10 @@
 import type { GetStaticPropsContext } from 'next'
+import Link from 'next/link'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
-import { Button, Text } from '@components/ui'
+import { Button, Text, useUI } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
@@ -12,6 +13,7 @@ import { CartProduct, GlobalState } from 'data1'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import PaypalCheckout from '@components/PaypalCheckout'
+import { calcCartTotal } from '../actions/productAction'
 
 export async function getStaticProps({
   preview,
@@ -32,6 +34,7 @@ const Cart = () => {
   const error = null
   const success = null
   const { data, isLoading, isEmpty } = useCart()
+  const { openModal, setModalView } = useUI()
 
   // const { price: subTotal } = usePrice(
   //   data && {
@@ -47,9 +50,17 @@ const Cart = () => {
   )
 
   // Using redux hooks
+  const dispatch = useDispatch()
   const product = useSelector((state: GlobalState) => state.product)
-  const { cartItems } = product
+  const customer = useSelector((state: GlobalState) => state.customers)
+  const { cartItems, totalCartPrice } = product
+  const { loggedIn } = customer
   const [totalPrice, setTotalPrice] = useState(0)
+
+  // Passing all cart items for totalcartPrice value
+  useEffect(() => {
+    dispatch(calcCartTotal(cartItems))
+  }, [cartItems])
 
   // Function to calc total price from the cart items
   const calcTotalPrice = () => {
@@ -60,9 +71,18 @@ const Cart = () => {
     setTotalPrice(total)
   }
 
-  useEffect(() => {
-    calcTotalPrice()
-  }, [cartItems, totalPrice])
+  // Function to open sign in modal when clicks on login button
+  const openSignIn = () => {
+    setModalView('LOGIN_VIEW')
+    return openModal()
+  }
+
+  // useEffect(() => {
+  //   // calcTotalPrice()
+  //   // dispatch(calcCartTotal())
+  //   console.log(totalCartPrice)
+  // }, [totalCartPrice, dispatch])
+
   return (
     <div className="grid lg:grid-cols-12 w-full max-w-7xl mx-auto">
       <div className="lg:col-span-8">
@@ -211,16 +231,25 @@ const Cart = () => {
             </ul>
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-10">
               <span>Total</span>
-              <span>{totalPrice ?? 0}</span>
+              <span>{totalCartPrice ?? 0}</span>
             </div>
           </div>
           <div className="flex flex-row justify-end">
             <div className="w-full lg:w-72">
-              {!!cartItems.length ? (
-                <PaypalCheckout />
+              {loggedIn ? (
+                // !!cartItems.length ? (
+
+                //   <PaypalCheckout />
+                // ) : (
+                <Link href="/select_address">
+                  <Button Component="a" width="100%">
+                    Proceed to checkout
+                  </Button>
+                </Link>
               ) : (
-                <Button href="/" Component="a" width="100%">
-                  Continue Shopping
+                // )
+                <Button Component="button" width="100%" onClick={openSignIn}>
+                  Log in
                 </Button>
               )}
             </div>
