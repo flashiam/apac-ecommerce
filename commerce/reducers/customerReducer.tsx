@@ -1,10 +1,16 @@
 import { CustomerState } from 'data1'
 // import { Action } from 'redux'
-import { ADD_CUSTOMER, FETCH_CUSTOMER, REMOVE_CUSTOMER } from '../actions/types'
+import {
+  ADD_ADDRESS,
+  ADD_CUSTOMER,
+  FETCH_CUSTOMER,
+  REMOVE_CUSTOMER,
+} from '../actions/types'
 
 const initialState: CustomerState = {
   customer: null,
   loggedIn: false,
+  savedAddresses: [],
 }
 
 const customerReducer = (state = initialState, action: any) => {
@@ -28,6 +34,11 @@ const customerReducer = (state = initialState, action: any) => {
         ...state,
         customer: null,
         loggedIn: false,
+      }
+    case ADD_ADDRESS:
+      return {
+        ...state,
+        savedAddresses: [...state.savedAddresses, action.payload],
       }
     default:
       return state

@@ -1,6 +1,7 @@
 import { CartProduct } from 'data1'
 import {
   ADD_TO_CART,
+  CALCULATE_CART_TOTAL,
   FETCH_CART_ITEMS,
   REMOVE_CART_ITEM,
   UPDATE_CART_QUANTITY,
@@ -52,3 +53,17 @@ export const updateCartQuantity =
       payload: item,
     })
   }
+
+// Function to calculate cart total
+export const calcCartTotal = (cartItems: CartProduct[]) => (dispatch: any) => {
+  console.log(cartItems)
+  const totalPrice = cartItems.reduce(
+    (prevItem, curItem) => prevItem + curItem.price * curItem.quantity,
+    0
+  )
+
+  dispatch({
+    type: CALCULATE_CART_TOTAL,
+    payload: totalPrice,
+  })
+}

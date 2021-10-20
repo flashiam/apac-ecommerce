@@ -259,6 +259,16 @@ export interface MyOrderedItem {
   link?: string
 }
 
+export interface Address {
+  id: string | number
+  city: string
+  state: string
+  pincode: number
+  houseno: string
+  street: string
+  landmark: string
+}
+
 export interface ProductState {
   cartItems: CartProduct[]
   loading: boolean
@@ -272,6 +282,7 @@ export interface ChatState {
 export interface CustomerState {
   customer: Customer | null
   loggedIn: boolean
+  savedAddresses: Address[]
 }
 
 export interface GlobalState {

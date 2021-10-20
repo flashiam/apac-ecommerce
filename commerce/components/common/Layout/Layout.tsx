@@ -16,12 +16,13 @@ import { useAcceptCookies } from '@lib/hooks/useAcceptCookies'
 import { Sidebar, Button, Modal, LoadingDots } from '@components/ui'
 import PaymentMethodView from '@components/checkout/PaymentMethodView'
 import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
-import { useDispatch } from 'react-redux'
-import { fetchCartItems } from '../../../actions/productAction'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCartItems, calcCartTotal } from '../../../actions/productAction'
 import { fetchCustomer } from '../../../actions/customerAction'
 
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
+import { GlobalState } from 'data1'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -110,7 +111,7 @@ const Layout: FC<Props> = ({
   }))
 
   const client = new QueryClient()
-
+  const cartItems = useSelector((state: GlobalState) => state.product.cartItems)
   // hooks for redux
   const dispatch = useDispatch()
 

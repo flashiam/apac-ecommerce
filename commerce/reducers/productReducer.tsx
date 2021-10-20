@@ -31,6 +31,7 @@ const first = (state = initialState, action: any) => {
       return {
         ...state,
         cartItems: action.payload || [],
+
         loading: false,
       }
     case REMOVE_CART_ITEM:
@@ -40,6 +41,7 @@ const first = (state = initialState, action: any) => {
         loading: false,
       }
     case CALCULATE_CART_TOTAL:
+      // console.log('calculating...')
       return {
         ...state,
         totalCartPrice: action.payload,
