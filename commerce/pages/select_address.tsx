@@ -44,7 +44,7 @@ const SelectAddress = () => {
           )}
         </div>
       </div>
-      {/* Saved addresses */}2
+      {/* Saved addresses */}
       <div ref={sliderRef} className="keen-slider">
         <div className="keen-slider__slide mt-2 pb-3 grid grid-rows-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           <button
