@@ -252,8 +252,8 @@ export interface CartProduct {
 export interface MyOrderedItem {
   id: string
   name: string
-  price: string
-  quantity: string
+  price: number
+  quantity: number
   delivered: boolean
   img: StaticImageData
   link?: string
@@ -285,9 +285,20 @@ export interface CustomerState {
   savedAddresses: Address[]
 }
 
+export interface PaymentState {
+  orderid: string
+  selectedAddress: Address | null
+  orderedItems: MyOrderedItem[]
+  charges: {
+    tax: number
+    shippingCharge: number
+  }
+}
+
 export interface GlobalState {
   product: ProductState
   customers: CustomerState
+  payment: PaymentState
 }
 
 // export const itemsOfProducts: Big[] = [

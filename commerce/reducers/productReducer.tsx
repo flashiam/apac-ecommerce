@@ -4,6 +4,7 @@ import {
   REMOVE_CART_ITEM,
   CALCULATE_CART_TOTAL,
   UPDATE_CART_QUANTITY,
+  CLEAR_CART_ITEM,
 } from 'actions/types'
 import { ProductState } from 'data1'
 
@@ -56,6 +57,12 @@ const first = (state = initialState, action: any) => {
             : item
         ),
         loading: false,
+      }
+    case CLEAR_CART_ITEM:
+      localStorage.removeItem('cart-items')
+      return {
+        ...state,
+        cartItems: [],
       }
     default:
       return state

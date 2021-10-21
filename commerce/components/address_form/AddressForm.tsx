@@ -1,10 +1,11 @@
 import { Input, Button } from '@components/ui'
 import React, { ChangeEvent, FC, useState } from 'react'
-import { Address } from 'data1'
+import { Address, MyOrderedItem } from 'data1'
 import { useDispatch } from 'react-redux'
 import { addAddress } from 'actions/customerAction'
 import { uuid } from 'uuidv4'
 import router from 'next/router'
+import { selectOrderAddress } from '../../actions/paymentAction'
 
 const AddressForm: FC = () => {
   const [address, setAddress] = useState<Address>({
@@ -16,6 +17,7 @@ const AddressForm: FC = () => {
     street: '',
     landmark: '',
   })
+  const [orders, setOrders] = useState<MyOrderedItem[]>([])
 
   const addressForm = [
     {
@@ -69,7 +71,11 @@ const AddressForm: FC = () => {
   const submitAddress = (e: any) => {
     e.preventDefault()
     address.id = uuid()
+    // Save the address
     dispatch(addAddress(address))
+
+    // Use this address for shipping
+    dispatch(selectOrderAddress(address))
     router.push('/checkout')
   }
 
