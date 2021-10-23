@@ -37,8 +37,10 @@ import { Rating } from '@components/ui'
 import Review from '@components/common/Productpage/Review/Review'
 import ProductCarousel from '@components/ui/Carousel/ProductCarousel'
 import AppCard from '@components/ui/AppCard/AppCard'
-import { pCarousel, productsH } from 'data2'
-
+import { otherCat, pCarousel, productsH } from 'data2'
+import OtherCat from '@components/home/Catofproducts/Other/OtherCat'
+// import RdirectionLink from '@components/links_directions/Ldirection_link/directionLink'
+import RdirectionLink from '@components/links_directions/Rdirection_link/RdirectionLink'
 type Props = {
   id: string
   loading: boolean
@@ -128,9 +130,29 @@ const ProductPage = ({ id, loading, ...props }: Props) => {
         </button>
       </div>
 
+      {/* Desktop view */}
+      {/* Other Categories */}
+      <div className="my-8">
+        <span className="text-black sm:text-xl pb-1 font-semibold border-b-2 border-accent-3 lg:text-2xl md:text-xl inline-block my-3">
+          Related Products
+          {/* <span className="text-gray-400 text-sm">
+            {' '}
+            -Nothing lost, everything gained, and all refurbished.
+          </span> */}
+        </span>
+        {/* <div className="mb-4 w-full bg-gray-500" style={{ height: 1 }}></div> */}
+
+        <div className="md:grid-cols-12 md:grid sm:grid sm:grid-cols-6 hidden lg:gap-5 md:gap-4 gap-2">
+          {otherCat.map((other, i) => (
+            <OtherCat key={i} numIndex={i} otherCat={other} />
+          ))}
+        </div>
+        <RdirectionLink linkText="See More" />
+      </div>
+
       {/* For Mobo */}
       {!!related.length && (
-        <div className="my-5">
+        <div className="my-5 block sm:hidden">
           <h1 className="text-xl mb-5 font-medium text-black">
             Related Products
           </h1>
@@ -159,6 +181,7 @@ const ProductPage = ({ id, loading, ...props }: Props) => {
           </ProductCarousel>
         </div>
       )}
+
       {/* Reviews and posts */}
       <div className="my-5">
         <h2 className="mb-5 text-black font-medium text-xl">

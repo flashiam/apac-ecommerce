@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       description: {
-        type: DataTypes.STRING(1000),
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       price: {
@@ -50,6 +50,10 @@ module.exports = (sequelize, DataTypes) => {
       image: DataTypes.STRING(150),
       image_2: DataTypes.STRING(150),
       thumbnail: DataTypes.STRING(150),
+      tags: {
+        type: DataTypes.STRING(350),
+        allowNull: false,
+      },
     },
     {
       timestamps: true,
@@ -70,6 +74,14 @@ module.exports = (sequelize, DataTypes) => {
     Product.belongsTo(models.Features, {
       as: "feature",
       foreignKey: "feature_id",
+    });
+    Product.hasMany(models.RelatedProduct, {
+      as: "related_products",
+      foreignKey: "product_id",
+    });
+    Product.hasMany(models.Review, {
+      as: "reviews",
+      foreignKey: "product_id",
     });
   };
   return Product;

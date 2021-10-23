@@ -52,7 +52,9 @@ class CustomerController {
         password: hashedPassword,
       });
       await customer.reload();
+      // ?? Find out whats the use of dataValues in this model
       delete customer.dataValues.password;
+
       const token = createToken(customer);
       return res.status(200).json({
         accessToken: `Bearer ${token}`,

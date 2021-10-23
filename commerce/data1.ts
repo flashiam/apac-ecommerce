@@ -215,6 +215,38 @@ export interface MProduct {
   delivered?: boolean
   // cartItem: CartProduct
 }
+
+export interface ProductFeature {
+  feature_id: number
+  ram: string
+  storage: string
+  color: string
+  battery: number
+  screen_type: string
+  processor: string
+  camera: string
+  os: string
+  screen_lock: string
+}
+
+export interface Product {
+  product_id: number
+  name: string
+  brand_name: string
+  model_no: string
+  description: string
+  price: number
+  discounted_price: number
+  quantity: number
+  in_stock: boolean
+  warrenty: number
+  image: StaticImageData
+  image_2: StaticImageData
+  thumbnail: StaticImageData
+  tags: string
+  feature_id: number
+  feature: ProductFeature
+}
 // export interface MProduct {
 //   totalReview?: string
 //   qna?: string

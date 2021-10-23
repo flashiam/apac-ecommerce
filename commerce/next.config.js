@@ -1,4 +1,3 @@
-
 // const commerce = require('./commerce.config.json')
 // const {
 //   withCommerceConfig,
@@ -44,9 +43,6 @@
 // // Don't delete this console log, useful to see the commerce config in Vercel deployments
 // console.log('next.config.js', JSON.stringify(module.exports, null, 2))
 
-
-
-
 const commerce = require('./commerce.config.json')
 const {
   withCommerceConfig,
@@ -64,7 +60,10 @@ module.exports = withCommerceConfig({
   commerce,
 
   images: {
-    domains: ['lh3.googleusercontent.com'],
+    domains: [
+      'lh3.googleusercontent.com',
+      'amplify-apac-dev-40047-deployment.s3.amazonaws.com',
+    ],
     images: {
       deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     },

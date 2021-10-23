@@ -14,6 +14,8 @@ import laptop2 from '../public/assets/img/laptop2.png'
 import laptop3 from '../public/assets/img/laptop3.png'
 import laptop4 from '../public/assets/img/laptop4.png'
 import { GlobalState } from 'data1'
+import { useEffect } from 'react'
+import router from 'next/router'
 export async function getStaticProps({
   preview,
   locale,
@@ -44,6 +46,7 @@ export default function Orders() {
   const orderedItems = useSelector(
     (state: GlobalState) => state.payment.orderedItems
   )
+  const loggedIn = useSelector((state: GlobalState) => state.customers.loggedIn)
 
   // const orderedItems: OrderItems[] = [
   //   {
@@ -111,6 +114,11 @@ export default function Orders() {
   //     img: laptop1,
   //   },
   // ]
+
+  useEffect(() => {
+    !loggedIn && router.push('/')
+  }, [loggedIn])
+
   return (
     <div className="bg-gray-100 sm:p-8 p-6">
       <h1 className="text-4xl font-bold my-4">My Orders</h1>

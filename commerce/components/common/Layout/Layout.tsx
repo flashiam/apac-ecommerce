@@ -19,6 +19,7 @@ import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCartItems, calcCartTotal } from '../../../actions/productAction'
 import { fetchCustomer } from '../../../actions/customerAction'
+import { useProducts } from '../../../hooks'
 
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
@@ -119,6 +120,10 @@ const Layout: FC<Props> = ({
     dispatch(fetchCartItems())
     dispatch(fetchCustomer())
   }, [dispatch])
+
+  // useEffect(() => {
+
+  // })
 
   return (
     <QueryClientProvider client={client}>

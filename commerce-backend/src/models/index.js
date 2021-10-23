@@ -39,7 +39,7 @@ sequelize
   .catch((err) => console.log(`connection failed: ${err}`));
 
 sequelize
-  .sync({ force: true })
+  .sync({ alter: true })
   .then(() => console.log("Table synced"))
   .catch((err) => console.log(`Syncing failed ${err}`));
 

@@ -1,11 +1,13 @@
-POST https://google-translate1.p.rapidapi.com/language/translate/v2
+GET http://localhost:8000/products
 
-Content-Type: application/json
-x-rapidapi-host: google-translate1.p.rapidapi.com
-x-rapidapi-key: d4d62ee705msh902a7225bad18dbp10dd3fjsn369a1bb3feba
+# POST https://google-translate1.p.rapidapi.com/language/translate/v2
 
-{
-    "q": "Hello programmer this side",
-    "target": "es",
-    "source": "en"
-}
+# Content-Type: application/json
+# x-rapidapi-host: google-translate1.p.rapidapi.com
+# x-rapidapi-key: d4d62ee705msh902a7225bad18dbp10dd3fjsn369a1bb3feba
+
+# {
+#     "q": "Hello programmer this side",
+#     "target": "es",
+#     "source": "en"
+# }

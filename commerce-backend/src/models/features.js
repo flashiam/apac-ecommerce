@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(150),
       },
       sreen_lock: {
-        type: DataTypes.STRING(150),
+        type: DataTypes.STRING(400),
       },
     },
     {

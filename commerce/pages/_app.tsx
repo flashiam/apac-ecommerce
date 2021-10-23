@@ -19,15 +19,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, [])
 
   return (
-    <>
-      <Provider store={store}>
-        <Head />
-        <ManagedUIContext>
-          <Layout pageProps={pageProps}>
-            <Component {...pageProps} />
-          </Layout>
-        </ManagedUIContext>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <Head />
+      <ManagedUIContext>
+        <Layout pageProps={pageProps}>
+          <Component {...pageProps} />
+        </Layout>
+      </ManagedUIContext>
+    </Provider>
   )
 }
