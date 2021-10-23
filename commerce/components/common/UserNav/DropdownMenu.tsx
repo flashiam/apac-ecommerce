@@ -18,7 +18,6 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
-import getUserProfile from '@utils/getUserProfile'
 import { UserProfile } from '../../../hooks'
 import app from 'firebase-config'
 import testImg from '../../../public/assets/profile/p2.jpg'
@@ -29,7 +28,7 @@ interface DropdownMenuProps {
   open?: boolean
 }
 
-const LINKS = [
+const AUTH_LINKS = [
   {
     name: 'My Orders',
     href: '/orders',
@@ -48,6 +47,13 @@ const LINKS = [
   },
 ]
 
+const UNAUTH_LINKS = [
+  {
+    name: 'My Cart',
+    href: '/cart',
+  },
+]
+
 const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const logout = useLogout()
   const dispatch = useDispatch()
@@ -58,6 +64,9 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const { theme, setTheme } = useTheme()
   // Using firebase auth
   const auth = getAuth(app)
+  const [menuLinks, setMenuLinks] = useState<{ name: string; href: string }[]>(
+    []
+  )
 
   // State for user signin status
   const [isLoggedIn, setLoggedIn] = useState(false)
@@ -109,6 +118,10 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
     }
   }, [display, profilePic, auth])
 
+  useEffect(() => {
+    loggedIn ? setMenuLinks(AUTH_LINKS) : setMenuLinks(UNAUTH_LINKS)
+  }, [loggedIn])
+
   return (
     <>
       <ClickOutside active={display} onClick={() => setDisplay(false)}>
@@ -124,28 +137,32 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
             <ul className={s.dropdownMenu} ref={ref}>
               <li className="mx-6 py-3">
                 <div className="flex justify-start items-center">
-                  <div className="h-12 w-12">
-                    <Image
-                      src={
-                        loggedIn && customer
-                          ? customer.profilePic
-                          : (testImg as any)
-                      }
-                      height="100%"
-                      width="100%"
-                      alt="test profile"
-                      className="object-cover rounded-full"
-                    />
-                  </div>
+                  {loggedIn && customer ? (
+                    <div className="h-12 w-12">
+                      <Image
+                        src={
+                          loggedIn && customer
+                            ? customer.profilePic
+                            : (testImg as any)
+                        }
+                        height="100%"
+                        width="100%"
+                        alt="test profile"
+                        className="object-cover rounded-full"
+                      />
+                    </div>
+                  ) : (
+                    <i className="material-icons text-5xl">account_circle</i>
+                  )}
                   <p className="text-md font-semibold pl-2 flex flex-col items-start text-gray-700">
                     Hello,{' '}
                     <span className="text-xl font-bold">
-                      {loggedIn ? customer?.name.split(' ')[0] : 'Henry'}
+                      {loggedIn ? customer?.name.split(' ')[0] : 'Guest'}
                     </span>
                   </p>
                 </div>
               </li>
-              {LINKS.map(({ name, href }) => (
+              {menuLinks.map(({ name, href }) => (
                 <li key={href}>
                   <div>
                     <Link href={href}>

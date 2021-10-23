@@ -88,13 +88,14 @@ const Support = () => {
 
   // Function to request for a chat
   const onChatRequest = () => {
+    console.log(customer)
     socket.emit('chat-request', customer)
   }
 
   // Function to send the message to admin
   const onMessageSend = () => {
     if (!message) {
-      console.log('fill up the fields u moron')
+      console.log('fill up the fields')
     } else if (!loggedIn) {
       console.log('you should be logged in first')
     } else if (!socket) {
@@ -143,6 +144,7 @@ const Support = () => {
 
   useEffect(() => {
     // setSocket(socket)
+    // socket.connect()
     // Checking network logs
     // Fetch user details
     console.log(socket)

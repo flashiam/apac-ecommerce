@@ -2,12 +2,21 @@ export const GET = 'GET'
 export const SET_CURRENT = 'SET_CURRENT'
 export const UPDATE = 'UPDATE'
 
+// Product
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const FETCH_CART_ITEMS = 'FETCH_CART_ITEMS'
 export const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
+export const CLEAR_CART_ITEM = 'CLEAR_CART_ITEM'
 export const CALCULATE_CART_TOTAL = 'CALCULATE_CART_TOTAL'
 export const UPDATE_CART_QUANTITY = 'UPDATE_CART_UANTITY'
+
+// Customer
 export const ADD_CUSTOMER = 'ADD_CUSTOMER'
 export const ADD_ADDRESS = 'ADD_ADDRESS'
 export const FETCH_CUSTOMER = 'FETCH_CUSTOMER'
 export const REMOVE_CUSTOMER = 'REMOVE_CUSTOMER'
+
+// Payment
+export const FETCH_ORDER_ID = 'FETCH_ORDER_ID'
+export const FETCH_ORDER_ITEMS = 'FETCH_ORDER_ITEMS'
+export const SELECT_ADDRESS = 'SELECT_ADDRESS'

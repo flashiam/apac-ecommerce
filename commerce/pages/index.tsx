@@ -1,5 +1,6 @@
+import { useEffect } from 'react'
 import commerce from '@lib/api/commerce'
-import { testimonials } from '../data1'
+import { Product, testimonials } from '../data1'
 import { Layout } from '@components/common'
 import EspecialProducts from '@components/home/Catofproducts/Especial/EspecialProducts'
 import OtherCat from '@components/home/Catofproducts/Other/OtherCat'
@@ -30,6 +31,9 @@ import SimpleCard from '@components/common/LooperCard/SimpleCard/SimpleCard'
 import FirstProducts from '@components/home/Catofproducts/First/FirstProducts'
 // import Head from "@components/Head"
 import Head from '@components/common/Head/Head'
+import { useProducts } from 'hooks'
+import { useQuery } from 'react-query'
+import axios from 'axios'
 
 export async function getStaticProps({
   preview,
@@ -70,24 +74,36 @@ export default function Home({
     numi: number
   }
 
+  const { data, isLoading } = useProducts()
+
+  useEffect(() => console.log(data?.data), [])
+
   return (
     <div>
       <Head title="Home|Quack-Quack" />
       <Carousel carousels={carousels} />
       {/* Product showcase */}
-      <div className="bg-gray-200 md:p-10 sm:p-8 p-6">
+      <div className="bg-gray-200 md:p-10 lg:px-16 sm:p-8 p-6">
         {/* First Products */}
-        <div className="my-1">
-          <h2 className="font-semibold text-black">The heavy weights</h2>
-          <p className="text-sm text-black-400">
+        <div className="my-1 lg:mb-7 md:mb-5">
+          <h2 className="sm:text-xl font-semibold lg:text-2xl md:text-xl text-black">
+            The heavy weights
+          </h2>
+          <p className="text-sm text-black-400 my-1">
             -Googled more often than Muhammad Ali.
           </p>
           {/* FOr Desktop */}
-          <div className="md:grid-cols-6 gap-2 md:grid hidden">
-            {productsH.map((p, i) => (
-              <FirstProducts key={i} numIndex={i} products={p} />
-            ))}
-          </div>
+          {isLoading ? (
+            <h2>Loading...</h2>
+          ) : (
+            <div className="lg:grid-cols-12 md:grid-cols-12 lg:gap-5 lg:grid md:gap-4 gap-2 md:grid sm:grid-cols-12 sm:grid hidden">
+              {/* <FirstProducts numIndex={2} products={data?.data?.rows[0]} /> */}
+
+              {data?.data?.rows.map((p: Product, i: number) => (
+                <FirstProducts key={p.product_id} numIndex={i} products={p} />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* For Mobo */}
@@ -108,7 +124,7 @@ export default function Home({
 
         {/* Welcome to back MArket  */}
         <div className="my-3">
-          <h2 className="text-black font-semibold my-3 uppercase">
+          <h2 className="text-black lg:text-2xl sm:text-xl md:text-xl font-semibold my-1 mb-2 uppercase">
             Information About back Market
           </h2>
           <div className="p-8 bg-white border-2 border-gray-200 rounded-md gap-4">
@@ -120,8 +136,10 @@ export default function Home({
 
         {/* Especially for U */}
         <div className="my-8 md:block">
-          <h2 className="text-black font-semibold my-3">Especially for you</h2>
-          <div className="md:grid-cols-4 gap-2 grid-cols-2 grid md:grid">
+          <h2 className="text-black sm:text-xl font-semibold my-3 lg:text-2xl md:text-xl">
+            Especially for you
+          </h2>
+          <div className="md:grid-cols-4 lg:gap-5 md:gap-4 gap-2 grid-cols-2 grid md:grid">
             {especially.map((esp, index) => (
               <EspecialProducts key={index} esp={esp} value={index} />
             ))}
@@ -131,7 +149,7 @@ export default function Home({
 
         {/* Other Categories */}
         <div className="my-8">
-          <span className="text-black font-semibold inline-block my-3">
+          <span className="text-black sm:text-xl font-semibold lg:text-2xl md:text-xl inline-block my-3">
             Other Categories{' '}
             <span className="text-gray-400 text-sm">
               {' '}
@@ -139,7 +157,7 @@ export default function Home({
             </span>
           </span>
 
-          <div className="md:grid-cols-6 md:grid sm:grid sm:grid-cols-6 hidden gap-2">
+          <div className="md:grid-cols-12 md:grid sm:grid sm:grid-cols-6 hidden lg:gap-5 md:gap-4 gap-2">
             {otherCat.map((other, i) => (
               <OtherCat key={i} numIndex={i} otherCat={other} />
             ))}
@@ -168,17 +186,17 @@ export default function Home({
 
         {/* CARD SIMPLE REPEAT 4 //custom layout/common layout// */}
 
-        <h2 className="text-black block font-semibold my-3 uppercase">
+        <h2 className="text-black block sm:text-xl lg:text-2xl md:text-xl font-semibold my-3 uppercase">
           Your Products
         </h2>
-        <div className="grid md:grid-cols-4 grid-cols-2 my-4 gap-2">
+        <div className="grid md:grid-cols-4 lg:gap-5 md:gap-4 sm:gap-3  grid-cols-2 my-4 gap-2">
           {productsH.slice(5, 8).map((product, i) => (
             <SimpleCard key={i} product={product} />
           ))}
         </div>
         {/* They love us they really love us */}
         <div className="my-6">
-          <span className="text-black font-semibold inline-block my-3">
+          <span className="text-black sm:text-xl font-semibold inline-block my-3">
             They love us
             <span className="text-gray-400 text-sm">
               {' '}

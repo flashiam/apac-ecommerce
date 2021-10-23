@@ -21,7 +21,7 @@ export default {
     return jwt.sign(
       { customer_id: customerId, name, email },
       process.env.SECRET,
-      { expiresIn: 86400 }
+      { expiresIn: "1h" }
     );
   },
 

@@ -2,6 +2,7 @@ import { CartProduct } from 'data1'
 import {
   ADD_TO_CART,
   CALCULATE_CART_TOTAL,
+  CLEAR_CART_ITEM,
   FETCH_CART_ITEMS,
   REMOVE_CART_ITEM,
   UPDATE_CART_QUANTITY,
@@ -39,6 +40,13 @@ export const removeCartItem = (id: string) => (dispatch: any) => {
   dispatch({
     type: REMOVE_CART_ITEM,
     payload: id,
+  })
+}
+
+// Function to clear all the cart items
+export const clearCartItems = () => (dispatch: any) => {
+  dispatch({
+    type: CLEAR_CART_ITEM,
   })
 }
 

@@ -87,7 +87,6 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
         navLinkRef.current.style.display = 'block'
     })
   }
-  //
 
   useEffect(() => {
     hideOnScroll()
@@ -156,12 +155,16 @@ const Navbar: FC<NavbarProps> = ({ links }) => {
           </div>
 
           <div ref={navLinkRef}>
-            <div ref={sliderRef} className="keen-slider">
-              {categories.map((cat, i) => (
-                <Link key={i} href={cat.link}>
-                  <a className="keen-slider__slide slide w-full">{cat.label}</a>
-                </Link>
-              ))}
+            <div className="lg:block hidden">
+              <div ref={sliderRef} className="keen-slider">
+                {categories.map((cat, i) => (
+                  <Link key={i} href={cat.link}>
+                    <a className="keen-slider__slide slide w-full">
+                      {cat.label}
+                    </a>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </Container>

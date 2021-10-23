@@ -51,7 +51,7 @@ io.on("connection", (socket) => {
       user,
       msg: `${user.name} wants to chat with you`,
     };
-    console.log(user);
+    // console.log(user);
     ChatController.triggerGlobalEvents("to-admin", notification);
   });
 

@@ -18,9 +18,9 @@ const OtherCat = (props: Props) => {
   return (
     <div
       className={`${
-        props.numIndex <= 1
-          ? 'md:col-span-3  col-span-3 '
-          : 'md:col-span-2 md:block hidden'
+        props.numIndex <= 2
+          ? 'md:col-span-4  sm:col-span-2 col-span-3 '
+          : 'md:col-span-3 sm:col-span-2 md:block hidden'
       }`}
     >
       <SCardDesign productId="1200">

@@ -215,6 +215,38 @@ export interface MProduct {
   delivered?: boolean
   // cartItem: CartProduct
 }
+
+export interface ProductFeature {
+  feature_id: number
+  ram: string
+  storage: string
+  color: string
+  battery: number
+  screen_type: string
+  processor: string
+  camera: string
+  os: string
+  screen_lock: string
+}
+
+export interface Product {
+  product_id: number
+  name: string
+  brand_name: string
+  model_no: string
+  description: string
+  price: number
+  discounted_price: number
+  quantity: number
+  in_stock: boolean
+  warrenty: number
+  image: StaticImageData
+  image_2: StaticImageData
+  thumbnail: StaticImageData
+  tags: string
+  feature_id: number
+  feature: ProductFeature
+}
 // export interface MProduct {
 //   totalReview?: string
 //   qna?: string
@@ -252,8 +284,8 @@ export interface CartProduct {
 export interface MyOrderedItem {
   id: string
   name: string
-  price: string
-  quantity: string
+  price: number
+  quantity: number
   delivered: boolean
   img: StaticImageData
   link?: string
@@ -285,9 +317,20 @@ export interface CustomerState {
   savedAddresses: Address[]
 }
 
+export interface PaymentState {
+  orderid: string
+  selectedAddress: Address | null
+  orderedItems: MyOrderedItem[]
+  charges: {
+    tax: number
+    shippingCharge: number
+  }
+}
+
 export interface GlobalState {
   product: ProductState
   customers: CustomerState
+  payment: PaymentState
 }
 
 // export const itemsOfProducts: Big[] = [

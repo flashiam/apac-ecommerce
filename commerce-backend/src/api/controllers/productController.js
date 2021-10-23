@@ -291,18 +291,39 @@ export default class ProductController {
   static async addProductFeatures(req, res) {
     try {
       // Get the product data from the request
-      // const product = req.body;
-      console.log(req.body);
-
-      // await Features.sync();
-      const addedFeatures = await Features.create(req.body);
-      console.log(addedFeatures);
-      // if(!addedProduct) throw new DatabaseError
-      // console.log(addedProduct.product_id)
+      await Features.create(req.body);
       res.status(200).json({ msg: "Features saved!!" });
     } catch (err) {
       console.error(err);
       res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
+  /**
+   * @description -Get related products (Admin only)
+   * @param {object} req - The request payload sent from the router
+   * @param {object} res - The response payload sent back from the controller
+   * @returns {object} - Message regarding the product added
+   */
+  static async getRelatedProducts(req, res) {
+    try {
+      const productBrand = req.query.brand;
+      const productQuery = {
+        where: { brand_name: productBrand },
+        attributes: [
+          "product_id",
+          "name",
+          "image",
+          "price",
+          "discounted_price",
+          "brand_name",
+        ],
+      };
+      const relatedProducts = await Product.findAll(productQuery);
+      res.status(200).json(relatedProducts);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ msg: "Internal server error" });
     }
   }
 }

@@ -1,4 +1,3 @@
-
 import type { GetStaticPropsContext } from 'next'
 import commerce from '@lib/api/commerce'
 import { Bag } from '@components/icons'
@@ -6,6 +5,7 @@ import { Layout } from '@components/common'
 import { Container, Quantity, Text } from '@components/ui'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
 
 import cn from 'classnames'
 import iphone from '../public/assets/img/iphone.png'
@@ -13,6 +13,9 @@ import laptop1 from '../public/assets/img/laptop1.png'
 import laptop2 from '../public/assets/img/laptop2.png'
 import laptop3 from '../public/assets/img/laptop3.png'
 import laptop4 from '../public/assets/img/laptop4.png'
+import { GlobalState } from 'data1'
+import { useEffect } from 'react'
+import router from 'next/router'
 export async function getStaticProps({
   preview,
   locale,
@@ -40,78 +43,88 @@ export default function Orders() {
     link?: string
   }
 
-  const orderedItems: OrderItems[] = [
-    {
-      id: '1200',
-      productName: 'Xiaomi Redmi Y2',
-      price: '45',
-      quantity: '12',
-      delivered: true,
-      img: iphone,
-    },
-    {
-      id: '778',
-      productName: 'MacBook',
-      price: '235',
-      quantity: '1',
-      delivered: false,
-      img: laptop1,
-    },
-    {
-      id: '1200',
-      productName: 'Iphone',
-      price: '15',
-      quantity: '5',
-      delivered: true,
-      img: laptop2,
-    },
-    {
-      id: '1200',
-      productName: 'Xiaomi Redmi Y2',
-      price: '45',
-      quantity: '12',
-      delivered: false,
-      img: laptop3,
-    },
-    {
-      id: '1200',
-      productName: 'ASUS laptop',
-      price: '445',
-      quantity: '1',
-      delivered: false,
-      img: laptop4,
-    },
-    {
-      id: '1200',
-      productName: 'Iphone',
-      price: '17',
-      quantity: '3',
-      delivered: true,
-      img: iphone,
-    },
-    {
-      id: '1200',
-      productName: 'Xiaomi Redmi Y1',
-      price: '4',
-      quantity: '6',
-      delivered: true,
-      img: iphone,
-    },
-    {
-      id: '1200',
-      productName: 'Xiaomi Redmi Y7',
-      price: '15',
-      quantity: '7',
-      delivered: true,
-      img: laptop1,
-    },
-  ]
+  const orderedItems = useSelector(
+    (state: GlobalState) => state.payment.orderedItems
+  )
+  const loggedIn = useSelector((state: GlobalState) => state.customers.loggedIn)
+
+  // const orderedItems: OrderItems[] = [
+  //   {
+  //     id: '1200',
+  //     productName: 'Xiaomi Redmi Y2',
+  //     price: '45',
+  //     quantity: '12',
+  //     delivered: true,
+  //     img: iphone,
+  //   },
+  //   {
+  //     id: '778',
+  //     productName: 'MacBook',
+  //     price: '235',
+  //     quantity: '1',
+  //     delivered: false,
+  //     img: laptop1,
+  //   },
+  //   {
+  //     id: '1200',
+  //     productName: 'Iphone',
+  //     price: '15',
+  //     quantity: '5',
+  //     delivered: true,
+  //     img: laptop2,
+  //   },
+  //   {
+  //     id: '1200',
+  //     productName: 'Xiaomi Redmi Y2',
+  //     price: '45',
+  //     quantity: '12',
+  //     delivered: false,
+  //     img: laptop3,
+  //   },
+  //   {
+  //     id: '1200',
+  //     productName: 'ASUS laptop',
+  //     price: '445',
+  //     quantity: '1',
+  //     delivered: false,
+  //     img: laptop4,
+  //   },
+  //   {
+  //     id: '1200',
+  //     productName: 'Iphone',
+  //     price: '17',
+  //     quantity: '3',
+  //     delivered: true,
+  //     img: iphone,
+  //   },
+  //   {
+  //     id: '1200',
+  //     productName: 'Xiaomi Redmi Y1',
+  //     price: '4',
+  //     quantity: '6',
+  //     delivered: true,
+  //     img: iphone,
+  //   },
+  //   {
+  //     id: '1200',
+  //     productName: 'Xiaomi Redmi Y7',
+  //     price: '15',
+  //     quantity: '7',
+  //     delivered: true,
+  //     img: laptop1,
+  //   },
+  // ]
+
+  useEffect(() => {
+    !loggedIn && router.push('/')
+  }, [loggedIn])
+
   return (
     <div className="bg-gray-100 sm:p-8 p-6">
       <h1 className="text-4xl font-bold my-4">My Orders</h1>
       <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-7">
         {orderedItems.map(
-          ({ id, productName, quantity, delivered, price, img }, i) => (
+          ({ id, name, quantity, delivered, price, img }, i) => (
             <Link key={i} href={`items/${id}`}>
               <a className="bg-white   block p-5 duration-150 transition-shadow shadow-lg rounded-lg">
                 <div className="flex justify-between items-center gap-3">
@@ -124,9 +137,7 @@ export default function Orders() {
                     />
                   </div>
                   <div className="w-1/2 ">
-                    <h5 className="text-black text-xl font-bold">
-                      {productName}
-                    </h5>
+                    <h5 className="text-black text-xl font-bold">{name}</h5>
                     {/* <div className="w-20 h-40 mx-auto"> */}
 
                     {/* </div> */}
